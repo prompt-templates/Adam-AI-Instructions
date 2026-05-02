@@ -2,7 +2,7 @@
 
 用於 Claude Cowork(及一般 Claude 對話介面)的治理指令,規範 AI 於多步驟、多檔案、長期協作任務中的行為。
 
-> 💡 **推薦閱讀:互動指南**　本指令備有 [互動式 HTML 指南](guide.html)(含 6 個 SVG 視覺化、書面語解說),以瀏覽器開啟即可閱讀,理解抽象概念更直觀。本頁為文字版,內容相同。
+> 💡 **推薦閱讀:互動指南**　本指令備有 [互動式 HTML 指南](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/01-claude-cowork-meta-instruction/guide.html)(含 6 個 SVG 視覺化、書面語解說),以瀏覽器開啟即可閱讀,理解抽象概念更直觀。本頁為文字版,內容相同。
 
 ---
 

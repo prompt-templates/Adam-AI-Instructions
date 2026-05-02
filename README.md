@@ -69,7 +69,7 @@ Adam-AI-Instructions/
 
 | # | 名稱 | 互動指南 | 文字介紹 | Prompt 原文 | 適用工具 |
 |---|------|---------|---------|-------------|----------|
-| 01 | Claude Cowork Meta Instruction | [guide.html](prompts/01-claude-cowork-meta-instruction/guide.html) | [README.md](prompts/01-claude-cowork-meta-instruction/README.md) | [prompt.md](prompts/01-claude-cowork-meta-instruction/prompt.md) | Claude Cowork(及一般 Claude 對話介面) |
+| 01 | Claude Cowork Meta Instruction | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/01-claude-cowork-meta-instruction/guide.html) | [README.md](prompts/01-claude-cowork-meta-instruction/README.md) | [prompt.md](prompts/01-claude-cowork-meta-instruction/prompt.md) | Claude Cowork(及一般 Claude 對話介面) |
 
 > **建議閱讀順序**:先點擊「互動指南」(以瀏覽器開啟,含 SVG 視覺化說明),再參考「文字介紹」深入細節,最後複製「Prompt 原文」套用至所用 AI 工具。
 

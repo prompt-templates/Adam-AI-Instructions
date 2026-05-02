@@ -249,6 +249,126 @@
   }
   footer a{margin:0 10px}
 
+  /* Hero: 情境對照 */
+  section.scenario-hero{
+    background:linear-gradient(135deg,#f8fbfb 0%,var(--c-light) 100%);
+    border:1px solid var(--c-primary);
+    padding:36px 28px 28px;
+  }
+  .scenario-title{text-align:center;margin-bottom:24px}
+  .scenario-title h2{
+    font-size:24px;
+    color:var(--c-primary);
+    border:none;
+    margin:0 0 6px;
+    padding:0;
+  }
+  .scenario-title p{
+    color:var(--c-muted);
+    font-size:14px;
+    margin:0;
+  }
+  .scenario-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  .scenario-col{
+    background:white;
+    border-radius:12px;
+    padding:22px 18px 18px;
+    border:2px solid;
+    position:relative;
+  }
+  .scenario-col.before{border-color:#e57373}
+  .scenario-col.after{border-color:#4caf50}
+  .scenario-tag{
+    position:absolute;
+    top:-12px;
+    left:18px;
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+    color:white;
+  }
+  .bad-tag{background:#e57373}
+  .good-tag{background:#4caf50}
+  .msg{
+    display:flex;
+    gap:8px;
+    margin:10px 0;
+    align-items:flex-end;
+  }
+  .msg.user{flex-direction:row-reverse}
+  .msg-avatar{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f0f3f5;
+    font-size:14px;
+    flex-shrink:0;
+  }
+  .msg.user .msg-avatar{background:#e3f2fd}
+  .msg-bubble{
+    padding:10px 13px;
+    border-radius:14px;
+    max-width:86%;
+    font-size:13.5px;
+    line-height:1.6;
+  }
+  .msg.user .msg-bubble{
+    background:#e3f2fd;
+    color:#1a1a1a;
+    border-bottom-right-radius:4px;
+  }
+  .msg.ai.bad .msg-bubble{
+    background:#ffebee;
+    color:#1a1a1a;
+    border-bottom-left-radius:4px;
+  }
+  .msg.ai.good .msg-bubble{
+    background:#e8f5e9;
+    color:#1a1a1a;
+    border-bottom-left-radius:4px;
+  }
+  .msg-bubble ul{margin:6px 0 4px;padding-left:20px}
+  .msg-bubble li{margin:2px 0;font-size:13px}
+  .msg-bubble em{
+    display:block;
+    margin-top:8px;
+    color:#5b6470;
+    font-size:12px;
+    font-style:italic;
+  }
+  .scenario-summary{
+    margin-top:14px;
+    padding:9px 13px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:500;
+    text-align:center;
+  }
+  .bad-summary{background:#fdecea;color:#c62828}
+  .good-summary{background:#e8f5e9;color:#2e7d32}
+  .scenario-cta{
+    text-align:center;
+    margin-top:22px;
+    padding:12px;
+    font-size:14px;
+    color:var(--c-muted);
+    line-height:1.7;
+  }
+  .scenario-cta strong{color:var(--c-primary)}
+  @media (max-width:720px){
+    .scenario-grid{grid-template-columns:1fr}
+    section.scenario-hero{padding:24px 16px}
+    .scenario-title h2{font-size:20px}
+  }
+
   /* Author card */
   .author-card{
     background:linear-gradient(135deg,#ffffff 0%,var(--c-light) 100%);
@@ -341,6 +461,7 @@
 </header>
 
 <nav class="toc">
+  <a href="#scenario">對照</a>
   <a href="#overview">導讀</a>
   <a href="#g1">1. 哲學基礎</a>
   <a href="#g2">2. 全圖優先</a>
@@ -354,6 +475,91 @@
 </nav>
 
 <main>
+
+<!-- ============== 情境對照(Hero)============== -->
+<section id="scenario" class="scenario-hero">
+  <div class="scenario-title">
+    <h2>同一個請求,兩種 AI 回應</h2>
+    <p>套用本指令之前 vs 之後 — 30 秒看清差異</p>
+  </div>
+
+  <div class="scenario-grid">
+
+    <!-- 套用前 -->
+    <div class="scenario-col before">
+      <div class="scenario-tag bad-tag">❌ 套用前</div>
+
+      <div class="msg user">
+        <div class="msg-avatar">👤</div>
+        <div class="msg-bubble">幫我整理 5 份 docx 報告,輸出為摘要表格。</div>
+      </div>
+
+      <div class="msg ai bad">
+        <div class="msg-avatar">🤖</div>
+        <div class="msg-bubble">好的,先確認:輸出 PDF 還是 docx?</div>
+      </div>
+
+      <div class="msg user">
+        <div class="msg-avatar">👤</div>
+        <div class="msg-bubble">docx</div>
+      </div>
+
+      <div class="msg ai bad">
+        <div class="msg-avatar">🤖</div>
+        <div class="msg-bubble">每份摘要要多長?</div>
+      </div>
+
+      <div class="msg user">
+        <div class="msg-avatar">👤</div>
+        <div class="msg-bubble">200 字內</div>
+      </div>
+
+      <div class="msg ai bad">
+        <div class="msg-avatar">🤖</div>
+        <div class="msg-bubble">用表格還是條列式?表格幾個欄位?</div>
+      </div>
+
+      <div class="scenario-summary bad-summary">
+        ⚠ AI 反問三輪後才開工 — 用戶被迫逐項回答,延後決策
+      </div>
+    </div>
+
+    <!-- 套用後 -->
+    <div class="scenario-col after">
+      <div class="scenario-tag good-tag">✅ 套用後</div>
+
+      <div class="msg user">
+        <div class="msg-avatar">👤</div>
+        <div class="msg-bubble">幫我整理 5 份 docx 報告,輸出為摘要表格。</div>
+      </div>
+
+      <div class="msg ai good">
+        <div class="msg-avatar">🤖</div>
+        <div class="msg-bubble">
+          我會以以下方式處理:
+          <ul>
+            <li>輸出格式:docx + 表格</li>
+            <li>摘要長度:每份 ≤200 字</li>
+            <li>欄位:標題、結論、行動項</li>
+            <li>原檔保留,副本輸出至 outputs/</li>
+          </ul>
+          <em>以上即執行計劃。若不否決或修改,即開始執行。</em>
+        </div>
+      </div>
+
+      <div class="scenario-summary good-summary">
+        ✓ 用戶 30 秒內可批准、否決或修改 — 一輪完成決策
+      </div>
+    </div>
+
+  </div>
+
+  <div class="scenario-cta">
+    這是 <strong>合作模式核心規則 + 全圖優先規則</strong> 在實際對話中的具體效果。<br>
+    繼續向下閱讀,了解 7 大組規則如何運作 ↓
+  </div>
+</section>
+
 
 <!-- ============== 導讀 ============== -->
 <section id="overview">

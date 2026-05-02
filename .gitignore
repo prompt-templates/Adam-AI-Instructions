@@ -36,3 +36,6 @@ $RECYCLE.BIN/
 
 # OS-generated metadata
 *.iml
+
+# Tier 3 / Tier 2 temp output files (per dev/OPERATIONAL_RUNBOOK.md §5i)
+_*.txt

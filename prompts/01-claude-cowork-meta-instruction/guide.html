@@ -363,10 +363,133 @@
     line-height:1.7;
   }
   .scenario-cta strong{color:var(--c-primary)}
+  /* Tab switcher */
+  .scenario-tabs{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+    margin:0 0 14px;
+    flex-wrap:wrap;
+  }
+  .tab-btn{
+    background:white;
+    border:1px solid var(--c-border);
+    padding:9px 18px;
+    border-radius:22px;
+    font-size:13.5px;
+    cursor:pointer;
+    transition:all 0.2s;
+    font-family:inherit;
+    color:var(--c-text);
+  }
+  .tab-btn:hover{
+    border-color:var(--c-primary);
+    color:var(--c-primary);
+  }
+  .tab-btn.active{
+    background:var(--c-primary);
+    border-color:var(--c-primary);
+    color:white;
+  }
+  .panel{display:none}
+  .panel.active{display:block}
+  .panel-context{
+    text-align:center;
+    color:var(--c-muted);
+    font-size:13px;
+    margin:0 0 14px;
+    font-style:italic;
+  }
+
+  /* Bubble extensions for FPFR / Skeleton / Patch displays */
+  .msg-bubble strong.lead{
+    display:block;
+    font-size:14px;
+    color:var(--c-primary);
+    margin-bottom:6px;
+  }
+  .msg-bubble code.code-line{
+    background:#1e2329;
+    color:#a5d6a7;
+    padding:6px 10px;
+    border-radius:5px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:12px;
+    margin:4px 0;
+    display:block;
+  }
+  .msg-bubble .body-note{
+    display:block;
+    margin-top:8px;
+    padding-top:6px;
+    border-top:1px dashed #d8dfe2;
+    color:#5b6470;
+    font-size:11.5px;
+    font-style:normal;
+  }
+  .msg-bubble ol.fpfr-list{
+    margin:6px 0 4px;
+    padding-left:20px;
+    font-size:13px;
+    line-height:1.65;
+  }
+  .msg-bubble ol.fpfr-list li{margin:2px 0}
+  .msg-bubble ol.fpfr-list li b{color:var(--c-primary)}
+  .msg-bubble .fpfr-final{
+    display:block;
+    margin-top:8px;
+    padding-top:6px;
+    border-top:1px dashed #d8dfe2;
+    color:#5b6470;
+    font-size:11.5px;
+    font-style:italic;
+  }
+  .msg-bubble .anchor-line{
+    font-size:11.5px;
+    color:#5b6470;
+    font-style:italic;
+    margin-bottom:5px;
+    display:block;
+  }
+  .msg-bubble .patch-row{
+    margin:4px 0;
+    padding:6px 9px;
+    border-radius:5px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:12px;
+    line-height:1.55;
+  }
+  .msg-bubble .patch-row.before{
+    background:#fdecea;
+    border-left:3px solid #e57373;
+  }
+  .msg-bubble .patch-row.after{
+    background:#e8f5e9;
+    border-left:3px solid #4caf50;
+  }
+  .msg-bubble .patch-row b{
+    display:block;
+    margin-bottom:3px;
+    font-family:inherit;
+    font-size:11px;
+  }
+  .msg-bubble .patch-row.before b{color:#c62828}
+  .msg-bubble .patch-row.after b{color:#2e7d32}
+  .msg-bubble .changelog-line{
+    margin-top:6px;
+    padding:5px 9px;
+    background:#e6f7f5;
+    border-radius:5px;
+    color:var(--c-primary);
+    font-size:11.5px;
+  }
+
   @media (max-width:720px){
     .scenario-grid{grid-template-columns:1fr}
     section.scenario-hero{padding:24px 16px}
     .scenario-title h2{font-size:20px}
+    .tab-btn{padding:7px 14px;font-size:12.5px}
+    .msg-bubble ol.fpfr-list{font-size:12px}
   }
 
   /* Author card */
@@ -479,83 +602,124 @@
 <!-- ============== 情境對照(Hero)============== -->
 <section id="scenario" class="scenario-hero">
   <div class="scenario-title">
-    <h2>同一個請求,兩種 AI 回應</h2>
-    <p>套用本指令之前 vs 之後 — 30 秒看清差異</p>
+    <h2>三個典型情境 · 兩種 AI 回應</h2>
+    <p>點擊下方標籤切換場景,30 秒看清治理指令的具體效果</p>
   </div>
 
-  <div class="scenario-grid">
+  <div class="scenario-tabs" role="tablist">
+    <button class="tab-btn active" data-tab="fpfr">情境 1 · 全圖優先規則</button>
+    <button class="tab-btn" data-tab="skeleton">情境 2 · 回覆骨架</button>
+    <button class="tab-btn" data-tab="patch">情境 3 · 補丁式變更</button>
+  </div>
 
-    <!-- 套用前 -->
-    <div class="scenario-col before">
-      <div class="scenario-tag bad-tag">❌ 套用前</div>
+  <!-- ===== 情境 1: 全圖優先規則 ===== -->
+  <div class="panel active" data-panel="fpfr">
+    <div class="panel-context">場景:多檔新建請求,觸發全圖優先規則。看 AI 是否先給完整計劃再執行。</div>
 
-      <div class="msg user">
-        <div class="msg-avatar">👤</div>
-        <div class="msg-bubble">幫我整理 5 份 docx 報告,輸出為摘要表格。</div>
+    <div class="scenario-grid">
+      <div class="scenario-col before">
+        <div class="scenario-tag bad-tag">❌ 套用前</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">幫我建項目骨架:README、LICENSE、index.html、.gitignore 都要。</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">好的,開始建立。</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">README.md 已建。</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">建立 LICENSE 中,你想用 MIT 還是 Apache?</div></div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">MIT</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">.gitignore 要加哪些規則?Node、Python、Java?</div></div>
+        <div class="scenario-summary bad-summary">⚠ 邊做邊反問 — 範圍邊界不明,用戶被迫多次中斷</div>
       </div>
 
-      <div class="msg ai bad">
-        <div class="msg-avatar">🤖</div>
-        <div class="msg-bubble">好的,先確認:輸出 PDF 還是 docx?</div>
-      </div>
-
-      <div class="msg user">
-        <div class="msg-avatar">👤</div>
-        <div class="msg-bubble">docx</div>
-      </div>
-
-      <div class="msg ai bad">
-        <div class="msg-avatar">🤖</div>
-        <div class="msg-bubble">每份摘要要多長?</div>
-      </div>
-
-      <div class="msg user">
-        <div class="msg-avatar">👤</div>
-        <div class="msg-bubble">200 字內</div>
-      </div>
-
-      <div class="msg ai bad">
-        <div class="msg-avatar">🤖</div>
-        <div class="msg-bubble">用表格還是條列式?表格幾個欄位?</div>
-      </div>
-
-      <div class="scenario-summary bad-summary">
-        ⚠ AI 反問三輪後才開工 — 用戶被迫逐項回答,延後決策
-      </div>
-    </div>
-
-    <!-- 套用後 -->
-    <div class="scenario-col after">
-      <div class="scenario-tag good-tag">✅ 套用後</div>
-
-      <div class="msg user">
-        <div class="msg-avatar">👤</div>
-        <div class="msg-bubble">幫我整理 5 份 docx 報告,輸出為摘要表格。</div>
-      </div>
-
-      <div class="msg ai good">
-        <div class="msg-avatar">🤖</div>
-        <div class="msg-bubble">
-          我會以以下方式處理:
-          <ul>
-            <li>輸出格式:docx + 表格</li>
-            <li>摘要長度:每份 ≤200 字</li>
-            <li>欄位:標題、結論、行動項</li>
-            <li>原檔保留,副本輸出至 outputs/</li>
-          </ul>
-          <em>以上即執行計劃。若不否決或修改,即開始執行。</em>
+      <div class="scenario-col after">
+        <div class="scenario-tag good-tag">✅ 套用後</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">幫我建項目骨架:README、LICENSE、index.html、.gitignore 都要。</div></div>
+        <div class="msg ai good">
+          <div class="msg-avatar">🤖</div>
+          <div class="msg-bubble">
+            <strong class="lead">📋 執行計劃(5 區段)</strong>
+            <ol class="fpfr-list">
+              <li><b>終點狀態</b>:4 個新檔案</li>
+              <li><b>交付清單</b>:README、LICENSE(MIT)、index.html、.gitignore(Node + Python)</li>
+              <li><b>可量指標</b>:檔案數 0→4</li>
+              <li><b>驗收測試</b>:<code>ls</code> 顯示 4 個新檔</li>
+              <li><b>對齊請求</b>:用戶明示「項目骨架」</li>
+            </ol>
+            <span class="fpfr-final">以上即執行計劃。若不否決或修改,即開始執行。</span>
+          </div>
         </div>
-      </div>
-
-      <div class="scenario-summary good-summary">
-        ✓ 用戶 30 秒內可批准、否決或修改 — 一輪完成決策
+        <div class="scenario-summary good-summary">✓ 全部假設前置列明 — 用戶 30 秒批准、否決或修改</div>
       </div>
     </div>
+  </div>
 
+  <!-- ===== 情境 2: 回覆骨架 ===== -->
+  <div class="panel" data-panel="skeleton">
+    <div class="panel-context">場景:技術疑問。看 AI 是否先給結論再補背景,還是埋在多段背景介紹後。</div>
+
+    <div class="scenario-grid">
+      <div class="scenario-col before">
+        <div class="scenario-tag bad-tag">❌ 套用前</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我的 Python 腳本跑不起來,顯示 ModuleNotFoundError: No module named 'requests',如何解決?</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">你好!Python 的 module 系統是基於 sys.path 的,當你 import 一個 module 時,Python 會搜尋多個路徑來找對應檔案...</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">import 機制將 module 名稱映射到實際檔案,通常會搜索內建模組、site-packages、當前工作目錄等位置...</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">ModuleNotFoundError 是 Python 表示找不到該套件...你只需要執行 <code>pip install requests</code> 即可解決。</div></div>
+        <div class="scenario-summary bad-summary">⚠ 結論埋在 3 段背景之後 — 用戶須向下捲動才見答案</div>
+      </div>
+
+      <div class="scenario-col after">
+        <div class="scenario-tag good-tag">✅ 套用後</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我的 Python 腳本跑不起來,顯示 ModuleNotFoundError: No module named 'requests',如何解決?</div></div>
+        <div class="msg ai good">
+          <div class="msg-avatar">🤖</div>
+          <div class="msg-bubble">
+            <strong class="lead">🔎 環境缺 requests 套件,執行 pip install 即可。</strong>
+            <code class="code-line">pip install requests</code>
+            <span class="body-note">補充:若使用虛擬環境(venv / conda),需先 activate 該環境再執行安裝;確認 PATH 中的 pip 與當前 Python 對應。</span>
+          </div>
+        </div>
+        <div class="scenario-summary good-summary">✓ 第一行即見結論,背景補充作為次要</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 情境 3: 補丁式變更 ===== -->
+  <div class="panel" data-panel="patch">
+    <div class="panel-context">場景:小幅修改文件。看 AI 給可直接貼換的補丁,還是重寫整段。</div>
+
+    <div class="scenario-grid">
+      <div class="scenario-col before">
+        <div class="scenario-tag bad-tag">❌ 套用前</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我這段 prompt 第 3 行寫得太絕對,改鬆一些:<br>「必須永遠先核對事實,任何情況下不得猜測。」</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">以下是修改後的完整 prompt:</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">第 1 段 ... 第 2 段 ... 第 3 段(已改)... 第 4 段 ... 第 5 段 ... <br><em>(共 50 段全文重寫)</em></div></div>
+        <div class="scenario-summary bad-summary">⚠ 用戶須逐字比對差異才知改了哪句 — 合併時易遺漏</div>
+      </div>
+
+      <div class="scenario-col after">
+        <div class="scenario-tag good-tag">✅ 套用後</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我這段 prompt 第 3 行寫得太絕對,改鬆一些:<br>「必須永遠先核對事實,任何情況下不得猜測。」</div></div>
+        <div class="msg ai good">
+          <div class="msg-avatar">🤖</div>
+          <div class="msg-bubble">
+            <span class="anchor-line">📌 精準錨點(在 prompt §3):</span>
+            <div class="patch-row before">
+              <b>BEFORE(原文)</b>
+              必須永遠先核對事實,任何情況下不得猜測。
+            </div>
+            <div class="patch-row after">
+              <b>AFTER(新文)</b>
+              預設先核對事實;若用戶要求創作、虛構、純推理,可不核對。
+            </div>
+            <div class="changelog-line">
+              📋 變更日誌:1 處 / 新增 exception 句 / 「必須永遠」改為「預設」
+            </div>
+          </div>
+        </div>
+        <div class="scenario-summary good-summary">✓ 用戶可直接貼換 — 變更項目一目了然,合併零遺漏</div>
+      </div>
+    </div>
   </div>
 
   <div class="scenario-cta">
-    這是 <strong>合作模式核心規則 + 全圖優先規則</strong> 在實際對話中的具體效果。<br>
+    這些是治理指令在實際對話中的具體差異。<br>
     繼續向下閱讀,了解 7 大組規則如何運作 ↓
   </div>
 </section>
@@ -1193,6 +1357,21 @@
   </p>
   <p style="margin-top:14px">Adam's AI Instructions · Claude Cowork Meta Instruction · 互動指南</p>
 </footer>
+
+<script>
+  // 情境對照標籤切換
+  document.querySelectorAll('.tab-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var tab = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(function(b){
+        b.classList.toggle('active', b.dataset.tab === tab);
+      });
+      document.querySelectorAll('.panel').forEach(function(p){
+        p.classList.toggle('active', p.dataset.panel === tab);
+      });
+    });
+  });
+</script>
 
 </body>
 </html>

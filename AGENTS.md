@@ -72,6 +72,7 @@ At the start of every new session, the AI must read the following files in this 
 2. `dev/SESSION_LOG.md`
 3. `dev/CODEBASE_CONTEXT.md` (if it exists; provides tech stack, directory map, build commands, External Services, and Key Decisions)
 4. `dev/PROJECT_MASTER_SPEC.md` (if it exists; serves as the advanced authoritative specification)
+5. `dev/OPERATIONAL_RUNBOOK.md` (if it exists; environment limits, three-tier execution strategy [Tier 1 VM / Tier 2 MCP Node.exe / Tier 3 MCP Python subprocess], git lock recovery, FUSE sync delay, pitfall lessons — canonical SSOT for VM ↔ Windows-MCP coordination)
 
 If `dev/SESSION_HANDOFF.md` or `dev/SESSION_LOG.md` is missing, the AI must create a minimal version before beginning development.
 

@@ -268,18 +268,55 @@
     color:var(--c-text);
     line-height:1.75;
   }
-  .contact-btn{
-    display:inline-block;
-    background:var(--c-primary);
-    color:white !important;
-    padding:8px 18px;
-    border-radius:20px;
-    font-size:13px;
-    transition:background 0.2s;
+  /* Facebook link preview card */
+  .fb-card{
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    padding:12px 16px;
+    border:1px solid #d8dde2;
+    border-radius:10px;
+    background:white;
+    transition:all 0.2s;
+    margin-top:6px;
+    max-width:380px;
   }
-  .contact-btn:hover{
-    background:var(--c-primary-2);
+  .fb-card:hover{
+    border-color:#1877f2;
+    box-shadow:0 4px 12px rgba(24,119,242,0.12);
     text-decoration:none;
+  }
+  .fb-card .fb-icon{
+    width:42px;
+    height:42px;
+    background:#1877f2;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .fb-card .fb-icon svg{width:24px;height:24px;fill:white}
+  .fb-card .fb-text{
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+    line-height:1.45;
+  }
+  .fb-card .fb-name{
+    color:var(--c-text);
+    font-weight:600;
+    font-size:14px;
+  }
+  .fb-card .fb-url{
+    color:var(--c-muted);
+    font-size:12px;
+    margin-top:2px;
+  }
+  .fb-card .fb-desc{
+    color:#1877f2;
+    font-size:12px;
+    margin-top:3px;
   }
 
   @media (max-width:640px){
@@ -324,8 +361,19 @@
 
   <div class="author-card">
     <h3>關於與分享初衷</h3>
-    <p>我是 Adam Chan,長期重度使用 Claude、ChatGPT 等 AI 工具處理工作。本資料庫源於實戰中反覆遇到問題後沉澱的修正方法。公開分享的初衷,是讓有同類需求的用戶不必重走冤枉路,並希望接收其他用戶的經驗回饋,共同迭代。如有疑問或想就 AI 使用心得交流,歡迎透過 Facebook 聯絡。</p>
-    <a class="contact-btn" href="https://www.facebook.com/chan.adam" target="_blank" rel="noopener">💬 Facebook · chan.adam</a>
+    <p>我是 Adam Chan，是 AI 應用的研究型愛好者，喜歡將 Agentic AI 應用於商業運作及日常生活中，在實踐過程中，遇過不同的失敗方法，本倉庫資料源於實戰中反覆遇到問題後沉澱的修正方法。公開分享的初衷，是讓有類似需要的用戶不必重走冤枉路，並希望接收其他用戶的經驗回饋，共同迭代。如有疑問或想就 AI 使用心得交流，歡迎透過 Facebook 聯絡。</p>
+    <a class="fb-card" href="https://www.facebook.com/chan.adam" target="_blank" rel="noopener">
+      <div class="fb-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </div>
+      <div class="fb-text">
+        <div class="fb-name">Adam Chan</div>
+        <div class="fb-url">facebook.com/chan.adam</div>
+        <div class="fb-desc">Facebook 個人檔案 →</div>
+      </div>
+    </a>
   </div>
 
   <p class="lede">此指令的設計目的:讓 AI 在多步驟、多檔案、長期協作任務中,行為更穩定可預期,輸出格式可審閱、可驗收。</p>
@@ -334,9 +382,9 @@
   <h3>7 大組規則一覽</h3>
   <div class="grid">
     <div class="card"><span class="num">1</span><h4>哲學基礎</h4><p>合作模式、優先序、核心原則。AI 與用戶的協作關係定位。</p></div>
-    <div class="card"><span class="num">2</span><h4>全圖優先規則(FPFR)</h4><p>多檔案 / 規則改動前,先輸出 5 區段執行計劃。</p></div>
+    <div class="card"><span class="num">2</span><h4>全圖優先規則</h4><p>多檔案或規則改動前,先輸出 5 區段執行計劃。</p></div>
     <div class="card"><span class="num">3</span><h4>日常回覆品質</h4><p>回覆骨架、選擇題格式、語氣與用語紀律、語體一致。</p></div>
-    <div class="card"><span class="num">4</span><h4>準確性護欄</h4><p>事實核對、SSOT 對齊、歧義處理。</p></div>
+    <div class="card"><span class="num">4</span><h4>準確性護欄</h4><p>事實核對、單一真源對齊、歧義處理。</p></div>
     <div class="card"><span class="num">5</span><h4>變更治理</h4><p>補丁式變更、深度修補、防漂移、格式硬規則。</p></div>
     <div class="card"><span class="num">6</span><h4>計算規範</h4><p>四步法:對齊、判正負、展示、代回驗算。</p></div>
     <div class="card"><span class="num">7</span><h4>Cowork 環境特殊規則</h4><p>檔案系統、層次分類、變更前置、外部 API、工作流、範圍。</p></div>
@@ -363,7 +411,7 @@
   <p class="lede">改變 AI 的預設互動模式,從「等候指示」轉為「主動判斷並提交建議」。</p>
 
   <h3>對應問題</h3>
-  <p>預設 LLM 行為傾向「謹慎多於有用」:答案模糊、頻繁反問、避免主動判斷。對於熟練用戶,此類行為等於降低協作效率。</p>
+  <p>預設大型語言模型(英文 Large Language Model,簡稱 LLM)的行為傾向「謹慎多於有用」:答案模糊、頻繁反問、避免主動判斷。對於熟練用戶,此類行為等於降低協作效率。</p>
 
   <div class="svg-wrap">
     <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
@@ -427,8 +475,8 @@
 
 <!-- ============== 第二組:FPFR ============== -->
 <section id="g2">
-  <h2><span class="num">2</span>全圖優先規則(FPFR)</h2>
-  <p class="lede">在 AI 進行較大規模改動前,要求先輸出明確的計劃結構(終點、影響範圍、可量指標、驗收條件)。</p>
+  <h2><span class="num">2</span>全圖優先規則(英文 Full-Picture-First Rule,簡稱 FPFR)</h2>
+  <p class="lede">在 AI 進行較大規模改動之前,要求 AI 先輸出明確的計劃結構,包含:終點狀態、影響範圍、可量化指標、驗收條件。</p>
 
   <h3>對應問題</h3>
   <p>AI 開始執行後,改至中途才發現方向與用戶期望不一致;或在修改多個檔案後才補充說明範圍變動。用戶需逐個檔案檢視,方能發現偏離。</p>
@@ -459,7 +507,7 @@
 
       <rect x="600" y="158" width="180" height="44" rx="8" fill="#e6f7f5" stroke="#0d7377" stroke-width="1.5"/>
       <text x="690" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">輸出 5 區段計劃</text>
-      <text x="690" y="196" text-anchor="middle" font-size="11" fill="#5b6470">→ 等用戶 veto / 批准</text>
+      <text x="690" y="196" text-anchor="middle" font-size="11" fill="#5b6470">→ 等用戶批准或否決</text>
 
       <!-- No branch left -->
       <line x1="290" y1="180" x2="200" y2="180" stroke="#1a1a1a" stroke-width="2"/>
@@ -582,7 +630,7 @@
 <!-- ============== 第四組:準確性 ============== -->
 <section id="g4">
   <h2><span class="num">4</span>準確性護欄</h2>
-  <p class="lede">透過事實核對、SSOT 對齊、歧義處理,降低幻覺風險與輸出與下游系統的不對齊。</p>
+  <p class="lede">透過事實核對、單一真源對齊、歧義處理,降低 AI 出現幻覺(亂作答)的風險,以及輸出與下游系統不對齊的問題。</p>
 
   <h3>三條核心規則</h3>
   <table>
@@ -594,8 +642,8 @@
         <td>核對不到時標 UNVERIFIED(與 NA 區分),用戶清楚知道哪些須再查。</td>
       </tr>
       <tr>
-        <td>SSOT 對齊</td>
-        <td>用戶提供的 schema、鍵名、枚舉、分組標題,逐字對齊。</td>
+        <td>單一真源對齊(英文 Single Source of Truth,簡稱 SSOT)</td>
+        <td>用戶提供的結構定義(英文 schema)、鍵名、枚舉、分組標題,逐字對齊。</td>
         <td>輸出可直接傳遞至下游系統,毋須中間轉譯。</td>
       </tr>
       <tr>
@@ -656,18 +704,18 @@
       <polygon points="395,316 400,324 405,316" fill="#1a1a1a"/>
 
       <rect x="160" y="328" width="480" height="40" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
-      <text x="180" y="354" font-size="13" font-weight="bold" fill="#0d7377">📋 Changelog</text>
-      <text x="290" y="354" font-size="12" fill="#1a1a1a">改動 1 處 / 補充澄清 / 無刪除項</text>
+      <text x="180" y="354" font-size="13" font-weight="bold" fill="#0d7377">📋 變更日誌</text>
+      <text x="295" y="354" font-size="12" fill="#1a1a1a">改動 1 處 / 補充澄清 / 無刪除項</text>
     </svg>
-    <div class="svg-caption">圖三:每個 Patch 包含「精準錨點 + BEFORE 區塊 + AFTER 區塊 + Changelog」四個必要元件。</div>
+    <div class="svg-caption">圖三:每個補丁包含「精準錨點 + 修改前(BEFORE)區塊 + 修改後(AFTER)區塊 + 變更日誌」四個必要元件。</div>
   </div>
 
   <h3>四條子規則</h3>
   <ul>
-    <li><strong>補丁式(Patch-only)</strong>:任何修改預設以「精準錨點 + BEFORE/AFTER」雙代碼塊呈現,可 Ctrl+F 直接貼換。每次 Patch 附 Changelog(新增 / 刪除 / 改名 / 移動)。</li>
-    <li><strong>深度修補</strong>:用戶要求「最終落地 / 全文已核對 / 健康掃描」等字眼時,須在同一回覆內完成「全文掃描 → 合併審視 → 補丁 → 再次掃描」,所有錯誤清零方可輸出新版本全文。</li>
-    <li><strong>防漂移</strong>:同一規格、鍵集、枚舉只允許存在於單一定義塊;新增規則時同步合併或廢止舊句。</li>
-    <li><strong>格式硬規則</strong>:JSON 缺值用 null 不省略;Mermaid 用 <code>flowchart TB</code>、文字用 <code>"..."</code> 包覆、換行直接 Enter。</li>
+    <li><strong>補丁式(英文 Patch-only)</strong>:任何修改預設以「精準錨點 + 修改前(BEFORE)+ 修改後(AFTER)」三段呈現,可使用編輯器搜尋功能(例如 Ctrl+F)直接定位貼換。每次補丁附變更日誌(英文 Changelog),分類為新增、刪除、改名、移動。</li>
+    <li><strong>深度修補</strong>:當用戶要求「最終落地 / 全文已核對 / 健康掃描」等字眼時,AI 須在同一回覆內完成「全文掃描 → 合併審視 → 補丁 → 再次掃描」,所有錯誤清零方可輸出新版本全文。</li>
+    <li><strong>防漂移</strong>:同一規格、鍵集、枚舉只允許存在於單一定義塊;新增規則時同步合併或廢止舊句,避免長期出現自相矛盾或重複。</li>
+    <li><strong>格式硬規則</strong>:JSON(資料結構格式)缺值用 null 不省略;Mermaid(流程圖語法)用 <code>flowchart TB</code>(由上往下流向)、文字用 <code>"..."</code> 包覆、換行直接按 Enter。</li>
   </ul>
 
   <div class="svg-wrap">
@@ -699,18 +747,18 @@
       <text x="590" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32">單一定義 + 引用(有序)</text>
 
       <rect x="490" y="100" width="200" height="50" rx="8" fill="#0d7377"/>
-      <text x="590" y="122" text-anchor="middle" fill="white" font-size="13" font-weight="bold">規則 X(定義塊)</text>
-      <text x="590" y="140" text-anchor="middle" fill="white" font-size="11">SSOT · 唯一真源</text>
+      <text x="590" y="122" text-anchor="middle" fill="white" font-size="13" font-weight="bold">規則 X(唯一定義塊)</text>
+      <text x="590" y="140" text-anchor="middle" fill="white" font-size="11">單一真源 · SSOT</text>
 
       <!-- References -->
       <rect x="430" y="180" width="100" height="36" rx="6" fill="white" stroke="#7cb98a"/>
-      <text x="480" y="202" text-anchor="middle" font-size="11" fill="#1a1a1a">Ref: X</text>
+      <text x="480" y="202" text-anchor="middle" font-size="11" fill="#1a1a1a">引用: X</text>
 
       <rect x="540" y="180" width="100" height="36" rx="6" fill="white" stroke="#7cb98a"/>
-      <text x="590" y="202" text-anchor="middle" font-size="11" fill="#1a1a1a">Ref: X</text>
+      <text x="590" y="202" text-anchor="middle" font-size="11" fill="#1a1a1a">引用: X</text>
 
       <rect x="650" y="180" width="100" height="36" rx="6" fill="white" stroke="#7cb98a"/>
-      <text x="700" y="202" text-anchor="middle" font-size="11" fill="#1a1a1a">Ref: X</text>
+      <text x="700" y="202" text-anchor="middle" font-size="11" fill="#1a1a1a">引用: X</text>
 
       <line x1="590" y1="150" x2="480" y2="180" stroke="#7cb98a" stroke-width="1.5" stroke-dasharray="4,3"/>
       <line x1="590" y1="150" x2="590" y2="180" stroke="#7cb98a" stroke-width="1.5" stroke-dasharray="4,3"/>
@@ -731,7 +779,7 @@
   <p class="lede">強制 AI 在計算題上展示完整步驟並代回驗算,使錯誤可追溯、可自我捕獲。</p>
 
   <h3>對應問題</h3>
-  <p>LLM 在計算題上頻繁出錯,尤其涉及小數、移項、單位轉換;且出錯後難以從輸出中追溯出錯步驟。</p>
+  <p>大型語言模型(LLM)在計算題上頻繁出錯,尤其涉及小數、移項、單位轉換;且出錯後難以從輸出中追溯出錯步驟。</p>
 
   <div class="svg-wrap">
     <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
@@ -831,8 +879,8 @@
       <g>
         <rect x="520" y="70" width="130" height="80" rx="10" fill="#7cb98a"/>
         <text x="585" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">QC</text>
-        <text x="585" y="118" text-anchor="middle" fill="white" font-size="10">linter / 機器</text>
-        <text x="585" y="132" text-anchor="middle" fill="white" font-size="10">驗證 / 證據核對</text>
+        <text x="585" y="118" text-anchor="middle" fill="white" font-size="10">靜態檢查、機器</text>
+        <text x="585" y="132" text-anchor="middle" fill="white" font-size="10">驗證、證據核對</text>
       </g>
 
       <line x1="655" y1="110" x2="675" y2="110" stroke="#1a1a1a" stroke-width="2" stroke-dasharray="4,3"/>
@@ -842,24 +890,24 @@
         <rect x="680" y="70" width="100" height="80" rx="10" fill="white" stroke="#0d7377" stroke-width="2" stroke-dasharray="5,3"/>
         <text x="730" y="98" text-anchor="middle" fill="#0d7377" font-size="13" font-weight="bold">PERSIST</text>
         <text x="730" y="118" text-anchor="middle" fill="#5b6470" font-size="10">(Project 內)</text>
-        <text x="730" y="132" text-anchor="middle" fill="#5b6470" font-size="10">更新 memory</text>
+        <text x="730" y="132" text-anchor="middle" fill="#5b6470" font-size="10">更新項目記憶</text>
       </g>
 
-      <text x="400" y="190" text-anchor="middle" font-size="12" fill="#5b6470">HIGH 風險(影響 ≥3 檔案 / 不可逆操作 / 涉外部系統 / 改規則)須等用戶確認方可入 READ</text>
+      <text x="400" y="190" text-anchor="middle" font-size="12" fill="#5b6470">高風險任務(影響 ≥3 檔案、不可逆操作、涉外部系統、改規則)須等用戶確認方可進入閱讀階段</text>
     </svg>
-    <div class="svg-caption">圖六:四階段工作流,Cowork Project 內加 PERSIST。</div>
+    <div class="svg-caption">圖六:四階段工作流;在 Cowork Project 內額外加上「持久化階段(PERSIST)」更新項目記憶。</div>
   </div>
 
   <h3>六大面向</h3>
   <table>
     <thead><tr><th>面向</th><th>核心約束</th></tr></thead>
     <tbody>
-      <tr><td>A. 檔案系統與破壞性操作</td><td>刪除 / 覆寫前列影響範圍待確認;原檔保留出副本;新檔入 outputs/;禁高風險指令(<code>rm -rf</code>、<code>Remove-Item -Recurse -Force</code>);路徑用原生 API。</td></tr>
-      <tr><td>B. 層次分類</td><td>判斷屬「產品 / 系統層」抑或「治理層」;遇 bug 先做問題分類再動手。</td></tr>
-      <tr><td>C. 變更前置</td><td>CHANGE 之前完成最低閱讀覆蓋;新增規則前先檢查既有可否合併或退役。</td></tr>
-      <tr><td>D. 外部平台與 API</td><td>不憑記憶猜測;呼叫 API 前必對齊官方文件,記錄 Base URL、版本、驗證方式等。</td></tr>
-      <tr><td>E. 工作流與風險</td><td>四階段 PLAN→READ→CHANGE→QC;CHANGE 偏離 PLAN 即停。</td></tr>
-      <tr><td>F. 範圍與相容性</td><td>只改任務直接相關檔案;有 linter / CI 必跑必回報;宣告完成前過三關(獨立審閱、機器驗證、證據核對)。</td></tr>
+      <tr><td>A. 檔案系統與破壞性操作</td><td>刪除或覆寫前先列出影響範圍待用戶確認;原檔保留並輸出副本;新檔放入 outputs/ 子目錄;禁止高風險指令(例如 <code>rm -rf</code>、<code>Remove-Item -Recurse -Force</code>);路徑使用該語言原生的路徑處理函式(API)。</td></tr>
+      <tr><td>B. 層次分類</td><td>判斷任務屬於「產品系統層」抑或「治理層」;遇到程式錯誤(bug)先做問題分類再動手。</td></tr>
+      <tr><td>C. 變更前置</td><td>進入修改階段(CHANGE)之前完成最低閱讀覆蓋;新增規則前先檢查既有規則可否合併或退役。</td></tr>
+      <tr><td>D. 外部平台與應用程式介面(API)</td><td>不憑記憶猜測;呼叫外部 API 前必須對齊官方文件,記錄基礎網址(Base URL)、版本、驗證方式等。</td></tr>
+      <tr><td>E. 工作流與風險</td><td>四階段流程「計劃(PLAN)→ 閱讀(READ)→ 修改(CHANGE)→ 品質檢查(QC)」;修改階段一旦偏離計劃即停止。</td></tr>
+      <tr><td>F. 範圍與相容性</td><td>只改與任務直接相關的檔案;若項目設有靜態檢查工具(linter)、持續整合系統(CI),修改後必跑且回報結果;宣告完成、合併、發佈、正式上線(英文 General Availability,簡稱 GA)等任一狀態之前,須過三關:獨立審閱、機器驗證、證據核對。</td></tr>
     </tbody>
   </table>
 
@@ -888,8 +936,8 @@
     <li>項目級:項目根目錄的 <code>CLAUDE.md</code>(只影響該項目)</li>
   </ul>
 
-  <h3>其他 Claude 介面 / ChatGPT / 其他 LLM</h3>
-  <p>貼入「System Prompt / Custom Instructions / Project Instructions」等同類欄位。Cowork 專屬規則(第 7 組)若工具不具備檔案系統存取能力,會自動失效,不影響其他規則。</p>
+  <h3>其他 Claude 介面 / ChatGPT / 其他 AI 對話工具</h3>
+  <p>貼入「System Prompt(系統指令)/ Custom Instructions(自訂指令)/ Project Instructions(項目指令)」等同類欄位。第 7 組 Cowork 專屬規則若工具不具備檔案系統存取能力,會自動失效,不影響其他規則生效。</p>
 </section>
 
 
@@ -908,8 +956,8 @@
   </details>
 
   <details>
-    <summary>Q3:會否與 AI 工具自身的 system prompt 衝突?</summary>
-    <p>大部分情況不會。此 Prompt 屬於用戶層設定,AI 工具會將其與自身 system prompt 合併處理。如有少量衝突(例如格式偏好),AI 通常以較具體者為準。</p>
+    <summary>Q3:會否與 AI 工具自身的系統指令(system prompt)衝突?</summary>
+    <p>大部分情況不會。此指令屬於用戶層設定,AI 工具會將其與自身的系統指令(system prompt)合併處理。如有少量衝突(例如格式偏好),AI 通常以較具體者為準。</p>
   </details>
 
   <details>
@@ -924,7 +972,7 @@
 
   <details>
     <summary>Q6:此指令會繼續更新嗎?</summary>
-    <p>會。此指令屬持續維護;若於實戰中遇到此規則未覆蓋的情景,歡迎提交 Issue 或 PR。</p>
+    <p>會。此指令屬持續維護;若於實戰中遇到此規則未覆蓋的情景,歡迎透過 GitHub Issue(議題)或 Pull Request(拉取請求)提交。</p>
   </details>
 </section>
 

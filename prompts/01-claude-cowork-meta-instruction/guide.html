@@ -249,6 +249,39 @@
   }
   footer a{margin:0 10px}
 
+  /* Author card */
+  .author-card{
+    background:linear-gradient(135deg,#ffffff 0%,var(--c-light) 100%);
+    border:1px solid var(--c-primary);
+    border-radius:10px;
+    padding:18px 22px;
+    margin:18px 0 24px;
+  }
+  .author-card h3{
+    margin:0 0 10px;
+    font-size:15px;
+    color:var(--c-primary);
+  }
+  .author-card p{
+    margin:0 0 14px;
+    font-size:14.5px;
+    color:var(--c-text);
+    line-height:1.75;
+  }
+  .contact-btn{
+    display:inline-block;
+    background:var(--c-primary);
+    color:white !important;
+    padding:8px 18px;
+    border-radius:20px;
+    font-size:13px;
+    transition:background 0.2s;
+  }
+  .contact-btn:hover{
+    background:var(--c-primary-2);
+    text-decoration:none;
+  }
+
   @media (max-width:640px){
     header.hero{padding:40px 16px}
     header.hero h1{font-size:24px}
@@ -264,9 +297,9 @@
   <h1>Claude Cowork Meta Instruction</h1>
   <div class="tag">互動指南 · 7 大組規則視覺化解說</div>
   <div class="links">
-    <a href="prompt.md">📄 Prompt 原文</a>
-    <a href="README.md">📖 文字介紹頁</a>
-    <a href="../../README.md">🏠 主索引</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/prompt.md" target="_blank" rel="noopener">📄 Prompt 原文</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/README.md" target="_blank" rel="noopener">📖 文字介紹頁</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions" target="_blank" rel="noopener">🏠 主索引</a>
   </div>
 </header>
 
@@ -288,6 +321,13 @@
 <!-- ============== 導讀 ============== -->
 <section id="overview">
   <h2>導讀</h2>
+
+  <div class="author-card">
+    <h3>關於與分享初衷</h3>
+    <p>我是 Adam Chan,長期重度使用 Claude、ChatGPT 等 AI 工具處理工作。本資料庫源於實戰中反覆遇到問題後沉澱的修正方法。公開分享的初衷,是讓有同類需求的用戶不必重走冤枉路,並希望接收其他用戶的經驗回饋,共同迭代。如有疑問或想就 AI 使用心得交流,歡迎透過 Facebook 聯絡。</p>
+    <a class="contact-btn" href="https://www.facebook.com/chan.adam" target="_blank" rel="noopener">💬 Facebook · chan.adam</a>
+  </div>
+
   <p class="lede">此指令的設計目的:讓 AI 在多步驟、多檔案、長期協作任務中,行為更穩定可預期,輸出格式可審閱、可驗收。</p>
   <p>本頁將原文約 19 個規則塊歸納為 <strong>7 大組</strong>,每組用「對應問題 → 規則內容 → 治理作用 → 適用情景」四個切面說明,並對核心抽象概念配以 SVG 視覺化。</p>
 
@@ -837,7 +877,7 @@
   <ol>
     <li>開啟 Claude Cowork 設定頁。</li>
     <li>找到「Personal Preferences」或「Custom Instructions」欄位。</li>
-    <li>複製 <a href="prompt.md">prompt.md</a> 全文,貼入該欄位。</li>
+    <li>複製 <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/prompt.md" target="_blank" rel="noopener">prompt.md</a> 全文,貼入該欄位。</li>
     <li>儲存。新對話即生效。</li>
   </ol>
 
@@ -892,9 +932,9 @@
 
 <footer>
   <p>
-    <a href="prompt.md">📄 Prompt 原文</a>
-    <a href="README.md">📖 文字介紹頁</a>
-    <a href="../../README.md">🏠 主索引</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/prompt.md" target="_blank" rel="noopener">📄 Prompt 原文</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/README.md" target="_blank" rel="noopener">📖 文字介紹頁</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions" target="_blank" rel="noopener">🏠 主索引</a>
     <a href="#overview">⬆ 回頁首</a>
   </p>
   <p style="margin-top:14px">Adam's AI Instructions · Claude Cowork Meta Instruction · 互動指南</p>

@@ -1,0 +1,23 @@
+# Adam-AI-Instructions — line ending policy
+# 全 repo 強制 LF(stored + working tree),避免 Windows 編輯器自動 CRLF 造成 git status 噪音
+
+# 預設:自動偵測為 text 嘅檔案一律用 LF
+* text=auto eol=lf
+
+# 明確標記為 binary(避免被誤當 text 處理)
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+
+# 唔少編輯器將以下視為 text;明確規範
+*.md   text eol=lf
+*.html text eol=lf
+*.txt  text eol=lf
+*.json text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf

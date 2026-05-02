@@ -427,22 +427,96 @@
     font-size:11.5px;
     font-style:normal;
   }
-  .msg-bubble ol.fpfr-list{
+  /* FPFR 5-section realistic output */
+  .msg-bubble.fpfr-output{padding:12px 14px}
+  .msg-bubble .fpfr-section{margin:6px 0 4px}
+  .msg-bubble .fpfr-section h4{
+    font-size:12px;
+    color:var(--c-primary);
     margin:6px 0 4px;
-    padding-left:20px;
-    font-size:13px;
-    line-height:1.65;
+    font-weight:700;
+    letter-spacing:0.2px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;
   }
-  .msg-bubble ol.fpfr-list li{margin:2px 0}
-  .msg-bubble ol.fpfr-list li b{color:var(--c-primary)}
-  .msg-bubble .fpfr-final{
-    display:block;
-    margin-top:8px;
-    padding-top:6px;
-    border-top:1px dashed #d8dfe2;
-    color:#5b6470;
+  .msg-bubble .fpfr-mini-table{
+    border-collapse:collapse;
+    font-size:11px;
+    width:100%;
+    margin:3px 0;
+  }
+  .msg-bubble .fpfr-mini-table th,
+  .msg-bubble .fpfr-mini-table td{
+    border-bottom:1px solid #d8e6e3;
+    padding:3px 6px;
+    text-align:left;
+  }
+  .msg-bubble .fpfr-mini-table th{
+    background:rgba(13,115,119,0.08);
+    color:var(--c-primary);
+    font-weight:600;
+  }
+  .msg-bubble .fpfr-mini-list{
+    margin:3px 0;
+    padding-left:18px;
     font-size:11.5px;
+    line-height:1.55;
+  }
+  .msg-bubble .fpfr-mini-list li{margin:2px 0}
+  .msg-bubble .fpfr-mini-text{
+    font-size:11.5px;
+    color:#1a1a1a;
+    line-height:1.55;
+    margin:3px 0;
+  }
+  .msg-bubble .fpfr-closing{
+    display:block;
+    margin-top:10px;
+    padding:6px 10px;
+    background:rgba(13,115,119,0.08);
+    border-left:3px solid var(--c-primary);
+    font-size:11.5px;
+    color:var(--c-primary);
+    font-weight:500;
+    border-radius:0 4px 4px 0;
+  }
+
+  /* 下一步揀一條 (next-step menu inside bubble) */
+  .msg-bubble .next-step{
+    margin-top:10px;
+    padding-top:8px;
+    border-top:1px dashed #d8dfe2;
+  }
+  .msg-bubble .next-step-title{
+    font-weight:600;
+    font-size:12.5px;
+    color:var(--c-text);
+    margin-bottom:5px;
+  }
+  .msg-bubble .next-step-options{
+    list-style:none;
+    padding:0;
+    margin:4px 0;
+    font-size:11.5px;
+    line-height:1.55;
+  }
+  .msg-bubble .next-step-options li{
+    margin:5px 0;
+    padding-left:2px;
+  }
+  .msg-bubble .next-step-options .opt-letter{
+    font-weight:700;
+    color:var(--c-primary);
     font-style:italic;
+    margin-right:3px;
+  }
+  .msg-bubble .next-step-recommend{
+    margin-top:7px;
+    padding:5px 9px;
+    background:#fff5e6;
+    border-left:3px solid #f0b27a;
+    font-size:11.5px;
+    color:#a06425;
+    border-radius:0 4px 4px 0;
   }
   .msg-bubble .anchor-line{
     font-size:11.5px;
@@ -489,7 +563,8 @@
     section.scenario-hero{padding:24px 16px}
     .scenario-title h2{font-size:20px}
     .tab-btn{padding:7px 14px;font-size:12.5px}
-    .msg-bubble ol.fpfr-list{font-size:12px}
+    .msg-bubble .fpfr-mini-table,.msg-bubble .fpfr-mini-list{font-size:11px}
+    .msg-bubble .next-step-options{font-size:11px}
   }
 
   /* Author card */
@@ -609,7 +684,7 @@
   <div class="scenario-tabs" role="tablist">
     <button class="tab-btn active" data-tab="fpfr">情境 1 · 全圖優先規則</button>
     <button class="tab-btn" data-tab="skeleton">情境 2 · 回覆骨架</button>
-    <button class="tab-btn" data-tab="patch">情境 3 · 補丁式變更</button>
+    <button class="tab-btn" data-tab="patch">情境 3 · Patch 變更</button>
   </div>
 
   <!-- ===== 情境 1: 全圖優先規則 ===== -->
@@ -633,16 +708,44 @@
         <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">幫我建項目骨架:README、LICENSE、index.html、.gitignore 都要。</div></div>
         <div class="msg ai good">
           <div class="msg-avatar">🤖</div>
-          <div class="msg-bubble">
-            <strong class="lead">📋 執行計劃(5 區段)</strong>
-            <ol class="fpfr-list">
-              <li><b>終點狀態</b>:4 個新檔案</li>
-              <li><b>交付清單</b>:README、LICENSE(MIT)、index.html、.gitignore(Node + Python)</li>
-              <li><b>可量指標</b>:檔案數 0→4</li>
-              <li><b>驗收測試</b>:<code>ls</code> 顯示 4 個新檔</li>
-              <li><b>對齊請求</b>:用戶明示「項目骨架」</li>
-            </ol>
-            <span class="fpfr-final">以上即執行計劃。若不否決或修改,即開始執行。</span>
+          <div class="msg-bubble fpfr-output">
+            <div class="fpfr-section">
+              <h4>### 1. END-STATE SNAPSHOT</h4>
+              <table class="fpfr-mini-table">
+                <thead><tr><th>檔案</th><th>前狀態</th><th>後狀態</th></tr></thead>
+                <tbody>
+                  <tr><td>README.md</td><td>不存在</td><td>新建</td></tr>
+                  <tr><td>LICENSE</td><td>不存在</td><td>MIT</td></tr>
+                  <tr><td>index.html</td><td>不存在</td><td>HTML 骨架</td></tr>
+                  <tr><td>.gitignore</td><td>不存在</td><td>Node+Py</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="fpfr-section">
+              <h4>### 2. DELIVERABLES</h4>
+              <ul class="fpfr-mini-list">
+                <li>README.md — 新建 — 項目說明</li>
+                <li>LICENSE — 新建 — MIT 授權</li>
+                <li>index.html — 新建 — HTML 骨架</li>
+                <li>.gitignore — 新建 — Node + Python 忽略項</li>
+              </ul>
+            </div>
+            <div class="fpfr-section">
+              <h4>### 3. METRICS</h4>
+              <ul class="fpfr-mini-list">
+                <li>檔案數:0 → 4</li>
+                <li>授權清晰度:無 → MIT</li>
+              </ul>
+            </div>
+            <div class="fpfr-section">
+              <h4>### 4. ACCEPTANCE TEST</h4>
+              <div class="fpfr-mini-text"><code>ls</code> 顯示 4 個新檔;在瀏覽器開 index.html 不報錯。</div>
+            </div>
+            <div class="fpfr-section">
+              <h4>### 5. GOAL LINK</h4>
+              <div class="fpfr-mini-text">對齊用戶明示「項目骨架」請求。</div>
+            </div>
+            <div class="fpfr-closing">以上即執行計劃。若不否決或修改,即開始執行。</div>
           </div>
         </div>
         <div class="scenario-summary good-summary">✓ 全部假設前置列明 — 用戶 30 秒批准、否決或修改</div>
@@ -652,30 +755,38 @@
 
   <!-- ===== 情境 2: 回覆骨架 ===== -->
   <div class="panel" data-panel="skeleton">
-    <div class="panel-context">場景:技術疑問。看 AI 是否先給結論再補背景,還是埋在多段背景介紹後。</div>
+    <div class="panel-context">場景:多選項的技術問題。看 AI 是否先給結論,再列出選項與推薦。</div>
 
     <div class="scenario-grid">
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ 套用前</div>
-        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我的 Python 腳本跑不起來,顯示 ModuleNotFoundError: No module named 'requests',如何解決?</div></div>
-        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">你好!Python 的 module 系統是基於 sys.path 的,當你 import 一個 module 時,Python 會搜尋多個路徑來找對應檔案...</div></div>
-        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">import 機制將 module 名稱映射到實際檔案,通常會搜索內建模組、site-packages、當前工作目錄等位置...</div></div>
-        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">ModuleNotFoundError 是 Python 表示找不到該套件...你只需要執行 <code>pip install requests</code> 即可解決。</div></div>
-        <div class="scenario-summary bad-summary">⚠ 結論埋在 3 段背景之後 — 用戶須向下捲動才見答案</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我想寫個 web scraper 抓網頁資料,該用什麼工具?</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">Web scraping 是從網頁提取數據的過程,涉及多個步驟與考量。首先要了解 HTTP 協議...</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">Python 生態中有多個 library 可以用,各自適合不同情境。其中 requests 是最基礎的 HTTP 客戶端...</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">你可以從 <code>pip install requests beautifulsoup4</code> 開始;如要處理大型項目可用 Scrapy;若需要 JavaScript 渲染可考慮 Playwright;具體選擇視乎你的需求...</div></div>
+        <div class="scenario-summary bad-summary">⚠ 列出多個工具但無明確推薦 — 用戶仍須自行判斷</div>
       </div>
 
       <div class="scenario-col after">
         <div class="scenario-tag good-tag">✅ 套用後</div>
-        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我的 Python 腳本跑不起來,顯示 ModuleNotFoundError: No module named 'requests',如何解決?</div></div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我想寫個 web scraper 抓網頁資料,該用什麼工具?</div></div>
         <div class="msg ai good">
           <div class="msg-avatar">🤖</div>
           <div class="msg-bubble">
-            <strong class="lead">🔎 環境缺 requests 套件,執行 pip install 即可。</strong>
-            <code class="code-line">pip install requests</code>
-            <span class="body-note">補充:若使用虛擬環境(venv / conda),需先 activate 該環境再執行安裝;確認 PATH 中的 pip 與當前 Python 對應。</span>
+            <strong class="lead">🔎 簡單靜態頁用 requests + BeautifulSoup,2 行可開始。</strong>
+            <code class="code-line">soup = BeautifulSoup(requests.get(url).text, "html.parser")</code>
+            <div class="next-step">
+              <div class="next-step-title">🚀 下一步揀一條</div>
+              <ul class="next-step-options">
+                <li><span class="opt-letter">A.</span> <code>requests</code> + <code>BeautifulSoup</code><br>　簡單靜態頁面,最快上手</li>
+                <li><span class="opt-letter">B.</span> <code>Scrapy</code><br>　大型專案,內建 crawl queue / pipeline / retry</li>
+                <li><span class="opt-letter">C.</span> <code>Playwright</code><br>　需 JavaScript 渲染的單頁應用(SPA)</li>
+              </ul>
+              <div class="next-step-recommend">💡 推薦:A — 90% 抓網頁需求即可;B / C 只在以上特殊情境</div>
+            </div>
           </div>
         </div>
-        <div class="scenario-summary good-summary">✓ 第一行即見結論,背景補充作為次要</div>
+        <div class="scenario-summary good-summary">✓ 結論 + 選項 + 推薦三層次清晰 — 用戶 30 秒可決定</div>
       </div>
     </div>
   </div>

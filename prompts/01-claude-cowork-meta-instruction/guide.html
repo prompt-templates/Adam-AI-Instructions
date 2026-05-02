@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Cowork Meta Instruction · 互動指南</title>
+<style>
+  :root{
+    --c-primary:#0d7377;
+    --c-primary-2:#14a098;
+    --c-bg:#fafafa;
+    --c-card:#ffffff;
+    --c-text:#1a1a1a;
+    --c-muted:#5b6470;
+    --c-light:#e6f7f5;
+    --c-border:#e2e6ea;
+    --c-warn-bg:#fff5e6;
+    --c-warn-border:#f0b27a;
+    --c-good-bg:#e8f5e9;
+    --c-good-border:#7cb98a;
+    --c-bad-bg:#fdecea;
+    --c-bad-border:#e57373;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft JhengHei","PingFang TC","Noto Sans TC","Hiragino Sans GB",sans-serif;
+    color:var(--c-text);
+    background:var(--c-bg);
+    line-height:1.75;
+    font-size:16px;
+  }
+  a{color:var(--c-primary);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* Header */
+  header.hero{
+    background:linear-gradient(135deg,var(--c-primary) 0%,var(--c-primary-2) 100%);
+    color:white;
+    padding:64px 24px 56px;
+    text-align:center;
+  }
+  header.hero h1{margin:0 0 8px;font-size:32px;letter-spacing:-0.5px}
+  header.hero .tag{font-size:14px;opacity:0.85;margin-bottom:20px}
+  header.hero .links a{
+    color:white;
+    background:rgba(255,255,255,0.18);
+    padding:8px 18px;
+    border-radius:24px;
+    margin:0 6px;
+    display:inline-block;
+    font-size:14px;
+    transition:background 0.2s;
+  }
+  header.hero .links a:hover{background:rgba(255,255,255,0.3);text-decoration:none}
+
+  /* Top nav */
+  nav.toc{
+    position:sticky;
+    top:0;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--c-border);
+    z-index:10;
+    padding:12px 16px;
+    overflow-x:auto;
+    white-space:nowrap;
+    text-align:center;
+  }
+  nav.toc a{
+    display:inline-block;
+    padding:6px 12px;
+    margin:0 2px;
+    font-size:13px;
+    color:var(--c-muted);
+    border-radius:6px;
+  }
+  nav.toc a:hover{background:var(--c-light);color:var(--c-primary);text-decoration:none}
+
+  /* Main */
+  main{max-width:920px;margin:0 auto;padding:32px 24px 80px}
+  section{
+    background:var(--c-card);
+    border:1px solid var(--c-border);
+    border-radius:12px;
+    padding:32px;
+    margin-bottom:24px;
+    scroll-margin-top:80px;
+  }
+  section h2{
+    margin:0 0 8px;
+    font-size:24px;
+    color:var(--c-primary);
+    border-bottom:2px solid var(--c-light);
+    padding-bottom:12px;
+  }
+  section h2 .num{
+    display:inline-block;
+    background:var(--c-primary);
+    color:white;
+    width:30px;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    border-radius:50%;
+    font-size:14px;
+    margin-right:10px;
+    vertical-align:middle;
+  }
+  section h3{margin-top:28px;margin-bottom:8px;font-size:17px;color:var(--c-text)}
+  section p{margin:10px 0;color:var(--c-text)}
+  section .lede{
+    font-size:17px;
+    color:var(--c-muted);
+    border-left:3px solid var(--c-primary);
+    padding-left:14px;
+    margin:14px 0 22px;
+  }
+
+  /* Tables */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0;
+    font-size:14px;
+  }
+  th,td{
+    padding:10px 12px;
+    border-bottom:1px solid var(--c-border);
+    text-align:left;
+    vertical-align:top;
+  }
+  th{background:var(--c-light);color:var(--c-primary);font-weight:600}
+
+  /* Cards (overview grid) */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:14px;
+    margin:18px 0;
+  }
+  .card{
+    background:var(--c-light);
+    border:1px solid var(--c-border);
+    border-radius:10px;
+    padding:16px;
+  }
+  .card .num{
+    display:inline-block;
+    background:var(--c-primary);
+    color:white;
+    padding:2px 10px;
+    border-radius:12px;
+    font-size:12px;
+    margin-bottom:8px;
+  }
+  .card h4{margin:4px 0 6px;font-size:15px;color:var(--c-text)}
+  .card p{margin:0;font-size:13px;color:var(--c-muted)}
+
+  /* SVG container */
+  .svg-wrap{
+    background:#fbfdfd;
+    border:1px solid var(--c-border);
+    border-radius:10px;
+    padding:18px;
+    margin:18px 0;
+    overflow-x:auto;
+  }
+  .svg-wrap svg{display:block;max-width:100%;height:auto;margin:0 auto}
+  .svg-caption{
+    text-align:center;
+    color:var(--c-muted);
+    font-size:13px;
+    margin-top:8px;
+  }
+
+  /* Comparison boxes */
+  .compare{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin:14px 0;
+  }
+  .compare .col{
+    border-radius:8px;
+    padding:14px 16px;
+    font-size:14px;
+  }
+  .compare .bad{background:var(--c-bad-bg);border:1px solid var(--c-bad-border)}
+  .compare .good{background:var(--c-good-bg);border:1px solid var(--c-good-border)}
+  .compare h5{margin:0 0 6px;font-size:14px}
+  .compare .bad h5{color:#c62828}
+  .compare .good h5{color:#2e7d32}
+
+  /* Code blocks */
+  code{
+    background:#f1f3f5;
+    padding:2px 6px;
+    border-radius:4px;
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-size:0.9em;
+  }
+  pre{
+    background:#1e2329;
+    color:#e8eaed;
+    padding:14px 16px;
+    border-radius:8px;
+    overflow-x:auto;
+    font-size:13px;
+    line-height:1.55;
+  }
+  pre code{background:transparent;padding:0;color:inherit}
+
+  /* Callout */
+  .callout{
+    background:var(--c-warn-bg);
+    border-left:4px solid var(--c-warn-border);
+    padding:12px 16px;
+    border-radius:6px;
+    margin:14px 0;
+    font-size:14px;
+  }
+  .callout strong{color:#c87a30}
+
+  /* FAQ */
+  details{
+    background:var(--c-card);
+    border:1px solid var(--c-border);
+    border-radius:8px;
+    padding:12px 16px;
+    margin-bottom:8px;
+  }
+  details summary{
+    font-weight:600;
+    cursor:pointer;
+    color:var(--c-primary);
+  }
+  details[open] summary{margin-bottom:8px}
+
+  /* Footer */
+  footer{
+    text-align:center;
+    padding:32px 16px 48px;
+    color:var(--c-muted);
+    font-size:13px;
+    border-top:1px solid var(--c-border);
+    background:white;
+  }
+  footer a{margin:0 10px}
+
+  @media (max-width:640px){
+    header.hero{padding:40px 16px}
+    header.hero h1{font-size:24px}
+    main{padding:16px}
+    section{padding:20px}
+    .compare{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Claude Cowork Meta Instruction</h1>
+  <div class="tag">互動指南 · 7 大組規則視覺化解說</div>
+  <div class="links">
+    <a href="prompt.md">📄 Prompt 原文</a>
+    <a href="README.md">📖 文字介紹頁</a>
+    <a href="../../README.md">🏠 主索引</a>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#overview">導讀</a>
+  <a href="#g1">1. 哲學基礎</a>
+  <a href="#g2">2. 全圖優先</a>
+  <a href="#g3">3. 回覆品質</a>
+  <a href="#g4">4. 準確性</a>
+  <a href="#g5">5. 變更治理</a>
+  <a href="#g6">6. 計算規範</a>
+  <a href="#g7">7. Cowork 環境</a>
+  <a href="#install">安裝</a>
+  <a href="#faq">常見問題</a>
+</nav>
+
+<main>
+
+<!-- ============== 導讀 ============== -->
+<section id="overview">
+  <h2>導讀</h2>
+  <p class="lede">此指令的設計目的:讓 AI 在多步驟、多檔案、長期協作任務中,行為更穩定可預期,輸出格式可審閱、可驗收。</p>
+  <p>本頁將原文約 19 個規則塊歸納為 <strong>7 大組</strong>,每組用「對應問題 → 規則內容 → 治理作用 → 適用情景」四個切面說明,並對核心抽象概念配以 SVG 視覺化。</p>
+
+  <h3>7 大組規則一覽</h3>
+  <div class="grid">
+    <div class="card"><span class="num">1</span><h4>哲學基礎</h4><p>合作模式、優先序、核心原則。AI 與用戶的協作關係定位。</p></div>
+    <div class="card"><span class="num">2</span><h4>全圖優先規則(FPFR)</h4><p>多檔案 / 規則改動前,先輸出 5 區段執行計劃。</p></div>
+    <div class="card"><span class="num">3</span><h4>日常回覆品質</h4><p>回覆骨架、選擇題格式、語氣與用語紀律、語體一致。</p></div>
+    <div class="card"><span class="num">4</span><h4>準確性護欄</h4><p>事實核對、SSOT 對齊、歧義處理。</p></div>
+    <div class="card"><span class="num">5</span><h4>變更治理</h4><p>補丁式變更、深度修補、防漂移、格式硬規則。</p></div>
+    <div class="card"><span class="num">6</span><h4>計算規範</h4><p>四步法:對齊、判正負、展示、代回驗算。</p></div>
+    <div class="card"><span class="num">7</span><h4>Cowork 環境特殊規則</h4><p>檔案系統、層次分類、變更前置、外部 API、工作流、範圍。</p></div>
+  </div>
+
+  <h3>對應的具體痛點</h3>
+  <table>
+    <thead><tr><th>痛點</th><th>對應規則</th></tr></thead>
+    <tbody>
+      <tr><td>AI 動手前未交代終點,改完才發現方向偏離</td><td>全圖優先規則(第 2 組)</td></tr>
+      <tr><td>AI 反覆「同意 A?同意 B?」逐項提問</td><td>合作模式 + 選擇題格式(第 1、3 組)</td></tr>
+      <tr><td>AI 輸出未經核對的事實</td><td>事實核對(第 4 組)</td></tr>
+      <tr><td>AI 一次性重寫整份檔案,合併困難</td><td>補丁式變更(第 5 組)</td></tr>
+      <tr><td>同一規則散落多處,長期出現自相矛盾</td><td>防漂移(第 5 組)</td></tr>
+      <tr><td>AI 句子主體堆砌內部代碼,可讀性低</td><td>用語紀律(第 3 組)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+
+<!-- ============== 第一組:哲學基礎 ============== -->
+<section id="g1">
+  <h2><span class="num">1</span>哲學基礎:AI 與用戶的協作關係</h2>
+  <p class="lede">改變 AI 的預設互動模式,從「等候指示」轉為「主動判斷並提交建議」。</p>
+
+  <h3>對應問題</h3>
+  <p>預設 LLM 行為傾向「謹慎多於有用」:答案模糊、頻繁反問、避免主動判斷。對於熟練用戶,此類行為等於降低協作效率。</p>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
+      <!-- Title -->
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">合作模式對比</text>
+
+      <!-- Left: 預設 chatbot -->
+      <rect x="30" y="55" width="350" height="290" rx="12" fill="#fdecea" stroke="#e57373" stroke-width="1.5"/>
+      <text x="205" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#c62828">套用前(預設行為)</text>
+
+      <rect x="50" y="100" width="310" height="38" rx="6" fill="white" stroke="#e57373"/>
+      <text x="205" y="124" text-anchor="middle" font-size="12" fill="#1a1a1a">用戶:幫我整理 5 份報告為摘要</text>
+
+      <rect x="50" y="148" width="310" height="38" rx="6" fill="white" stroke="#e57373"/>
+      <text x="205" y="172" text-anchor="middle" font-size="12" fill="#c62828">AI:你想要 PDF 還是 docx?</text>
+
+      <rect x="50" y="196" width="310" height="38" rx="6" fill="white" stroke="#e57373"/>
+      <text x="205" y="220" text-anchor="middle" font-size="12" fill="#c62828">AI:摘要要多長?</text>
+
+      <rect x="50" y="244" width="310" height="38" rx="6" fill="white" stroke="#e57373"/>
+      <text x="205" y="268" text-anchor="middle" font-size="12" fill="#c62828">AI:你想用表格還是條列式?</text>
+
+      <text x="205" y="320" text-anchor="middle" font-size="12" fill="#c62828">→ 用戶被迫逐項回答,延後決策</text>
+
+      <!-- Right: 合作模式 -->
+      <rect x="420" y="55" width="350" height="290" rx="12" fill="#e8f5e9" stroke="#7cb98a" stroke-width="1.5"/>
+      <text x="595" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32">套用後(合作模式)</text>
+
+      <rect x="440" y="100" width="310" height="38" rx="6" fill="white" stroke="#7cb98a"/>
+      <text x="595" y="124" text-anchor="middle" font-size="12" fill="#1a1a1a">用戶:幫我整理 5 份報告為摘要</text>
+
+      <rect x="440" y="148" width="310" height="92" rx="6" fill="white" stroke="#7cb98a"/>
+      <text x="595" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#2e7d32">AI:我會以下列方式處理</text>
+      <text x="455" y="190" font-size="11" fill="#1a1a1a">• 輸出 docx + 表格(預設)</text>
+      <text x="455" y="208" font-size="11" fill="#1a1a1a">• 每份摘要 ≤200 字</text>
+      <text x="455" y="226" font-size="11" fill="#1a1a1a">• 統一欄位:標題、結論、行動</text>
+
+      <rect x="440" y="250" width="310" height="40" rx="6" fill="white" stroke="#7cb98a"/>
+      <text x="595" y="272" text-anchor="middle" font-size="12" fill="#2e7d32">如需調整,請否決或提建議</text>
+
+      <text x="595" y="320" text-anchor="middle" font-size="12" fill="#2e7d32">→ 用戶 30 秒內可決定 Go / 修改</text>
+    </svg>
+    <div class="svg-caption">圖一:合作模式由「反問」轉為「先判斷再徵求修正」。</div>
+  </div>
+
+  <h3>規則內容</h3>
+  <ul>
+    <li><strong>偏好優先序</strong>:事實可驗收 &gt; 穩定性 &gt; 根因治理 &gt; 完整性交付 &gt; 最小改動。當諸要求衝突時有明確排序可依。</li>
+    <li><strong>合作模式</strong>:有判斷則提出判斷;不將已有答案包裝成開放題反問。</li>
+    <li><strong>角色分工</strong>:用戶提需求、目標、現實資料;技術步驟順序、優先序、執行時點屬 AI 自身範圍。</li>
+    <li><strong>核心原則</strong>:先判斷用戶當下需要(結論 / 選擇 / 解釋 / 執行 / 修補),再補其他。</li>
+  </ul>
+
+  <h3>治理作用</h3>
+  <p>此組規則為整套指令的基礎。後續格式規則需要此基礎方能生效——若 AI 遇事即反問,所有格式約束都會被「禮貌性確認」抵消。</p>
+
+  <h3>適用情景</h3>
+  <p>所有場景皆適用,屬基礎層。對「給予 AI 一個目標,期待其自行規劃多步驟」的用法影響最大。</p>
+</section>
+
+
+<!-- ============== 第二組:FPFR ============== -->
+<section id="g2">
+  <h2><span class="num">2</span>全圖優先規則(FPFR)</h2>
+  <p class="lede">在 AI 進行較大規模改動前,要求先輸出明確的計劃結構(終點、影響範圍、可量指標、驗收條件)。</p>
+
+  <h3>對應問題</h3>
+  <p>AI 開始執行後,改至中途才發現方向與用戶期望不一致;或在修改多個檔案後才補充說明範圍變動。用戶需逐個檔案檢視,方能發現偏離。</p>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">FPFR 觸發判斷流程</text>
+
+      <!-- Start -->
+      <rect x="340" y="50" width="120" height="36" rx="18" fill="#0d7377"/>
+      <text x="400" y="74" text-anchor="middle" fill="white" font-size="13">收到任務</text>
+
+      <!-- Arrow -->
+      <line x1="400" y1="86" x2="400" y2="118" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="395,116 400,124 405,116" fill="#1a1a1a"/>
+
+      <!-- Decision diamond -->
+      <polygon points="400,128 510,180 400,232 290,180" fill="white" stroke="#0d7377" stroke-width="2"/>
+      <text x="400" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">命中以下任一?</text>
+      <text x="400" y="188" text-anchor="middle" font-size="11" fill="#1a1a1a">(a) 修改 ≥2 檔案</text>
+      <text x="400" y="204" text-anchor="middle" font-size="11" fill="#1a1a1a">(b) 新建檔案</text>
+      <text x="400" y="220" text-anchor="middle" font-size="11" fill="#1a1a1a">(c) 改規則 (d) ≥2 階段</text>
+
+      <!-- Yes branch right -->
+      <line x1="510" y1="180" x2="600" y2="180" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="598,176 605,180 598,184" fill="#1a1a1a"/>
+      <text x="555" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">是</text>
+
+      <rect x="600" y="158" width="180" height="44" rx="8" fill="#e6f7f5" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="690" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">輸出 5 區段計劃</text>
+      <text x="690" y="196" text-anchor="middle" font-size="11" fill="#5b6470">→ 等用戶 veto / 批准</text>
+
+      <!-- No branch left -->
+      <line x1="290" y1="180" x2="200" y2="180" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="202,176 195,180 202,184" fill="#1a1a1a"/>
+      <text x="245" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#5b6470">否</text>
+
+      <rect x="20" y="158" width="180" height="44" rx="8" fill="#fafafa" stroke="#999" stroke-width="1.5"/>
+      <text x="110" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">直接執行</text>
+      <text x="110" y="196" text-anchor="middle" font-size="11" fill="#5b6470">(無需 FPFR)</text>
+
+      <!-- 5 sections -->
+      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">5 區段內容(順序固定)</text>
+
+      <g>
+        <rect x="40" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="68" cy="318" r="14" fill="#0d7377"/>
+        <text x="68" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">1</text>
+        <text x="92" y="323" font-size="12" font-weight="bold" fill="#0d7377">END-STATE</text>
+        <text x="92" y="338" font-size="11" fill="#0d7377">SNAPSHOT</text>
+        <text x="50" y="362" font-size="10.5" fill="#1a1a1a">表格列出每個</text>
+        <text x="50" y="378" font-size="10.5" fill="#1a1a1a">受影響檔案的</text>
+        <text x="50" y="394" font-size="10.5" fill="#1a1a1a">前/後狀態</text>
+
+        <rect x="190" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="218" cy="318" r="14" fill="#0d7377"/>
+        <text x="218" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">2</text>
+        <text x="242" y="323" font-size="12" font-weight="bold" fill="#0d7377">DELIVER-</text>
+        <text x="242" y="338" font-size="12" font-weight="bold" fill="#0d7377">ABLES</text>
+        <text x="200" y="362" font-size="10.5" fill="#1a1a1a">逐檔案絕對路徑</text>
+        <text x="200" y="378" font-size="10.5" fill="#1a1a1a">+ 動作 +</text>
+        <text x="200" y="394" font-size="10.5" fill="#1a1a1a">一句摘要</text>
+
+        <rect x="340" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="368" cy="318" r="14" fill="#0d7377"/>
+        <text x="368" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">3</text>
+        <text x="392" y="323" font-size="12" font-weight="bold" fill="#0d7377">METRICS</text>
+        <text x="350" y="354" font-size="10.5" fill="#1a1a1a">≥3 個</text>
+        <text x="350" y="370" font-size="10.5" fill="#1a1a1a">前→後</text>
+        <text x="350" y="386" font-size="10.5" fill="#1a1a1a">可量數字</text>
+
+        <rect x="490" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="518" cy="318" r="14" fill="#0d7377"/>
+        <text x="518" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">4</text>
+        <text x="542" y="323" font-size="12" font-weight="bold" fill="#0d7377">ACCEPTANCE</text>
+        <text x="542" y="338" font-size="12" font-weight="bold" fill="#0d7377">TEST</text>
+        <text x="500" y="362" font-size="10.5" fill="#1a1a1a">具體檢查方法</text>
+        <text x="500" y="378" font-size="10.5" fill="#1a1a1a">判定執行</text>
+        <text x="500" y="394" font-size="10.5" fill="#1a1a1a">是否成功</text>
+
+        <rect x="640" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="668" cy="318" r="14" fill="#0d7377"/>
+        <text x="668" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">5</text>
+        <text x="692" y="323" font-size="12" font-weight="bold" fill="#0d7377">GOAL LINK</text>
+        <text x="650" y="354" font-size="10.5" fill="#1a1a1a">連結至</text>
+        <text x="650" y="370" font-size="10.5" fill="#1a1a1a">權威來源</text>
+        <text x="650" y="386" font-size="10.5" fill="#1a1a1a">(原始指令)</text>
+      </g>
+
+      <text x="400" y="442" text-anchor="middle" font-size="12" fill="#5b6470">收尾語(逐字):「以上即執行計劃。若不否決或修改,即開始執行。」</text>
+    </svg>
+    <div class="svg-caption">圖二:FPFR 觸發判斷與 5 區段固定結構。</div>
+  </div>
+
+  <h3>規則內容</h3>
+  <p>當 AI 即將進行 4 個觸發條件(修改 ≥2 檔案、新建檔案、改動治理規則、提出 ≥2 階段計劃)中的任一時,必須先輸出 5 區段執行計劃,再執行實際工作。</p>
+
+  <h3>治理作用</h3>
+  <ul>
+    <li><strong>可預測性</strong>:用戶閱讀 5 區段後,可立即決定批准或否決,減少多輪對話拉鋸。</li>
+    <li><strong>可驗收</strong>:ACCEPTANCE TEST 區段提供具體檢查方法,任務完成後可立即驗收。</li>
+    <li><strong>防範圍滑移</strong>:END-STATE SNAPSHOT 為 AI 自身的範圍邊界,避免執行中擴大改動。</li>
+    <li><strong>取代逐項批准</strong>:以「不否決即執行」收尾,避免「同意 A?同意 B?同意 C?」式提問。</li>
+  </ul>
+</section>
+
+
+<!-- ============== 第三組:回覆品質 ============== -->
+<section id="g3">
+  <h2><span class="num">3</span>日常回覆品質</h2>
+  <p class="lede">統一回覆骨架、選擇題格式、語氣與用語紀律,提升輸出可讀性與一致性。</p>
+
+  <h3>對應問題</h3>
+  <ul>
+    <li>答案前段為背景介紹或客套語,結論需向下捲動才看到。</li>
+    <li>AI 句子主體堆砌內部代碼、條款編號(如 <code>§5l rule</code>、<code>BLUEPRINT_REGEN_MATRIX 4/5</code>),非熟悉內部規格者無法讀通。</li>
+    <li>答案語體混雜書面語、口語、英文、術語。</li>
+  </ul>
+
+  <h3>規則重點</h3>
+  <table>
+    <thead><tr><th>規則塊</th><th>核心約束</th></tr></thead>
+    <tbody>
+      <tr><td>回覆骨架</td><td>≤3 行重點(🔎 標示)→ 交付清單清零 → 正文。</td></tr>
+      <tr><td>下一步選擇題</td><td>A/B/C 選項 + 推薦項 + 一句客觀依據,取代「你想點?」式提問。</td></tr>
+      <tr><td>語氣與用字</td><td>對話層不以內部代碼或條款編號作句子主體;以白話陳述事實。</td></tr>
+      <tr><td>用語紀律</td><td>禁止自創 Capital_Snake_Case 或 ProperNounMatrix 類術語;ID 限作括號內 secondary 引用。</td></tr>
+      <tr><td>回覆語體</td><td>跟當前對話既有語體(書面語、口語、指定方言),單一回覆內保持一致。</td></tr>
+      <tr><td>輸出控制</td><td>用戶明示 Schema-only / Output-only 即進入純輸出模式,不附加說明。</td></tr>
+    </tbody>
+  </table>
+
+  <h3>用語紀律具體例子</h3>
+  <div class="compare">
+    <div class="col bad">
+      <h5>反例(不可讀)</h5>
+      <p><code>§5l rule overstated empirical confirmed</code></p>
+      <p><code>BLUEPRINT_REGEN_MATRIX 4/5</code></p>
+      <p><code>mc_drift_check N/A</code></p>
+    </div>
+    <div class="col good">
+      <h5>正例(可讀)</h5>
+      <p>Cowork plugin 上載那條 anti-UUID 規則寫得太絕對</p>
+      <p>儀表板 4 個頁面之中 4 個已重新生成</p>
+      <p>對齊檢查機制因頁面結構變更,舊套不適用</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== 第四組:準確性 ============== -->
+<section id="g4">
+  <h2><span class="num">4</span>準確性護欄</h2>
+  <p class="lede">透過事實核對、SSOT 對齊、歧義處理,降低幻覺風險與輸出與下游系統的不對齊。</p>
+
+  <h3>三條核心規則</h3>
+  <table>
+    <thead><tr><th>規則</th><th>內容</th><th>關鍵效果</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>事實核對</td>
+        <td>可驗證事實(日期、數字、法規、人名、公司、報價、引用)需先核對再答。</td>
+        <td>核對不到時標 UNVERIFIED(與 NA 區分),用戶清楚知道哪些須再查。</td>
+      </tr>
+      <tr>
+        <td>SSOT 對齊</td>
+        <td>用戶提供的 schema、鍵名、枚舉、分組標題,逐字對齊。</td>
+        <td>輸出可直接傳遞至下游系統,毋須中間轉譯。</td>
+      </tr>
+      <tr>
+        <td>歧義處理</td>
+        <td>除非歧義會令結論完全不同,先列 ≤3 個合理假設一次處理。</td>
+        <td>大部分情景一次完成回應,節省一輪對話。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>關鍵分辨</strong>:UNVERIFIED 表示「資料存在但未能即時核對」;NA 表示「真缺值或無資料」。兩者不可互用。
+  </div>
+</section>
+
+
+<!-- ============== 第五組:變更治理 ============== -->
+<section id="g5">
+  <h2><span class="num">5</span>變更治理</h2>
+  <p class="lede">透過補丁式變更、深度修補、防漂移、格式硬規則,讓修改可審閱、可合併、長期一致。</p>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">補丁式變更(Patch-only)結構</text>
+
+      <!-- Anchor box -->
+      <rect x="80" y="50" width="640" height="44" rx="8" fill="#fff5e6" stroke="#f0b27a"/>
+      <text x="100" y="78" font-size="13" font-weight="bold" fill="#c87a30">📌 精準錨點</text>
+      <text x="220" y="78" font-size="12" fill="#1a1a1a">(在代碼區塊外):「3. 新建檔案預設放入...的 outputs/ 子目錄」</text>
+
+      <!-- Arrow -->
+      <line x1="400" y1="100" x2="400" y2="124" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="395,122 400,130 405,122" fill="#1a1a1a"/>
+
+      <!-- BEFORE / AFTER side by side -->
+      <g>
+        <rect x="80" y="138" width="300" height="160" rx="8" fill="#fdecea" stroke="#e57373" stroke-width="1.5"/>
+        <rect x="80" y="138" width="300" height="32" rx="8" fill="#e57373"/>
+        <text x="230" y="160" text-anchor="middle" fill="white" font-size="13" font-weight="bold">BEFORE(原文)</text>
+        <text x="100" y="190" font-size="11" fill="#1a1a1a" font-family="monospace">3. 新建檔案預設放入</text>
+        <text x="100" y="208" font-size="11" fill="#1a1a1a" font-family="monospace">當前工作資料夾下的</text>
+        <text x="100" y="226" font-size="11" fill="#1a1a1a" font-family="monospace">/outputs 子目錄;</text>
+        <text x="100" y="244" font-size="11" fill="#1a1a1a" font-family="monospace">除非使用者明示路徑。</text>
+        <text x="100" y="280" font-size="11" fill="#5b6470" font-style="italic">↑ 可 Ctrl+F 搜尋</text>
+
+        <rect x="420" y="138" width="300" height="160" rx="8" fill="#e8f5e9" stroke="#7cb98a" stroke-width="1.5"/>
+        <rect x="420" y="138" width="300" height="32" rx="8" fill="#7cb98a"/>
+        <text x="570" y="160" text-anchor="middle" fill="white" font-size="13" font-weight="bold">AFTER(新文)</text>
+        <text x="440" y="190" font-size="11" fill="#1a1a1a" font-family="monospace">3. 新建檔案預設放入</text>
+        <text x="440" y="208" font-size="11" fill="#1a1a1a" font-family="monospace">當前工作資料夾下的</text>
+        <text x="440" y="226" font-size="11" fill="#1a1a1a" font-family="monospace">outputs/ 子目錄...</text>
+        <text x="440" y="244" font-size="11" fill="#1a1a1a" font-family="monospace">(補充跨平台說明)</text>
+        <text x="440" y="280" font-size="11" fill="#5b6470" font-style="italic">↑ 可直接貼換</text>
+      </g>
+
+      <!-- Arrow down to changelog -->
+      <line x1="400" y1="298" x2="400" y2="318" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="395,316 400,324 405,316" fill="#1a1a1a"/>
+
+      <rect x="160" y="328" width="480" height="40" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+      <text x="180" y="354" font-size="13" font-weight="bold" fill="#0d7377">📋 Changelog</text>
+      <text x="290" y="354" font-size="12" fill="#1a1a1a">改動 1 處 / 補充澄清 / 無刪除項</text>
+    </svg>
+    <div class="svg-caption">圖三:每個 Patch 包含「精準錨點 + BEFORE 區塊 + AFTER 區塊 + Changelog」四個必要元件。</div>
+  </div>
+
+  <h3>四條子規則</h3>
+  <ul>
+    <li><strong>補丁式(Patch-only)</strong>:任何修改預設以「精準錨點 + BEFORE/AFTER」雙代碼塊呈現,可 Ctrl+F 直接貼換。每次 Patch 附 Changelog(新增 / 刪除 / 改名 / 移動)。</li>
+    <li><strong>深度修補</strong>:用戶要求「最終落地 / 全文已核對 / 健康掃描」等字眼時,須在同一回覆內完成「全文掃描 → 合併審視 → 補丁 → 再次掃描」,所有錯誤清零方可輸出新版本全文。</li>
+    <li><strong>防漂移</strong>:同一規格、鍵集、枚舉只允許存在於單一定義塊;新增規則時同步合併或廢止舊句。</li>
+    <li><strong>格式硬規則</strong>:JSON 缺值用 null 不省略;Mermaid 用 <code>flowchart TB</code>、文字用 <code>"..."</code> 包覆、換行直接 Enter。</li>
+  </ul>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">防漂移:單一定義 vs 散落多處</text>
+
+      <!-- Left: Scattered (bad) -->
+      <rect x="40" y="55" width="340" height="240" rx="12" fill="#fdecea" stroke="#e57373" stroke-width="1.5"/>
+      <text x="210" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#c62828">散落多處(失序)</text>
+
+      <rect x="60" y="100" width="120" height="40" rx="6" fill="white" stroke="#e57373"/>
+      <text x="120" y="124" text-anchor="middle" font-size="11" fill="#1a1a1a">規則 X v1</text>
+
+      <rect x="200" y="100" width="120" height="40" rx="6" fill="white" stroke="#e57373"/>
+      <text x="260" y="124" text-anchor="middle" font-size="11" fill="#1a1a1a">規則 X v1.2</text>
+
+      <rect x="60" y="160" width="120" height="40" rx="6" fill="white" stroke="#e57373"/>
+      <text x="120" y="184" text-anchor="middle" font-size="11" fill="#1a1a1a">規則 X v2(舊)</text>
+
+      <rect x="200" y="160" width="120" height="40" rx="6" fill="white" stroke="#e57373"/>
+      <text x="260" y="184" text-anchor="middle" font-size="11" fill="#1a1a1a">規則 X 變體</text>
+
+      <text x="210" y="240" text-anchor="middle" font-size="12" fill="#c62828">⚠ 改一處,漏其他</text>
+      <text x="210" y="260" text-anchor="middle" font-size="12" fill="#c62828">⚠ 互相矛盾、漂移</text>
+      <text x="210" y="280" text-anchor="middle" font-size="12" fill="#c62828">⚠ 規則庫無限膨脹</text>
+
+      <!-- Right: Single source (good) -->
+      <rect x="420" y="55" width="340" height="240" rx="12" fill="#e8f5e9" stroke="#7cb98a" stroke-width="1.5"/>
+      <text x="590" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32">單一定義 + 引用(有序)</text>
+
+      <rect x="490" y="100" width="200" height="50" rx="8" fill="#0d7377"/>
+      <text x="590" y="122" text-anchor="middle" fill="white" font-size="13" font-weight="bold">規則 X(定義塊)</text>
+      <text x="590" y="140" text-anchor="middle" fill="white" font-size="11">SSOT · 唯一真源</text>
+
+      <!-- References -->
+      <rect x="430" y="180" width="100" height="36" rx="6" fill="white" stroke="#7cb98a"/>
+      <text x="480" y="202" text-anchor="middle" font-size="11" fill="#1a1a1a">Ref: X</text>
+
+      <rect x="540" y="180" width="100" height="36" rx="6" fill="white" stroke="#7cb98a"/>
+      <text x="590" y="202" text-anchor="middle" font-size="11" fill="#1a1a1a">Ref: X</text>
+
+      <rect x="650" y="180" width="100" height="36" rx="6" fill="white" stroke="#7cb98a"/>
+      <text x="700" y="202" text-anchor="middle" font-size="11" fill="#1a1a1a">Ref: X</text>
+
+      <line x1="590" y1="150" x2="480" y2="180" stroke="#7cb98a" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="590" y1="150" x2="590" y2="180" stroke="#7cb98a" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="590" y1="150" x2="700" y2="180" stroke="#7cb98a" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+      <text x="590" y="240" text-anchor="middle" font-size="12" fill="#2e7d32">✓ 改一處,全處生效</text>
+      <text x="590" y="260" text-anchor="middle" font-size="12" fill="#2e7d32">✓ 永不自相矛盾</text>
+      <text x="590" y="280" text-anchor="middle" font-size="12" fill="#2e7d32">✓ 規則庫長期可維護</text>
+    </svg>
+    <div class="svg-caption">圖四:防漂移規則的核心——SSOT(Single Source of Truth)+ 引用,取代多處複寫。</div>
+  </div>
+</section>
+
+
+<!-- ============== 第六組:計算規範 ============== -->
+<section id="g6">
+  <h2><span class="num">6</span>計算規範:四步法</h2>
+  <p class="lede">強制 AI 在計算題上展示完整步驟並代回驗算,使錯誤可追溯、可自我捕獲。</p>
+
+  <h3>對應問題</h3>
+  <p>LLM 在計算題上頻繁出錯,尤其涉及小數、移項、單位轉換;且出錯後難以從輸出中追溯出錯步驟。</p>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">計算四步法</text>
+
+      <!-- Step 1 -->
+      <rect x="30" y="60" width="160" height="100" rx="10" fill="#e6f7f5" stroke="#0d7377"/>
+      <circle cx="60" cy="90" r="16" fill="#0d7377"/>
+      <text x="60" y="95" text-anchor="middle" fill="white" font-size="14" font-weight="bold">1</text>
+      <text x="110" y="92" font-size="13" font-weight="bold" fill="#0d7377">逐位計算</text>
+      <text x="110" y="108" font-size="11" fill="#5b6470">小數對齊</text>
+      <text x="40" y="138" font-size="11" fill="#1a1a1a">確保位數對齊,</text>
+      <text x="40" y="152" font-size="11" fill="#1a1a1a">避免錯位錯誤</text>
+
+      <!-- Arrow -->
+      <line x1="195" y1="110" x2="220" y2="110" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="218,106 225,110 218,114" fill="#1a1a1a"/>
+
+      <!-- Step 2 -->
+      <rect x="225" y="60" width="160" height="100" rx="10" fill="#e6f7f5" stroke="#0d7377"/>
+      <circle cx="255" cy="90" r="16" fill="#0d7377"/>
+      <text x="255" y="95" text-anchor="middle" fill="white" font-size="14" font-weight="bold">2</text>
+      <text x="305" y="92" font-size="13" font-weight="bold" fill="#0d7377">移項判正負</text>
+      <text x="235" y="124" font-size="11" fill="#1a1a1a">移項前先判斷</text>
+      <text x="235" y="140" font-size="11" fill="#1a1a1a">正負號變化</text>
+
+      <line x1="390" y1="110" x2="415" y2="110" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="413,106 420,110 413,114" fill="#1a1a1a"/>
+
+      <!-- Step 3 -->
+      <rect x="420" y="60" width="160" height="100" rx="10" fill="#e6f7f5" stroke="#0d7377"/>
+      <circle cx="450" cy="90" r="16" fill="#0d7377"/>
+      <text x="450" y="95" text-anchor="middle" fill="white" font-size="14" font-weight="bold">3</text>
+      <text x="500" y="92" font-size="13" font-weight="bold" fill="#0d7377">展示步驟</text>
+      <text x="430" y="124" font-size="11" fill="#1a1a1a">每一步可見,</text>
+      <text x="430" y="140" font-size="11" fill="#1a1a1a">出錯可定位</text>
+
+      <line x1="585" y1="110" x2="610" y2="110" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="608,106 615,110 608,114" fill="#1a1a1a"/>
+
+      <!-- Step 4 -->
+      <rect x="615" y="60" width="160" height="100" rx="10" fill="#fff5e6" stroke="#f0b27a"/>
+      <circle cx="645" cy="90" r="16" fill="#f0b27a"/>
+      <text x="645" y="95" text-anchor="middle" fill="white" font-size="14" font-weight="bold">4</text>
+      <text x="695" y="92" font-size="13" font-weight="bold" fill="#c87a30">代回驗算</text>
+      <text x="625" y="124" font-size="11" fill="#1a1a1a">代回原式驗證,</text>
+      <text x="625" y="140" font-size="11" fill="#1a1a1a">部分錯誤自捕獲</text>
+    </svg>
+    <div class="svg-caption">圖五:計算四步法,第 4 步是自我驗算機制。</div>
+  </div>
+
+  <h3>適用情景</h3>
+  <p>任何涉及計算的場景:財務、單位轉換、面積 / 體積、利率、折扣、稅項。純文字任務不受影響。</p>
+</section>
+
+
+<!-- ============== 第七組:Cowork 環境 ============== -->
+<section id="g7">
+  <h2><span class="num">7</span>Cowork 環境特殊規則</h2>
+  <p class="lede">專為具備檔案系統存取能力的 AI 環境而設,涵蓋檔案操作、層次分類、變更前置、外部 API、工作流、範圍六個面向。本指令的範例已涵蓋 Windows 與 macOS / Linux 雙平台。</p>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">四階段工作流</text>
+
+      <!-- Stage boxes -->
+      <g>
+        <rect x="40" y="70" width="130" height="80" rx="10" fill="#0d7377"/>
+        <text x="105" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">PLAN</text>
+        <text x="105" y="118" text-anchor="middle" fill="white" font-size="10">目標 · 範圍</text>
+        <text x="105" y="132" text-anchor="middle" fill="white" font-size="10">驗收 · 風險</text>
+      </g>
+
+      <line x1="175" y1="110" x2="195" y2="110" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="193,106 200,110 193,114" fill="#1a1a1a"/>
+
+      <g>
+        <rect x="200" y="70" width="130" height="80" rx="10" fill="#14a098"/>
+        <text x="265" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">READ</text>
+        <text x="265" y="118" text-anchor="middle" fill="white" font-size="10">最低閱讀覆蓋</text>
+        <text x="265" y="132" text-anchor="middle" fill="white" font-size="10">SSOT 檢查</text>
+      </g>
+
+      <line x1="335" y1="110" x2="355" y2="110" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="353,106 360,110 353,114" fill="#1a1a1a"/>
+
+      <g>
+        <rect x="360" y="70" width="130" height="80" rx="10" fill="#f0b27a"/>
+        <text x="425" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">CHANGE</text>
+        <text x="425" y="118" text-anchor="middle" fill="white" font-size="10">執行修改</text>
+        <text x="425" y="132" text-anchor="middle" fill="white" font-size="10">偏離即停</text>
+      </g>
+
+      <line x1="495" y1="110" x2="515" y2="110" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="513,106 520,110 513,114" fill="#1a1a1a"/>
+
+      <g>
+        <rect x="520" y="70" width="130" height="80" rx="10" fill="#7cb98a"/>
+        <text x="585" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">QC</text>
+        <text x="585" y="118" text-anchor="middle" fill="white" font-size="10">linter / 機器</text>
+        <text x="585" y="132" text-anchor="middle" fill="white" font-size="10">驗證 / 證據核對</text>
+      </g>
+
+      <line x1="655" y1="110" x2="675" y2="110" stroke="#1a1a1a" stroke-width="2" stroke-dasharray="4,3"/>
+      <polygon points="673,106 680,110 673,114" fill="#1a1a1a"/>
+
+      <g>
+        <rect x="680" y="70" width="100" height="80" rx="10" fill="white" stroke="#0d7377" stroke-width="2" stroke-dasharray="5,3"/>
+        <text x="730" y="98" text-anchor="middle" fill="#0d7377" font-size="13" font-weight="bold">PERSIST</text>
+        <text x="730" y="118" text-anchor="middle" fill="#5b6470" font-size="10">(Project 內)</text>
+        <text x="730" y="132" text-anchor="middle" fill="#5b6470" font-size="10">更新 memory</text>
+      </g>
+
+      <text x="400" y="190" text-anchor="middle" font-size="12" fill="#5b6470">HIGH 風險(影響 ≥3 檔案 / 不可逆操作 / 涉外部系統 / 改規則)須等用戶確認方可入 READ</text>
+    </svg>
+    <div class="svg-caption">圖六:四階段工作流,Cowork Project 內加 PERSIST。</div>
+  </div>
+
+  <h3>六大面向</h3>
+  <table>
+    <thead><tr><th>面向</th><th>核心約束</th></tr></thead>
+    <tbody>
+      <tr><td>A. 檔案系統與破壞性操作</td><td>刪除 / 覆寫前列影響範圍待確認;原檔保留出副本;新檔入 outputs/;禁高風險指令(<code>rm -rf</code>、<code>Remove-Item -Recurse -Force</code>);路徑用原生 API。</td></tr>
+      <tr><td>B. 層次分類</td><td>判斷屬「產品 / 系統層」抑或「治理層」;遇 bug 先做問題分類再動手。</td></tr>
+      <tr><td>C. 變更前置</td><td>CHANGE 之前完成最低閱讀覆蓋;新增規則前先檢查既有可否合併或退役。</td></tr>
+      <tr><td>D. 外部平台與 API</td><td>不憑記憶猜測;呼叫 API 前必對齊官方文件,記錄 Base URL、版本、驗證方式等。</td></tr>
+      <tr><td>E. 工作流與風險</td><td>四階段 PLAN→READ→CHANGE→QC;CHANGE 偏離 PLAN 即停。</td></tr>
+      <tr><td>F. 範圍與相容性</td><td>只改任務直接相關檔案;有 linter / CI 必跑必回報;宣告完成前過三關(獨立審閱、機器驗證、證據核對)。</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>跨平台說明</strong>:本指令的破壞性指令清單已涵蓋 Windows(<code>Remove-Item -Recurse -Force</code>、<code>powershell -Command</code>)與 macOS / Linux(<code>rm -rf</code>、<code>sh -c</code>、<code>bash -c</code>);路徑 API 例子涵蓋 .NET(<code>Path.Combine</code>)、Node.js(<code>path.join</code>)、Python(<code>pathlib.Path</code>、<code>os.path.join</code>)、PowerShell(<code>Join-Path</code>)、Bash / Zsh(變數展開)、Java、Go。可直接套用於兩大作業系統。
+  </div>
+</section>
+
+
+<!-- ============== 安裝 ============== -->
+<section id="install">
+  <h2>安裝與使用方式</h2>
+
+  <h3>Claude Cowork</h3>
+  <ol>
+    <li>開啟 Claude Cowork 設定頁。</li>
+    <li>找到「Personal Preferences」或「Custom Instructions」欄位。</li>
+    <li>複製 <a href="prompt.md">prompt.md</a> 全文,貼入該欄位。</li>
+    <li>儲存。新對話即生效。</li>
+  </ol>
+
+  <h3>Claude Code</h3>
+  <p>放入以下其中一個位置:</p>
+  <ul>
+    <li>全域:<code>~/.claude/CLAUDE.md</code>(影響所有項目)</li>
+    <li>項目級:項目根目錄的 <code>CLAUDE.md</code>(只影響該項目)</li>
+  </ul>
+
+  <h3>其他 Claude 介面 / ChatGPT / 其他 LLM</h3>
+  <p>貼入「System Prompt / Custom Instructions / Project Instructions」等同類欄位。Cowork 專屬規則(第 7 組)若工具不具備檔案系統存取能力,會自動失效,不影響其他規則。</p>
+</section>
+
+
+<!-- ============== FAQ ============== -->
+<section id="faq">
+  <h2>常見問題</h2>
+
+  <details>
+    <summary>Q1:此指令會否令 AI 變慢?</summary>
+    <p>對短答場景略有影響(因 AI 須先判斷觸發條件);對中、大型任務則因減少反覆提問而提升整體效率。</p>
+  </details>
+
+  <details>
+    <summary>Q2:可否只用部分規則?</summary>
+    <p>可以。各組規則互相獨立,可拆可組。建議至少保留:合作模式核心規則(第 1 組)、回覆骨架(第 3 組)、事實核對(第 4 組)。</p>
+  </details>
+
+  <details>
+    <summary>Q3:會否與 AI 工具自身的 system prompt 衝突?</summary>
+    <p>大部分情況不會。此 Prompt 屬於用戶層設定,AI 工具會將其與自身 system prompt 合併處理。如有少量衝突(例如格式偏好),AI 通常以較具體者為準。</p>
+  </details>
+
+  <details>
+    <summary>Q4:如何驗證規則生效?</summary>
+    <p>最直接的驗證方式:給予 AI 一個多檔案任務(例如「新建兩個檔案」),觀察是否自動輸出 FPFR 5 區段。若無,則表示未生效。</p>
+  </details>
+
+  <details>
+    <summary>Q5:Mac 與 Windows 用戶都可以用嗎?</summary>
+    <p>可以。本指令的破壞性指令清單與路徑 API 例子均涵蓋兩大作業系統(Windows 的 PowerShell、macOS / Linux 的 bash / zsh),路徑分隔符使用該作業系統原生規則,跨平台示例統一以正斜線書寫。</p>
+  </details>
+
+  <details>
+    <summary>Q6:此指令會繼續更新嗎?</summary>
+    <p>會。此指令屬持續維護;若於實戰中遇到此規則未覆蓋的情景,歡迎提交 Issue 或 PR。</p>
+  </details>
+</section>
+
+</main>
+
+<footer>
+  <p>
+    <a href="prompt.md">📄 Prompt 原文</a>
+    <a href="README.md">📖 文字介紹頁</a>
+    <a href="../../README.md">🏠 主索引</a>
+    <a href="#overview">⬆ 回頁首</a>
+  </p>
+  <p style="margin-top:14px">Adam's AI Instructions · Claude Cowork Meta Instruction · 互動指南</p>
+</footer>
+
+</body>
+</html>

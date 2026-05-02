@@ -66,9 +66,11 @@ Adam-AI-Instructions/
 3. **互動指南設計**:Hero 區用三情境 tab(FPFR / 回覆骨架 / Patch 變更)展示套用前後對比;單檔內嵌 CSS / JS,無外部 framework 依賴。
 4. **og:image 動態策略**:Facebook 卡片用 Microlink API client-side 抓 og:image;失敗則靜默回退 SVG,不阻塞頁面渲染。免費層流量風險記於 §3c 監控清單。
 5. **Release 條件**:annotated tag + GitHub Release 頁兩者皆需備齊(§3c Phase 2);v0.1.0 已 tag 但 Release 頁仍缺,屬 Open Priority。
+6. **環境限制 SSOT(2026-05-02)**:`dev/OPERATIONAL_RUNBOOK.md` 列入 AGENTS.md §1 強制讀 #5,涵蓋 Tier 1/2/3 執行策略、Cross-VM permission boundary、git lock recovery、FUSE sync delay、§5j stale inode cache 例外。所有 agent(Claude / Codex / Gemini)session start 自動讀。
+7. **行尾政策(2026-05-02)**:`.gitattributes` 設 `* text=auto eol=lf`,LF 強制統一(stored + working tree);binary 檔案明確標記;Tier 2/3 temp 輸出 `_*.txt` 列入 `.gitignore`(per runbook §5i)。
 
 ## AI Maintenance Log
 
 | Session ID | UTC Date | Action |
 |---|---|---|
-| Claude_20260502_1711 | 2026-05-02 | 首次生成本檔;依 §1 規則掃描 README / AGENTS / dev / prompts / guide.html 反推項目事實;Microlink API External Services block 由現有 guide.html 第 1450–1471 行反推記錄,Doc-reviewed 留 UNVERIFIED 待下次 API 代碼變更前核對。
+| Claude_20260502_1711 | 2026-05-02 | 首次生成本檔(§1 規則),反推 Microlink API 至 External Services(Doc-reviewed: UNVERIFIED, Test-verified: 2026-05-02)。同 session 後續加 Key Decision 6(OPERATIONAL_RUNBOOK 列入 §1 強制讀)+ Key Decision 7(.gitattributes LF 政策 + .gitignore _*.txt)。 |

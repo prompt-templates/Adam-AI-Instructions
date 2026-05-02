@@ -5,6 +5,70 @@
 
 ## 2026-05-02
 
+- **ID:** Claude_20260502_1711
+- **Summary:** 治理首裝補齊(CODEBASE_CONTEXT + OPERATIONAL_RUNBOOK)+ 工作樹 CRLF/LF 根治 + Tier 2 Node.exe pattern 驗證落地(4 commits;working tree clean)
+- **Changed:** dev/CODEBASE_CONTEXT.md(new 74 行)、dev/OPERATIONAL_RUNBOOK.md(new 618 行)、AGENTS.md(§1 加 #5)、README.md(Cowork 路徑修正 + 截圖 + 行尾正常化)、.gitattributes(new)、.gitignore(加 _*.txt)、doc/ui_settings_cowork.jpg(new)、dev/DOC_SYNC_CHECKLIST.md(加 2 row)
+- **Done:** §1 強制 CODEBASE_CONTEXT.md 首裝(7 區段;Microlink External Services UNVERIFIED + Test-verified 雙標記);Cowork 路徑修正(Personal Preferences → Cowork → Global Instructions)+ 加截圖;吸納用戶上載 GENERIC_OPERATIONAL_RUNBOOK 為 dev/OPERATIONAL_RUNBOOK §1d 填本 repo 值 + §5j 新增 stale inode cache 例外 lesson(本 session 親自驗證);AGENTS.md §1 強制讀 4 → 5 條;.gitattributes 加 `* eol=lf` + binary 標記;`git add --renormalize` 處理 README 全檔行尾;.gitignore 加 `_*.txt`(per runbook §5i)
+- **QC:** working tree 完全 clean(`## main...origin/main`,零 staged 零 untracked);4 commits 全部 push 成功(79ab094 / aa399f3 / 1f4d3c5 / 5a49f68);origin/main HEAD = 5a49f68;Tier 2 Node.exe pattern 驗證可靠(commit + push from Windows side bypass VM stale inode cache)
+- **Pending:** v0.1.0 GitHub Release 頁;第二份 Prompt 規劃
+- **Next:** 1) v0.1.0 GitHub Release 頁建立(§3c Phase 2 缺口) 2) 第二份 Prompt 規劃(prompts/02-...) 3) 觀察新治理(OPERATIONAL_RUNBOOK §1 read + .gitattributes)跨 session 套用
+- **Risks:** Microlink free tier 50 req/day per IP;v0.1.0 Release 頁仍缺(§3c Phase 2);OPERATIONAL_RUNBOOK 列入 §1 強制讀為首次,跨 session 套用待觀察
+
+### Fix Record
+
+- **Problem:** VM `git commit` 持續失敗,顯示 "Unable to create '.git/index.lock': File exists",但 `find` / `ls` / `rm` 皆顯示檔案不存在(Linux sandbox 之前 git add 失敗時遺留嘅 ghost lock)
+- **Root Cause:** Linux kernel inode/dentry cache 殘留陳舊 metadata,在 Windows 端 `Remove-Item .git\index.lock` 成功後仍長期(>5 分鐘)未失效,超出 OPERATIONAL_RUNBOOK §5g 預測嘅 10–60s sync window
+- **Fix:** 跳過 VM,改用 Tier 2 MCP Node.exe pattern 從 Windows 側執行 `git commit -F <msg>` + `git push`(Windows process 無 stale cache)
+- **Verification:** 4 個 commit 全部由 Tier 2 pattern 完成 + push 成功;working tree 最終清零
+
+### Consolidation Record
+
+- Merged: 無
+- Retired: README.md 第 59 行舊路徑「Personal Preferences」(被「Cowork → Global Instructions」取代)
+- Why: 舊路徑非實際介面位置,屬事實錯誤需修正
+
+### DOC_SYNC Matrix Scan
+
+| Change Category | Required Doc Updates | Status |
+|---|---|---|
+| Governance rule change(AGENTS.md §1 強制讀 +1 條) | INIT.md FILE 1 mirror;README if user-facing | N/A — 本 repo 無 INIT.md;§1 順序為內部治理,非 user-facing |
+| External API / service change(Microlink 首次記錄) | CODEBASE_CONTEXT.md External Services block | ✓ Done — 本 session CODEBASE_CONTEXT.md 即包含 Microlink block,Doc-reviewed: UNVERIFIED + Test-verified: 2026-05-02 |
+| New project doc added(CODEBASE_CONTEXT.md / OPERATIONAL_RUNBOOK.md) | DOC_SYNC_CHECKLIST.md 加 row | ✓ Row added — OPERATIONAL_RUNBOOK content + 政策檔 .gitattributes/.gitignore 兩 row |
+| Repo-wide policy file changed(.gitattributes / .gitignore) | 政策檔本身;CODEBASE_CONTEXT.md Key Decisions;SESSION_LOG | ✓ Done — .gitattributes/.gitignore commit;CODEBASE_CONTEXT Key Decision 7 加;本 entry 述明 |
+
+### Next Session Handoff Prompt (Verbatim)
+
+```text
+Read AGENTS.md first (governance SSOT), then follow its §1 startup sequence:
+dev/SESSION_HANDOFF.md → dev/SESSION_LOG.md → dev/CODEBASE_CONTEXT.md (if exists) → dev/PROJECT_MASTER_SPEC.md (if exists) → dev/OPERATIONAL_RUNBOOK.md (if exists)
+
+Current objective: 維護公開分享 Meta Instructions 的 GitHub repo;治理框架完整(AGENTS.md + dev/ 五檔);v0.1.0 已 tag 待補 Release 頁;working tree clean。
+
+Pending priorities:
+1. 建立 v0.1.0 GitHub Release 頁(§3c Phase 2 缺口)
+2. 規劃第二份 Prompt(prompts/02-...)依現有結構
+3. 觀察新治理(OPERATIONAL_RUNBOOK §1 read + .gitattributes)跨 session 套用
+
+Key files changed this session:
+- dev/CODEBASE_CONTEXT.md(new 74 行)
+- dev/OPERATIONAL_RUNBOOK.md(new 618 行;§5j stale inode cache lesson)
+- AGENTS.md(§1 加 #5);README.md(Cowork 路徑 + 截圖 + 行尾)
+- .gitattributes(new);.gitignore(_*.txt);doc/ui_settings_cowork.jpg(new)
+- Additional files: see SESSION_LOG Changed
+
+Known risks/cautions:
+- Microlink free tier 50 req/day per IP
+- v0.1.0 已 tag 但 Release 頁仍缺(§3c Phase 2)
+- §5j stale inode cache 例外:VM stat 顯示 lock 仍在但 Windows 已刪 → Tier 2 bypass
+
+Validation status: working tree clean;origin/main HEAD = 5a49f68;4 commits pushed
+Post-startup first action: 揀優先 — GitHub Release 頁 vs 02 Prompt
+```
+
+---
+
+## 2026-05-02
+
 - **ID:** Claude_20260502_1637
 - **Summary:** 互動指南 Hero 三情境互動改造 + Facebook og:image 動態載入 + 治理框架首裝 + README 好處清單迭代(內容層 + 治理層雙活躍)
 - **Changed:** prompts/01-claude-cowork-meta-instruction/guide.html、README.md、AGENTS.md(new)、CLAUDE.md(new)、GEMINI.md(new)、dev/SESSION_HANDOFF.md(new)、dev/SESSION_LOG.md(new)、dev/DOC_SYNC_CHECKLIST.md(new)

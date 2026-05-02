@@ -29,6 +29,8 @@
 | Patch-only delivery format changed (§11b) | AGENTS.md §11b + §11 cross-ref; INIT.md FILE 1 mirror; CORE RULES marker block | grep parity check |
 | Deep-Fix / Final-Landing trigger changed (§11c) | AGENTS.md §11c; INIT.md FILE 1 mirror | grep parity check |
 | Tooling format rules changed (§13 calc / JSON / Mermaid) | AGENTS.md §13.1 / §13.2 / §13.3; INIT.md FILE 1 mirror | grep parity check |
+| OPERATIONAL_RUNBOOK content / pattern updated (new env limit, Tier 1-3 verified pattern, pitfall lesson) | dev/OPERATIONAL_RUNBOOK.md (relevant § with verified evidence + session ID); SESSION_LOG citing the new pattern | manual review + grep section heading |
+| Repo-wide policy file changed (.gitattributes / .gitignore) | The policy file itself; CODEBASE_CONTEXT.md Key Decisions if policy impacts agent behavior; SESSION_LOG entry with rationale | grep policy file + manual review |
 | _[Add project-specific rows below this line]_ | | |
 
 ## Anti-pattern: No Matching Row

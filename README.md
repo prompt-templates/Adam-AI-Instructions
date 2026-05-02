@@ -56,7 +56,9 @@ Adam-AI-Instructions/
 2. 閱讀該指令的 `README.md`,理解規則內容與適用情景。
 3. 開啟 `prompt.md`,複製全文。
 4. 貼至所用 AI 工具的對應欄位:
-   - Claude Cowork:Settings → Personal Preferences。
+   - Claude Cowork:Settings → Cowork → Global Instructions(介面位置見下圖)。
+
+     ![Claude Cowork 設定介面 — Settings → Cowork → Global Instructions 欄位位置](doc/ui_settings_cowork.jpg)
    - Claude Code:`~/.claude/CLAUDE.md` 或項目根目錄 `CLAUDE.md`。
    - ChatGPT:Settings → Personalization → Custom Instructions。
    - 其他工具:System prompt、Project instructions、Custom instructions 等同類欄位。
@@ -82,4 +84,4 @@ Adam-AI-Instructions/
 
 - **授權**:本資料庫內容供任何用戶免費使用、修改、轉載;保留來源出處更佳。
 - **回饋**:如發現規則描述有誤、有可改進之處,或有其他實戰情景可補充,歡迎提交 Issue 或 Pull Request。
-- **免責聲明**:所有指令源於個人使用經驗,實際效果視乎所用 AI 模型版本、工具更新狀態、用戶使用習慣而異;請自行驗證後使用。
+- **免責聲�

@@ -654,7 +654,7 @@
 
 <header class="hero">
   <h1>Claude Cowork Meta Instruction</h1>
-  <div class="tag">互動指南 · 7 大組規則視覺化解說</div>
+  <div class="tag">互動指南 · 8 大組規則視覺化解說</div>
   <div class="links">
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/prompt.md" target="_blank" rel="noopener">📄 Prompt 原文</a>
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/README.md" target="_blank" rel="noopener">📖 文字介紹頁</a>
@@ -688,7 +688,8 @@
   <div class="scenario-tabs" role="tablist">
     <button class="tab-btn active" data-tab="fpfr">情境 1 · 全圖優先規則</button>
     <button class="tab-btn" data-tab="skeleton">情境 2 · 回覆骨架</button>
-    <button class="tab-btn" data-tab="patch">情境 3 · Patch 變更</button>
+    <button class="tab-btn" data-tab="patch">情境 3 · 補丁式變更</button>
+    <button class="tab-btn" data-tab="lang">情境 4 · 語言分層</button>
   </div>
 
   <!-- ===== 情境 1: 全圖優先規則 ===== -->
@@ -714,7 +715,7 @@
           <div class="msg-avatar">🤖</div>
           <div class="msg-bubble fpfr-output">
             <div class="fpfr-section">
-              <h4>### 1. END-STATE SNAPSHOT</h4>
+              <h4>### 一、終點畫面</h4>
               <table class="fpfr-mini-table">
                 <thead><tr><th>檔案</th><th>前狀態</th><th>後狀態</th></tr></thead>
                 <tbody>
@@ -726,7 +727,7 @@
               </table>
             </div>
             <div class="fpfr-section">
-              <h4>### 2. DELIVERABLES</h4>
+              <h4>### 二、交付物</h4>
               <ul class="fpfr-mini-list">
                 <li>README.md — 新建 — 項目說明</li>
                 <li>LICENSE — 新建 — MIT 授權</li>
@@ -735,18 +736,18 @@
               </ul>
             </div>
             <div class="fpfr-section">
-              <h4>### 3. METRICS</h4>
+              <h4>### 三、可量指標</h4>
               <ul class="fpfr-mini-list">
                 <li>檔案數:0 → 4</li>
                 <li>授權清晰度:無 → MIT</li>
               </ul>
             </div>
             <div class="fpfr-section">
-              <h4>### 4. ACCEPTANCE TEST</h4>
+              <h4>### 四、驗收測試</h4>
               <div class="fpfr-mini-text"><code>ls</code> 顯示 4 個新檔;在瀏覽器開 index.html 不報錯。</div>
             </div>
             <div class="fpfr-section">
-              <h4>### 5. GOAL LINK</h4>
+              <h4>### 五、目標連結</h4>
               <div class="fpfr-mini-text">對齊用戶明示「項目骨架」請求。</div>
             </div>
             <div class="fpfr-closing">以上即執行計劃。若不否決或修改,即開始執行。</div>
@@ -833,9 +834,67 @@
     </div>
   </div>
 
+  <!-- ===== 情境 4: 語言分層 ===== -->
+  <div class="panel" data-panel="lang">
+    <div class="panel-context">場景:AI 用英文縮寫堆砌正文,可讀性低。看語言分層規則如何規範三層輸出語言。</div>
+
+    <div class="scenario-grid">
+      <div class="scenario-col before">
+        <div class="scenario-tag bad-tag">❌ 套用前</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">這次修改之後有什麼品質檢查要做?</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">完成 CHANGE 後需要執行 §9 Toolchain Compatibility Check。具體步驟:run linter、check SSOT alignment、confirm FPFR trigger conditions 符合 §3.5。</div></div>
+        <div class="scenario-summary bad-summary">⚠ 正文塞滿內部代號 — 非熟悉規格的讀者無法即讀即懂</div>
+      </div>
+
+      <div class="scenario-col after">
+        <div class="scenario-tag good-tag">✅ 套用後</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">這次修改之後有什麼品質檢查要做?</div></div>
+        <div class="msg ai good">
+          <div class="msg-avatar">🤖</div>
+          <div class="msg-bubble">
+            <strong class="lead">🔎 修改後需執行三項工具相容性檢查。</strong>
+            <div style="margin-top:8px;font-size:13.5px;line-height:1.7">
+              完成修改後,先跑程式碼格式檢查(linter),再確認規則庫中同一定義只存在一處(單一真源),最後驗證多檔計劃的前置輸出格式是否已正確觸發(全圖優先規則)。三項全通才可宣告完成。
+            </div>
+            <div style="margin-top:10px;font-size:12px;color:#888">內部規則錨點:§9 工具相容性 / §3.5 全圖優先輸出格式(FPFR)</div>
+          </div>
+        </div>
+        <div class="scenario-summary good-summary">✓ 正文用日常語言,內部術語降至括號次要標註 — 人話先行,可追溯</div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;padding:14px 18px;background:var(--c-surface);border-radius:10px;font-size:13.5px;line-height:1.75;color:var(--c-text)">
+      <strong>語言分層三層規則（摘要）</strong>
+      <table style="width:100%;margin-top:10px;border-collapse:collapse;font-size:13px">
+        <thead><tr style="background:var(--c-accent);color:#fff">
+          <th style="padding:6px 10px;text-align:left">層</th>
+          <th style="padding:6px 10px;text-align:left">範圍</th>
+          <th style="padding:6px 10px;text-align:left">語言規則</th>
+        </tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--c-border)">
+            <td style="padding:6px 10px">一、使用者輸出層</td>
+            <td style="padding:6px 10px">正文、選擇題、推薦、結論</td>
+            <td style="padding:6px 10px">繁體中文書面語；英文限專有名詞、工具名、使用者自用詞</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--c-border)">
+            <td style="padding:6px 10px">二、規則內部命名層</td>
+            <td style="padding:6px 10px">規則錨點互相引用</td>
+            <td style="padding:6px 10px">可用英文簡寫(FPFR / SSOT)；出現於正文時須譯成中文短語</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 10px">三、結構標題層</td>
+            <td style="padding:6px 10px">區段標題、欄位名、表格標題</td>
+            <td style="padding:6px 10px">一律中文；錨點若保留，置於括號內</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <div class="scenario-cta">
     這些是治理指令在實際對話中的具體差異。<br>
-    繼續向下閱讀,了解 7 大組規則如何運作 ↓
+    繼續向下閱讀,了解 8 大組規則如何運作 ↓
   </div>
 </section>
 
@@ -862,10 +921,11 @@
   </div>
 
   <p class="lede">此指令的設計目的:讓 AI 在多步驟、多檔案、長期協作任務中,行為更穩定可預期,輸出格式可審閱、可驗收。</p>
-  <p>本頁將原文約 19 個規則塊歸納為 <strong>7 大組</strong>,每組用「對應問題 → 規則內容 → 治理作用 → 適用情景」四個切面說明,並對核心抽象概念配以 SVG 視覺化。</p>
+  <p>本頁將原文約 20 個規則塊歸納為 <strong>8 大組</strong>,每組用「對應問題 → 規則內容 → 治理作用 → 適用情景」四個切面說明,並對核心抽象概念配以 SVG 視覺化。</p>
 
-  <h3>7 大組規則一覽</h3>
+  <h3>8 大組規則一覽</h3>
   <div class="grid">
+    <div class="card"><span class="num">0</span><h4>語言分層</h4><p>最高優先規則:三層輸出語言分離,正文用繁體中文書面語,英文限專有名詞與工具名。</p></div>
     <div class="card"><span class="num">1</span><h4>哲學基礎</h4><p>合作模式、優先序、核心原則。AI 與用戶的協作關係定位。</p></div>
     <div class="card"><span class="num">2</span><h4>全圖優先規則</h4><p>多檔案或規則改動前,先輸出 5 區段執行計劃。</p></div>
     <div class="card"><span class="num">3</span><h4>日常回覆品質</h4><p>回覆骨架、選擇題格式、語氣與用語紀律、語體一致。</p></div>
@@ -879,6 +939,7 @@
   <table>
     <thead><tr><th>痛點</th><th>對應規則</th></tr></thead>
     <tbody>
+      <tr><td>AI 正文夾雜英文縮寫或自創代號,即讀即停</td><td>語言分層(第 0 組)</td></tr>
       <tr><td>AI 動手前未交代終點,改完才發現方向偏離</td><td>全圖優先規則(第 2 組)</td></tr>
       <tr><td>AI 反覆「同意 A?同意 B?」逐項提問</td><td>合作模式 + 選擇題格式(第 1、3 組)</td></tr>
       <tr><td>AI 輸出未經核對的事實</td><td>事實核對(第 4 組)</td></tr>

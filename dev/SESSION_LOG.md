@@ -10,9 +10,15 @@
 - **Changed:** prompts/01-claude-cowork-meta-instruction/prompt.md(197→206行)、guide.html(1475→1441行，情境 4 tab + 導讀 8 大組)、README.md(398→382行，第零組 + 痛點表 + 安裝路徑)
 - **Done:** prompt.md 加【語言分層｜最高優先規則】三層規範；FPFR 觸發條件改（一）（二）（三）（四）；五區段標題改 ### 一、終點畫面 等中文；Cowork 節 A-F → 一-六；【SSOT對齊】→【真源對齊】；補丁格式 BEFORE/AFTER → 修改前/修改後；計算四步法改中文序號；【用語紀律】從粵語改書面語；guide.html 加情境 4 語言分層 tab + 三層摘要表；導讀 7→8 大組卡片 + 痛點表 +1 行；README.md 加第零組全節 + 痛點表 +1 行 + 安裝路徑修正
 - **QC:** FPFR 五標題 grep 確認全為中文（零英文殘留於演示標題）；guide.html `data-tab="lang"` 存在；README.md 第零組 + Cowork→Global Instructions 確認；Tier 2 commit a69f39b push 成功；working tree clean
-- **Pending:** v0.1.0 GitHub Release 頁；guide.html 情境 4 在 Pages 瀏覽器實測；第二份 Prompt 規劃
-- **Next:** 1) 建立 v0.1.0 GitHub Release 頁(§3c Phase 2 缺口) 2) Pages deploy 後實測情境 4 渲染 3) 規劃 prompts/02-...
-- **Risks:** Microlink free tier 50 req/day per IP；v0.1.0 Release 頁仍缺；情境 4 尚未瀏覽器實測
+- **Pending:** guide.html 情境 4 在 Pages 瀏覽器實測；第二份 Prompt 規劃
+- **Next:** 1) Pages deploy 後實測情境 4 渲染 2) 規劃 prompts/02-...
+- **Risks:** Microlink free tier 50 req/day per IP；情境 4 尚未瀏覽器實測
+
+### Release 建立記錄（本 session 追加）
+
+- **動作:** `gh release create v0.1.0` — tag cd4621e，§3c Phase 2 缺口正式清除
+- **Release URL:** https://github.com/prompt-templates/Adam-AI-Instructions/releases/tag/v0.1.0
+- **狀態:** ✅ 完成；--latest flag 已設；Release notes 含安裝步驟、功能說明、參考資源連結
 
 ### DOC_SYNC Matrix Scan
 

@@ -4,7 +4,7 @@
 
 ## Current Baseline
 
-1. Version: v0.1.0(annotated tag 已 push;GitHub Release 頁尚未建);HEAD = a69f39b
+1. Version: v0.1.0(annotated tag 已 push;GitHub Release 頁已建立);HEAD = a69f39b
 2. Core features: 公開分享 Meta Instructions repo;首份 prompt(01-claude-cowork-meta-instruction)含原文 + 文字介紹 + 互動指南 HTML;語言分層規則已加入
 3. Regression baseline: 互動指南 Hero 四情境(語言分層 / 全圖優先規則 / 回覆骨架 / 補丁式變更)；FPFR 五標題已改中文；working tree clean
 4. Release / merge status: v0.1.0 tag 已 push;GitHub Release 頁待建
@@ -34,10 +34,9 @@
 
 ## Open Priorities (max 5; one line per item)
 
-1. 建立 v0.1.0 GitHub Release 頁(§3c Phase 2 缺口;tag cd4621e 已 push)
-2. guide.html 語言分層情境 4 在瀏覽器實測渲染（Pages deploy 後）
-3. 規劃第二份 Prompt(prompts/02-...)依現有結構
-4. 觀察新治理跨 session 套用（本 session 已再次確認正常）
+1. guide.html 語言分層情境 4 在瀏覽器實測渲染（Pages deploy 後）
+2. 規劃第二份 Prompt(prompts/02-...)依現有結構
+3. 觀察新治理跨 session 套用（本 session 已再次確認正常）
 
 ## Known Risks / Blockers (max 7 unresolved active risks)
 

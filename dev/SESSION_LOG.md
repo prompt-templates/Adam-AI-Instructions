@@ -3,6 +3,55 @@
 <!-- Entry size cap: ≤110 lines per `## YYYY-MM-DD` block (incl. verbatim handoff); per §4 relocate detail to `dev/SESSION_STATE_DETAIL.md` or `docs/releases/<version>.md` if exceeded -->
 <!-- Archive: per §4a, entries move to `dev/archive/SESSION_LOG_YYYY_QN.md` when file > 400 lines OR oldest entry > 30 days -->
 
+## 2026-05-11
+
+- **ID:** Claude_20260511_0000
+- **Summary:** 語言分層規則加入首份 prompt + guide.html 情境 4 + README.md 第零組；FPFR 五標題全改中文；術語書面語化；Tier 2 push 成功(a69f39b)
+- **Changed:** prompts/01-claude-cowork-meta-instruction/prompt.md(197→206行)、guide.html(1475→1441行，情境 4 tab + 導讀 8 大組)、README.md(398→382行，第零組 + 痛點表 + 安裝路徑)
+- **Done:** prompt.md 加【語言分層｜最高優先規則】三層規範；FPFR 觸發條件改（一）（二）（三）（四）；五區段標題改 ### 一、終點畫面 等中文；Cowork 節 A-F → 一-六；【SSOT對齊】→【真源對齊】；補丁格式 BEFORE/AFTER → 修改前/修改後；計算四步法改中文序號；【用語紀律】從粵語改書面語；guide.html 加情境 4 語言分層 tab + 三層摘要表；導讀 7→8 大組卡片 + 痛點表 +1 行；README.md 加第零組全節 + 痛點表 +1 行 + 安裝路徑修正
+- **QC:** FPFR 五標題 grep 確認全為中文（零英文殘留於演示標題）；guide.html `data-tab="lang"` 存在；README.md 第零組 + Cowork→Global Instructions 確認；Tier 2 commit a69f39b push 成功；working tree clean
+- **Pending:** v0.1.0 GitHub Release 頁；guide.html 情境 4 在 Pages 瀏覽器實測；第二份 Prompt 規劃
+- **Next:** 1) 建立 v0.1.0 GitHub Release 頁(§3c Phase 2 缺口) 2) Pages deploy 後實測情境 4 渲染 3) 規劃 prompts/02-...
+- **Risks:** Microlink free tier 50 req/day per IP；v0.1.0 Release 頁仍缺；情境 4 尚未瀏覽器實測
+
+### DOC_SYNC Matrix Scan
+
+| 變更類別 | 需更新文件 | 狀態 |
+|---|---|---|
+| 新增使用者輸出規則（語言分層） | prompts/01/prompt.md、guide.html、README.md | ✓ Done — 三檔本 session 同步更新 |
+| 術語更名（SSOT對齊→真源對齊；BEFORE/AFTER→修改前/修改後） | prompt.md、README.md（說明段落） | ✓ Done — prompt.md 已更名；README.md 說明段沿用描述語言無需改 |
+| FPFR 五區段標題改中文 | guide.html Hero 演示、README.md 表格說明 | ✓ Done — guide.html 演示標題全改；README.md 表格描述已一致 |
+| 安裝路徑修正（Personal Preferences → Cowork Global Instructions） | prompts/01/README.md §安裝與使用 | ✓ Done |
+
+### Next Session Handoff Prompt (Verbatim)
+
+```text
+Read AGENTS.md first (governance SSOT), then follow its §1 startup sequence:
+dev/SESSION_HANDOFF.md → dev/SESSION_LOG.md → dev/CODEBASE_CONTEXT.md (if exists) → dev/PROJECT_MASTER_SPEC.md (if exists) → dev/OPERATIONAL_RUNBOOK.md (if exists)
+
+Current objective: 維護公開分享 Meta Instructions 的 GitHub repo；語言分層規則已加入首份 prompt；v0.1.0 Release 頁仍待建。
+
+Pending priorities:
+1. 建立 v0.1.0 GitHub Release 頁（§3c Phase 2 缺口）
+2. Pages deploy 後在瀏覽器實測 guide.html 情境 4（語言分層 tab）渲染
+3. 規劃第二份 Prompt（prompts/02-...）依現有結構
+
+Key files changed this session:
+- prompts/01-claude-cowork-meta-instruction/prompt.md（加語言分層；FPFR 標題改中文；術語書面語化）
+- prompts/01-claude-cowork-meta-instruction/guide.html（情境 4 tab；8 大組）
+- prompts/01-claude-cowork-meta-instruction/README.md（第零組；安裝路徑修正）
+
+Known risks/cautions:
+- Microlink free tier 50 req/day per IP
+- v0.1.0 已 tag 但 Release 頁仍缺（§3c Phase 2）
+- 情境 4 語言分層 tab 尚未瀏覽器實測
+
+Validation status: working tree clean；origin/main HEAD = a69f39b；Tier 2 push 成功
+Post-startup first action: 建立 v0.1.0 GitHub Release 頁，或先確認 Pages 已部署情境 4
+```
+
+---
+
 ## 2026-05-02
 
 - **ID:** Claude_20260502_1711

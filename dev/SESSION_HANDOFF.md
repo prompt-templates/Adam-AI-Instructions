@@ -4,11 +4,11 @@
 
 ## Current Baseline
 
-1. Version: v0.1.0(annotated tag 已 push;GitHub Release 頁尚未建)
-2. Core features: 公開分享 Meta Instructions repo;首份 prompt(01-claude-cowork-meta-instruction)含原文 + 文字介紹 + 互動指南 HTML
-3. Regression baseline: 互動指南 Hero 三情境(FPFR / 回覆骨架 / Patch)桌面與手機渲染通過實測;working tree clean
+1. Version: v0.1.0(annotated tag 已 push;GitHub Release 頁尚未建);HEAD = a69f39b
+2. Core features: 公開分享 Meta Instructions repo;首份 prompt(01-claude-cowork-meta-instruction)含原文 + 文字介紹 + 互動指南 HTML;語言分層規則已加入
+3. Regression baseline: 互動指南 Hero 四情境(語言分層 / 全圖優先規則 / 回覆骨架 / 補丁式變更)；FPFR 五標題已改中文；working tree clean
 4. Release / merge status: v0.1.0 tag 已 push;GitHub Release 頁待建
-5. Active branch / environment: main(origin/main 同步;HEAD = 5a49f68)
+5. Active branch / environment: main(origin/main 同步;HEAD = a69f39b)
 6. External platforms in scope: GitHub Pages、Microlink API(og:image 動態載入)
 
 ## Layer Map
@@ -35,8 +35,9 @@
 ## Open Priorities (max 5; one line per item)
 
 1. 建立 v0.1.0 GitHub Release 頁(§3c Phase 2 缺口;tag cd4621e 已 push)
-2. 規劃第二份 Prompt(prompts/02-...)依現有結構
-3. 觀察新治理(OPERATIONAL_RUNBOOK §1 強制讀 + .gitattributes LF 政策)跨 session 套用
+2. guide.html 語言分層情境 4 在瀏覽器實測渲染（Pages deploy 後）
+3. 規劃第二份 Prompt(prompts/02-...)依現有結構
+4. 觀察新治理跨 session 套用（本 session 已再次確認正常）
 
 ## Known Risks / Blockers (max 7 unresolved active risks)
 
@@ -68,13 +69,13 @@ If the session's fix involves adding a new rule, first check whether the existin
 
 ## Last Session Record (compact summary; details in SESSION_LOG)
 
-1. UTC date: 2026-05-02
-2. Session ID: Claude_20260502_1711
-3. Completed: §1 強制 CODEBASE_CONTEXT.md 首裝(7 區段含 Microlink External Services);Cowork 設定路徑修正(Personal Preferences → Cowork → Global Instructions)+ 加截圖;吸納用戶上載 runbook 為 dev/OPERATIONAL_RUNBOOK.md(618 行,§5j 新加 stale inode cache 例外);AGENTS.md §1 強制讀 4 → 5 條;.gitattributes LF 政策落地;.gitignore 加 _*.txt(per runbook §5i);git add --renormalize 處理 README 全檔行尾
-4. Pending: GitHub Release 頁;第二份 Prompt 規劃
+1. UTC date: 2026-05-11
+2. Session ID: Claude_20260511_0000
+3. Completed: prompt.md 加語言分層規則(最高優先);FPFR 五標題改中文;Cowork 節 A-F → 一-六;【SSOT對齊】→【真源對齊】;【用語紀律】改書面語;guide.html 加情境 4 tab + 導讀 7→8 大組;README.md 加第零組 + 痛點表 + 安裝路徑修正;Tier 2 commit + push 成功(a69f39b)
+4. Pending: GitHub Release 頁;情境 4 瀏覽器實測;第二份 Prompt 規劃
 5. Next priorities (max 3): 見 Open Priorities
-6. Risks / blockers: Microlink 免費層限制;新治理跨 session 套用待觀察;§5j 例外首次記錄
-7. Files materially changed: dev/CODEBASE_CONTEXT.md(new);dev/OPERATIONAL_RUNBOOK.md(new);AGENTS.md;README.md;.gitattributes(new);.gitignore;doc/ui_settings_cowork.jpg(new);dev/DOC_SYNC_CHECKLIST.md
-8. Validation summary: working tree fully clean(零 staged 零 untracked);4 commits push 成功(79ab094 / aa399f3 / 1f4d3c5 / 5a49f68);origin/main HEAD = 5a49f68;Tier 2 Node.exe pattern 經本 session 多次驗證可靠
-9. Fix Record: VM `git commit` 因 stale inode cache 持續失敗 → §5j 記錄 + 改用 Tier 2 從 Windows 側執行,4 commit 全部成功
-10. Consolidation actions taken: 移除 README.md 第 59 行舊路徑「Personal Preferences」(換為實際介面位置「Cowork → Global Instructions」)
+6. Risks / blockers: Microlink 免費層限制持續;v0.1.0 GitHub Release 頁仍缺
+7. Files materially changed: prompts/01-claude-cowork-meta-instruction/prompt.md、guide.html、README.md
+8. Validation summary: Tier 2 PowerShell commit + push 成功;origin/main HEAD = a69f39b;working tree clean
+9. Fix Record: 無
+10. Consolidation actions taken: 退役舊安裝路徑「Personal Preferences」(prompts/01/README.md);整合 SSOT/Patch-only 術語改為全中文表達

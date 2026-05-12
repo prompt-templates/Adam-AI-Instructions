@@ -3,6 +3,71 @@
 <!-- Entry size cap: ≤110 lines per `## YYYY-MM-DD` block (incl. verbatim handoff); per §4 relocate detail to `dev/SESSION_STATE_DETAIL.md` or `docs/releases/<version>.md` if exceeded -->
 <!-- Archive: per §4a, entries move to `dev/archive/SESSION_LOG_YYYY_QN.md` when file > 400 lines OR oldest entry > 30 days -->
 
+## 2026-05-12
+
+- **ID:** Claude_20260512_0500
+- **Summary:** v0.2.0 規則加固發佈(審計推薦穩定性 + Cowork 三條反偷懶紅線);GitHub Release v0.2.0 頁建立 + marked latest;closeout 由用戶反問才補做(起手讀序未含 AGENTS.md 是教訓)
+- **Changed:** prompts/01-claude-cowork-meta-instruction/prompt.md(+5 行:第 108、200-202 行)、CHANGELOG.md(+29 行)、README.md(+13 行)、docs/releases/v0.2.0.md(new 70 行 → 7e370f4 polish -3/+3)、dev/SESSION_HANDOFF.md(整檔重寫)
+- **Done:** 1) prompt.md +「審計／覆核時若推薦變更須明示原推薦缺陷」一句 + Cowork 補充 11A 必查 sessionlog / 11B 禁臨時新建 / 11C 禁憑記憶三條 2) CHANGELOG +v0.2.0 條目含痛點故事化說明 3) 主 README +「六、最近更新」區塊(原六→七) 4) 新建 docs/releases/v0.2.0.md(繁中、用戶面向、痛點對比敘事) 5) commit a2d12a0 +115/-1 push 6) annotated tag v0.2.0 push 7) `gh release create v0.2.0 --notes-file docs/releases/v0.2.0.md --latest` 8) 連結 polish: 3 個相對 URL 改絕對 commit 7e370f4 + `gh release edit` 9) 還原 4 個 working tree 損壞檔案至 HEAD 10) 載入 mcp__Windows-MCP__PowerShell + FileSystem 11) memory `feedback_windows_mcp_first.md` 寫入 12) 補做本 closeout
+- **QC:** grep 驗證新句子於 prompt.md 第 108、200-202 行 ✓;`git log` 顯示 a2d12a0 + 7e370f4 已 push;`git status -sb` = `## main...origin/main` 無 [ahead];`gh release view v0.2.0` 顯示 published + latest + body 正確;HEAD 4 檔還原行數 59/129/262/1390
+- **Pending:** 第二份 Prompt 規劃;Pages deploy 後 guide.html 情境 4 瀏覽器實測;新規則跨 session 套用觀察
+- **Next:** 1) 規劃 prompts/02 2) 情境 4 實測 3) 觀察 v0.2.0 規則執行效果
+- **Risks:** v0.2.0 新規則跨 session 待觀察;closeout 漏做暴露起手讀序未含 AGENTS.md;Microlink free tier 限制持續
+
+### Release 建立記錄
+
+- **動作:** `gh release create v0.2.0 --title "v0.2.0 — 推薦更穩定、AI 更老實" --notes-file docs/releases/v0.2.0.md --latest`
+- **Release URL:** https://github.com/prompt-templates/Adam-AI-Instructions/releases/tag/v0.2.0
+- **狀態:** ✅ published + marked latest;後續 polish 用 `gh release edit v0.2.0 --notes-file` 更新至絕對 URL 版本
+
+### Fix Record
+
+- **Problem:** 前半段靠 sandbox bash agent 操作 Windows-side filesystem,反覆碰壁(.git/index.lock 是 sandbox 端 phantom file、unlink EPERM、agent 用 rename 副作用留下 .corrupted phantom 檔)
+- **Root Cause:** 工具選擇錯誤 — session 起手沒讀 dev/OPERATIONAL_RUNBOOK.md + AGENTS.md,只看 prompts/01/prompt.md;忽略既有 Tier 2 策略「Windows-side 操作必走 mcp__Windows-MCP__*」,反而靠 sandbox bash + 9p mount 兜圈
+- **Fix:** ToolSearch 載入 mcp__Windows-MCP__PowerShell + FileSystem;後半段所有 git/gh/還原走 Windows-side 直接執行;`.git/index.lock` 用 `Remove-Item -Force` 一次清掉
+- **Verification:** commit + push + gh release create/edit + 4 檔還原全部直接成功;memory 寫入避免再犯
+
+### DOC_SYNC Matrix Scan
+
+| 變更類別 | 需更新文件 | 狀態 |
+|---|---|---|
+| 治理規則改動(prompt.md +4 條) | CHANGELOG.md、主 README 最近更新、docs/releases/v0.2.0.md | ✓ Done — 三檔同步 |
+| Release 發佈(v0.2.0) | annotated tag、GitHub Release 頁 | ✓ Done |
+| Release notes 連結格式(相對 → 絕對 URL) | docs/releases/v0.2.0.md、GitHub Release body | ✓ Done — 7e370f4 + gh release edit |
+| Closeout 自動觸發機制漏做 | SESSION_HANDOFF + SESSION_LOG + memory | ✓ Done — 本 entry + handoff rewrite + feedback_windows_mcp_first.md |
+
+### Next Session Handoff Prompt (Verbatim)
+
+```text
+Read AGENTS.md first (governance SSOT), then follow its §1 startup sequence:
+dev/SESSION_HANDOFF.md → dev/SESSION_LOG.md → dev/CODEBASE_CONTEXT.md (if exists) → dev/PROJECT_MASTER_SPEC.md (if exists) → dev/OPERATIONAL_RUNBOOK.md (if exists)
+
+Current objective: 維護公開分享 Meta Instructions repo;v0.2.0 已正式發佈;下一步可規劃第二份 Prompt 或實測 v0.2.0 新規則跨 session 套用效果。
+
+Pending priorities:
+1. 規劃第二份 Prompt(prompts/02-...)依現有結構
+2. Pages deploy 後在瀏覽器實測 guide.html 情境 4(語言分層 tab)渲染
+3. 觀察 v0.2.0 三條紅線 + 審計變更說明條款跨 session 套用效果
+
+Key files changed this session:
+- prompts/01-claude-cowork-meta-instruction/prompt.md(審計變更說明 + 11A/11B/11C)
+- CHANGELOG.md(v0.2.0 條目)
+- README.md(六、最近更新區塊)
+- docs/releases/v0.2.0.md(new + 絕對 URL polish)
+- dev/SESSION_HANDOFF.md(整檔重寫)
+- Additional files: see SESSION_LOG Changed
+
+Known risks/cautions:
+- v0.2.0 新規則跨 session 套用效果待觀察(尤其審計變更說明)
+- Closeout 觸發機制本 session 漏做;下次必先讀 AGENTS.md
+- Microlink free tier 50 req/day per IP
+
+Validation status: HEAD = 7e370f4;working tree clean;GitHub Release v0.2.0 published + marked latest;memory feedback_windows_mcp_first.md 寫入
+Post-startup first action: 依用戶意圖規劃下一步(第二份 Prompt 或實測新規則或其他)
+```
+
+---
+
 ## 2026-05-11
 
 - **ID:** Claude_20260511_0000

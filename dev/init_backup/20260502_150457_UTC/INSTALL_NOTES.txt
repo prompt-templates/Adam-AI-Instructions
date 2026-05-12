@@ -1,2 +1,0 @@
-Install snapshot: 20260502_150457_UTC
-No pre-existing target files to back up (first-run install).

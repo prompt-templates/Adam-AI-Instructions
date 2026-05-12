@@ -39,3 +39,10 @@ $RECYCLE.BIN/
 
 # Tier 3 / Tier 2 temp output files (per dev/OPERATIONAL_RUNBOOK.md §5i)
 _*.txt
+
+# Internal dev/governance files — kept local, not public-facing
+/AGENTS.md
+/CLAUDE.md
+/GEMINI.md
+/dev/
+/NEXT_SESSION_PROMPT.txt

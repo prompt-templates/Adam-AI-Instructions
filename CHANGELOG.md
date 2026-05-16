@@ -6,6 +6,29 @@
 
 ---
 
+## [0.5.1] - 2026-05-16
+
+### Hotfix
+
+修正 v0.5.0 名實不一致 bug：
+
+- **痛點**：v0.5.0 第二十節已 retitle 為「執行環境補充（Cowork / Codex / 同類 AI Agent 通用）」並補咗 Codex 安裝段，但主標題「# Claude Cowork 全域指令」仍 hardcode "Cowork"，同跨工具通用聲明矛盾。用戶 catch 到呢個 inconsistency，屬 v0.5.0 release 嘅 QC gap（淺層 marker check 過關但 cross-tool 一致性 audit 漏咗）。
+
+### 修正
+
+- **prompt.md 主標題** retitle 為「AI Agent 全域指令（Claude Cowork / OpenAI Codex / AGENTS.md 標準通用）」— 主標題層 cross-tool 統一。
+- **prompt.md 第二十節第 15 條**「如在 Cowork Project 內則加持久化（更新 Project memory）」改 generic：「如環境支援 project / workspace 持久化（如 Cowork Project、Codex Project 等）則加持久化階段更新對應 memory」。
+- **prompts/01 README 第七組描述** sync：章節名由「Cowork 環境特殊規則(A-F)」改為「執行環境特殊規則(Cowork / Codex / 同類 AI Agent 通用)」；涵蓋原文段落 reference 由「Cowork 專屬補充 A-F」改為「第二十節 執行環境補充」；適用對象描述補 OpenAI Codex / Amp / Cursor / Factory / Google Jules 等 AGENTS.md 標準 agent。
+- **prompts/01 README 四階段工作流** 「Cowork Project 內加 PERSIST」改 generic：「環境支援 project / workspace 持久化時加 PERSIST，如 Cowork Project、Codex Project 等」。
+
+### 治理層教訓（記錄入本 changelog 作 reference）
+
+- v0.5.0 release 嘅 QC 階段只 check 個別 markers（創作豁免、執行硬規則、第二十節 retitle）嘅命中，**跳過咗全文一致性 audit**（主標題 vs 章節名 cross-tool 對齊）。
+- 屬本 prompt 自身嘅「先讀後判」第 7 條（違反一條 = 當次判斷視為未成立）+「治理改動先審核」第 5 點（漂移風險評估）嘅 enforcement gap 活樣本。
+- 同一討論串內已有第二次 QC 漏（之前 PowerShell line count 陷阱 + 今次主標題矛盾），按本 prompt 規則「升級為用戶明示介入」處理。
+
+---
+
 ## [0.5.0] - 2026-05-15
 
 ### 改善

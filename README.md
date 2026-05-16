@@ -86,7 +86,8 @@ Adam-AI-Instructions/
 
 | 版本 | 日期 | 主要變更 |
 |------|------|---------|
-| [v0.5.0](docs/releases/v0.5.0.md) | 2026-05-15 | 加「創作類任務例外」豁免、條款編號 + 回覆骨架執行硬規則、選擇題分行修正、明文兼容 OpenAI Codex / AGENTS.md 標準 agent；緊湊化 296→248 行 |
+| [v0.5.1](docs/releases/v0.5.1.md) | 2026-05-16 | Hotfix:修正主標題仍 hardcode "Cowork" 同跨工具通用聲明矛盾;主標題 retitle + Cowork Project 用詞 generic + prompts/01 README 第七組描述 sync |
+| [v0.5.0](docs/releases/v0.5.0.md) | 2026-05-15 | 加「創作類任務例外」豁免、條款編號 + 回覆骨架執行硬規則、選擇題分行修正、明文兼容 OpenAI Codex / AGENTS.md 標準 agent;緊湊化 296→248 行 |
 | [v0.4.0](docs/releases/v0.4.0.md) | 2026-05-15 | 結構升級為標準 Markdown 階層,新增「先讀後判」「治理改動先審核」兩條上位核心規則 |
 | [v0.3.0](docs/releases/v0.3.0.md) | 2026-05-13 | 加固「治理層計劃自檢」「強制只讀審核」與「禁把看似可執行當已審核」規則 |
 | [v0.2.0](docs/releases/v0.2.0.md) | 2026-05-11 | 加固「審計後推薦穩定性」與「禁 quick fix／必查 sessionlog／禁憑記憶」規則 |

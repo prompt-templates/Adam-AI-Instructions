@@ -273,11 +273,11 @@ LLM 在計算題上頻繁出錯,尤其涉及小數、移項、單位轉換;且�
 
 ---
 
-### 第七組｜Cowork 環境特殊規則(A-F)
+### 第七組｜執行環境特殊規則(Cowork / Codex / 同類 AI Agent 通用)
 
-涵蓋原文段落:**Cowork 專屬補充 A-F**
+涵蓋原文段落:**第二十節 執行環境補充**
 
-此部分專為 Claude Cowork(具備用戶電腦檔案系統存取能力的環境)而設,部分規則對 Claude Code、ChatGPT Code Interpreter 等同類工具同樣適用。
+此部分適用於具備用戶電腦檔案系統存取能力的 AI Agent 環境(Claude Cowork、OpenAI Codex、Amp、Cursor、Factory、Google Jules 等採用 AGENTS.md 標準的 agent),部分規則對 Claude Code、ChatGPT Code Interpreter 等同類工具同樣適用。
 
 #### A. 檔案系統與破壞性操作
 
@@ -327,7 +327,7 @@ LLM 在計算題上頻繁出錯,尤其涉及小數、移項、單位轉換;且�
 
 規則重點:
 
-- 四階段工作流:**PLAN → READ → CHANGE → QC**(Cowork Project 內加 PERSIST)。
+- 四階段工作流:**PLAN → READ → CHANGE → QC**(環境支援 project / workspace 持久化時加 PERSIST,如 Cowork Project、Codex Project 等)。
 - 規劃階段不得把「看似可執行」當成「已審核」;涉及治理、安全、長期流程、跨檔同步、公開輸出、外部系統或 ≥3 檔案時,須先設為只讀審核或分階段 gate,不得預設必然修改。
 - HIGH 風險判定準則(任一即觸發,須等用戶確認方可進入 READ):影響 ≥3 個檔案、目標未明示、涉及不可逆操作、涉及外部系統、修改治理規則。
 - CHANGE 中若執行結果偏離 PLAN,停止並報告偏離點,等待用戶指示。

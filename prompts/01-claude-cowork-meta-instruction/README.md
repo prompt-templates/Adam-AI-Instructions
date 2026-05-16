@@ -361,6 +361,15 @@ LLM 在計算題上頻繁出錯,尤其涉及小數、移項、單位轉換;且�
 - 全域:`~/.claude/CLAUDE.md`(影響所有項目)
 - 項目級:項目根目錄的 `CLAUDE.md`(只影響該項目)
 
+### OpenAI Codex(及採用 AGENTS.md 標準的 AI agent,如 Amp / Cursor / Factory / Google Jules)
+
+放入以下其中一個位置:
+
+- 全域:`~/.codex/AGENTS.md`(影響所有 Codex session)
+- 項目級:項目根目錄的 `AGENTS.md`(只影響該項目)
+
+注:Codex 原意偏向 coding-specific 指令,但 AGENTS.md 係 markdown free-form,本 prompt 嘅通用行為規則(語言分層、合作模式、補丁式變更、先讀後判等)可完整套用。第二十節「執行環境補充」對 Codex 完全適用,無需刪減。
+
 ### 其他 Claude 介面 / ChatGPT / 其他 LLM
 
 貼入「System Prompt / Custom Instructions / Project Instructions」等同類欄位。Cowork 專屬規則(A-F)若工具不具備檔案系統存取能力,會自動失效,不影響其他規則運作。

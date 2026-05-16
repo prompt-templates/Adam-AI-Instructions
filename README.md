@@ -72,7 +72,7 @@ Adam-AI-Instructions/
 
 | # | 名稱 | 互動指南 | 文字介紹 | Prompt 原文 | 適用工具 |
 |---|------|---------|---------|-------------|----------|
-| 01 | Claude Cowork Meta Instruction | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/01-claude-cowork-meta-instruction/guide.html) | [README.md](prompts/01-claude-cowork-meta-instruction/README.md) | [prompt.md](prompts/01-claude-cowork-meta-instruction/prompt.md) | Claude Cowork(及一般 Claude 對話介面) |
+| 01 | Claude Cowork Meta Instruction | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/01-claude-cowork-meta-instruction/guide.html) | [README.md](prompts/01-claude-cowork-meta-instruction/README.md) | [prompt.md](prompts/01-claude-cowork-meta-instruction/prompt.md) | Claude Cowork、Claude Code、OpenAI Codex、AGENTS.md 標準 agent(Amp / Cursor / Factory / Google Jules)、一般 Claude / ChatGPT 對話介面 |
 
 > **建議閱讀順序**:先點擊「互動指南」(以瀏覽器開啟,含 SVG 視覺化說明),再參考「文字介紹」深入細節,最後複製「Prompt 原文」套用至所用 AI 工具。
 
@@ -86,6 +86,7 @@ Adam-AI-Instructions/
 
 | 版本 | 日期 | 主要變更 |
 |------|------|---------|
+| [v0.5.0](docs/releases/v0.5.0.md) | 2026-05-15 | 加「創作類任務例外」豁免、條款編號 + 回覆骨架執行硬規則、選擇題分行修正、明文兼容 OpenAI Codex / AGENTS.md 標準 agent；緊湊化 296→248 行 |
 | [v0.4.0](docs/releases/v0.4.0.md) | 2026-05-15 | 結構升級為標準 Markdown 階層,新增「先讀後判」「治理改動先審核」兩條上位核心規則 |
 | [v0.3.0](docs/releases/v0.3.0.md) | 2026-05-13 | 加固「治理層計劃自檢」「強制只讀審核」與「禁把看似可執行當已審核」規則 |
 | [v0.2.0](docs/releases/v0.2.0.md) | 2026-05-11 | 加固「審計後推薦穩定性」與「禁 quick fix／必查 sessionlog／禁憑記憶」規則 |

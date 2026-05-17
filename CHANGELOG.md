@@ -6,6 +6,35 @@
 
 ---
 
+## [0.6.1] - 2026-05-17
+
+### Hotfix
+
+改善 v0.6.0 安裝指引的可讀性，特別針對非技術背景用戶。
+
+- **痛點**：v0.6.0 的 root README 第四節原 Claude Code 安裝指引只一句 `~/.claude/CLAUDE.md` 或項目根目錄 `CLAUDE.md`，對未熟悉終端機的用戶不夠清楚；亦完全缺 OpenAI Codex 全域 AGENTS.md 安裝路徑。02 README 第五節雖有 step-by-step 但 Codex 路徑與其他 AGENTS.md agent 混為一段，且未說明如何確認指令已生效。
+
+### 修正
+
+- **root README 第四節**：Claude Code、OpenAI Codex 改為步驟化說明（含全平台路徑、新建資料夾與檔案處理、儲存後重新開啟工具即生效）。新增「其他 AGENTS.md 標準 agent」獨立段落（Amp / Cursor / Factory / Google Jules 等），釐清項目層級用 `AGENTS.md` 為跨工具通用標準、全域路徑視工具而異。Claude Cowork 與 ChatGPT 段落 wording 統一。新增「進階提示」blockquote 段落，覆蓋環境變數覆蓋（`CLAUDE_CONFIG_DIR` / `CODEX_HOME`）與 OpenAI Codex `AGENTS.override.md` 覆寫優先級兩項官方文件記載的進階設定。
+- **02 README 第五節**：將原本 Codex 與其他 AGENTS.md agent 合併段落拆分為兩段（Codex 獨立、Amp / Cursor / Factory / Google Jules 一段）；Claude Code 與 Codex 各列「全域安裝」「單一項目安裝」兩個明確子段，每個子段提供 5 步流程。新增「確認是否生效」段，提供具體驗證任務（多檔修改任務觸發五區段全圖即代表指令已載入）。新增「進階提示」段補入環境變數覆蓋、Codex 覆寫優先級、跨平台範圍三項。
+- **root README 第六節**：最近更新表加 v0.6.1 行。
+
+### 對應的用戶感受變化
+
+- 開 root README 第四節，每個工具的安裝步驟有清晰的中文書面語列點，免直接面對 `~/.claude/CLAUDE.md` 路徑串而不知如何下手。
+- Claude Code / OpenAI Codex 用戶可按 5 步流程完成全域或單一項目安裝；資料夾不存在亦明確說明自行新建。
+- AGENTS.md 標準 agent 用戶清楚知道：項目層級用 `AGENTS.md` 是跨工具通用標準，全域要查各自官方文件，不會誤以為所有工具都用 `~/.codex/AGENTS.md`。
+- 完成安裝後可即時測試指令是否生效（觸發多檔任務看五區段全圖）。
+- 熟悉終端機的用戶可於進階提示段看到環境變數覆蓋與覆寫檔等細節，不熟悉的用戶可略過不影響使用。
+
+### 治理層教訓（記錄入本 changelog 作 reference）
+
+- v0.6.0 release 時，AI 寫 OpenAI Codex 路徑 `~/.codex/AGENTS.md` 屬憑記憶推斷，未經官方文件驗證，違反本 prompt 自身「先讀後判」+「外部平台必查官方文件」兩條核心規則。用戶要求驗證後，查 OpenAI 官方文件 + AGENTS.md 標準 spec + Claude Code 官方文件確認路徑大致正確，但補出兩項漏寫：環境變數覆蓋與 `AGENTS.override.md` 覆寫優先級，並修正將 Amp / Cursor / Factory / Google Jules 與 Codex 混為一段的 path hardcode 誤導。
+- 教訓：寫任何涉及外部平台、API、CLI、套件管理器路徑或設定的內容前，必先取得官方文件，記錄基礎來源與審閱日期；不憑記憶或同類前例推斷。
+
+---
+
 ## [0.6.0] - 2026-05-17
 
 ### 新增

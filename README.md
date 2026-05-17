@@ -55,14 +55,47 @@ Adam-AI-Instructions/
 1. 從下文索引選取適用於自身工具的指令。
 2. 閱讀該指令的 `README.md`,理解規則內容與適用情景。
 3. 開啟 `prompt.md`,複製全文。
-4. 貼至所用 AI 工具的對應欄位:
-   - Claude Cowork:Settings → Cowork → Global Instructions(介面位置見下圖)。
+4. 貼至所用 AI 工具的對應位置(下方逐工具列出步驟):
 
-     ![Claude Cowork 設定介面 — Settings → Cowork → Global Instructions 欄位位置](doc/ui_settings_cowork.jpg)
-   - Claude Code:`~/.claude/CLAUDE.md` 或項目根目錄 `CLAUDE.md`。
-   - ChatGPT:Settings → Personalization → Custom Instructions。
-   - 其他工具:System prompt、Project instructions、Custom instructions 等同類欄位。
+   **Claude Cowork**
+
+   Settings → Cowork → Global Instructions(介面位置見下圖)。將複製的內容貼入該欄位,儲存即生效。
+
+   ![Claude Cowork 設定介面 — Settings → Cowork → Global Instructions 欄位位置](doc/ui_settings_cowork.jpg)
+
+   **Claude Code**(全平台)
+
+   - 全域(套用至所有項目):
+     - macOS / Linux:於個人資料夾下的 `.claude` 資料夾內,新建檔案 `CLAUDE.md`(完整路徑 `~/.claude/CLAUDE.md`)。
+     - Windows:於 `C:\Users\<你的用戶名稱>\.claude\` 內新建檔案 `CLAUDE.md`。
+   - 單一項目:於該項目根目錄新建檔案 `CLAUDE.md`,只影響該項目。
+   - 將複製的 prompt 全文貼入該檔案,儲存後重新開啟 Claude Code 即生效。
+   - 如資料夾或檔案不存在,自行新建即可。
+
+   **OpenAI Codex**
+
+   - 全域(套用至所有項目):
+     - macOS / Linux:於個人資料夾下的 `.codex` 資料夾內,新建檔案 `AGENTS.md`(完整路徑 `~/.codex/AGENTS.md`)。
+     - Windows:於 `C:\Users\<你的用戶名稱>\.codex\` 內新建檔案 `AGENTS.md`。
+   - 單一項目:於該項目根目錄新建檔案 `AGENTS.md`,只影響該項目。
+   - 將複製的 prompt 全文貼入該檔案,儲存後重新開啟 Codex 即生效。
+   - 如資料夾或檔案不存在,自行新建即可。
+
+   **其他 AGENTS.md 標準 agent**(Amp / Cursor / Factory / Google Jules 等)
+
+   - 單一項目:於該項目根目錄新建檔案 `AGENTS.md`,將 prompt 全文貼入。AGENTS.md 為跨工具通用格式。
+   - 全域:每個工具有自己的全域檔案位置,請參考各自的官方文件。
+
+   **ChatGPT 或其他 LLM 對話介面**
+
+   Settings → Personalization → Custom Instructions(或對應的「自訂指令」欄位),將 prompt 全文貼入儲存即生效。
+
 5. 套用後觀察 AI 行為變化;若某條規則與個人習慣衝突,可自行刪改。
+
+> **進階提示**(熟悉終端機的用戶可選看)
+>
+> - 已設定 `CLAUDE_CONFIG_DIR`(Claude Code)或 `CODEX_HOME`(OpenAI Codex)環境變數的用戶,安裝位置會隨環境變數指向的資料夾改變,以該位置為準。
+> - OpenAI Codex 同時支援 `AGENTS.override.md`(優先於 `AGENTS.md`)作為覆寫檔。如你已有 `AGENTS.md` 而不想覆蓋,可改貼至 `AGENTS.override.md`。
 
 各指令的規則段落可獨立使用,毋須整套套用。
 
@@ -89,6 +122,7 @@ Adam-AI-Instructions/
 
 | 版本 | 日期 | 主要變更 |
 |------|------|---------|
+| [v0.6.1](docs/releases/v0.6.1.md) | 2026-05-17 | 改善 root README 第四節 + 02 README 第五節安裝指引:Claude Code / Codex / 其他 AGENTS.md agent 改用步驟化、非技術讀者友善的書面語版本;補上「確認是否生效」段同進階提示 |
 | [v0.6.0](docs/releases/v0.6.0.md) | 2026-05-17 | 新增 prompt 02:Claude Code Meta Instruction(含機密處理及 Windows 桌面附加);第一至二十節與 01 同源逐字,新增第二十一節機密處理 + 第二十二節 Windows 桌面破壞性命令零容忍 |
 | [v0.5.1](docs/releases/v0.5.1.md) | 2026-05-16 | Hotfix:修正主標題仍 hardcode "Cowork" 同跨工具通用聲明矛盾;主標題 retitle + Cowork Project 用詞 generic + prompts/01 README 第七組描述 sync |
 | [v0.5.0](docs/releases/v0.5.0.md) | 2026-05-15 | 加「創作類任務例外」豁免、條款編號 + 回覆骨架執行硬規則、選擇題分行修正、明文兼容 OpenAI Codex / AGENTS.md 標準 agent;緊湊化 296→248 行 |

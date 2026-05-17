@@ -50,29 +50,62 @@
 
 ## 五、使用方式
 
+打開本資料夾的 [`prompt.md`](prompt.md)，全文複製，按下方對應工具的步驟貼入即可。
+
 ### 安裝至 Claude Code（推薦）
 
-複製本資料夾 `prompt.md` 全文，貼至：
+**全域安裝（套用至所有項目）**
 
-- **全域**：`~/.claude/CLAUDE.md`（macOS / Linux）或 `C:\Users\<你>\.claude\CLAUDE.md`（Windows）
-- **項目層級**：項目根目錄 `CLAUDE.md`
+1. 開啟你的個人資料夾下的 `.claude` 資料夾：
+   - macOS / Linux：`~/.claude/`
+   - Windows：`C:\Users\<你的用戶名稱>\.claude\`
+2. 如資料夾不存在，自行新建。
+3. 在資料夾內新建檔案 `CLAUDE.md`（已存在則直接打開）。
+4. 將剛才複製的 prompt 全文貼入，儲存。
+5. 重新開啟 Claude Code，新指令自動生效。
 
-### 安裝至 OpenAI Codex / Amp / Cursor / Factory / Google Jules 等 AGENTS.md 標準 agent
+**單一項目安裝（只影響該項目）**
 
-複製 `prompt.md` 全文，貼至：
+於該項目根目錄新建檔案 `CLAUDE.md`，將 prompt 全文貼入即可。項目層級會覆寫全域設定。
 
-- **全域**：`~/.codex/AGENTS.md`（OpenAI Codex；其他工具參考其各自文件）
-- **項目層級**：項目根目錄 `AGENTS.md`
+### 安裝至 OpenAI Codex
 
-第二十二節 Windows 桌面附加在 macOS / Linux 環境會自動跳過（節內已寫明範圍限定）。
+**全域安裝（套用至所有項目）**
+
+1. 開啟你的個人資料夾下的 `.codex` 資料夾：
+   - macOS / Linux：`~/.codex/`
+   - Windows：`C:\Users\<你的用戶名稱>\.codex\`
+2. 如資料夾不存在，自行新建。
+3. 在資料夾內新建檔案 `AGENTS.md`（已存在則直接打開）。
+4. 將剛才複製的 prompt 全文貼入，儲存。
+5. 重新開啟 Codex，新指令自動生效。
+
+**單一項目安裝（只影響該項目）**
+
+於該項目根目錄新建檔案 `AGENTS.md`，將 prompt 全文貼入即可。
+
+### 安裝至其他 AGENTS.md 標準 agent（Amp / Cursor / Factory / Google Jules 等）
+
+- **單一項目**：於該項目根目錄新建檔案 `AGENTS.md`，將 prompt 全文貼入。AGENTS.md 為跨工具通用格式，所有支援 AGENTS.md 的 agent 皆會自動讀取。
+- **全域**：各工具的全域檔案位置不一，請參考 Amp / Cursor / Factory / Google Jules 各自的官方文件。
 
 ### 安裝至 Claude Cowork
 
-如只需通用治理規則，建議改用 [01](../01-claude-cowork-meta-instruction/)；02 第二十二節 Windows 桌面內容在 Cowork 環境無對應 shell 場景。如仍想統一用 02，貼至 Cowork Settings → Global Instructions 亦可，多出的節會自動跳過。
+如只需通用治理規則，建議改用 [01](../01-claude-cowork-meta-instruction/)。02 的第二十二節 Windows 桌面內容在 Cowork 環境無對應 shell 場景。如仍想統一用 02，貼至 Cowork Settings → Global Instructions 亦可，多出的節會自動跳過。
 
-### 安裝至 ChatGPT / 一般 LLM 對話介面
+### 安裝至 ChatGPT 或其他 LLM 對話介面
 
-複製 `prompt.md` 全文，貼至 Settings → Personalization → Custom Instructions 或對應自訂指令欄位。
+於 Settings → Personalization → Custom Instructions（或對應的「自訂指令」欄位），將 prompt 全文貼入儲存即生效。
+
+### 確認是否生效
+
+套用後，於對話中提出一個會涉及多檔修改或治理規則改動的任務（例：「幫我重組這個項目的資料夾結構」）。如 AI 回覆開首出現「🔎」重點 + 五區段全圖（終點畫面、交付物、可量指標、驗收測試、目標連結），代表指令已正常載入。
+
+### 進階提示（熟悉終端機的用戶可選看）
+
+- **環境變數覆蓋**：如已設定 `CLAUDE_CONFIG_DIR`（Claude Code）或 `CODEX_HOME`（OpenAI Codex）環境變數，安裝位置會隨環境變數指向的資料夾改變，以該位置為準。
+- **OpenAI Codex 覆寫優先級**：Codex 同時支援 `AGENTS.override.md`（優先於 `AGENTS.md`）作為覆寫檔。如你已有 `AGENTS.md` 而不想覆蓋，可改貼至 `AGENTS.override.md`。
+- **跨平台範圍**：第二十二節 Windows 桌面附加在 macOS / Linux 環境會自動跳過（節內已寫明範圍限定），跨平台用戶可放心使用。
 
 ---
 

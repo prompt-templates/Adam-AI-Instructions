@@ -6,6 +6,49 @@
 
 ---
 
+## [0.6.0] - 2026-05-17
+
+### 新增
+
+新增第二份 prompt `02-claude-code-meta-instruction/`，定位為 Claude Code 全域指令版本，相對 01 補入兩條 Claude Code 場景常用的附加規則：
+
+- **痛點一**：Claude Code 常處理含 `.env` / credentials / API key 的項目，AI 預設可能在回覆、git commit message、issue 描述、log 檔中複述機密值，造成不可逆的外洩。01 通用治理規則未直接覆蓋此場景。
+- **痛點二**：Windows 環境下 `cmd /c rmdir` 家族指令、磁碟根目錄解析陷阱（引號處理錯誤令 `"C:\Project Files"` 解析為 `C:\`、環境變數展開出意外結果等）容易造成 catastrophic deletion。01 第二十節通用條已禁 `rm -rf` + 禁外部殼層執行檔案系統修改，但 Windows 平台特異變體值得獨立硬封殺。
+
+### prompt 02 結構
+
+- **第一至二十節**：與 01 [`prompt.md`](prompts/01-claude-cowork-meta-instruction/prompt.md) 為單一真源，逐字對齊；01 後續升版時 02 同步更新。
+- **第二十一節 機密處理**：OS-agnostic 全平台通用；讀取機密檔案時以 `<REDACTED>` 替代複述、禁將機密值寫入 commit / issue / PR / log / 新建檔案 / 外部請求、機密相關變更須明確標示「請人工檢閱」。
+- **第二十二節 執行環境特定附加（Windows 桌面）**：僅 Windows 桌面生效；`cmd /c rmdir` 家族零容忍（含所有混淆變體）+ 磁碟根目錄禁區 + 引號驗證 + 路徑歧義時不執行；macOS / Linux / 其他 AI Agent 環境自動跳過。
+
+### 三件套齊備
+
+- [`prompts/02-claude-code-meta-instruction/prompt.md`](prompts/02-claude-code-meta-instruction/prompt.md) — Prompt 原文，可直接複製貼至 `~/.claude/CLAUDE.md` 全域或項目根目錄 `CLAUDE.md`
+- [`prompts/02-claude-code-meta-instruction/README.md`](prompts/02-claude-code-meta-instruction/README.md) — 文字介紹頁，說明痛點、規則、01 vs 02 如何選用
+- [`prompts/02-claude-code-meta-instruction/guide.html`](prompts/02-claude-code-meta-instruction/guide.html) — 互動式 HTML 指南，含 SVG 視覺化說明 02 vs 01 差異
+
+### root README 同步
+
+- 第五節 Prompt 索引表加 02 行 + 加「01 vs 02 怎麼選」提示。
+- 第六節 最近更新表加 v0.6.0 行。
+
+### 適用對象擴展
+
+- Claude Code 用戶（Windows / macOS / Linux 皆適用，Windows 桌面附加為條件式生效）
+- OpenAI Codex / AGENTS.md 標準 agent 用戶（亦適用 02，視乎是否需要機密處理 + Windows 桌面附加）
+- 已套 01 但想補入機密處理規則的用戶（可單獨抽取 02 第二十一節貼至 01 之後）
+
+### 對應的用戶感受變化
+
+套用 02 後：
+
+- AI 讀 `.env` 後不再在回覆中複述具體 API key 值，改以 `<REDACTED>` + 「見 .env 第 N 行」表達。
+- AI 不再建議將機密值寫入 git commit message、issue / PR 描述、log 檔、新建檔案。
+- Windows 桌面下 AI 不再用 `cmd /c rmdir /s /q` 系列指令清理目錄，改用 native PowerShell / 工具原生 API；遇路徑解析歧義時主動停手不執行。
+- macOS / Linux 用戶套 02 亦可使用，第二十二節 Windows 附加會自動跳過，其餘 21 節跨平台適用。
+
+---
+
 ## [0.5.1] - 2026-05-16
 
 ### Hotfix

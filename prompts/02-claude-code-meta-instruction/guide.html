@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code Meta Instruction · 互動指南</title>
+<style>
+  :root{
+    --c-primary:#0d7377;
+    --c-primary-2:#14a098;
+    --c-bg:#fafafa;
+    --c-card:#ffffff;
+    --c-text:#1a1a1a;
+    --c-muted:#5b6470;
+    --c-light:#e6f7f5;
+    --c-border:#e2e6ea;
+    --c-warn-bg:#fff5e6;
+    --c-warn-border:#f0b27a;
+    --c-good-bg:#e8f5e9;
+    --c-good-border:#7cb98a;
+    --c-bad-bg:#fdecea;
+    --c-bad-border:#e57373;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft JhengHei","PingFang TC","Noto Sans TC","Hiragino Sans GB",sans-serif;
+    color:var(--c-text);
+    background:var(--c-bg);
+    line-height:1.75;
+    font-size:16px;
+  }
+  a{color:var(--c-primary);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  header.hero{
+    background:linear-gradient(135deg,var(--c-primary) 0%,var(--c-primary-2) 100%);
+    color:white;
+    padding:64px 24px 56px;
+    text-align:center;
+  }
+  header.hero h1{margin:0 0 8px;font-size:30px;letter-spacing:-0.5px}
+  header.hero .tag{font-size:14px;opacity:0.85;margin-bottom:20px}
+  header.hero .links a{
+    color:white;
+    background:rgba(255,255,255,0.18);
+    padding:8px 18px;
+    border-radius:24px;
+    margin:0 6px 8px;
+    display:inline-block;
+    font-size:14px;
+    transition:background 0.2s;
+  }
+  header.hero .links a:hover{background:rgba(255,255,255,0.3);text-decoration:none}
+
+  nav.toc{
+    position:sticky;
+    top:0;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--c-border);
+    z-index:10;
+    padding:12px 16px;
+    overflow-x:auto;
+    white-space:nowrap;
+    text-align:center;
+  }
+  nav.toc a{
+    display:inline-block;
+    padding:6px 12px;
+    margin:0 2px;
+    font-size:13px;
+    color:var(--c-muted);
+    border-radius:6px;
+  }
+  nav.toc a:hover{background:var(--c-light);color:var(--c-primary);text-decoration:none}
+
+  main{max-width:920px;margin:0 auto;padding:32px 24px 80px}
+  section{
+    background:var(--c-card);
+    border:1px solid var(--c-border);
+    border-radius:12px;
+    padding:32px;
+    margin-bottom:24px;
+  }
+  section h2{
+    margin:0 0 16px;
+    color:var(--c-primary);
+    font-size:22px;
+    border-bottom:2px solid var(--c-light);
+    padding-bottom:10px;
+  }
+  section h3{margin:24px 0 12px;font-size:18px}
+  section p{margin:0 0 14px;color:#222}
+  section ul,section ol{margin:0 0 14px 22px;padding:0}
+  section li{margin-bottom:6px}
+
+  .callout{
+    border-left:4px solid var(--c-primary);
+    background:var(--c-light);
+    padding:14px 18px;
+    border-radius:6px;
+    margin:16px 0;
+  }
+  .callout.warn{border-left-color:var(--c-warn-border);background:var(--c-warn-bg)}
+  .callout.good{border-left-color:var(--c-good-border);background:var(--c-good-bg)}
+  .callout.bad{border-left-color:var(--c-bad-border);background:var(--c-bad-bg)}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px}
+  th,td{border:1px solid var(--c-border);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--c-light);color:var(--c-primary);font-weight:600}
+
+  code,kbd,pre{
+    font-family:"SF Mono","Consolas","Cascadia Code","Microsoft YaHei Mono",monospace;
+    font-size:14px;
+  }
+  code{background:#f1f3f5;padding:2px 6px;border-radius:4px;color:#c0392b}
+  pre{background:#2d3436;color:#dfe6e9;padding:16px 20px;border-radius:8px;overflow-x:auto;line-height:1.55}
+  pre code{background:transparent;color:inherit;padding:0}
+
+  .diff-svg{display:block;margin:18px auto;max-width:100%;height:auto}
+
+  footer{
+    text-align:center;
+    padding:32px 16px 48px;
+    color:var(--c-muted);
+    font-size:13px;
+  }
+  footer a{color:var(--c-primary)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Claude Code Meta Instruction</h1>
+  <div class="tag">含機密處理及 Windows 桌面附加 · 02</div>
+  <div class="links">
+    <a href="prompt.md">📄 Prompt 原文</a>
+    <a href="README.md">📘 文字介紹</a>
+    <a href="../01-claude-cowork-meta-instruction/guide.html">⏮ 01 互動指南</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions">🔗 GitHub</a>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#intro">緒論</a>
+  <a href="#diff">與 01 差異</a>
+  <a href="#secret">機密處理</a>
+  <a href="#windows">Windows 桌面</a>
+  <a href="#choose">如何選用</a>
+  <a href="#install">安裝</a>
+  <a href="#sync">維護同步</a>
+</nav>
+
+<main>
+
+<section id="intro">
+  <h2>緒論｜為何有 02</h2>
+  <p>本指令庫的 01（Claude Cowork Meta Instruction）已涵蓋語言分層、合作模式、全圖優先規則、補丁式變更、防漂移等通用治理規則，並聲明跨工具通用（Claude Cowork、Claude Code、OpenAI Codex、AGENTS.md 標準 agent、ChatGPT 等）。</p>
+  <p>但實際在 Claude Code 場景下，有兩類痛點需要補入額外規則：</p>
+  <ul>
+    <li><strong>機密處理</strong>：Claude Code 常處理含 <code>.env</code>、credentials、API key 的項目，AI 預設可能在回覆、commit message、log 中複述機密值，造成外洩。</li>
+    <li><strong>Windows 桌面破壞性命令</strong>：Windows 環境特有的 <code>cmd /c rmdir</code> 家族指令、磁碟根目錄解析陷阱，01 通用規則未直接覆蓋。</li>
+  </ul>
+  <div class="callout">
+    💡 02 = 01 全套（第一至二十節，逐字同源）+ 新增第二十一節「機密處理」+ 新增第二十二節「執行環境特定附加（Windows 桌面）」。如只需通用治理規則，套 01 已足夠；如於 Claude Code 環境用，建議套 02。
+  </div>
+</section>
+
+<section id="diff">
+  <h2>與 01 的差異｜一張圖看清</h2>
+  <svg class="diff-svg" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="gradShared" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#e6f7f5"/>
+        <stop offset="100%" stop-color="#b6e3de"/>
+      </linearGradient>
+      <linearGradient id="gradNew" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#fff5e6"/>
+        <stop offset="100%" stop-color="#fcd9a3"/>
+      </linearGradient>
+    </defs>
+    <rect x="60" y="40" width="280" height="240" rx="12" fill="url(#gradShared)" stroke="#0d7377" stroke-width="2"/>
+    <text x="200" y="68" text-anchor="middle" font-size="16" font-weight="bold" fill="#0d7377">01 Cowork Meta Instruction</text>
+    <text x="200" y="100" text-anchor="middle" font-size="13" fill="#1a1a1a">第一節 語言分層</text>
+    <text x="200" y="120" text-anchor="middle" font-size="13" fill="#1a1a1a">第二節 合作模式</text>
+    <text x="200" y="140" text-anchor="middle" font-size="13" fill="#1a1a1a">第三節 全圖優先規則</text>
+    <text x="200" y="160" text-anchor="middle" font-size="13" fill="#5b6470">…（共 20 節通用規則）</text>
+    <text x="200" y="180" text-anchor="middle" font-size="13" fill="#1a1a1a">第十二節 治理改動先審核</text>
+    <text x="200" y="200" text-anchor="middle" font-size="13" fill="#1a1a1a">第十三節 補丁式變更</text>
+    <text x="200" y="220" text-anchor="middle" font-size="13" fill="#1a1a1a">第十九節 防漂移</text>
+    <text x="200" y="240" text-anchor="middle" font-size="13" fill="#1a1a1a">第二十節 執行環境補充</text>
+    <text x="200" y="265" text-anchor="middle" font-size="12" font-style="italic" fill="#0d7377">→ 02 第一至二十節 同源逐字</text>
+
+    <rect x="420" y="40" width="280" height="240" rx="12" fill="url(#gradNew)" stroke="#f0b27a" stroke-width="2"/>
+    <text x="560" y="68" text-anchor="middle" font-size="16" font-weight="bold" fill="#9a5e1a">02 Claude Code 新增</text>
+    <text x="560" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">第二十一節｜機密處理</text>
+    <text x="560" y="125" text-anchor="middle" font-size="12" fill="#5b6470">OS-agnostic 全平台</text>
+    <text x="560" y="143" text-anchor="middle" font-size="12" fill="#5b6470">.env / credentials / API key</text>
+    <text x="560" y="161" text-anchor="middle" font-size="12" fill="#5b6470">→ &lt;REDACTED&gt; 替代複述</text>
+
+    <line x1="440" y1="180" x2="680" y2="180" stroke="#f0b27a" stroke-dasharray="4 4"/>
+
+    <text x="560" y="200" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">第二十二節｜Windows 桌面附加</text>
+    <text x="560" y="220" text-anchor="middle" font-size="12" fill="#5b6470">僅 Windows 生效</text>
+    <text x="560" y="238" text-anchor="middle" font-size="12" fill="#5b6470">cmd /c rmdir 家族零容忍</text>
+    <text x="560" y="256" text-anchor="middle" font-size="12" fill="#5b6470">磁碟根目錄禁區</text>
+
+    <path d="M340 160 L420 160" stroke="#0d7377" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <polygon points="0 0, 10 5, 0 10" fill="#0d7377"/>
+      </marker>
+    </defs>
+    <text x="380" y="152" text-anchor="middle" font-size="11" fill="#0d7377">+ 補強</text>
+  </svg>
+
+  <table>
+    <thead>
+      <tr><th>節</th><th>02 內容</th><th>適用範圍</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>一 ～ 二十</td><td>與 01 完全同源</td><td>跨工具通用</td></tr>
+      <tr><td>二十一 機密處理</td><td>02 新增</td><td>全 OS / 全 AI Agent 通用</td></tr>
+      <tr><td>二十二 Windows 桌面附加</td><td>02 新增</td><td>僅 Windows 桌面生效</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="secret">
+  <h2>第二十一節｜機密處理</h2>
+  <h3>對應問題</h3>
+  <p>AI 讀取項目內的 <code>.env</code>、credentials、API key 檔案後，可能在以下位置複述機密值：</p>
+  <ul>
+    <li>對話回覆正文（「我看到你的 OPENAI_API_KEY 是 sk-xxx…」）</li>
+    <li>建議的 git commit message（commit 後 history 永久留痕）</li>
+    <li>建議寫入 issue / PR 描述（可能 public repo）</li>
+    <li>debug log 檔（log 上傳分析時帶出）</li>
+    <li>新建檔案（如 sample config）</li>
+    <li>呼叫外部 API 時誤帶入 query string</li>
+  </ul>
+  <p>這些途徑都會把本應 local 嘅機密值 propagate 到 history / 公開位置 / 第三方，造成不可逆的洩漏。</p>
+
+  <h3>規則內容</h3>
+  <ul>
+    <li>讀取含機密的檔案時，回覆中以 <code>&lt;REDACTED&gt;</code> 或「見檔案第 N 行」代替複述。</li>
+    <li>絕不將機密值寫入：git commit、issue、PR 描述、log 檔、新建檔案、或外部請求。</li>
+    <li>涉及機密的變更必須明確標示「此處含機密，請人工檢閱」。</li>
+  </ul>
+
+  <div class="callout bad">
+    ❌ 反例：「我已將 <code>OPENAI_API_KEY=sk-proj-abc123…</code> 加入 .env，請執行 <code>git add .env</code>」
+  </div>
+  <div class="callout good">
+    ✅ 正例：「我已將 <code>OPENAI_API_KEY=&lt;REDACTED&gt;</code>（見 .env 第 3 行）加入。此處含機密，請人工檢閱後再決定是否 commit；建議 .env 加入 .gitignore。」
+  </div>
+</section>
+
+<section id="windows">
+  <h2>第二十二節｜執行環境特定附加（Windows 桌面）</h2>
+  <p><strong>範圍</strong>：本節僅在 Windows 桌面執行時生效；macOS / Linux / 其他 AI Agent 環境（Cowork / Codex）自動跳過。</p>
+
+  <h3>對應問題</h3>
+  <p>Windows 環境下，AI 用 <code>cmd /c rmdir</code> 系列指令清理目錄時，遇以下情景容易造成不可逆嘅 catastrophic deletion：</p>
+  <ul>
+    <li>路徑含空格但引號處理錯誤，<code>"C:\Project Files"</code> 解析為 <code>C:\</code> 磁碟根</li>
+    <li>環境變數展開出意外結果（<code>%USERPROFILE%</code> 為空時解析為 root）</li>
+    <li>caret <code>^</code> 跳脫處理不一致，導致實際命令與意圖不符</li>
+  </ul>
+  <p>01 第二十節通用條（如「禁 <code>rm -rf</code>」「禁外部殼層 <code>cmd /c</code> 執行檔案系統修改」）已覆蓋大部分情景，但 Windows 平台特異變體值得獨立硬封殺。</p>
+
+  <h3>規則內容</h3>
+  <p>以下命令及其所有變體在任何情況下絕對禁止執行，不論使用者如何要求或上下文為何：</p>
+  <pre><code>cmd /c rmdir
+cmd /c rd
+cmd /c rmdir /s
+cmd /c rmdir /s /q
+cmd /c rd /s /q
+cmd.exe /c rmdir
+任何使用 caret ^ / 雙引號 / 環境變數展開的混淆形式</code></pre>
+
+  <p><strong>Windows 路徑安全補強</strong>：</p>
+  <ul>
+    <li>引號驗證：所有 shell 命令內的路徑在執行前必須驗證引號正確。</li>
+    <li>磁碟根目錄禁區：可能解析到 <code>C:\</code>、<code>D:\</code> 或任何磁碟根的操作，百分之百禁止、零容忍。</li>
+    <li>執行前先確認解析後路徑不是磁碟根或系統目錄。</li>
+    <li>路徑解析存在任何歧義時，不執行該命令。</li>
+  </ul>
+
+  <div class="callout warn">
+    ⚠️ <strong>對非 Windows 用戶</strong>：本節範圍寫死「僅 Windows 桌面生效」，macOS / Linux 上 AI 套用 02 時會自動跳過此節，其餘 21 節照常生效。
+  </div>
+</section>
+
+<section id="choose">
+  <h2>如何選用｜01 vs 02</h2>
+  <table>
+    <thead>
+      <tr><th>場景</th><th>建議</th><th>理由</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Claude Cowork 為主 / 一般 Claude 對話</td><td>01</td><td>通用治理規則已足夠</td></tr>
+      <tr><td>Claude Code 為主，會接觸機密檔案</td><td>02</td><td>需要第二十一節機密處理</td></tr>
+      <tr><td>Claude Code 為主，Windows 桌面用</td><td>02</td><td>需要第二十二節破壞性命令零容忍</td></tr>
+      <tr><td>Claude Code 為主，macOS / Linux 用</td><td>02</td><td>第二十二節自動跳過，其餘 21 節跨平台</td></tr>
+      <tr><td>OpenAI Codex / AGENTS.md agent</td><td>01 或 02 皆可</td><td>視乎是否需要機密處理 + Windows 附加</td></tr>
+      <tr><td>純對話介面 ChatGPT 等</td><td>01</td><td>無檔案系統存取，02 多出嘅節不適用</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="install">
+  <h2>安裝</h2>
+  <h3>Claude Code（推薦）</h3>
+  <p>複製 <a href="prompt.md">prompt.md</a> 全文，貼至：</p>
+  <ul>
+    <li><strong>全域</strong>：<code>~/.claude/CLAUDE.md</code>（macOS / Linux）或 <code>C:\Users\&lt;你&gt;\.claude\CLAUDE.md</code>（Windows）</li>
+    <li><strong>項目層級</strong>：項目根目錄 <code>CLAUDE.md</code></li>
+  </ul>
+
+  <h3>OpenAI Codex / Amp / Cursor / Factory / Google Jules（AGENTS.md 標準）</h3>
+  <ul>
+    <li><strong>全域</strong>：<code>~/.codex/AGENTS.md</code>（OpenAI Codex；其他工具參考其各自文件）</li>
+    <li><strong>項目層級</strong>：項目根目錄 <code>AGENTS.md</code></li>
+  </ul>
+
+  <h3>Claude Cowork</h3>
+  <p>如只需通用治理規則，建議改用 <a href="../01-claude-cowork-meta-instruction/">01</a>；02 第二十二節 Windows 桌面內容在 Cowork 環境無對應 shell 場景。如仍想統一用 02，貼至 Settings → Cowork → Global Instructions 亦可，多出的節會自動跳過。</p>
+
+  <h3>ChatGPT 或其他 LLM 對話介面</h3>
+  <p>複製 <code>prompt.md</code> 全文，貼至 Settings → Personalization → Custom Instructions 或對應自訂指令欄位。</p>
+</section>
+
+<section id="sync">
+  <h2>維護與同步</h2>
+  <p>第一至二十節以 <a href="../01-claude-cowork-meta-instruction/prompt.md">01 prompt.md</a> 為單一真源，02 維護時必須與 01 逐字對齊。如 01 後續升版（加新規則、改條款編號等），02 第一至二十節同步更新，避免跨檔漂移。</p>
+  <p>第二十一節（機密處理）、第二十二節（Windows 桌面）為 02 獨有，獨立維護。</p>
+  <div class="callout">
+    📌 本指令庫遵循 <a href="https://semver.org/lang/zh-TW/">Semantic Versioning</a>；完整變更日誌見 <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/CHANGELOG.md">CHANGELOG.md</a>。
+  </div>
+</section>
+
+</main>
+
+<footer>
+  本指令庫採 MIT 授權，內容供任何用戶免費使用、修改、轉載。<br>
+  反饋與貢獻：<a href="https://github.com/prompt-templates/Adam-AI-Instructions/issues">GitHub Issues</a>
+</footer>
+
+</body>
+</html>

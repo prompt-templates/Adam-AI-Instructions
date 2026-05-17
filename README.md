@@ -73,8 +73,11 @@ Adam-AI-Instructions/
 | # | 名稱 | 互動指南 | 文字介紹 | Prompt 原文 | 適用工具 |
 |---|------|---------|---------|-------------|----------|
 | 01 | Claude Cowork Meta Instruction | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/01-claude-cowork-meta-instruction/guide.html) | [README.md](prompts/01-claude-cowork-meta-instruction/README.md) | [prompt.md](prompts/01-claude-cowork-meta-instruction/prompt.md) | Claude Cowork、Claude Code、OpenAI Codex、AGENTS.md 標準 agent(Amp / Cursor / Factory / Google Jules)、一般 Claude / ChatGPT 對話介面 |
+| 02 | Claude Code Meta Instruction(含機密處理及 Windows 桌面附加) | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) | [README.md](prompts/02-claude-code-meta-instruction/README.md) | [prompt.md](prompts/02-claude-code-meta-instruction/prompt.md) | Claude Code(全平台);亦適用 OpenAI Codex / AGENTS.md 標準 agent;第二十二節 Windows 桌面附加為條件式生效,macOS / Linux 自動跳過 |
 
 > **建議閱讀順序**:先點擊「互動指南」(以瀏覽器開啟,含 SVG 視覺化說明),再參考「文字介紹」深入細節,最後複製「Prompt 原文」套用至所用 AI 工具。
+>
+> **01 vs 02 怎麼選**:純對話介面或 Cowork 為主用 01;Claude Code 為主、會接觸 `.env` / credentials 或在 Windows 桌面操作 shell 命令用 02。02 第一至二十節與 01 同源逐字,僅尾部新增機密處理 + Windows 桌面附加兩節。
 
 未來將陸續加入其他工具與場景的指令版本。
 
@@ -86,6 +89,7 @@ Adam-AI-Instructions/
 
 | 版本 | 日期 | 主要變更 |
 |------|------|---------|
+| [v0.6.0](docs/releases/v0.6.0.md) | 2026-05-17 | 新增 prompt 02:Claude Code Meta Instruction(含機密處理及 Windows 桌面附加);第一至二十節與 01 同源逐字,新增第二十一節機密處理 + 第二十二節 Windows 桌面破壞性命令零容忍 |
 | [v0.5.1](docs/releases/v0.5.1.md) | 2026-05-16 | Hotfix:修正主標題仍 hardcode "Cowork" 同跨工具通用聲明矛盾;主標題 retitle + Cowork Project 用詞 generic + prompts/01 README 第七組描述 sync |
 | [v0.5.0](docs/releases/v0.5.0.md) | 2026-05-15 | 加「創作類任務例外」豁免、條款編號 + 回覆骨架執行硬規則、選擇題分行修正、明文兼容 OpenAI Codex / AGENTS.md 標準 agent;緊湊化 296→248 行 |
 | [v0.4.0](docs/releases/v0.4.0.md) | 2026-05-15 | 結構升級為標準 Markdown 階層,新增「先讀後判」「治理改動先審核」兩條上位核心規則 |

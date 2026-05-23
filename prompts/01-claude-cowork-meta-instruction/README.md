@@ -275,7 +275,7 @@ LLM 在計算題上頻繁出錯,尤其涉及小數、移項、單位轉換;且�
 
 ### 第七組｜執行環境特殊規則(Cowork / Codex / 同類 AI Agent 通用)
 
-涵蓋原文段落:**第二十節 執行環境補充**
+涵蓋原文段落:**第十二節 執行環境補充**
 
 此部分適用於具備用戶電腦檔案系統存取能力的 AI Agent 環境(Claude Cowork、OpenAI Codex、Amp、Cursor、Factory、Google Jules 等採用 AGENTS.md 標準的 agent),部分規則對 Claude Code、ChatGPT Code Interpreter 等同類工具同樣適用。
 
@@ -368,7 +368,7 @@ LLM 在計算題上頻繁出錯,尤其涉及小數、移項、單位轉換;且�
 - 全域:`~/.codex/AGENTS.md`(影響所有 Codex session)
 - 項目級:項目根目錄的 `AGENTS.md`(只影響該項目)
 
-注:Codex 原意偏向 coding-specific 指令,但 AGENTS.md 係 markdown free-form,本 prompt 嘅通用行為規則(語言分層、合作模式、補丁式變更、先讀後判等)可完整套用。第二十節「執行環境補充」對 Codex 完全適用,無需刪減。
+注:Codex 原意偏向 coding-specific 指令,但 AGENTS.md 係 markdown free-form,本 prompt 嘅通用行為規則(語言分層、合作模式、補丁式變更、先讀後判等)可完整套用。第十二節「執行環境補充」對 Codex 完全適用,無需刪減。
 
 ### 其他 Claude 介面 / ChatGPT / 其他 LLM
 

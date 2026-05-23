@@ -101,6 +101,18 @@ Adam-AI-Instructions/
 
 ---
 
+---
+
+> ## 🏆 最新：v0.7.0 — 12-節結構整合版
+>
+> 📊 經 8 場景 × 37 條規則檢查點實測勝出　·　規則覆蓋率 **100%**　·　字數 **−45%**　·　綜合分較 v0.6.1 提升 **15.5%**
+>
+> 🧪 [實驗報告（含三檔策略對比、評分矩陣、勝出依據）](docs/experiments/2026-05-23-pruning-experiment/)
+>
+> 👉 **直接使用**：[Cowork / Codex / AGENTS.md 通用版（prompt 01）](prompts/01-claude-cowork-meta-instruction/prompt.md)　·　[Claude Code 場景特化版（prompt 02，含機密處理 + Windows 桌面附加）](prompts/02-claude-code-meta-instruction/prompt.md)
+
+---
+
 ## 五、Prompt 索引
 
 | # | 名稱 | 互動指南 | 文字介紹 | Prompt 原文 | 適用工具 |
@@ -122,8 +134,9 @@ Adam-AI-Instructions/
 
 | 版本 | 日期 | 主要變更 |
 |------|------|---------|
+| [v0.7.2](docs/releases/v0.7.2.md) | 2026-05-23 | 一般讀者導讀升級：root README 加 🏆 spotlight box 突出 v0.7.0 勝出地位 + 第六節 v0.7.0 行加 🏆 標；experiment 報告加 🏆 一句結論卡 + 各節功能性 emoji 視覺定位 + 排名 🏆🥈🥉 + ⭐ 標 B 中度行 |
 | [v0.7.1](docs/releases/v0.7.1.md) | 2026-05-23 | Hotfix：root README 第五節 02 行節號同步 + prompts/02/guide.html 約 15 處節號重編 + prompts/01/guide.html 加結構更新 banner + 勝出版本正式命名「v0.7.0 — 12-節結構整合版」（簡稱 12-節結構整合版）|
-| [v0.7.0](docs/releases/v0.7.0.md) | 2026-05-23 | Meta Instruction 中度瘦身：20 節 → 12 節（字數 -45%），規則覆蓋率 100%，綜合分較 v0.6.1 提升 15.5%；首次配套發佈完整實驗報告（[docs/experiments/2026-05-23-pruning-experiment/](docs/experiments/2026-05-23-pruning-experiment/)）|
+| 🏆 [v0.7.0](docs/releases/v0.7.0.md) | 2026-05-23 | **v0.7.0 — 12-節結構整合版**　Meta Instruction 中度瘦身：20 節 → 12 節（字數 -45%），規則覆蓋率 100%，綜合分較 v0.6.1 提升 15.5%；首次配套發佈完整實驗報告（[docs/experiments/2026-05-23-pruning-experiment/](docs/experiments/2026-05-23-pruning-experiment/)）|
 | [v0.6.1](docs/releases/v0.6.1.md) | 2026-05-17 | 改善 root README 第四節 + 02 README 第五節安裝指引:Claude Code / Codex / 其他 AGENTS.md agent 改用步驟化、非技術讀者友善的書面語版本;補上「確認是否生效」段同進階提示 |
 | [v0.6.0](docs/releases/v0.6.0.md) | 2026-05-17 | 新增 prompt 02:Claude Code Meta Instruction(含機密處理及 Windows 桌面附加);第一至二十節與 01 同源逐字,新增第二十一節機密處理 + 第二十二節 Windows 桌面破壞性命令零容忍 |
 | [v0.5.1](docs/releases/v0.5.1.md) | 2026-05-16 | Hotfix:修正主標題仍 hardcode "Cowork" 同跨工具通用聲明矛盾;主標題 retitle + Cowork Project 用詞 generic + prompts/01 README 第七組描述 sync |

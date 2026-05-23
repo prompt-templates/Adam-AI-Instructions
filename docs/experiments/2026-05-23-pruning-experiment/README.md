@@ -4,7 +4,7 @@
 > Anthropic Claude Code 官方 2026 best practices 明示：
 > 「If your CLAUDE.md is too long, Claude ignores half of it because important rules get lost in the noise. Ruthlessly prune.」
 >
-> 本實驗驗證瘦身假設、並用實測數據選出最佳版本。結果：v0.7.0 採用「中度瘦身版 B」，12 節約 3000 字，規則覆蓋率 100%，綜合分較 v0.6.1 提升 15.5%。
+> 本實驗驗證瘦身假設、並用實測數據選出最佳版本。結果：v0.7.0 採用「12-節結構整合版」（實驗代號 B 中度），12 節約 3000 字，規則覆蓋率 100%，綜合分較 v0.6.1 提升 15.5%。
 
 ---
 
@@ -69,7 +69,7 @@
 
 | 名次 | 版本 | 風險調整後 | 較 v0.6.1 提升 |
 |---|---|---|---|
-| 1 | **B 中度** | **87.8** | **+15.5%** |
+| 1 | **v0.7.0 — 12-節結構整合版**（B 中度） | **87.8** | **+15.5%** |
 | 2 | C 激進 | 85.0 | +11.8% |
 | 3 | A 保守 | 78.2 | +2.9% |
 | 4 | 現有 v0.6.1 | 76.0 | 基線 |
@@ -122,7 +122,7 @@
 | [evaluation_matrix.md](evaluation_matrix.md) | 三版本 × 8 場景 × 四輪評分矩陣 |
 | [comparison_report.md](comparison_report.md) | 四版本多維對照報告 + 勝出宣告 |
 | [v_a_conservative.md](v_a_conservative.md) | A 保守版（20 → 18 節） |
-| [v_b_moderate.md](v_b_moderate.md) | B 中度版（20 → 12 節）— 已採用 |
+| [v_b_moderate.md](v_b_moderate.md) | v0.7.0 — 12-節結構整合版（實驗代號 B 中度，20 → 12 節）— 已採用 |
 | [v_c_aggressive.md](v_c_aggressive.md) | C 激進版（20 → 8 節） |
 
 最終勝出版本（B）已於 [prompts/01-claude-cowork-meta-instruction/prompt.md](../../../prompts/01-claude-cowork-meta-instruction/prompt.md) 上線（v0.7.0）。

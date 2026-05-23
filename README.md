@@ -106,7 +106,7 @@ Adam-AI-Instructions/
 | # | 名稱 | 互動指南 | 文字介紹 | Prompt 原文 | 適用工具 |
 |---|------|---------|---------|-------------|----------|
 | 01 | Claude Cowork Meta Instruction | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/01-claude-cowork-meta-instruction/guide.html) | [README.md](prompts/01-claude-cowork-meta-instruction/README.md) | [prompt.md](prompts/01-claude-cowork-meta-instruction/prompt.md) | Claude Cowork、Claude Code、OpenAI Codex、AGENTS.md 標準 agent(Amp / Cursor / Factory / Google Jules)、一般 Claude / ChatGPT 對話介面 |
-| 02 | Claude Code Meta Instruction(含機密處理及 Windows 桌面附加) | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) | [README.md](prompts/02-claude-code-meta-instruction/README.md) | [prompt.md](prompts/02-claude-code-meta-instruction/prompt.md) | Claude Code(全平台);亦適用 OpenAI Codex / AGENTS.md 標準 agent;第二十二節 Windows 桌面附加為條件式生效,macOS / Linux 自動跳過 |
+| 02 | Claude Code Meta Instruction(含機密處理及 Windows 桌面附加) | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) | [README.md](prompts/02-claude-code-meta-instruction/README.md) | [prompt.md](prompts/02-claude-code-meta-instruction/prompt.md) | Claude Code(全平台);亦適用 OpenAI Codex / AGENTS.md 標準 agent;第十四節 Windows 桌面附加為條件式生效,macOS / Linux 自動跳過 |
 
 > **建議閱讀順序**:先點擊「互動指南」(以瀏覽器開啟,含 SVG 視覺化說明),再參考「文字介紹」深入細節,最後複製「Prompt 原文」套用至所用 AI 工具。
 >
@@ -122,6 +122,7 @@ Adam-AI-Instructions/
 
 | 版本 | 日期 | 主要變更 |
 |------|------|---------|
+| [v0.7.1](docs/releases/v0.7.1.md) | 2026-05-23 | Hotfix：root README 第五節 02 行節號同步 + prompts/02/guide.html 約 15 處節號重編 + prompts/01/guide.html 加結構更新 banner + 勝出版本正式命名「v0.7.0 — 12-節結構整合版」（簡稱 12-節結構整合版）|
 | [v0.7.0](docs/releases/v0.7.0.md) | 2026-05-23 | Meta Instruction 中度瘦身：20 節 → 12 節（字數 -45%），規則覆蓋率 100%，綜合分較 v0.6.1 提升 15.5%；首次配套發佈完整實驗報告（[docs/experiments/2026-05-23-pruning-experiment/](docs/experiments/2026-05-23-pruning-experiment/)）|
 | [v0.6.1](docs/releases/v0.6.1.md) | 2026-05-17 | 改善 root README 第四節 + 02 README 第五節安裝指引:Claude Code / Codex / 其他 AGENTS.md agent 改用步驟化、非技術讀者友善的書面語版本;補上「確認是否生效」段同進階提示 |
 | [v0.6.0](docs/releases/v0.6.0.md) | 2026-05-17 | 新增 prompt 02:Claude Code Meta Instruction(含機密處理及 Windows 桌面附加);第一至二十節與 01 同源逐字,新增第二十一節機密處理 + 第二十二節 Windows 桌面破壞性命令零容忍 |

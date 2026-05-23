@@ -164,7 +164,7 @@
     <li><strong>Windows 桌面破壞性命令</strong>：Windows 環境特有的 <code>cmd /c rmdir</code> 家族指令、磁碟根目錄解析陷阱，01 通用規則未直接覆蓋。</li>
   </ul>
   <div class="callout">
-    💡 02 = 01 全套（第一至二十節，逐字同源）+ 新增第二十一節「機密處理」+ 新增第二十二節「執行環境特定附加（Windows 桌面）」。如只需通用治理規則，套 01 已足夠；如於 Claude Code 環境用，建議套 02。
+    💡 02 = 01 全套（第一至十二節，逐字同源）+ 新增第十三節「機密處理」+ 新增第十四節「執行環境特定附加（Windows 桌面）」。如只需通用治理規則，套 01 已足夠；如於 Claude Code 環境用，建議套 02。
   </div>
 </section>
 
@@ -183,26 +183,26 @@
     </defs>
     <rect x="60" y="40" width="280" height="240" rx="12" fill="url(#gradShared)" stroke="#0d7377" stroke-width="2"/>
     <text x="200" y="68" text-anchor="middle" font-size="16" font-weight="bold" fill="#0d7377">01 Cowork Meta Instruction</text>
-    <text x="200" y="100" text-anchor="middle" font-size="13" fill="#1a1a1a">第一節 語言分層</text>
+    <text x="200" y="100" text-anchor="middle" font-size="13" fill="#1a1a1a">第一節 語言與語體</text>
     <text x="200" y="120" text-anchor="middle" font-size="13" fill="#1a1a1a">第二節 合作模式</text>
-    <text x="200" y="140" text-anchor="middle" font-size="13" fill="#1a1a1a">第三節 全圖優先規則</text>
-    <text x="200" y="160" text-anchor="middle" font-size="13" fill="#5b6470">…（共 20 節通用規則）</text>
-    <text x="200" y="180" text-anchor="middle" font-size="13" fill="#1a1a1a">第十二節 治理改動先審核</text>
-    <text x="200" y="200" text-anchor="middle" font-size="13" fill="#1a1a1a">第十三節 補丁式變更</text>
-    <text x="200" y="220" text-anchor="middle" font-size="13" fill="#1a1a1a">第十九節 防漂移</text>
-    <text x="200" y="240" text-anchor="middle" font-size="13" fill="#1a1a1a">第二十節 執行環境補充</text>
-    <text x="200" y="265" text-anchor="middle" font-size="12" font-style="italic" fill="#0d7377">→ 02 第一至二十節 同源逐字</text>
+    <text x="200" y="140" text-anchor="middle" font-size="13" fill="#1a1a1a">第四節 全圖優先規則</text>
+    <text x="200" y="160" text-anchor="middle" font-size="13" fill="#5b6470">…（共 12 節通用規則）</text>
+    <text x="200" y="180" text-anchor="middle" font-size="13" fill="#1a1a1a">第八節 治理改動先審核</text>
+    <text x="200" y="200" text-anchor="middle" font-size="13" fill="#1a1a1a">第九節 變更交付：補丁式</text>
+    <text x="200" y="220" text-anchor="middle" font-size="13" fill="#1a1a1a">第十節 防漂移與用語紀律</text>
+    <text x="200" y="240" text-anchor="middle" font-size="13" fill="#1a1a1a">第十二節 執行環境補充</text>
+    <text x="200" y="265" text-anchor="middle" font-size="12" font-style="italic" fill="#0d7377">→ 02 第一至十二節 同源逐字</text>
 
     <rect x="420" y="40" width="280" height="240" rx="12" fill="url(#gradNew)" stroke="#f0b27a" stroke-width="2"/>
     <text x="560" y="68" text-anchor="middle" font-size="16" font-weight="bold" fill="#9a5e1a">02 Claude Code 新增</text>
-    <text x="560" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">第二十一節｜機密處理</text>
+    <text x="560" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">第十三節｜機密處理</text>
     <text x="560" y="125" text-anchor="middle" font-size="12" fill="#5b6470">OS-agnostic 全平台</text>
     <text x="560" y="143" text-anchor="middle" font-size="12" fill="#5b6470">.env / credentials / API key</text>
     <text x="560" y="161" text-anchor="middle" font-size="12" fill="#5b6470">→ &lt;REDACTED&gt; 替代複述</text>
 
     <line x1="440" y1="180" x2="680" y2="180" stroke="#f0b27a" stroke-dasharray="4 4"/>
 
-    <text x="560" y="200" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">第二十二節｜Windows 桌面附加</text>
+    <text x="560" y="200" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">第十四節｜Windows 桌面附加</text>
     <text x="560" y="220" text-anchor="middle" font-size="12" fill="#5b6470">僅 Windows 生效</text>
     <text x="560" y="238" text-anchor="middle" font-size="12" fill="#5b6470">cmd /c rmdir 家族零容忍</text>
     <text x="560" y="256" text-anchor="middle" font-size="12" fill="#5b6470">磁碟根目錄禁區</text>
@@ -221,15 +221,15 @@
       <tr><th>節</th><th>02 內容</th><th>適用範圍</th></tr>
     </thead>
     <tbody>
-      <tr><td>一 ～ 二十</td><td>與 01 完全同源</td><td>跨工具通用</td></tr>
-      <tr><td>二十一 機密處理</td><td>02 新增</td><td>全 OS / 全 AI Agent 通用</td></tr>
-      <tr><td>二十二 Windows 桌面附加</td><td>02 新增</td><td>僅 Windows 桌面生效</td></tr>
+      <tr><td>一 ～ 十二</td><td>與 01 完全同源</td><td>跨工具通用</td></tr>
+      <tr><td>十三 機密處理</td><td>02 新增</td><td>全 OS / 全 AI Agent 通用</td></tr>
+      <tr><td>十四 Windows 桌面附加</td><td>02 新增</td><td>僅 Windows 桌面生效</td></tr>
     </tbody>
   </table>
 </section>
 
 <section id="secret">
-  <h2>第二十一節｜機密處理</h2>
+  <h2>第十三節｜機密處理</h2>
   <h3>對應問題</h3>
   <p>AI 讀取項目內的 <code>.env</code>、credentials、API key 檔案後，可能在以下位置複述機密值：</p>
   <ul>
@@ -258,7 +258,7 @@
 </section>
 
 <section id="windows">
-  <h2>第二十二節｜執行環境特定附加（Windows 桌面）</h2>
+  <h2>第十四節｜執行環境特定附加（Windows 桌面）</h2>
   <p><strong>範圍</strong>：本節僅在 Windows 桌面執行時生效；macOS / Linux / 其他 AI Agent 環境（Cowork / Codex）自動跳過。</p>
 
   <h3>對應問題</h3>
@@ -268,7 +268,7 @@
     <li>環境變數展開出意外結果（<code>%USERPROFILE%</code> 為空時解析為 root）</li>
     <li>caret <code>^</code> 跳脫處理不一致，導致實際命令與意圖不符</li>
   </ul>
-  <p>01 第二十節通用條（如「禁 <code>rm -rf</code>」「禁外部殼層 <code>cmd /c</code> 執行檔案系統修改」）已覆蓋大部分情景，但 Windows 平台特異變體值得獨立硬封殺。</p>
+  <p>01 第十二節通用條（如「禁 <code>rm -rf</code>」「禁外部殼層 <code>cmd /c</code> 執行檔案系統修改」）已覆蓋大部分情景，但 Windows 平台特異變體值得獨立硬封殺。</p>
 
   <h3>規則內容</h3>
   <p>以下命令及其所有變體在任何情況下絕對禁止執行，不論使用者如何要求或上下文為何：</p>
@@ -289,7 +289,7 @@ cmd.exe /c rmdir
   </ul>
 
   <div class="callout warn">
-    ⚠️ <strong>對非 Windows 用戶</strong>：本節範圍寫死「僅 Windows 桌面生效」，macOS / Linux 上 AI 套用 02 時會自動跳過此節，其餘 21 節照常生效。
+    ⚠️ <strong>對非 Windows 用戶</strong>：本節範圍寫死「僅 Windows 桌面生效」，macOS / Linux 上 AI 套用 02 時會自動跳過此節，其餘 13 節照常生效。
   </div>
 </section>
 
@@ -301,9 +301,9 @@ cmd.exe /c rmdir
     </thead>
     <tbody>
       <tr><td>Claude Cowork 為主 / 一般 Claude 對話</td><td>01</td><td>通用治理規則已足夠</td></tr>
-      <tr><td>Claude Code 為主，會接觸機密檔案</td><td>02</td><td>需要第二十一節機密處理</td></tr>
-      <tr><td>Claude Code 為主，Windows 桌面用</td><td>02</td><td>需要第二十二節破壞性命令零容忍</td></tr>
-      <tr><td>Claude Code 為主，macOS / Linux 用</td><td>02</td><td>第二十二節自動跳過，其餘 21 節跨平台</td></tr>
+      <tr><td>Claude Code 為主，會接觸機密檔案</td><td>02</td><td>需要第十三節機密處理</td></tr>
+      <tr><td>Claude Code 為主，Windows 桌面用</td><td>02</td><td>需要第十四節破壞性命令零容忍</td></tr>
+      <tr><td>Claude Code 為主，macOS / Linux 用</td><td>02</td><td>第十四節自動跳過，其餘 13 節跨平台</td></tr>
       <tr><td>OpenAI Codex / AGENTS.md agent</td><td>01 或 02 皆可</td><td>視乎是否需要機密處理 + Windows 附加</td></tr>
       <tr><td>純對話介面 ChatGPT 等</td><td>01</td><td>無檔案系統存取，02 多出嘅節不適用</td></tr>
     </tbody>
@@ -326,7 +326,7 @@ cmd.exe /c rmdir
   </ul>
 
   <h3>Claude Cowork</h3>
-  <p>如只需通用治理規則，建議改用 <a href="../01-claude-cowork-meta-instruction/">01</a>；02 第二十二節 Windows 桌面內容在 Cowork 環境無對應 shell 場景。如仍想統一用 02，貼至 Settings → Cowork → Global Instructions 亦可，多出的節會自動跳過。</p>
+  <p>如只需通用治理規則，建議改用 <a href="../01-claude-cowork-meta-instruction/">01</a>；02 第十四節 Windows 桌面內容在 Cowork 環境無對應 shell 場景。如仍想統一用 02，貼至 Settings → Cowork → Global Instructions 亦可，多出的節會自動跳過。</p>
 
   <h3>ChatGPT 或其他 LLM 對話介面</h3>
   <p>複製 <code>prompt.md</code> 全文，貼至 Settings → Personalization → Custom Instructions 或對應自訂指令欄位。</p>
@@ -334,8 +334,8 @@ cmd.exe /c rmdir
 
 <section id="sync">
   <h2>維護與同步</h2>
-  <p>第一至二十節以 <a href="../01-claude-cowork-meta-instruction/prompt.md">01 prompt.md</a> 為單一真源，02 維護時必須與 01 逐字對齊。如 01 後續升版（加新規則、改條款編號等），02 第一至二十節同步更新，避免跨檔漂移。</p>
-  <p>第二十一節（機密處理）、第二十二節（Windows 桌面）為 02 獨有，獨立維護。</p>
+  <p>第一至十二節以 <a href="../01-claude-cowork-meta-instruction/prompt.md">01 prompt.md</a> 為單一真源，02 維護時必須與 01 逐字對齊。如 01 後續升版（加新規則、改條款編號等），02 第一至十二節同步更新，避免跨檔漂移。</p>
+  <p>第十三節（機密處理）、第十四節（Windows 桌面）為 02 獨有，獨立維護。</p>
   <div class="callout">
     📌 本指令庫遵循 <a href="https://semver.org/lang/zh-TW/">Semantic Versioning</a>；完整變更日誌見 <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/CHANGELOG.md">CHANGELOG.md</a>。
   </div>

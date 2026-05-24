@@ -49,7 +49,7 @@ Adam-AI-Instructions/
 │   │   ├── README.md                           ← 該指令的文字介紹頁
 │   │   └── guide.html                          ← 互動式 SVG 指南（GitHub Pages 可開啟）
 │   │
-│   └── 02-claude-code-meta-instruction/        ← Claude Code 場景特化版（第一至十二節與 01 同源 + 第十三節機密處理 + 第十四節 Windows 桌面附加）
+│   └── 02-claude-code-meta-instruction/        ← Claude Code 場景特化版（第一至十二節與 01 同源 + 第十三節機密處理 + 第十四節 Windows 桌面附加 + 第十五節 Claude Code 場景工作流）
 │       ├── prompt.md
 │       ├── README.md
 │       └── guide.html
@@ -147,7 +147,7 @@ Adam-AI-Instructions/
 
 > **建議閱讀順序**:先點擊「互動指南」(以瀏覽器開啟,含 SVG 視覺化說明),再參考「文字介紹」深入細節,最後複製「Prompt 原文」套用至所用 AI 工具。
 >
-> **01 vs 02 怎麼選**:純對話介面或 Cowork 為主用 01;Claude Code 為主、會接觸 `.env` / credentials 或在 Windows 桌面操作 shell 命令用 02。02 第一至十二節與 01 同源逐字，僅尾部新增第十三節機密處理 + 第十四節 Windows 桌面附加兩節。
+> **01 vs 02 怎麼選**:純對話介面或 Cowork 為主用 01;Claude Code 為主、會接觸 `.env` / credentials 或在 Windows 桌面操作 shell 命令用 02。02 第一至十二節與 01 同源逐字，尾部新增第十三節機密處理 + 第十四節 Windows 桌面附加 + 第十五節 Claude Code 場景工作流共三節。
 
 未來將陸續加入其他工具與場景的指令版本。
 
@@ -159,6 +159,7 @@ Adam-AI-Instructions/
 
 | 版本 | 日期 | 主要變更 |
 |------|------|---------|
+| [v0.8.0](docs/releases/v0.8.0.md) | 2026-05-24 | **Claude Code 場景特化升級**：prompt 02 新增第十五節「Claude Code 場景工作流」，整合 Anthropic 2026 官方 best practices 嘅 5 項實操（Plan mode 觸發／主動提驗收／Context 管理／CLI 優先／Subagent for investigation）+ 5 項失敗模式警示；保留 v0.7.0 12-節通用基礎，不重組既有 14 節 |
 | [v0.7.3](docs/releases/v0.7.3.md) | 2026-05-23 | root README 全面對齊：第一節五區段名／中文措辭 + 加 3 條核心好處；第三節目錄樹完整重寫含 prompt 02、guide.html、docs/、CHANGELOG、AGENTS.md；第五節節號同步；移除多餘 horizontal rule |
 | [v0.7.2](docs/releases/v0.7.2.md) | 2026-05-23 | 一般讀者導讀升級：root README 加 🏆 spotlight box 突出 v0.7.0 勝出地位 + 第六節 v0.7.0 行加 🏆 標；experiment 報告加 🏆 一句結論卡 + 各節功能性 emoji 視覺定位 + 排名 🏆🥈🥉 + ⭐ 標 B 中度行 |
 | [v0.7.1](docs/releases/v0.7.1.md) | 2026-05-23 | Hotfix：root README 第五節 02 行節號同步 + prompts/02/guide.html 約 15 處節號重編 + prompts/01/guide.html 加結構更新 banner + 勝出版本正式命名「v0.7.0 — 12-節結構整合版」（簡稱 12-節結構整合版）|

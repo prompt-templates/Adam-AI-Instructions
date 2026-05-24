@@ -6,6 +6,38 @@
 
 ---
 
+## [0.8.0] - 2026-05-24
+
+### Claude Code 場景特化升級
+
+Prompt 02 新增第十五節「Claude Code 場景工作流」，對齊 Anthropic Claude Code 官方 2026 best practices。本節僅在 Claude Code 環境生效；Cowork / Codex 自動跳過。保留 v0.7.0 12-節結構整合版作為通用基礎，不重組既有 14 節。
+
+### 新增
+
+- `prompts/02/prompt.md` 第十五節「Claude Code 場景工作流」：整合 Anthropic 官方 5 項實操建議 + 5 項失敗模式警示
+  - Plan mode 使用時機（強制多檔／不熟悉代碼／不確定方法／外部呼叫；跳過單檔小改）
+  - 主動提驗收標準（最高槓桿原則）
+  - Context 管理觸發點（2 次修正失敗 → `/clear`；研究型 → subagent）
+  - CLI tools 優先 over 直接 API call（`gh`／`aws`／`gcloud`／`sentry-cli`）
+  - 5 項失敗模式警示（Kitchen sink / Over-correction / Trust-then-verify gap / Infinite exploration / Over-specified CLAUDE.md）
+
+### 同步更新
+
+- `prompts/02/README.md`：14 → 15 節描述
+- `prompts/02/guide.html`：加 v0.8.0 結構更新 banner
+- `README.md` 第三節樹圖 + 第五節「01 vs 02 怎麼選」描述同步
+
+### 已知缺口
+
+- prompts/02/guide.html 互動指南中部嘅完整第十五節介紹（h2 + SVG）留作 v0.8.1 hotfix
+
+### 治理層教訓
+
+- 「不擴張除非實證有效」嘅原則並非絕對 — 當官方 best practices 確有 implementable 缺口、且新增節能精準對齊，有條件擴張是對的
+- Claude Code 場景特定建議與 Cowork / Codex 通用條本來就應該分節，呢個分離本身已對齊「同一規則只在單一定義塊」嘅防漂移原則
+
+---
+
 ## [0.7.3] - 2026-05-23
 
 ### root README 全面對齊

@@ -2,7 +2,7 @@
 
 用於 Claude Code 全域指令的治理規則集。在 [01｜Claude Cowork Meta Instruction](../01-claude-cowork-meta-instruction/) 通用骨幹之上，補入兩條 Claude Code 場景常用的附加規則：機密處理（跨作業系統通用）與 Windows 桌面破壞性命令零容忍。
 
-> 💡 **與 01 的關係**　第一至十二節與 01 為單一真源，逐字對齊；02 僅在尾部新增第十三、十四節。如只需通用治理規則，套 01 已足夠；如於 Claude Code 環境用、會接觸 `.env` / credentials、或在 Windows 桌面操作 shell 命令，建議套 02。
+> 💡 **與 01 的關係**　第一至十二節與 01 為單一真源，逐字對齊；02 在尾部新增第十三、十四節 + 第十五節 Claude Code 場景工作流。如只需通用治理規則，套 01 已足夠；如於 Claude Code 環境用、會接觸 `.env` / credentials、或在 Windows 桌面操作 shell 命令，建議套 02。
 
 ---
 
@@ -20,8 +20,8 @@
 
 - 在 Windows 桌面執行 Claude Code 的用戶。
 - 用 Claude Code 處理含 `.env` / API key / credentials 的項目，希望 AI 不複述機密值至回覆、commit、log 的用戶。
-- macOS / Linux 用戶亦可使用：第十四節（Windows 桌面附加）會自動跳過，其餘 13 節跨平台適用。
-- 已熟悉 01 的用戶：本指令第一至十二節與 01 完全同源，無需重新學習；只需了解新增第十三、十四節即可。
+- macOS / Linux 用戶亦可使用：第十四節（Windows 桌面附加）會自動跳過，其餘 14 節跨平台適用。
+- 已熟悉 01 的用戶：本指令第一至十二節與 01 完全同源，無需重新學習；只需了解新增第十三、十四節 + 第十五節 Claude Code 場景工作流即可。
 
 ---
 
@@ -31,6 +31,7 @@
 |---|---|---|
 | 第十三節 機密處理 | 讀取機密檔案時以 `<REDACTED>` 替代複述；禁將機密值寫入 commit / issue / PR / log / 新建檔案 / 外部請求；機密相關變更須明確標示「請人工檢閱」 | 跨作業系統，所有 AI Agent 環境通用 |
 | 第十四節 執行環境特定附加（Windows 桌面） | `cmd /c rmdir` 家族零容忍（含所有變體與混淆形式）；磁碟根目錄禁區（`C:\`、`D:\` 等）；引號驗證；路徑歧義時不執行 | 僅 Windows 桌面生效；macOS / Linux / 其他 AI Agent 環境自動跳過 |
+| 第十五節 Claude Code 場景工作流 | Plan mode 觸發時機 + 主動提驗收標準 + Context 管理（`/clear`、subagent for investigation） + CLI tools 優先 + 5 項失敗模式警示。對齊 Anthropic 2026 Claude Code best practices | 僅 Claude Code 環境生效；Cowork / Codex 自動跳過 |
 
 第一至十二節內容與 01 完全相同，治理規則細節請見 [01 README](../01-claude-cowork-meta-instruction/README.md)。
 
@@ -124,7 +125,7 @@
 
 ## 七、維護與同步說明
 
-第一至十二節以 [01 prompt.md](../01-claude-cowork-meta-instruction/prompt.md) 為單一真源，02 維護時必須與 01 逐字對齊；如 01 後續升版（加新規則、改條款編號等），02 第一至十二節同步更新，避免跨檔漂移。第十三、十四節為 02 獨有，獨立維護。
+第一至十二節以 [01 prompt.md](../01-claude-cowork-meta-instruction/prompt.md) 為單一真源，02 維護時必須與 01 逐字對齊；如 01 後續升版（加新規則、改條款編號等），02 第一至十二節同步更新，避免跨檔漂移。第十三、十四、十五節為 02 獨有，獨立維護。
 
 ---
 

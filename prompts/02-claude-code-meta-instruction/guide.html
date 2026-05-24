@@ -120,6 +120,43 @@
     font-size:13px;
   }
   footer a{color:var(--c-primary)}
+  @media (max-width: 520px){
+    header.hero{padding:56px 18px 48px;overflow:hidden}
+    header.hero h1{
+      max-width:320px;
+      margin-left:auto;
+      margin-right:auto;
+      font-size:24px;
+      line-height:1.2;
+      overflow-wrap:anywhere;
+    }
+    header.hero .tag{
+      max-width:320px;
+      margin-left:auto;
+      margin-right:auto;
+      line-height:1.6;
+      overflow-wrap:anywhere;
+    }
+    header.hero .links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:8px;
+      max-width:320px;
+      margin:0 auto;
+    }
+    header.hero .links a{margin:0;flex:0 0 auto}
+    nav.toc{text-align:left}
+    main{width:100%;max-width:100%;padding:24px 14px 64px;overflow:hidden}
+    section{width:100%;max-width:100%;padding:24px 18px;overflow:hidden}
+    section h2{font-size:20px}
+    section p,
+    section li,
+    .callout{
+      overflow-wrap:anywhere;
+      word-break:break-all;
+    }
+  }
 </style>
 </head>
 <body>

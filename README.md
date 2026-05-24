@@ -12,10 +12,13 @@
 
 - ✅ 偏好優先序:事實可驗收 > 穩定性 > 根因治理 > 完整性交付 > 最小改動
 - ✅ AI 主動判斷並一次提交完整方案,減少反覆提問
-- ✅ 動手修改前先輸出完整執行計劃 (Full-Picture First Rule) :1) 目標、2) 影響範圍、3) 可量指標、4) 驗收方法， 5) 用戶 30 秒可批准、否決或修改 — 提高專注性
-- ✅ 核對不到的部分清楚標記為 UNVERIFIED,不會混淆已驗證與未驗證內容
-- ✅ 修改以「精準錨點 + 修改前(BEFORE)/ 修改後(AFTER)+ 變更日誌」交付,方便直接貼換,合併零遺漏
-- ✅ 同一規則只在單一定義塊存在,減少指令四散,出現自相矛盾
+- ✅ 動手修改前先輸出完整執行計劃（全圖優先規則）：(1) 終點畫面、(2) 交付物、(3) 可量指標、(4) 驗收測試、(5) 目標連結，五區段一頁見全，收尾以「若不否決或修改，即開始執行」讓用戶 30 秒可決定批准、否決或修改
+- ✅ 核對不到的部分清楚區分為「未核實」（曾嘗試核對但失敗）與「未適用」（真缺值或無資料），不會混淆已驗證與未驗證內容
+- ✅ 修改以「精準錨點 + 修改前 / 修改後 + 變更日誌」補丁式交付，方便直接貼換，合併零遺漏
+- ✅ 同一規則只在單一定義塊存在，減少指令四散、出現自相矛盾（防漂移）
+- ✅ 判斷事實前必先核對（先讀後判）；用驗證代替推斷、用全貌代替片段，杜絕憑記憶猜測外部平台或檔案內容
+- ✅ 治理改動先審核：修改治理規則、跨檔同步、刪除重命名等不可逆操作前必先計劃自檢與只讀審核，不預設一定修改檔案
+- ✅ 創作類任務（設計、故事、詩、廣告文案、虛構等）自動豁免事實可驗收硬骨幹，保留語言分層與合作模式
 
 每條規則均對應一次或多次實際發生的情況及修正方法。內容定位為個人經驗紀錄與分享,並非標準或最佳實踐宣稱。
 
@@ -35,20 +38,44 @@
 
 ```
 Adam-AI-Instructions/
-├── README.md                                   ← 本頁
-└── prompts/
-    └── 01-claude-cowork-meta-instruction/
-        ├── README.md                           ← 該指令的介紹頁
-        └── prompt.md                           ← 可直接複製使用的原文
+├── README.md                                   ← 本頁（總索引）
+├── CHANGELOG.md                                ← 完整變更日誌
+├── AGENTS.md                                   ← Claude Code / OpenAI Codex / Amp / Cursor 等 AGENTS.md 標準 agent 直接讀取的設定檔
+├── LICENSE
+│
+├── prompts/                                    ← 各份 Meta Instruction 指令
+│   ├── 01-claude-cowork-meta-instruction/      ← Claude Cowork / Codex / AGENTS.md 通用版（v0.7.0 — 12-節結構整合版）
+│   │   ├── prompt.md                           ← Prompt 原文，可直接複製貼至 AI 工具
+│   │   ├── README.md                           ← 該指令的文字介紹頁
+│   │   └── guide.html                          ← 互動式 SVG 指南（GitHub Pages 可開啟）
+│   │
+│   └── 02-claude-code-meta-instruction/        ← Claude Code 場景特化版（第一至十二節與 01 同源 + 第十三節機密處理 + 第十四節 Windows 桌面附加）
+│       ├── prompt.md
+│       ├── README.md
+│       └── guide.html
+│
+└── docs/
+    ├── releases/                               ← 各版本用戶面向發布說明
+    │   ├── v0.7.3.md
+    │   ├── v0.7.2.md
+    │   ├── v0.7.1.md
+    │   ├── v0.7.0.md
+    │   └── ...（v0.2.0 起累積）
+    │
+    └── experiments/                            ← 治理改動數據驗證實驗報告
+        └── 2026-05-23-pruning-experiment/      ← v0.7.0 12-節結構整合版的瘦身實驗
+            ├── README.md                       ← 實驗主頁（一句結論 + 為何 B 勝出）
+            ├── test_cases.md                   ← 8 場景 × 37 條規則檢查點
+            ├── evaluation_matrix.md            ← 三版本 × 四輪評分矩陣
+            ├── comparison_report.md            ← 多維對照 + 勝出宣告
+            └── v_a/v_b/v_c_*.md                ← A 保守 / B 中度 / C 激進 三版本 prompt 全文
 ```
 
-每份指令獨立存放於各自資料夾,內含:
+每份指令獨立存放於各自資料夾，內含三件套：
 
-- `README.md`:文字介紹頁,說明該指令對應的痛點、規則內容、治理作用、適用情景。
-- `guide.html`:互動式指南,含 SVG 視覺化說明,以瀏覽器開啟即可閱讀。
-- `prompt.md`:Prompt 原文,可直接複製貼至 AI 工具的 system prompt、personal preferences、project instructions 等欄位。
-
----
+- `prompt.md`：Prompt 原文，可直接複製貼至 AI 工具的 system prompt、personal preferences、project instructions 等欄位。
+- `README.md`：文字介紹頁，說明該指令對應的痛點、規則內容、治理作用、適用情景。
+- `guide.html`：互動式指南，含 SVG 視覺化說明，以瀏覽器開啟即可閱讀（亦可由 GitHub Pages 線上預覽）。
 
 ## 四、使用方式
 
@@ -101,8 +128,6 @@ Adam-AI-Instructions/
 
 ---
 
----
-
 > ## 🏆 最新：v0.7.0 — 12-節結構整合版
 >
 > 📊 經 8 場景 × 37 條規則檢查點實測勝出　·　規則覆蓋率 **100%**　·　字數 **−45%**　·　綜合分較 v0.6.1 提升 **15.5%**
@@ -122,7 +147,7 @@ Adam-AI-Instructions/
 
 > **建議閱讀順序**:先點擊「互動指南」(以瀏覽器開啟,含 SVG 視覺化說明),再參考「文字介紹」深入細節,最後複製「Prompt 原文」套用至所用 AI 工具。
 >
-> **01 vs 02 怎麼選**:純對話介面或 Cowork 為主用 01;Claude Code 為主、會接觸 `.env` / credentials 或在 Windows 桌面操作 shell 命令用 02。02 第一至二十節與 01 同源逐字,僅尾部新增機密處理 + Windows 桌面附加兩節。
+> **01 vs 02 怎麼選**:純對話介面或 Cowork 為主用 01;Claude Code 為主、會接觸 `.env` / credentials 或在 Windows 桌面操作 shell 命令用 02。02 第一至十二節與 01 同源逐字，僅尾部新增第十三節機密處理 + 第十四節 Windows 桌面附加兩節。
 
 未來將陸續加入其他工具與場景的指令版本。
 
@@ -134,6 +159,7 @@ Adam-AI-Instructions/
 
 | 版本 | 日期 | 主要變更 |
 |------|------|---------|
+| [v0.7.3](docs/releases/v0.7.3.md) | 2026-05-23 | root README 全面對齊：第一節五區段名／中文措辭 + 加 3 條核心好處；第三節目錄樹完整重寫含 prompt 02、guide.html、docs/、CHANGELOG、AGENTS.md；第五節節號同步；移除多餘 horizontal rule |
 | [v0.7.2](docs/releases/v0.7.2.md) | 2026-05-23 | 一般讀者導讀升級：root README 加 🏆 spotlight box 突出 v0.7.0 勝出地位 + 第六節 v0.7.0 行加 🏆 標；experiment 報告加 🏆 一句結論卡 + 各節功能性 emoji 視覺定位 + 排名 🏆🥈🥉 + ⭐ 標 B 中度行 |
 | [v0.7.1](docs/releases/v0.7.1.md) | 2026-05-23 | Hotfix：root README 第五節 02 行節號同步 + prompts/02/guide.html 約 15 處節號重編 + prompts/01/guide.html 加結構更新 banner + 勝出版本正式命名「v0.7.0 — 12-節結構整合版」（簡稱 12-節結構整合版）|
 | 🏆 [v0.7.0](docs/releases/v0.7.0.md) | 2026-05-23 | **v0.7.0 — 12-節結構整合版**　Meta Instruction 中度瘦身：20 節 → 12 節（字數 -45%），規則覆蓋率 100%，綜合分較 v0.6.1 提升 15.5%；首次配套發佈完整實驗報告（[docs/experiments/2026-05-23-pruning-experiment/](docs/experiments/2026-05-23-pruning-experiment/)）|

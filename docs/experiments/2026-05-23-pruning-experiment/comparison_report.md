@@ -1,5 +1,13 @@
 # 四版本對照報告
 
+> ⚠️ **歷史快照（2026-05-23）**
+>
+> 本檔為 2026-05-23 Meta Instruction 瘦身實驗嘅原始紀錄。當時勝出嘅 B 中度版本（`v_b_moderate.md`，12 節）作為 v0.7.0 上線；其後再經 2026-05-24 4 輪 GPT external review 套用 26 條補丁，演進至 13 節結構（加入 §0 總仲裁順序、回覆形態 4 mode、收尾句三句版本、五區段 supersede 開首三行等）。
+>
+> 當前 SSOT：[`prompts/01-claude-cowork-meta-instruction/prompt.md`](../../../prompts/01-claude-cowork-meta-instruction/prompt.md)
+>
+> 本檔保留作歷史紀錄，**結論與評分屬實驗當時嘅事實，不 retro-fit**。
+
 ## 一、版本基本資料
 
 | 版本 | 字數 | 節數 | 重組程度 | 例子保留 |

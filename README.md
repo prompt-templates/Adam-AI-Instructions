@@ -49,16 +49,14 @@ Adam-AI-Instructions/
 │   │   ├── README.md                           ← 該指令的文字介紹頁
 │   │   └── guide.html                          ← 互動式 SVG 指南（GitHub Pages 可開啟）
 │   │
-│   └── 02-claude-code-meta-instruction/        ← Claude Code 場景特化版（第一至十二節與 01 同源 + 第十三節機密處理 + 第十四節 Windows 桌面附加 + 第十五節 Claude Code 場景工作流）
+│   └── 02-claude-code-meta-instruction/        ← AI Agent 通用版（01 同源基底 + 機密處理 + 平台檔案安全 + 代理式工作流）
 │       ├── prompt.md
 │       ├── README.md
 │       └── guide.html
 │
 └── docs/
     ├── releases/                               ← 各版本用戶面向發布說明
-    │   ├── v0.7.3.md
-    │   ├── v0.7.2.md
-    │   ├── v0.7.1.md
+    │   ├── _TEMPLATE.md                        ← 發布說明寫作模板（使用者旅程導向）
     │   ├── v0.7.0.md
     │   └── ...（v0.2.0 起累積）
     │
@@ -128,13 +126,13 @@ Adam-AI-Instructions/
 
 ---
 
-> ## 🏆 最新：v0.7.0 — 12-節結構整合版
+> ## 目前穩定公開基準：v0.7.0 — 12-節結構整合版
 >
 > 📊 經 8 場景 × 37 條規則檢查點實測勝出　·　規則覆蓋率 **100%**　·　字數 **−45%**　·　綜合分較 v0.6.1 提升 **15.5%**
 >
 > 🧪 [實驗報告（含三檔策略對比、評分矩陣、勝出依據）](docs/experiments/2026-05-23-pruning-experiment/)
 >
-> 👉 **直接使用**：[Cowork / Codex / AGENTS.md 通用版（prompt 01）](prompts/01-claude-cowork-meta-instruction/prompt.md)　·　[Claude Code 場景特化版（prompt 02，含機密處理 + Windows 桌面附加）](prompts/02-claude-code-meta-instruction/prompt.md)
+> 👉 **直接使用**：[Cowork / Codex / AGENTS.md 通用版（prompt 01）](prompts/01-claude-cowork-meta-instruction/prompt.md)　·　[AI Agent 通用版（prompt 02，含機密處理 + 平台檔案安全 + 代理式工作流）](prompts/02-claude-code-meta-instruction/prompt.md)
 
 ---
 
@@ -143,11 +141,11 @@ Adam-AI-Instructions/
 | # | 名稱 | 互動指南 | 文字介紹 | Prompt 原文 | 適用工具 |
 |---|------|---------|---------|-------------|----------|
 | 01 | Claude Cowork Meta Instruction | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/01-claude-cowork-meta-instruction/guide.html) | [README.md](prompts/01-claude-cowork-meta-instruction/README.md) | [prompt.md](prompts/01-claude-cowork-meta-instruction/prompt.md) | Claude Cowork、Claude Code、OpenAI Codex、AGENTS.md 標準 agent(Amp / Cursor / Factory / Google Jules)、一般 Claude / ChatGPT 對話介面 |
-| 02 | Claude Code Meta Instruction(含機密處理及 Windows 桌面附加) | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) | [README.md](prompts/02-claude-code-meta-instruction/README.md) | [prompt.md](prompts/02-claude-code-meta-instruction/prompt.md) | Claude Code(全平台);亦適用 OpenAI Codex / AGENTS.md 標準 agent;第十四節 Windows 桌面附加為條件式生效,macOS / Linux 自動跳過 |
+| 02 | AI Agent Meta Instruction（含機密處理、平台檔案安全、代理式工作流） | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) | [README.md](prompts/02-claude-code-meta-instruction/README.md) | [prompt.md](prompts/02-claude-code-meta-instruction/prompt.md) | Claude Code、OpenAI Codex、Claude Cowork、AGENTS.md 標準 agent；適合會讀檔、改檔、執行工具或處理機密的情境 |
 
 > **建議閱讀順序**:先點擊「互動指南」(以瀏覽器開啟,含 SVG 視覺化說明),再參考「文字介紹」深入細節,最後複製「Prompt 原文」套用至所用 AI 工具。
 >
-> **01 vs 02 怎麼選**:純對話介面或 Cowork 為主用 01;Claude Code 為主、會接觸 `.env` / credentials 或在 Windows 桌面操作 shell 命令用 02。02 第一至十二節與 01 同源逐字，尾部新增第十三節機密處理 + 第十四節 Windows 桌面附加 + 第十五節 Claude Code 場景工作流共三節。
+> **01 vs 02 怎麼選**:純對話介面或 Cowork 輕量使用可用 01；若 AI 會讀檔、改檔、執行工具、處理 `.env` / credentials，或需要跨平台檔案安全邊界，用 02。02 以 01 為同源基底，尾部新增機密處理、平台檔案安全、代理式工作流三組附加規則。
 
 未來將陸續加入其他工具與場景的指令版本。
 
@@ -159,19 +157,11 @@ Adam-AI-Instructions/
 
 | 版本 | 日期 | 主要變更 |
 |------|------|---------|
-| [v0.8.0](docs/releases/v0.8.0.md) | 2026-05-24 | **Claude Code 場景特化升級**：prompt 02 新增第十五節「Claude Code 場景工作流」，整合 Anthropic 2026 官方 best practices 嘅 5 項實操（Plan mode 觸發／主動提驗收／Context 管理／CLI 優先／Subagent for investigation）+ 5 項失敗模式警示；保留 v0.7.0 12-節通用基礎，不重組既有 14 節 |
-| [v0.7.3](docs/releases/v0.7.3.md) | 2026-05-23 | root README 全面對齊：第一節五區段名／中文措辭 + 加 3 條核心好處；第三節目錄樹完整重寫含 prompt 02、guide.html、docs/、CHANGELOG、AGENTS.md；第五節節號同步；移除多餘 horizontal rule |
-| [v0.7.2](docs/releases/v0.7.2.md) | 2026-05-23 | 一般讀者導讀升級：root README 加 🏆 spotlight box 突出 v0.7.0 勝出地位 + 第六節 v0.7.0 行加 🏆 標；experiment 報告加 🏆 一句結論卡 + 各節功能性 emoji 視覺定位 + 排名 🏆🥈🥉 + ⭐ 標 B 中度行 |
-| [v0.7.1](docs/releases/v0.7.1.md) | 2026-05-23 | Hotfix：root README 第五節 02 行節號同步 + prompts/02/guide.html 約 15 處節號重編 + prompts/01/guide.html 加結構更新 banner + 勝出版本正式命名「v0.7.0 — 12-節結構整合版」（簡稱 12-節結構整合版）|
-| 🏆 [v0.7.0](docs/releases/v0.7.0.md) | 2026-05-23 | **v0.7.0 — 12-節結構整合版**　Meta Instruction 中度瘦身：20 節 → 12 節（字數 -45%），規則覆蓋率 100%，綜合分較 v0.6.1 提升 15.5%；首次配套發佈完整實驗報告（[docs/experiments/2026-05-23-pruning-experiment/](docs/experiments/2026-05-23-pruning-experiment/)）|
+| [v0.7.0](docs/releases/v0.7.0.md) | 2026-05-23 | **v0.7.0 — 12-節結構整合版**　Meta Instruction 中度瘦身：20 節 → 12 節（字數 -45%），規則覆蓋率 100%，綜合分較 v0.6.1 提升 15.5%；首次配套發佈完整實驗報告（[docs/experiments/2026-05-23-pruning-experiment/](docs/experiments/2026-05-23-pruning-experiment/)）|
 | [v0.6.1](docs/releases/v0.6.1.md) | 2026-05-17 | 改善 root README 第四節 + 02 README 第五節安裝指引:Claude Code / Codex / 其他 AGENTS.md agent 改用步驟化、非技術讀者友善的書面語版本;補上「確認是否生效」段同進階提示 |
 | [v0.6.0](docs/releases/v0.6.0.md) | 2026-05-17 | 新增 prompt 02:Claude Code Meta Instruction(含機密處理及 Windows 桌面附加);第一至二十節與 01 同源逐字,新增第二十一節機密處理 + 第二十二節 Windows 桌面破壞性命令零容忍 |
 | [v0.5.1](docs/releases/v0.5.1.md) | 2026-05-16 | Hotfix:修正主標題仍 hardcode "Cowork" 同跨工具通用聲明矛盾;主標題 retitle + Cowork Project 用詞 generic + prompts/01 README 第七組描述 sync |
 | [v0.5.0](docs/releases/v0.5.0.md) | 2026-05-15 | 加「創作類任務例外」豁免、條款編號 + 回覆骨架執行硬規則、選擇題分行修正、明文兼容 OpenAI Codex / AGENTS.md 標準 agent;緊湊化 296→248 行 |
-| [v0.4.0](docs/releases/v0.4.0.md) | 2026-05-15 | 結構升級為標準 Markdown 階層,新增「先讀後判」「治理改動先審核」兩條上位核心規則 |
-| [v0.3.0](docs/releases/v0.3.0.md) | 2026-05-13 | 加固「治理層計劃自檢」「強制只讀審核」與「禁把看似可執行當已審核」規則 |
-| [v0.2.0](docs/releases/v0.2.0.md) | 2026-05-11 | 加固「審計後推薦穩定性」與「禁 quick fix／必查 sessionlog／禁憑記憶」規則 |
-| v0.1.0 | 2026-05-02 | 初次公開發佈,首份 Claude Cowork Meta Instruction |
 
 ---
 

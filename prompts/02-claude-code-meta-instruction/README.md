@@ -1,8 +1,8 @@
-# 02｜Claude Code Meta Instruction（含機密處理及 Windows 桌面附加）
+# 02｜AI Agent Meta Instruction（Claude Code / Codex / Cowork 通用）
 
-用於 Claude Code 全域指令的治理規則集。在 [01｜Claude Cowork Meta Instruction](../01-claude-cowork-meta-instruction/) 通用骨幹之上，補入兩條 Claude Code 場景常用的附加規則：機密處理（跨作業系統通用）與 Windows 桌面破壞性命令零容忍。
+用於 Claude Code、OpenAI Codex、Claude Cowork 及其他支援讀檔、改檔、執行工具或調用外部平台的 AI agent。此版本以 [01｜Claude Cowork Meta Instruction](../01-claude-cowork-meta-instruction/) 為通用基底，個人偏好至第十二節與 01 保持同源；尾部新增三個可驗收的代理式工作附加節。
 
-> 💡 **與 01 的關係**　第一至十二節與 01 為單一真源，逐字對齊；02 在尾部新增第十三、十四節 + 第十五節 Claude Code 場景工作流。如只需通用治理規則，套 01 已足夠；如於 Claude Code 環境用、會接觸 `.env` / credentials、或在 Windows 桌面操作 shell 命令，建議套 02。
+> **與 01 的關係**　02 不是另起一套規則。它保留 01 的通用治理骨幹，再補入第十三節「機密處理」、第十四節「平台特定檔案系統安全」、第十五節「代理式工作流與上下文管理」。如只需一般對話治理，01 已足夠；如 AI 會讀寫檔案、執行工具、處理機密、操作本機檔案系統或接觸外部平台，建議使用 02。
 
 ---
 
@@ -10,18 +10,24 @@
 
 此指令的設計目的：
 
-- 在 Claude Code 環境下沿用 01 全套通用治理規則（語言分層、合作模式、全圖優先、補丁式變更、防漂移等），無需重組或刪減。
-- 補入「機密處理」規則：規範讀取 `.env` / credentials 等含機密檔案時的處理方式，避免機密值寫入 commit、issue、log 或外部請求。
-- 補入「Windows 桌面破壞性命令零容忍」規則：針對 Windows 環境特有的 `cmd /c rmdir` 家族指令、磁碟根目錄誤觸風險作硬封殺。
+- 保留 01 的通用治理規則：語言與語體、合作模式、回覆骨架、全圖優先、先讀後判、治理改動先審核、補丁式變更、防漂移、執行環境安全等。
+- 補入「機密處理」：避免 AI 在回覆、摘要、提交訊息、日誌、新建檔案或外部請求中複述機密值。
+- 補入「平台特定檔案系統安全」：針對 Windows、macOS、Linux 的破壞性命令、根目錄、系統目錄、權限繞過與路徑解析風險作硬性封鎖。
+- 補入「代理式工作流與上下文管理」：規範具備工具能力的 AI agent 如何管理上下文、定義驗收、使用外部工具、處理反覆失敗與避免發佈誤判。
+
+此 prompt 只放 AI 行為規格，不放版本故事、實驗數據、使用教學或項目特定角色規則。
 
 ---
 
 ## 二、適用對象
 
-- 在 Windows 桌面執行 Claude Code 的用戶。
-- 用 Claude Code 處理含 `.env` / API key / credentials 的項目，希望 AI 不複述機密值至回覆、commit、log 的用戶。
-- macOS / Linux 用戶亦可使用：第十四節（Windows 桌面附加）會自動跳過，其餘 14 節跨平台適用。
-- 已熟悉 01 的用戶：本指令第一至十二節與 01 完全同源，無需重新學習；只需了解新增第十三、十四節 + 第十五節 Claude Code 場景工作流即可。
+- Claude Code 用戶，尤其會讓 AI 讀寫檔案、執行命令、建立提交或處理外部平台的情境。
+- OpenAI Codex / AGENTS.md 標準 agent 用戶，尤其需要跨檔修改、驗收、工具調用、發佈前安全邊界的情境。
+- Claude Cowork 或其他代理式 AI 工具用戶，若該環境支援讀檔、改檔、工具調用或可持久化變更。
+- 會接觸 `.env`、credentials、token、金鑰、憑證等機密資料的用戶。
+- 在 Windows、macOS、Linux 或可操作本機檔案系統的環境中使用 AI agent 的用戶。
+
+純對話介面亦可使用 02，但只有一般行為原則會生效；涉及改檔、執行命令或外部平台的條款，按實際工具能力調整。
 
 ---
 
@@ -29,108 +35,107 @@
 
 | 新增節 | 內容摘要 | 適用範圍 |
 |---|---|---|
-| 第十三節 機密處理 | 讀取機密檔案時以 `<REDACTED>` 替代複述；禁將機密值寫入 commit / issue / PR / log / 新建檔案 / 外部請求；機密相關變更須明確標示「請人工檢閱」 | 跨作業系統，所有 AI Agent 環境通用 |
-| 第十四節 執行環境特定附加（Windows 桌面） | `cmd /c rmdir` 家族零容忍（含所有變體與混淆形式）；磁碟根目錄禁區（`C:\`、`D:\` 等）；引號驗證；路徑歧義時不執行 | 僅 Windows 桌面生效；macOS / Linux / 其他 AI Agent 環境自動跳過 |
-| 第十五節 Claude Code 場景工作流 | Plan mode 觸發時機 + 主動提驗收標準 + Context 管理（`/clear`、subagent for investigation） + CLI tools 優先 + 5 項失敗模式警示。對齊 Anthropic 2026 Claude Code best practices | 僅 Claude Code 環境生效；Cowork / Codex 自動跳過 |
-
-第一至十二節內容與 01 完全相同，治理規則細節請見 [01 README](../01-claude-cowork-meta-instruction/README.md)。
+| 第十三節 機密處理 | 不複述機密值；用 `<REDACTED>`、檔案行號或欄位名代替；禁止將機密寫入提交訊息、issue、PR、release note、debug log、新建檔案、外部請求 URL、終端命令參數或可保存對話紀錄 | 所有能讀取檔案或處理機密內容的 AI agent |
+| 第十四節 平台特定檔案系統安全 | Windows 封鎖 `cmd /c rmdir` / `cmd /c rd` 家族；macOS / Linux 封鎖 `rm -rf`、`sudo rm -rf`、`find ... -delete`、批量改權限、跨目標資料夾破壞性操作；檔案被鎖或權限不足時不提權、不繞過 | Windows、macOS、Linux 或可操作本機檔案系統的環境 |
+| 第十五節 代理式工作流與上下文管理 | 管理污染上下文；同一問題兩次修正失敗即停止堆補丁；修改前定驗收；外部工具先查官方；提交、推送、打標籤、發佈、部署等需獨立明確授權 | Claude Code、Codex、Cowork 及其他具備工具能力的代理式 AI 環境 |
 
 ---
 
-## 四、新增規則的對應痛點
+## 四、新增規則對應的風險
 
-| 痛點描述 | 對應規則 |
+| 風險 | 對應規則 |
 |---|---|
-| Claude Code 讀 `.env` 後在回覆中複述 API key、token 值，造成機密外洩風險 | 第十三節 機密處理 |
-| AI 將機密值寫入 git commit message、issue 描述、debug log，導致 history 永久留痕 | 第十三節 機密處理 |
-| 用戶要求清空空資料夾，AI 以 `cmd /c rmdir /s /q` 執行；遇路徑解析錯誤誤刪同名父層 | 第十四節 Windows 平台破壞性命令零容忍 |
-| Windows `cmd` 跳脫處理錯誤令 `"C:\Project Files"` 解析為 `C:\` 根目錄，引致系統根級誤刪 | 第十四節 Windows 路徑安全 |
-| AI 套通用 `rm -rf` 禁令時，未考慮 Windows 對應指令族（`Remove-Item -Recurse -Force`、`rd /s /q`、`cmd /c rmdir /s /q` 等）有平台特異變體 | 第十四節 補強第十二節通用條 |
+| AI 讀到 `.env`、token 或金鑰後在回覆或日誌中複述，造成機密外洩 | 第十三節 機密處理 |
+| AI 把機密值寫入 commit message、issue、PR、release note 或新建範例檔，造成長期留痕 | 第十三節 機密處理 |
+| 路徑解析錯誤，令刪除命令落到磁碟根、系統目錄、家目錄或錯誤父層 | 第十四節 平台特定檔案系統安全 |
+| 檔案被鎖或權限不足時，AI 改用提權、改權限或更危險命令繞過 | 第十四節 平台特定檔案系統安全 |
+| 長上下文混入無關任務、舊決策或失敗嘗試，AI 繼續擴大修改 | 第十五節 代理式工作流與上下文管理 |
+| 同一錯誤連續修補仍失敗，AI 疊加更多補丁而非回到根因 | 第十五節 代理式工作流與上下文管理 |
+| AI 改完即宣告完成，但沒有測試、檔案檢查或可驗收結果 | 第十五節 代理式工作流與上下文管理 |
+| 使用者同意修補被誤推定為同意 commit、push、tag、release、deploy 或 publish | 第十五節 代理式工作流與上下文管理 |
 
 ---
 
 ## 五、使用方式
 
-打開本資料夾的 [`prompt.md`](prompt.md)，全文複製，按下方對應工具的步驟貼入即可。
+打開本資料夾的 [`prompt.md`](prompt.md)，全文複製，貼入對應工具的全域或項目指令位置。
 
-### 安裝至 Claude Code（推薦）
+### Claude Code
 
-**全域安裝（套用至所有項目）**
+**全域安裝**
 
-1. 開啟你的個人資料夾下的 `.claude` 資料夾：
+1. 開啟個人資料夾下的 `.claude` 資料夾：
    - macOS / Linux：`~/.claude/`
    - Windows：`C:\Users\<你的用戶名稱>\.claude\`
 2. 如資料夾不存在，自行新建。
-3. 在資料夾內新建檔案 `CLAUDE.md`（已存在則直接打開）。
-4. 將剛才複製的 prompt 全文貼入，儲存。
-5. 重新開啟 Claude Code，新指令自動生效。
+3. 在資料夾內新建或打開 `CLAUDE.md`。
+4. 將 `prompt.md` 全文貼入並儲存。
+5. 重新開啟 Claude Code。
 
-**單一項目安裝（只影響該項目）**
+**單一項目安裝**
 
-於該項目根目錄新建檔案 `CLAUDE.md`，將 prompt 全文貼入即可。項目層級會覆寫全域設定。
+於該項目根目錄新建或打開 `CLAUDE.md`，將 `prompt.md` 全文貼入即可。
 
-### 安裝至 OpenAI Codex
+### OpenAI Codex / AGENTS.md 標準 agent
 
-**全域安裝（套用至所有項目）**
+**全域安裝**
 
-1. 開啟你的個人資料夾下的 `.codex` 資料夾：
+1. 開啟個人資料夾下的 `.codex` 資料夾：
    - macOS / Linux：`~/.codex/`
    - Windows：`C:\Users\<你的用戶名稱>\.codex\`
 2. 如資料夾不存在，自行新建。
-3. 在資料夾內新建檔案 `AGENTS.md`（已存在則直接打開）。
-4. 將剛才複製的 prompt 全文貼入，儲存。
-5. 重新開啟 Codex，新指令自動生效。
+3. 在資料夾內新建或打開 `AGENTS.md`。
+4. 將 `prompt.md` 全文貼入並儲存。
+5. 重新開啟 Codex。
 
-**單一項目安裝（只影響該項目）**
+**單一項目安裝**
 
-於該項目根目錄新建檔案 `AGENTS.md`，將 prompt 全文貼入即可。
+於該項目根目錄新建或打開 `AGENTS.md`，將 `prompt.md` 全文貼入即可。
 
-### 安裝至其他 AGENTS.md 標準 agent（Amp / Cursor / Factory / Google Jules 等）
+### Claude Cowork / 其他代理式工具
 
-- **單一項目**：於該項目根目錄新建檔案 `AGENTS.md`，將 prompt 全文貼入。AGENTS.md 為跨工具通用格式，所有支援 AGENTS.md 的 agent 皆會自動讀取。
-- **全域**：各工具的全域檔案位置不一，請參考 Amp / Cursor / Factory / Google Jules 各自的官方文件。
+若工具支援全域指令、項目指令或 AGENTS.md 標準，將 `prompt.md` 全文貼入相應位置。若工具沒有檔案或命令能力，仍會套用語言、回覆、判斷、驗收與安全邊界等一般行為原則。
 
-### 安裝至 Claude Cowork
+### ChatGPT 或其他純對話介面
 
-如只需通用治理規則，建議改用 [01](../01-claude-cowork-meta-instruction/)。02 的第十四節 Windows 桌面內容在 Cowork 環境無對應 shell 場景。如仍想統一用 02，貼至 Cowork Settings → Global Instructions 亦可，多出的節會自動跳過。
-
-### 安裝至 ChatGPT 或其他 LLM 對話介面
-
-於 Settings → Personalization → Custom Instructions（或對應的「自訂指令」欄位），將 prompt 全文貼入儲存即生效。
-
-### 確認是否生效
-
-套用後，於對話中提出一個會涉及多檔修改或治理規則改動的任務（例：「幫我重組這個項目的資料夾結構」）。如 AI 回覆開首出現「🔎」重點 + 五區段全圖（終點畫面、交付物、可量指標、驗收測試、目標連結），代表指令已正常載入。
-
-### 進階提示（熟悉終端機的用戶可選看）
-
-- **環境變數覆蓋**：如已設定 `CLAUDE_CONFIG_DIR`（Claude Code）或 `CODEX_HOME`（OpenAI Codex）環境變數，安裝位置會隨環境變數指向的資料夾改變，以該位置為準。
-- **OpenAI Codex 覆寫優先級**：Codex 同時支援 `AGENTS.override.md`（優先於 `AGENTS.md`）作為覆寫檔。如你已有 `AGENTS.md` 而不想覆蓋，可改貼至 `AGENTS.override.md`。
-- **跨平台範圍**：第十四節 Windows 桌面附加在 macOS / Linux 環境會自動跳過（節內已寫明範圍限定），跨平台用戶可放心使用。
+可貼入自訂指令欄位使用；純對話環境不會執行檔案操作，但仍可受益於語言、回覆、真源對齊、事實核對與輸出格式規則。
 
 ---
 
-## 六、選擇 01 還是 02
+## 六、確認是否生效
+
+套用後可用以下低風險任務觀察：
+
+- 提出多檔治理改動需求，AI 應先輸出全圖優先五區段，而非直接修改。
+- 提供含假機密的 `.env` 範例，AI 應以 `<REDACTED>` 或行號代替，不複述完整值。
+- 提出本機刪除資料夾需求，AI 應拒絕平台高風險刪除命令並先列影響範圍。
+- 提出需要 commit / push / release 的任務，AI 應區分「同意修補」與「同意發佈」，並要求獨立明確授權。
+
+---
+
+## 七、選擇 01 還是 02
 
 | 場景 | 建議 |
 |---|---|
-| Claude Cowork 為主、Claude Desktop / 一般對話 | 01 |
-| Claude Code 為主、會接觸機密檔案 | 02 |
-| Claude Code 為主、Windows 桌面用 | 02 |
-| Claude Code 為主、macOS / Linux 用 | 02（第十四節自動跳過） |
-| OpenAI Codex / AGENTS.md 標準 agent | 01 或 02 皆可，視乎是否需要機密處理 + Windows 桌面附加 |
-| 純對話介面（ChatGPT 等），無檔案系統存取 | 01 |
+| 純對話、寫作、一般問答、Claude Cowork 輕量使用 | 01 |
+| 需要 AI 讀檔、改檔、跨檔修補、執行工具或處理驗收 | 02 |
+| 會接觸 `.env`、credentials、token、金鑰或憑證 | 02 |
+| Windows、macOS、Linux 或可操作本機檔案系統 | 02 |
+| 需要 Codex / Claude Code / Cowork 等代理式工具做工程任務 | 02 |
+| 只想保留最短通用治理規則 | 01 |
 
 ---
 
-## 七、維護與同步說明
+## 八、維護與同步說明
 
-第一至十二節以 [01 prompt.md](../01-claude-cowork-meta-instruction/prompt.md) 為單一真源，02 維護時必須與 01 逐字對齊；如 01 後續升版（加新規則、改條款編號等），02 第一至十二節同步更新，避免跨檔漂移。第十三、十四、十五節為 02 獨有，獨立維護。
+02 個人偏好至第十二節以 [01 prompt.md](../01-claude-cowork-meta-instruction/prompt.md) 為基底。維護 02 時，須先確認 01 是否更新；如 01 的通用規則改動，02 的同源段落也要同步，避免跨檔漂移。
+
+第十三、十四、十五節為 02 的附加節，獨立維護。新增內容必須保持 AI 行為規格形態；不加入版本歷史、研究數據、宣傳說明、使用教學或單一項目專屬規則。
 
 ---
 
-## 八、回饋與授權
+## 九、回饋與授權
 
 - **授權**：MIT 授權；詳見 repo 根目錄 [LICENSE](../../LICENSE)。
-- **回饋**：發現規則描述有誤、有可改進之處、或有其他 Claude Code 場景痛點可補充，歡迎提交 Issue 或 Pull Request 至 [repo](https://github.com/prompt-templates/Adam-AI-Instructions)。
-- **免責**：所有指令源於個人使用經驗，實際效果視乎所用 AI 模型版本、工具更新狀態、用戶使用習慣而異；請自行驗證後使用。
+- **回饋**：發現規則描述有誤、有可改進之處，歡迎提交 Issue 或 Pull Request 至 [repo](https://github.com/prompt-templates/Adam-AI-Instructions)。
+- **免責**：所有指令源於個人使用經驗，實際效果視所用 AI 模型、工具能力、權限設定與使用情境而異；請自行驗證後使用。

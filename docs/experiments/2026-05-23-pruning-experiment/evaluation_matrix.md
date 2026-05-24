@@ -1,5 +1,13 @@
 # 三版本實測評分矩陣
 
+> ⚠️ **歷史快照（2026-05-23）**
+>
+> 本檔為 2026-05-23 Meta Instruction 瘦身實驗嘅原始紀錄。當時勝出嘅 B 中度版本（`v_b_moderate.md`，12 節）作為 v0.7.0 上線；其後再經 2026-05-24 4 輪 GPT external review 套用 26 條補丁，演進至 13 節結構（加入 §0 總仲裁順序、回覆形態 4 mode、收尾句三句版本、五區段 supersede 開首三行等）。
+>
+> 當前 SSOT：[`prompts/01-claude-cowork-meta-instruction/prompt.md`](../../../prompts/01-claude-cowork-meta-instruction/prompt.md)
+>
+> 本檔保留作歷史紀錄，**結論與評分屬實驗當時嘅事實，不 retro-fit**。
+
 對 8 個測試場景、37 條獨立規則檢查點，逐條檢查 A／B／C 三版本是否覆蓋。
 
 評分：涵蓋 + 表述完整 = 1.0；涵蓋但語意模糊 = 0.5；完全丟失 = 0。

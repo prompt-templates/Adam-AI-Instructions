@@ -6,9 +6,26 @@
 
 ---
 
-## 退役公開版本 - 2026-05-24
+## [0.7.1] - 2026-05-24
 
-公開版本 `v0.7.1`、`v0.7.2`、`v0.7.3`、`v0.8.0` 已從公開發布主線退役。這些版本主要是小修、呈現調整或方向錯誤的發布，令 GitHub Releases 頁面過多且難讀；目前沒有已知使用者依賴它們。
+### 發布整理
+
+- `prompts/02-claude-code-meta-instruction/prompt.md`：重做為 AI Agent 通用版。以 01 的穩定治理基底為核心，只保留三組代理式 AI 工具需要的附加規則：機密處理、平台檔案安全、代理式工作流。
+- `prompts/02-claude-code-meta-instruction/README.md` 與 `guide.html`：同步改為通用 AI Agent 定位，不再以 Claude Code 單一場景表述。
+- `prompts/02-claude-code-meta-instruction/guide.html`：補手機版窄螢幕排版，避免頁首與正文在手機視口裁切。
+- `README.md`：公開基準與最近更新表對齊 v0.7.1。
+- `docs/releases/v0.7.1.md`：新增使用者面向發布說明。
+
+### 發布治理
+
+- 新增 `docs/releases/_TEMPLATE.md`，將 Release notes 改為使用者旅程導向。
+- 退役先前過密或方向錯誤的公開發布記錄，保留有用修正並併入本次穩定基準。
+
+---
+
+## 先前錯誤公開版本退役 - 2026-05-24
+
+先前已建立的舊 `v0.7.1`、`v0.7.2`、`v0.7.3`、`v0.8.0` 已從公開發布主線退役。這些版本主要是小修、呈現調整或方向錯誤的發布，令 GitHub Releases 頁面過多且難讀；目前沒有已知使用者依賴它們。
 
 有價值的修正會併入目前本機基準與下一次正式發布流程。往後公開發布說明改依 `docs/releases/_TEMPLATE.md` 撰寫；新版本是否值得發布，先由 `AGENTS.md` 的升版門檻規則判斷。
 

@@ -57,6 +57,7 @@ Adam-AI-Instructions/
 └── docs/
     ├── releases/                               ← 各版本用戶面向發布說明
     │   ├── _TEMPLATE.md                        ← 發布說明寫作模板（使用者旅程導向）
+    │   ├── v0.7.1.md
     │   ├── v0.7.0.md
     │   └── ...（v0.2.0 起累積）
     │
@@ -126,11 +127,11 @@ Adam-AI-Instructions/
 
 ---
 
-> ## 目前穩定公開基準：v0.7.0 — 12-節結構整合版
+> ## 目前穩定公開基準：v0.7.1 — AI Agent 通用版與發布整理
 >
-> 📊 經 8 場景 × 37 條規則檢查點實測勝出　·　規則覆蓋率 **100%**　·　字數 **−45%**　·　綜合分較 v0.6.1 提升 **15.5%**
+> 這版把 prompt 02 整理成更適合公開使用的 AI Agent 通用版：以 01 的穩定基底為核心，補上機密處理、跨平台檔案安全與代理式工作流，並清理過多舊發布。
 >
-> 🧪 [實驗報告（含三檔策略對比、評分矩陣、勝出依據）](docs/experiments/2026-05-23-pruning-experiment/)
+> 🧪 01 的 12 節結構仍可參考 [v0.7.0 實驗報告](docs/experiments/2026-05-23-pruning-experiment/)。
 >
 > 👉 **直接使用**：[Cowork / Codex / AGENTS.md 通用版（prompt 01）](prompts/01-claude-cowork-meta-instruction/prompt.md)　·　[AI Agent 通用版（prompt 02，含機密處理 + 平台檔案安全 + 代理式工作流）](prompts/02-claude-code-meta-instruction/prompt.md)
 
@@ -157,11 +158,11 @@ Adam-AI-Instructions/
 
 | 版本 | 日期 | 主要變更 |
 |------|------|---------|
+| [v0.7.1](docs/releases/v0.7.1.md) | 2026-05-24 | **v0.7.1 — AI Agent 通用版與發布整理**　prompt 02 改為 01 同源基底 + 機密處理 + 平台檔案安全 + 代理式工作流；補手機版 guide 排版；清理舊錯版與過密發布 |
 | [v0.7.0](docs/releases/v0.7.0.md) | 2026-05-23 | **v0.7.0 — 12-節結構整合版**　Meta Instruction 中度瘦身：20 節 → 12 節（字數 -45%），規則覆蓋率 100%，綜合分較 v0.6.1 提升 15.5%；首次配套發佈完整實驗報告（[docs/experiments/2026-05-23-pruning-experiment/](docs/experiments/2026-05-23-pruning-experiment/)）|
 | [v0.6.1](docs/releases/v0.6.1.md) | 2026-05-17 | 改善 root README 第四節 + 02 README 第五節安裝指引:Claude Code / Codex / 其他 AGENTS.md agent 改用步驟化、非技術讀者友善的書面語版本;補上「確認是否生效」段同進階提示 |
 | [v0.6.0](docs/releases/v0.6.0.md) | 2026-05-17 | 新增 prompt 02:Claude Code Meta Instruction(含機密處理及 Windows 桌面附加);第一至二十節與 01 同源逐字,新增第二十一節機密處理 + 第二十二節 Windows 桌面破壞性命令零容忍 |
 | [v0.5.1](docs/releases/v0.5.1.md) | 2026-05-16 | Hotfix:修正主標題仍 hardcode "Cowork" 同跨工具通用聲明矛盾;主標題 retitle + Cowork Project 用詞 generic + prompts/01 README 第七組描述 sync |
-| [v0.5.0](docs/releases/v0.5.0.md) | 2026-05-15 | 加「創作類任務例外」豁免、條款編號 + 回覆骨架執行硬規則、選擇題分行修正、明文兼容 OpenAI Codex / AGENTS.md 標準 agent;緊湊化 296→248 行 |
 
 ---
 

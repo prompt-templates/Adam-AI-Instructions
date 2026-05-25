@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claude Cowork Meta Instruction · 互動指南</title>
+<title>對話型工具版本 · 互動指南</title>
 <style>
   :root{
     --c-primary:#0d7377;
@@ -653,10 +653,10 @@
 <body>
 
 <header class="hero">
-  <h1>Claude Cowork Meta Instruction</h1>
-  <div class="tag">互動指南 · 13 節規則視覺化解說</div>
+  <h1>對話型工具版本</h1>
+  <div class="tag">互動指南 · 以對話氣泡示範指令生效後的差異</div>
   <div class="links">
-    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/prompt.md" target="_blank" rel="noopener">📄 Prompt 原文</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/prompt.md" target="_blank" rel="noopener">📄 指令原文</a>
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/README.md" target="_blank" rel="noopener">📖 文字介紹頁</a>
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions" target="_blank" rel="noopener">🏠 主索引</a>
   </div>
@@ -668,8 +668,8 @@
   <a href="#g1">1. 哲學與基礎層</a>
   <a href="#g2">2. 大型計劃管理層</a>
   <a href="#g3">3. 語言與表達層</a>
-  <a href="#g4">4. 準確性護欄層</a>
-  <a href="#g5">5. 變更治理層</a>
+  <a href="#g4">4. 事實與核對</a>
+  <a href="#g5">5. 修改與交付</a>
   <a href="#g6">6. 計算規範</a>
   <a href="#g7">7. 執行環境補充</a>
   <a href="#install">安裝</a>
@@ -677,7 +677,7 @@
 </nav>
 
 <div style="max-width:920px;margin:0 auto;padding:14px 20px;background:#e6f7f5;border-left:4px solid #0d7377;border-radius:6px;font-size:14px;line-height:1.55;color:#1a1a1a;">
-<strong>📐 結構更新</strong>　Prompt 原文目前為 13 節（§0 總仲裁順序 + 一至十二）。2026-05-23 瘦身實驗仍作歷史對照，詳見 <a href="https://github.com/prompt-templates/Adam-AI-Instructions/tree/main/docs/experiments/2026-05-23-pruning-experiment" target="_blank" rel="noopener">2026-05-23 瘦身實驗報告</a>。本互動指南以 7 張圖解展示現行結構；如需精確節號對照，請參考 <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/prompt.md" target="_blank" rel="noopener">prompt.md</a>。
+<strong>先看這裡</strong>　如果你主要用 AI 做對話、寫作、整理資料、比較方案或查證資料，先看這個版本。下面用對話氣泡示範：套用前，AI 容易急著回答、反覆追問或改完難以核對；套用後，AI 會先判斷、先核實、講清楚再交付。需要讓 AI 讀檔、改檔、執行命令或處理機密時，請改用 <a href="../02-claude-code-meta-instruction/guide.html">代理式工具版本</a>。
 </div>
 
 <main>
@@ -769,16 +769,16 @@
     <div class="scenario-grid">
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ 套用前</div>
-        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我想寫個 web scraper 抓網頁資料,該用什麼工具?</div></div>
-        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">Web scraping 是從網頁提取數據的過程,涉及多個步驟與考量。首先要了解 HTTP 協議...</div></div>
-        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">Python 生態中有多個 library 可以用,各自適合不同情境。其中 requests 是最基礎的 HTTP 客戶端...</div></div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我想寫個工具抓網頁資料,該用什麼方法?</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">網頁資料擷取是從網頁提取數據的過程,涉及多個步驟與考量。首先要了解 HTTP 協議...</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">Python 生態中有多個套件可以用,各自適合不同情境。其中 requests 是最基礎的 HTTP 客戶端...</div></div>
         <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">你可以從 <code>pip install requests beautifulsoup4</code> 開始;如要處理大型項目可用 Scrapy;若需要 JavaScript 渲染可考慮 Playwright;具體選擇視乎你的需求...</div></div>
         <div class="scenario-summary bad-summary">⚠ 列出多個工具但無明確推薦 — 用戶仍須自行判斷</div>
       </div>
 
       <div class="scenario-col after">
         <div class="scenario-tag good-tag">✅ 套用後</div>
-        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我想寫個 web scraper 抓網頁資料,該用什麼工具?</div></div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我想寫個工具抓網頁資料,該用什麼方法?</div></div>
         <div class="msg ai good">
           <div class="msg-avatar">🤖</div>
           <div class="msg-bubble">
@@ -807,15 +807,15 @@
     <div class="scenario-grid">
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ 套用前</div>
-        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我這段 prompt 第 3 行寫得太絕對,改鬆一些:<br>「必須永遠先核對事實,任何情況下不得猜測。」</div></div>
-        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">以下是修改後的完整 prompt:</div></div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我這段指令第 3 行寫得太絕對,改鬆一些:<br>「必須永遠先核對事實,任何情況下不得猜測。」</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">以下是修改後的完整指令:</div></div>
         <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">第 1 段 ... 第 2 段 ... 第 3 段(已改)... 第 4 段 ... 第 5 段 ... <br><em>(共 50 段全文重寫)</em></div></div>
         <div class="scenario-summary bad-summary">⚠ 用戶須逐字比對差異才知改了哪句 — 合併時易遺漏</div>
       </div>
 
       <div class="scenario-col after">
         <div class="scenario-tag good-tag">✅ 套用後</div>
-        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我這段 prompt 第 3 行寫得太絕對,改鬆一些:<br>「必須永遠先核對事實,任何情況下不得猜測。」</div></div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">我這段指令第 3 行寫得太絕對,改鬆一些:<br>「必須永遠先核對事實,任何情況下不得猜測。」</div></div>
         <div class="msg ai good">
           <div class="msg-avatar">🤖</div>
           <div class="msg-bubble">
@@ -846,7 +846,7 @@
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ 套用前</div>
         <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">這次修改之後有什麼品質檢查要做?</div></div>
-        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">完成 CHANGE 後需要執行 §9 Toolchain Compatibility Check。具體步驟:run linter、check SSOT alignment、confirm FPFR trigger conditions 符合 §3.5。</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">按 §12E 做 QC，先跑 linter / CI，再 check SSOT alignment，最後 verify FPFR trigger。若要 GA，還要過 review + machine validation + evidence check。</div></div>
         <div class="scenario-summary bad-summary">⚠ 正文塞滿內部代號 — 非熟悉規格的讀者無法即讀即懂</div>
       </div>
 
@@ -858,7 +858,7 @@
           <div class="msg-bubble">
             <strong class="lead">🔎 修改後需執行三項工具相容性檢查。</strong>
             <div style="margin-top:8px;font-size:13.5px;line-height:1.7">
-              完成修改後,先跑程式碼格式檢查(linter),再確認規則庫中同一定義只存在一處(單一真源),最後驗證多檔計劃的前置輸出格式是否已正確觸發(全圖優先規則)。三項全通才可宣告完成。
+              完成修改後,先跑程式碼格式檢查,再確認規則庫中同一定義只存在一處(單一真源),最後驗證多檔計劃的前置輸出格式是否已正確觸發(全圖優先規則)。三項全通才可宣告完成。
             </div>
             <div style="margin-top:10px;font-size:12px;color:#888">規則對照:第十二節範圍與相容性 / 第四節全圖優先規則</div>
           </div>
@@ -884,7 +884,7 @@
           <tr style="border-bottom:1px solid var(--c-border)">
             <td style="padding:6px 10px">二、規則內部命名層</td>
             <td style="padding:6px 10px">規則錨點互相引用</td>
-            <td style="padding:6px 10px">可用英文簡寫(FPFR / SSOT)；出現於正文時須譯成中文短語</td>
+            <td style="padding:6px 10px">內部可用簡寫；出現於正文時須譯成中文短語</td>
           </tr>
           <tr>
             <td style="padding:6px 10px">三、結構標題層</td>
@@ -908,8 +908,8 @@
   <h2>導讀</h2>
 
   <div class="author-card">
-    <h3>關於與分享初衷</h3>
-    <p>我是一位 AI 應用的研究型愛好者，喜歡將 Agentic AI 應用於商業運作及日常生活中，在過去幾年的實戰經歷中，踫過不少的失敗方法，本倉庫資料源於實戰中反覆遇到問題後沉澱的修正方法。公開分享的初衷，是讓有類似需要的網友不必重走冤枉路，並希望接收其他網友的經驗回饋，共同迭代。如有疑問或想就 AI 使用心得交流，歡迎透過 Facebook 聯絡。</p>
+    <h3>這頁怎樣看</h3>
+    <p>這套指令來自長期實際使用 AI 時反覆遇到的問題：AI 未核實就下結論、未讀清楚就改、改完又難以驗收。本頁不要求你先讀完整指令原文，而是先用對話示例和圖解說明它會怎樣改變 AI 的工作方式。如有疑問或想交流 AI 使用心得，歡迎透過 Facebook 聯絡。</p>
     <a class="fb-card" href="https://www.facebook.com/chan.adam" target="_blank" rel="noopener">
       <div class="fb-icon">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -924,37 +924,37 @@
     </a>
   </div>
 
-  <p class="lede">此指令的設計目的:讓 AI 在多步驟、多檔案、長期協作任務中,行為更穩定可預期,輸出格式可審閱、可驗收。</p>
-  <p>本頁將原文 <strong>13 節</strong>(§0 總仲裁順序 + 一至十二)視覺化展示,並按主題歸納配以 SVG 圖解。「對應問題 → 規則內容 → 治理作用 → 適用情景」四個切面說明見下方各組。</p>
+  <p class="lede">此指令的設計目的，是讓 AI 在需要判斷、核實、修改或長期協作時，先說清楚、再做事，最後能核對結果。</p>
+  <p>下方保留原文條款編號，方便需要時回到指令原文查證；但閱讀時只需先看每一組要解決的實際問題，以及套用後 AI 應該怎樣做。</p>
 
-  <h3>13 節規則一覽</h3>
+  <h3>規則地圖</h3>
   <div class="grid">
     <div class="card"><span class="num">§0</span><h4>總仲裁順序</h4><p>多規則衝突時的 6 層仲裁口徑;判斷未明時以「安全、可驗證、不假裝完成」為最高處理原則。</p></div>
     <div class="card"><span class="num">§1</span><h4>語言與語體</h4><p>三層輸出語言分離;正文用繁體中文書面語,英文限專有名詞、實體名稱與工具名。</p></div>
     <div class="card"><span class="num">§2</span><h4>合作模式</h4><p>AI 是合作夥伴而非出題者;有判斷即提出,不將已有答案包裝成開放題反問。</p></div>
-    <div class="card"><span class="num">§3</span><h4>回覆原則與骨架</h4><p>回覆形態 4 mode:純輸出、短答、標準、正式交付;另創作豁免。</p></div>
-    <div class="card"><span class="num">§4</span><h4>全圖優先規則</h4><p>多檔或治理改動前,先輸出 5 區段執行計劃;收尾句依風險選用三句版本。</p></div>
+    <div class="card"><span class="num">§3</span><h4>回覆原則與骨架</h4><p>按任務性質決定短答、標準回覆、正式交付或純輸出；創作類任務另作處理。</p></div>
+    <div class="card"><span class="num">§4</span><h4>全圖優先規則</h4><p>多檔或高風險改動前，先交代終點、交付物、指標、驗收與依據。</p></div>
     <div class="card"><span class="num">§5</span><h4>下一步選擇題</h4><p>需用戶抉擇時,A/B/C 三選項加推薦項加客觀依據,取代「你想點?」式提問。</p></div>
     <div class="card"><span class="num">§6</span><h4>歧義處理與真源對齊</h4><p>先列 ≤3 個合理假設一次性處理;用戶提供的真源逐字對齊,不改寫不重排。</p></div>
     <div class="card"><span class="num">§7</span><h4>先讀後判</h4><p>可驗證事實必先核對再答;禁止四類捷徑(代理訊號/憑記憶/用產出代思考/質疑時換方向)。</p></div>
-    <div class="card"><span class="num">§8</span><h4>治理改動先審核</h4><p>治理層改動先計劃自檢;第一份計劃必先以「只讀審核」作第一階段,不預設一定修改。</p></div>
+    <div class="card"><span class="num">§8</span><h4>治理改動先審核</h4><p>涉及長期規則或多處同步時，先只讀審核，不預設一定要修改。</p></div>
     <div class="card"><span class="num">§9</span><h4>變更交付</h4><p>修改預設用「精準錨點 + 修改前/修改後」雙代碼塊;深度修補要求完整掃描合併補丁再掃描。</p></div>
     <div class="card"><span class="num">§10</span><h4>防漂移與用語紀律</h4><p>同一規格只允許在單一定義塊;條款編號不可作句子主體,前置中文白話描述。</p></div>
-    <div class="card"><span class="num">§11</span><h4>計算與格式硬規則</h4><p>計算四步法 + JSON schema 對齊 + Mermaid 用 flowchart TB 與 Enter 換行。</p></div>
-    <div class="card"><span class="num">§12</span><h4>執行環境補充</h4><p>檔案系統、層次分類、變更前置、外部 API、四階段工作流、範圍與相容性。</p></div>
+    <div class="card"><span class="num">§11</span><h4>計算與格式硬規則</h4><p>計算要逐步驗算；指定格式要保持欄位一致，避免輸出不能直接使用。</p></div>
+    <div class="card"><span class="num">§12</span><h4>執行環境補充</h4><p>涉及檔案、命令、外部平台或可持久化改動時，先判斷風險再行動。</p></div>
   </div>
 
-  <h3>對應的具體痛點</h3>
+  <h3>它要處理的常見問題</h3>
   <table>
-    <thead><tr><th>痛點</th><th>對應規則</th></tr></thead>
+    <thead><tr><th>常見問題</th><th>主要規則</th></tr></thead>
     <tbody>
-      <tr><td>AI 正文夾雜英文簡寫或自創代號,即讀即停</td><td>§1 語言與語體</td></tr>
+      <tr><td>AI 正文夾雜英文簡寫或自創代號，讀者看不懂</td><td>§1 語言與語體</td></tr>
       <tr><td>多條規則同時觸發時 AI 口徑混亂、規則互鎖無從仲裁</td><td>§0 總仲裁順序</td></tr>
       <tr><td>AI 動手前未交代終點,改完才發現方向偏離</td><td>§4 全圖優先規則</td></tr>
       <tr><td>AI 對不可逆操作(刪除/部署/外部 API)跟一般修改混為一談</td><td>§4 收尾句三句版本</td></tr>
       <tr><td>AI 反覆「同意 A?同意 B?」逐項提問</td><td>§2 合作模式 + §5 下一步選擇題</td></tr>
       <tr><td>AI 輸出未經核對的事實</td><td>§7 先讀後判(可驗證事實必先核對)</td></tr>
-      <tr><td>AI 用「應該係」、「估計」憑記憶下判斷,未真讀檔</td><td>§7 先讀後判(禁止四類捷徑)</td></tr>
+      <tr><td>AI 用「應該是」、「估計」憑記憶下判斷，未真讀檔</td><td>§7 先讀後判(禁止四類捷徑)</td></tr>
       <tr><td>AI 一次性重寫整份檔案,合併困難</td><td>§9 變更交付(補丁式)</td></tr>
       <tr><td>同一規則散落多處,長期出現自相矛盾</td><td>§10 防漂移與用語紀律</td></tr>
       <tr><td>AI 句子主體堆砌內部代碼或條款編號,可讀性低</td><td>§10 用語紀律執行硬規則</td></tr>
@@ -967,13 +967,13 @@
 
 <!-- ============== 第一組:哲學基礎 ============== -->
 <section id="g1">
-  <h2><span class="num">1</span>哲學與基礎層</h2>
+  <h2><span class="num">1</span>基本工作方式</h2>
   <p class="lede">改變 AI 的預設互動模式,從「等候指示」轉為「主動判斷並提交建議」;同時為多規則衝突提供仲裁口徑。對應原文 <strong>§0 總仲裁順序 + §二 合作模式</strong>。</p>
 
-  <h3>對應問題</h3>
-  <p>預設大型語言模型(英文 Large Language Model,簡稱 LLM)的行為傾向「謹慎多於有用」:答案模糊、頻繁反問、避免主動判斷。對於熟練用戶,此類行為等於降低協作效率。本頁頂部 <a href="#scenario">四個典型情境</a> 的情境 1(全圖優先規則)即直接示範此差異 — AI 由「邊做邊反問」轉為「主動列出完整執行計劃」,可作為本組規則的具體佐證。</p>
+  <h3>常見問題</h3>
+  <p>AI 的常見問題是過度保守、答案模糊、頻繁反問、避免主動判斷。對需要完成實事的人來說，這會降低協作效率。本頁頂部 <a href="#scenario">四個典型情境</a> 的情境 1 直接示範此差異：AI 由「邊做邊反問」轉為「主動列出完整執行計劃」。</p>
 
-  <h3>規則內容</h3>
+  <h3>AI 會怎樣做</h3>
   <ul>
     <li><strong>個人偏好優先序</strong>:事實可驗收 &gt; 穩定性 &gt; 根因治理 &gt; 完整性交付 &gt; 最小改動。創作類任務(設計、故事、詩、廣告、純想像)自動豁免事實可驗收與五區段;但語言分層、合作模式、用語紀律、回覆語體仍適用。</li>
     <li><strong>§0 總仲裁順序</strong>:多條規則同時衝突時按 6 層處理(安全 → 純輸出格式 → 單一真源 → 事實核對 → 回覆形態 → 呈現形式);判斷未明時以「安全、可驗證、不假裝完成」為最高處理原則。</li>
@@ -1009,20 +1009,20 @@
     <div class="svg-caption">圖一:§0 總仲裁順序的 6 層階梯;上位規則優先於下位。</div>
   </div>
 
-  <h3>治理作用</h3>
+  <h3>實際作用</h3>
   <p>此組規則為整套指令的基礎。後續格式規則需要此基礎方能生效——若 AI 遇事即反問,所有格式約束都會被「禮貌性確認」抵消。</p>
 
-  <h3>適用情景</h3>
+  <h3>適合情境</h3>
   <p>所有場景皆適用,屬基礎層。對「給予 AI 一個目標,期待其自行規劃多步驟」的用法影響最大。</p>
 </section>
 
 
 <!-- ============== 第二組:FPFR ============== -->
 <section id="g2">
-  <h2><span class="num">2</span>大型計劃管理層</h2>
+  <h2><span class="num">2</span>大型任務管理</h2>
   <p class="lede">在 AI 進行多檔或治理改動之前,要求先輸出明確的 5 區段計劃結構;治理層改動更必先計劃自檢,第一份計劃預設為「只讀審核」。對應原文 <strong>§四 全圖優先規則 + §八 治理改動先審核</strong>。</p>
 
-  <h3>對應問題</h3>
+  <h3>常見問題</h3>
   <p>AI 開始執行後,改至中途才發現方向與用戶期望不一致;或在修改多個檔案後才補充說明範圍變動。用戶需逐個檔案檢視,方能發現偏離。</p>
 
   <div class="svg-wrap">
@@ -1117,11 +1117,11 @@
     <div class="svg-caption">圖二:全圖優先(英文 Full-Picture-First Rule)觸發判斷與 5 區段固定結構。</div>
   </div>
 
-  <h3>規則內容</h3>
+  <h3>AI 會怎樣做</h3>
   <p>當 AI 即將進行 4 個觸發條件(修改 ≥2 檔案、新建檔案、改動治理規則、提出 ≥2 階段計劃)中的任一時,必須先輸出 5 區段執行計劃,再執行實際工作。</p>
   <p>觸發後,輸出 5 區段之前必先完成「計劃自檢」(層次屬產品系統抑或治理、是否應先只讀審核、是否有不改檔即可達標的正路、是否有同主題真源、漂移風險、閱讀覆蓋是否足夠)。治理文件、安全規則、長期流程、跨檔同步、公開輸出、外部平台、跨真源任務的第一份全圖計劃須以「只讀審核」作第一階段,不得預設必然修改。</p>
 
-  <h3>治理作用</h3>
+  <h3>實際作用</h3>
   <ul>
     <li><strong>可預測性</strong>:用戶閱讀 5 區段後,可立即決定批准或否決,減少多輪對話拉鋸。</li>
     <li><strong>可驗收</strong>:第 4 區段「驗收測試」(英文錨點 ACCEPTANCE TEST)提供具體檢查方法,任務完成後可立即驗收。</li>
@@ -1134,10 +1134,10 @@
 
 <!-- ============== 第三組:回覆品質 ============== -->
 <section id="g3">
-  <h2><span class="num">3</span>語言與表達層</h2>
-  <p class="lede">統一三層語言分離、回覆骨架(含 4 mode 形態)、選擇題格式、語氣與用語紀律,提升輸出可讀性與一致性。對應原文 <strong>§一 語言與語體 + §三 回覆原則與骨架 + §五 下一步選擇題 + §十 防漂移與用語紀律</strong>。</p>
+  <h2><span class="num">3</span>語言與表達</h2>
+  <p class="lede">統一語言、回覆格式、選擇題格式與用語紀律，讓 AI 的答案更容易讀，也更容易拿來核對。對應原文 <strong>§一 語言與語體 + §三 回覆原則與骨架 + §五 下一步選擇題 + §十 防漂移與用語紀律</strong>。</p>
 
-  <h3>對應問題</h3>
+  <h3>常見問題</h3>
   <ul>
     <li>答案前段為背景介紹或客套語,結論需向下捲動才看到。</li>
     <li>AI 句子主體堆砌內部代碼、條款編號(如 <code>§5l rule</code>、<code>BLUEPRINT_REGEN_MATRIX 4/5</code>),非熟悉內部規格者無法讀通。</li>
@@ -1146,7 +1146,7 @@
 
   <div class="svg-wrap">
     <svg viewBox="0 0 820 290" xmlns="http://www.w3.org/2000/svg">
-      <text x="410" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">回覆形態 4 mode + 創作豁免:按任務性質選用</text>
+      <text x="410" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">不同任務用不同回覆方式，創作任務另作處理</text>
 
       <rect x="20" y="60" width="150" height="200" rx="8" fill="#fff0e0" stroke="#e08436" stroke-width="2"/>
       <text x="95" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#e08436">純輸出模式</text>
@@ -1198,18 +1198,18 @@
       <text x="730" y="222" text-anchor="middle" font-size="10" fill="#5b6470">語言分層、合作</text>
       <text x="730" y="238" text-anchor="middle" font-size="10" fill="#5b6470">模式仍適用</text>
     </svg>
-    <div class="svg-caption">圖三:回覆形態 4 mode + 創作豁免 — 按任務性質選用;仲裁衝突依 §0 第 5 層。</div>
+    <div class="svg-caption">圖三:按任務性質選用回覆方式；創作任務不硬套工作流程。</div>
   </div>
 
-  <h3>規則重點</h3>
+  <h3>AI 會怎樣做</h3>
   <table>
     <thead><tr><th>規則塊</th><th>核心約束</th></tr></thead>
     <tbody>
       <tr><td>三層語言分離(§一)</td><td>使用者輸出層繁體中文書面語;規則內部命名層可用英文錨點但出現於輸出層必須翻譯;結構標題層一律中文。</td></tr>
-      <tr><td>回覆骨架(§三)</td><td>標準模式:≤3 行重點(🔎 標示)→ 交付清單清零 → 正文;另含 4 mode 形態(見上方圖三)。</td></tr>
+      <tr><td>回覆骨架(§三)</td><td>標準模式先給三行內重點，再列交付清單，最後補正文；短答、正式交付與純輸出另按任務選用。</td></tr>
       <tr><td>下一步選擇題(§五)</td><td>A/B/C 選項 + 推薦項 + 一句客觀依據,取代「你想點?」式提問;每選項必須是正路。</td></tr>
       <tr><td>用語紀律(§十)</td><td>條款編號(§X、X.Y)必須前置中文白話描述,編號只放括號或行尾;禁止自創 Capital_Snake_Case 或 ProperNounMatrix 類術語作句子主體。</td></tr>
-      <tr><td>防漂移(§十)</td><td>同一規格、鍵集、枚舉、開關、仲裁口徑,只允許存在於單一定義塊;新增規則時同步合併或廢止舊句(註:防漂移子議題亦與變更治理層密切相關)。</td></tr>
+      <tr><td>防漂移(§十)</td><td>同一規則只保留一個主要定義位置；新增內容時，同步合併或退役舊句，避免日後互相矛盾。</td></tr>
       <tr><td>回覆語體(§一)</td><td>跟當前對話既有語體(書面語、口語、指定方言),單一回覆內保持一致。</td></tr>
       <tr><td>純輸出模式(§三)</td><td>用戶明示「只輸出 / 純輸出模式 / 不得輸出其他文字」即進入,最終輸出只可包含指定結構,無前言、無後記。</td></tr>
     </tbody>
@@ -1235,7 +1235,7 @@
 
 <!-- ============== 第四組:準確性 ============== -->
 <section id="g4">
-  <h2><span class="num">4</span>準確性護欄層</h2>
+  <h2><span class="num">4</span>事實與核對</h2>
   <p class="lede">透過歧義處理、真源對齊、先讀後判,降低 AI 出現幻覺(亂作答)的風險,以及輸出與下游系統不對齊的問題;結論必建基於完整閱讀,而非片段或記憶。對應原文 <strong>§六 歧義處理與真源對齊 + §七 先讀後判</strong>。</p>
 
   <h3>三條核心規則</h3>
@@ -1248,7 +1248,7 @@
         <td>核對不到時標為「未核實」(英文錨點 UNVERIFIED;與「未適用」/ NA 區分),用戶清楚知道哪些須再查。</td>
       </tr>
       <tr>
-        <td>單一真源對齊(英文 Single Source of Truth,簡稱 SSOT)</td>
+        <td>單一真源對齊</td>
         <td>用戶提供的結構定義(英文 schema)、鍵名、枚舉、分組標題,逐字對齊。</td>
         <td>輸出可直接傳遞至下游系統,毋須中間轉譯。</td>
       </tr>
@@ -1268,7 +1268,7 @@
 
 <!-- ============== 第五組:變更治理 ============== -->
 <section id="g5">
-  <h2><span class="num">5</span>變更治理層</h2>
+  <h2><span class="num">5</span>修改與交付</h2>
   <p class="lede">透過補丁式變更、深度修補與格式硬規則,讓修改可審閱、可合併、長期一致。防漂移主規則歸入上方語言與表達層,本段只示範它在變更治理中的作用。對應原文 <strong>§九 變更交付(補丁式與深度修補) + §十一 計算與格式硬規則</strong>(§十一的計算子議題見下方第六組)。</p>
 
   <div class="svg-wrap">
@@ -1354,7 +1354,7 @@
 
       <rect x="490" y="100" width="200" height="50" rx="8" fill="#0d7377"/>
       <text x="590" y="122" text-anchor="middle" fill="white" font-size="13" font-weight="bold">規則 X(唯一定義塊)</text>
-      <text x="590" y="140" text-anchor="middle" fill="white" font-size="11">單一真源 · SSOT</text>
+      <text x="590" y="140" text-anchor="middle" fill="white" font-size="11">單一真源</text>
 
       <!-- References -->
       <rect x="430" y="180" width="100" height="36" rx="6" fill="white" stroke="#7cb98a"/>
@@ -1374,7 +1374,7 @@
       <text x="590" y="260" text-anchor="middle" font-size="12" fill="#2e7d32">✓ 永不自相矛盾</text>
       <text x="590" y="280" text-anchor="middle" font-size="12" fill="#2e7d32">✓ 規則庫長期可維護</text>
     </svg>
-    <div class="svg-caption">圖五:防漂移規則的核心——SSOT(Single Source of Truth)+ 引用,取代多處複寫。</div>
+    <div class="svg-caption">圖五:防漂移規則的核心——以單一真源加引用，取代多處複寫。</div>
   </div>
 </section>
 
@@ -1384,8 +1384,8 @@
   <h2><span class="num">6</span>計算規範:四步法</h2>
   <p class="lede">強制 AI 在計算題上展示完整步驟並代回驗算,使錯誤可追溯、可自我捕獲。對應原文 <strong>§十一 計算與格式硬規則</strong>的計算子議題;同節另含 JSON / Mermaid 格式硬規則(歸入上方第五組變更治理)。</p>
 
-  <h3>對應問題</h3>
-  <p>大型語言模型(LLM)在計算題上頻繁出錯,尤其涉及小數、移項、單位轉換;且出錯後難以從輸出中追溯出錯步驟。</p>
+  <h3>常見問題</h3>
+  <p>AI 在計算題上容易出錯，尤其涉及小數、移項、單位轉換；若沒有步驟，出錯後也難以追溯。</p>
 
   <div class="svg-wrap">
     <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
@@ -1437,7 +1437,7 @@
     <div class="svg-caption">圖六:計算四步法,第 4 步是自我驗算機制。</div>
   </div>
 
-  <h3>適用情景</h3>
+  <h3>適合情境</h3>
   <p>任何涉及計算的場景:財務、單位轉換、面積 / 體積、利率、折扣、稅項。純文字任務不受影響。</p>
 </section>
 
@@ -1445,7 +1445,7 @@
 <!-- ============== 第七組:Cowork 環境 ============== -->
 <section id="g7">
   <h2><span class="num">7</span>執行環境補充</h2>
-  <p class="lede">專為具備檔案系統存取能力的 AI 環境而設(Claude Cowork / OpenAI Codex / Amp / Cursor / Factory / Google Jules 等),涵蓋檔案操作、層次分類與變更前置、外部 API、四階段工作流、範圍與相容性五個面向。對應原文 <strong>§十二 執行環境補充</strong>;本指令的範例已涵蓋 Windows 與 macOS / Linux 雙平台。</p>
+  <p class="lede">這一組對應指令原文「執行環境補充」。只要 AI 會接觸檔案、命令、外部平台或可持久化改動，就要先判斷風險、讀足上下文、再修改並驗收。</p>
 
   <div class="svg-wrap">
     <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
@@ -1494,14 +1494,14 @@
 
       <g>
         <rect x="680" y="70" width="100" height="80" rx="10" fill="white" stroke="#0d7377" stroke-width="2" stroke-dasharray="5,3"/>
-        <text x="730" y="98" text-anchor="middle" fill="#0d7377" font-size="13" font-weight="bold">PERSIST</text>
-        <text x="730" y="118" text-anchor="middle" fill="#5b6470" font-size="10">(Project 內)</text>
-        <text x="730" y="132" text-anchor="middle" fill="#5b6470" font-size="10">更新項目記憶</text>
+        <text x="730" y="98" text-anchor="middle" fill="#0d7377" font-size="13" font-weight="bold">回報</text>
+        <text x="730" y="118" text-anchor="middle" fill="#5b6470" font-size="10">檢查結果</text>
+        <text x="730" y="132" text-anchor="middle" fill="#5b6470" font-size="10">風險餘項</text>
       </g>
 
       <text x="400" y="190" text-anchor="middle" font-size="12" fill="#5b6470">高風險任務可先只讀審核;進入修改、外部操作或公開發佈前須確認</text>
     </svg>
-    <div class="svg-caption">圖七:四階段工作流;在 Cowork Project 內額外加上「持久化階段(PERSIST)」更新項目記憶。</div>
+    <div class="svg-caption">圖七:四階段工作流；修改後要把檢查結果與風險餘項說清楚。</div>
   </div>
 
   <h3>五大面向</h3>
@@ -1509,15 +1509,15 @@
     <thead><tr><th>面向</th><th>核心約束</th></tr></thead>
     <tbody>
       <tr><td>A. 檔案系統與破壞性操作</td><td>刪除或覆寫前先列出影響範圍待用戶確認;原檔保留並輸出副本;新檔放入 outputs/ 子目錄;禁止高風險指令(例如 <code>rm -rf</code>、<code>Remove-Item -Recurse -Force</code>);路徑使用該語言原生的路徑處理函式(API)。</td></tr>
-      <tr><td>B. 層次分類與變更前置</td><td>判斷任務屬於「產品系統層」抑或「治理層」;遇到程式錯誤(bug)先做問題分類再動手。進入修改階段(CHANGE)之前完成最低閱讀覆蓋;新增規則前先檢查既有規則可否合併或退役;治理／規則／跨檔同步任務的計劃前須完成計劃自檢,資料未讀夠則第一份計劃只能是閱讀或審核計劃。</td></tr>
-      <tr><td>C. 外部平台與應用程式介面(API)</td><td>不憑記憶猜測;呼叫外部 API 前必須對齊官方文件,記錄基礎網址(Base URL)、版本、驗證方式等。</td></tr>
-      <tr><td>D. 工作流與風險</td><td>四階段流程「計劃(PLAN)→ 閱讀(READ)→ 修改(CHANGE)→ 品質檢查(QC)」;規劃階段不得把「看似可執行」當成「已審核」,治理／跨檔同步／公開輸出／≥3 檔案任務須先設為只讀審核或分階段 gate;修改階段一旦偏離計劃即停止。</td></tr>
-      <tr><td>E. 範圍與相容性</td><td>只改與任務直接相關的檔案;若項目設有靜態檢查工具(linter)、持續整合系統(CI),修改後必跑且回報結果;宣告完成、合併、發佈、正式上線(英文 General Availability,簡稱 GA)等任一狀態之前,須過三關:獨立審閱、機器驗證、證據核對。</td></tr>
+      <tr><td>B. 層次分類與變更前置</td><td>判斷任務屬於「產品系統層」抑或「治理層」；遇到錯誤先做問題分類再動手。進入修改階段之前完成最低閱讀覆蓋；新增規則前先檢查既有規則可否合併或退役；治理／規則／跨檔同步任務的計劃前須完成計劃自檢，資料未讀夠則第一份計劃只能是閱讀或審核計劃。</td></tr>
+      <tr><td>C. 外部平台與應用程式介面</td><td>不憑記憶猜測；呼叫外部平台或介面前必須對齊官方文件，記錄基礎網址、版本、驗證方式等。</td></tr>
+      <tr><td>D. 工作流與風險</td><td>四階段流程是「規劃 → 閱讀 → 修改 → 品質檢查」；規劃階段不得把「看似可執行」當成「已審核」；高風險任務可先只讀審核；修改階段一旦偏離計劃即停止。</td></tr>
+      <tr><td>E. 範圍與相容性</td><td>只改與任務直接相關的檔案；若項目設有靜態檢查、格式檢查、型別檢查、編譯檢查或本地檢查，修改後必跑且回報結果；宣告就緒、合併、發佈或正式上線前，須過三關：獨立審閱、機器驗證、證據核對。</td></tr>
     </tbody>
   </table>
 
   <div class="callout">
-    <strong>跨平台說明</strong>:本指令的破壞性指令清單已涵蓋 Windows(<code>Remove-Item -Recurse -Force</code>、<code>powershell -Command</code>)與 macOS / Linux(<code>rm -rf</code>、<code>sh -c</code>、<code>bash -c</code>);路徑 API 例子涵蓋 .NET(<code>Path.Combine</code>)、Node.js(<code>path.join</code>)、Python(<code>pathlib.Path</code>、<code>os.path.join</code>)、PowerShell(<code>Join-Path</code>)、Bash / Zsh(變數展開)、Java、Go。可直接套用於兩大作業系統。
+    <strong>跨平台說明</strong>：本指令點名禁止高風險刪除、覆寫、提權繞過與外部殼層包裝。路徑處理要使用工具或語言提供的安全路徑方法，不用原始字串拼接。
   </div>
 </section>
 
@@ -1529,20 +1529,16 @@
   <h3>Claude Cowork</h3>
   <ol>
     <li>開啟 Claude Cowork 設定頁。</li>
-    <li>找到「Personal Preferences」或「Custom Instructions」欄位。</li>
+    <li>找到個人偏好、自訂指令或同類欄位。</li>
     <li>複製 <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/prompt.md" target="_blank" rel="noopener">prompt.md</a> 全文,貼入該欄位。</li>
     <li>儲存。新對話即生效。</li>
   </ol>
 
-  <h3>Claude Code</h3>
-  <p>放入以下其中一個位置:</p>
-  <ul>
-    <li>全域:<code>~/.claude/CLAUDE.md</code>(影響所有項目)</li>
-    <li>項目級:項目根目錄的 <code>CLAUDE.md</code>(只影響該項目)</li>
-  </ul>
+  <h3>代理式工具</h3>
+  <p>如果你使用會讀檔、改檔或執行命令的工具，建議改用 <a href="../02-claude-code-meta-instruction/guide.html">代理式工具版本</a>。這個版本主要給對話型工具使用。</p>
 
   <h3>其他 Claude 介面 / ChatGPT / 其他 AI 對話工具</h3>
-  <p>貼入「System Prompt(系統指令)/ Custom Instructions(自訂指令)/ Project Instructions(項目指令)」等同類欄位。第十二節「執行環境補充」若工具不具備檔案系統存取能力,會自動失效,不影響其他規則生效。</p>
+  <p>貼入系統指令、自訂指令、項目指令等同類欄位。第十二節「執行環境補充」若工具不具備檔案系統存取能力，會自然不觸發，不影響其他規則生效。</p>
 </section>
 
 
@@ -1562,7 +1558,7 @@
 
   <details>
     <summary>Q3:會否與 AI 工具自身的系統指令(system prompt)衝突?</summary>
-    <p>大部分情況不會。此指令屬於用戶層設定,AI 工具會將其與自身的系統指令(system prompt)合併處理。如有少量衝突(例如格式偏好),AI 通常以較具體者為準。</p>
+    <p>工具自身的安全規則仍然優先。這份指令主要表達使用者偏好、回覆方式與任務流程；如有衝突，以更高層級的安全與平台限制為準。</p>
   </details>
 
   <details>
@@ -1577,7 +1573,7 @@
 
   <details>
     <summary>Q6:此指令會繼續更新嗎?</summary>
-    <p>會。此指令屬持續維護;若於實戰中遇到此規則未覆蓋的情景,歡迎透過 GitHub Issue(議題)或 Pull Request(拉取請求)提交。</p>
+    <p>會。此指令會按實際使用情況調整；若遇到未覆蓋的情景，可透過 GitHub 回報。</p>
   </details>
 </section>
 
@@ -1585,12 +1581,12 @@
 
 <footer>
   <p>
-    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/prompt.md" target="_blank" rel="noopener">📄 Prompt 原文</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/prompt.md" target="_blank" rel="noopener">📄 指令原文</a>
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/01-claude-cowork-meta-instruction/README.md" target="_blank" rel="noopener">📖 文字介紹頁</a>
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions" target="_blank" rel="noopener">🏠 主索引</a>
     <a href="#overview">⬆ 回頁首</a>
   </p>
-  <p style="margin-top:14px">Adam's AI Instructions · Claude Cowork Meta Instruction · 互動指南</p>
+  <p style="margin-top:14px">Adam's AI Instructions · 對話型工具版本 · 互動指南</p>
 </footer>
 
 <script>

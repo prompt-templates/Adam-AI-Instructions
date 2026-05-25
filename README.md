@@ -1,173 +1,165 @@
-# Adam's AI Instructions｜AI 治理指令庫
+# Adam's AI Instructions｜給需要 AI 交付嚴肅工作的人
 
-個人於日常使用 AI 工具(Claude Cowork、Claude Code、ChatGPT 等)過程中累積的治理指令(Meta Instructions)集合。
+這是一套中文 AI 使用指令。
 
----
+它的目的不是叫 AI 盲目服從，而是讓 AI 在做事前先想清楚、先核實、講清楚，改完能驗收。
 
-## 一、本資料庫內容
+適合商務、研究、事實分析、文件整理、流程維護與開發協作。只要 AI 的輸出會影響真正工作結果，就需要這類邊界。
 
-收錄個人於實際操作中,經反覆遇到問題與修正後沉澱出的 Meta Instruction 文本。每一份指令對應一類具體場景,用於約束 AI 在該場景下的行為,以提升輸出的一致性、可驗收性與可審計性。
-
-套用後可獲得的具體好處:
-
-- ✅ 偏好優先序:事實可驗收 > 穩定性 > 根因治理 > 完整性交付 > 最小改動
-- ✅ AI 主動判斷並一次提交完整方案,減少反覆提問
-- ✅ 動手修改前先輸出完整執行計劃（全圖優先規則）：(1) 終點畫面、(2) 交付物、(3) 可量指標、(4) 驗收測試、(5) 目標連結，五區段一頁見全，收尾以「若不否決或修改，即開始執行」讓用戶 30 秒可決定批准、否決或修改
-- ✅ 核對不到的部分清楚區分為「未核實」（曾嘗試核對但失敗）與「未適用」（真缺值或無資料），不會混淆已驗證與未驗證內容
-- ✅ 修改以「精準錨點 + 修改前 / 修改後 + 變更日誌」補丁式交付，方便直接貼換，合併零遺漏
-- ✅ 同一規則只在單一定義塊存在，減少指令四散、出現自相矛盾（防漂移）
-- ✅ 判斷事實前必先核對（先讀後判）；用驗證代替推斷、用全貌代替片段，杜絕憑記憶猜測外部平台或檔案內容
-- ✅ 治理改動先審核：修改治理規則、跨檔同步、刪除重命名等不可逆操作前必先計劃自檢與只讀審核，不預設一定修改檔案
-- ✅ 創作類任務（設計、故事、詩、廣告文案、虛構等）自動豁免事實可驗收硬骨幹，保留語言分層與合作模式
-
-每條規則均對應一次或多次實際發生的情況及修正方法。內容定位為個人經驗紀錄與分享,並非標準或最佳實踐宣稱。
+如果你不是開發人員，也可以使用。你只需要按工具類型選一份指令，複製，貼到所用 AI 工具的自訂指令位置。
 
 ---
 
-## 二、適用對象
+## 一、先按工具類型選
 
-- 長期使用 Claude Cowork、Claude Code、ChatGPT 等 LLM 對話型工具的用戶。
-- 涉及多檔案修改、長期文件維護、規則治理的用戶。
-- 希望 AI 在多步驟任務中減少反覆確認、提升自主判斷的用戶。
-- 重視輸出格式一致性與可驗收性的用戶。
-- 非技術背景的用戶亦可使用:每份指令皆附中文介紹頁,以場景與行為描述為主,不要求程式背景。
+| 你使用的工具 | 建議使用 | 原因 |
+|---|---|---|
+| ChatGPT、Claude、Claude Cowork 等主要靠對話工作的工具 | 對話型工具版本 | 工具主要輸出文字，重點是核實、判斷、語氣、計劃與交付方式。 |
+| Codex、Claude Code、Antigravity、Cursor 等會讀檔、改檔或執行命令的工具 | 代理式工具版本 | 工具能碰到檔案、命令、機密與發布流程，需要更完整的操作邊界。 |
+| 不確定工具是否會碰檔案或命令 | 代理式工具版本 | 邊界較完整；沒有檔案能力的工具會自然忽略不適用部分。 |
 
----
+兩份指令的工作哲學相同。差別不在目標功能，而在工具能力：工具只能對話時，用較輕的版本；工具能讀檔、改檔、執行命令時，用邊界更完整的版本。
 
-## 三、目錄結構
+直接使用：
 
-```
-Adam-AI-Instructions/
-├── README.md                                   ← 本頁（總索引）
-├── CHANGELOG.md                                ← 完整變更日誌
-├── AGENTS.md                                   ← Claude Code / OpenAI Codex / Amp / Cursor 等 AGENTS.md 標準 agent 直接讀取的設定檔
-├── LICENSE
-│
-├── prompts/                                    ← 各份 Meta Instruction 指令
-│   ├── 01-claude-cowork-meta-instruction/      ← Claude Cowork / Codex / AGENTS.md 通用版（v0.7.0 — 12-節結構整合版）
-│   │   ├── prompt.md                           ← Prompt 原文，可直接複製貼至 AI 工具
-│   │   ├── README.md                           ← 該指令的文字介紹頁
-│   │   └── guide.html                          ← 互動式 SVG 指南（GitHub Pages 可開啟）
-│   │
-│   └── 02-claude-code-meta-instruction/        ← AI Agent 通用版（01 同源基底 + 機密處理 + 平台檔案安全 + 代理式工作流）
-│       ├── prompt.md
-│       ├── README.md
-│       └── guide.html
-│
-└── docs/
-    ├── releases/                               ← 各版本用戶面向發布說明
-    │   ├── _TEMPLATE.md                        ← 發布說明寫作模板（使用者旅程導向）
-    │   ├── v0.7.1.md
-    │   ├── v0.7.0.md
-    │   └── ...（v0.2.0 起累積）
-    │
-    └── experiments/                            ← 治理改動數據驗證實驗報告
-        └── 2026-05-23-pruning-experiment/      ← v0.7.0 12-節結構整合版的瘦身實驗
-            ├── README.md                       ← 實驗主頁（一句結論 + 為何 B 勝出）
-            ├── test_cases.md                   ← 8 場景 × 37 條規則檢查點
-            ├── evaluation_matrix.md            ← 三版本 × 四輪評分矩陣
-            ├── comparison_report.md            ← 多維對照 + 勝出宣告
-            └── v_a/v_b/v_c_*.md                ← A 保守 / B 中度 / C 激進 三版本 prompt 全文
-```
+- [對話型工具版本](prompts/01-claude-cowork-meta-instruction/prompt.md)
+- [代理式工具版本](prompts/02-claude-code-meta-instruction/prompt.md)
 
-每份指令獨立存放於各自資料夾，內含三件套：
+建議先看互動指南：
 
-- `prompt.md`：Prompt 原文，可直接複製貼至 AI 工具的 system prompt、personal preferences、project instructions 等欄位。
-- `README.md`：文字介紹頁，說明該指令對應的痛點、規則內容、治理作用、適用情景。
-- `guide.html`：互動式指南，含 SVG 視覺化說明，以瀏覽器開啟即可閱讀（亦可由 GitHub Pages 線上預覽）。
-
-## 四、使用方式
-
-1. 從下文索引選取適用於自身工具的指令。
-2. 閱讀該指令的 `README.md`,理解規則內容與適用情景。
-3. 開啟 `prompt.md`,複製全文。
-4. 貼至所用 AI 工具的對應位置(下方逐工具列出步驟):
-
-   **Claude Cowork**
-
-   Settings → Cowork → Global Instructions(介面位置見下圖)。將複製的內容貼入該欄位,儲存即生效。
-
-   ![Claude Cowork 設定介面 — Settings → Cowork → Global Instructions 欄位位置](doc/ui_settings_cowork.jpg)
-
-   **Claude Code**(全平台)
-
-   - 全域(套用至所有項目):
-     - macOS / Linux:於個人資料夾下的 `.claude` 資料夾內,新建檔案 `CLAUDE.md`(完整路徑 `~/.claude/CLAUDE.md`)。
-     - Windows:於 `C:\Users\<你的用戶名稱>\.claude\` 內新建檔案 `CLAUDE.md`。
-   - 單一項目:於該項目根目錄新建檔案 `CLAUDE.md`,只影響該項目。
-   - 將複製的 prompt 全文貼入該檔案,儲存後重新開啟 Claude Code 即生效。
-   - 如資料夾或檔案不存在,自行新建即可。
-
-   **OpenAI Codex**
-
-   - 全域(套用至所有項目):
-     - macOS / Linux:於個人資料夾下的 `.codex` 資料夾內,新建檔案 `AGENTS.md`(完整路徑 `~/.codex/AGENTS.md`)。
-     - Windows:於 `C:\Users\<你的用戶名稱>\.codex\` 內新建檔案 `AGENTS.md`。
-   - 單一項目:於該項目根目錄新建檔案 `AGENTS.md`,只影響該項目。
-   - 將複製的 prompt 全文貼入該檔案,儲存後重新開啟 Codex 即生效。
-   - 如資料夾或檔案不存在,自行新建即可。
-
-   **其他 AGENTS.md 標準 agent**(Amp / Cursor / Factory / Google Jules 等)
-
-   - 單一項目:於該項目根目錄新建檔案 `AGENTS.md`,將 prompt 全文貼入。AGENTS.md 為跨工具通用格式。
-   - 全域:每個工具有自己的全域檔案位置,請參考各自的官方文件。
-
-   **ChatGPT 或其他 LLM 對話介面**
-
-   Settings → Personalization → Custom Instructions(或對應的「自訂指令」欄位),將 prompt 全文貼入儲存即生效。
-
-5. 套用後觀察 AI 行為變化;若某條規則與個人習慣衝突,可自行刪改。
-
-> **進階提示**(熟悉終端機的用戶可選看)
->
-> - 已設定 `CLAUDE_CONFIG_DIR`(Claude Code)或 `CODEX_HOME`(OpenAI Codex)環境變數的用戶,安裝位置會隨環境變數指向的資料夾改變,以該位置為準。
-> - OpenAI Codex 同時支援 `AGENTS.override.md`(優先於 `AGENTS.md`)作為覆寫檔。如你已有 `AGENTS.md` 而不想覆蓋,可改貼至 `AGENTS.override.md`。
-
-各指令的規則段落可獨立使用,毋須整套套用。
+- [對話型工具版本互動指南](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/01-claude-cowork-meta-instruction/guide.html)
+- [代理式工具版本互動指南](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html)
 
 ---
 
-> ## 目前穩定公開基準：v0.7.1 — AI Agent 通用版與發布整理
->
-> 這版把 prompt 02 整理成更適合公開使用的 AI Agent 通用版：以 01 的穩定基底為核心，補上機密處理、跨平台檔案安全與代理式工作流，並清理過多舊發布。
->
-> 🧪 01 的 12 節結構仍可參考 [v0.7.0 實驗報告](docs/experiments/2026-05-23-pruning-experiment/)。
->
-> 👉 **直接使用**：[Cowork / Codex / AGENTS.md 通用版（prompt 01）](prompts/01-claude-cowork-meta-instruction/prompt.md)　·　[AI Agent 通用版（prompt 02，含機密處理 + 平台檔案安全 + 代理式工作流）](prompts/02-claude-code-meta-instruction/prompt.md)
+## 二、這套指令適合哪些工作
+
+這套指令特別適合需要交付、需要判斷、需要留下依據的工作。
+
+| 工作類型 | 適合原因 |
+|---|---|
+| 商務與營運 | 方案、會議、流程、供應商比較、客戶回覆都需要結論清楚、理由可追。 |
+| 資料研究 | 需要查來源、分清事實與推測，不能把未核實內容當答案。 |
+| 事實分析 | 日期、數字、版本、引用、平台規則都要先核實。 |
+| 文件與知識庫維護 | 需要防止同一規則散落多處，改完要知道改了哪裡。 |
+| 開發與代理式工具協作 | 需要讀檔、改檔、執行命令時，先守住機密、刪除、提交與發布邊界。 |
+| 高風險文字初稿 | 法務、財務、醫療健康等內容可用作整理與草稿，但必須標明未核實與人工檢閱。 |
 
 ---
 
-## 五、Prompt 索引
+## 三、這套指令解決什麼問題
 
-| # | 名稱 | 互動指南 | 文字介紹 | Prompt 原文 | 適用工具 |
-|---|------|---------|---------|-------------|----------|
-| 01 | Claude Cowork Meta Instruction | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/01-claude-cowork-meta-instruction/guide.html) | [README.md](prompts/01-claude-cowork-meta-instruction/README.md) | [prompt.md](prompts/01-claude-cowork-meta-instruction/prompt.md) | Claude Cowork、Claude Code、OpenAI Codex、AGENTS.md 標準 agent(Amp / Cursor / Factory / Google Jules)、一般 Claude / ChatGPT 對話介面 |
-| 02 | AI Agent Meta Instruction（含機密處理、平台檔案安全、代理式工作流） | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) | [README.md](prompts/02-claude-code-meta-instruction/README.md) | [prompt.md](prompts/02-claude-code-meta-instruction/prompt.md) | Claude Code、OpenAI Codex、Claude Cowork、AGENTS.md 標準 agent；適合會讀檔、改檔、執行工具或處理機密的情境 |
+AI 很容易出現幾類問題：
 
-> **建議閱讀順序**:先點擊「互動指南」(以瀏覽器開啟,含 SVG 視覺化說明),再參考「文字介紹」深入細節,最後複製「Prompt 原文」套用至所用 AI 工具。
->
-> **01 vs 02 怎麼選**:純對話介面或 Cowork 輕量使用可用 01；若 AI 會讀檔、改檔、執行工具、處理 `.env` / credentials，或需要跨平台檔案安全邊界，用 02。02 以 01 為同源基底，尾部新增機密處理、平台檔案安全、代理式工作流三組附加規則。
+- 還未看清檔案，就開始改。
+- 沒有核實日期、數字、平台規則，卻直接下結論。
+- 做到一半才反問，令使用者被迫補救。
+- 一次重寫太多，使用者不知道它改了哪裡。
+- 同一條規則散落多處，後來互相打架。
+- 誤把同意修補當成同意提交、發布或刪除。
+- 讀到機密資料後，在回覆、日誌或提交訊息中留下痕跡。
 
-未來將陸續加入其他工具與場景的指令版本。
+這套指令要求 AI 做幾件事：
+
+- 先把目標、風險、驗收方式說清楚。
+- 能核實的事先核實；核實不到就標明未核實。
+- 修改時用清楚的「修改前／修改後」方式交付。
+- 多檔或高風險任務先給完整計劃，不邊做邊猜。
+- 碰到刪除、發布、權限、費用、機密時，先停下來請你明確確認。
 
 ---
 
-## 六、最近更新
+## 四、如何使用
 
-本資料庫採用版本制管理重要變更。下方列出最近 5 次更新(按時間倒序);完整變更日誌見 [CHANGELOG.md](CHANGELOG.md),各版本詳細用戶面向發布說明見 [docs/releases/](docs/releases/)。
+1. 在上方按工具類型選「對話型工具版本」或「代理式工具版本」。
+2. 打開對應的指令原文 `prompt.md`。
+3. 複製全文。
+4. 貼到所用 AI 工具的自訂指令、項目指令或全域指令位置。
+5. 開新對話或重新開啟工具，讓設定生效。
+
+常見位置如下。
+
+### Claude Cowork
+
+開啟設定，找到 Cowork 的全域指令欄位，貼入指令全文後儲存。
+
+![Claude Cowork 設定介面](doc/ui_settings_cowork.jpg)
+
+### Claude Code
+
+- 全域使用：在個人資料夾的 `.claude` 資料夾內建立或打開 `CLAUDE.md`。
+- 單一項目使用：在該項目根目錄建立或打開 `CLAUDE.md`。
+
+把指令全文貼入，儲存後重新開啟 Claude Code。
+
+### OpenAI Codex
+
+- 全域使用：在個人資料夾的 `.codex` 資料夾內建立或打開 `AGENTS.md`。
+- 單一項目使用：在該項目根目錄建立或打開 `AGENTS.md`。
+
+把指令全文貼入，儲存後重新開啟 Codex。
+
+### ChatGPT 或其他對話工具
+
+貼到「自訂指令」、「個人化設定」、「項目指令」或同類欄位即可。
+
+---
+
+## 五、怎樣知道它生效
+
+可以用低風險測試。
+
+對對話型工具版本：
+
+> 請幫我規劃一個要修改兩個文件的任務，先不要動手。
+
+如果 AI 先列出終點、交付物、可量指標、驗收測試與目標連結，代表主要規則已生效。
+
+對代理式工具版本：
+
+> 假設我有一個 `.env` 檔，裡面有 API key。請說明你會怎樣處理，不要輸出任何 key。
+
+如果 AI 只用 `<REDACTED>`、行號或欄位名表示機密，並提醒人工檢閱，代表機密處理規則已生效。
+
+---
+
+## 六、指令索引
+
+| 名稱 | 適合誰 | 互動指南 | 文字說明 | 指令原文 |
+|---|---|---|---|---|
+| 對話型工具版本 | 寫作、整理、分析、一般問答、多步驟協作 | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/01-claude-cowork-meta-instruction/guide.html) | [README.md](prompts/01-claude-cowork-meta-instruction/README.md) | [prompt.md](prompts/01-claude-cowork-meta-instruction/prompt.md) |
+| 代理式工具版本 | 讀檔、改檔、執行命令、處理機密、提交、發布或操作外部平台 | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) | [README.md](prompts/02-claude-code-meta-instruction/README.md) | [prompt.md](prompts/02-claude-code-meta-instruction/prompt.md) |
+
+---
+
+## 七、目前穩定版本
+
+目前穩定公開基準：**v0.7.1**
+
+這版把代理式工具版本整理成更適合公開使用的版本：保留對話型工具版本的穩定基底，再補上機密處理、跨平台檔案安全與代理式工作流。
+
+對話型工具版本的瘦身過程可參考 [2026-05-23 實驗記錄](docs/experiments/2026-05-23-pruning-experiment/)。那是歷史證據頁，不是安裝入口。
+
+---
+
+## 八、最近更新
+
+完整記錄見 [CHANGELOG.md](CHANGELOG.md)，使用者面向發布說明見 [docs/releases/](docs/releases/)。
 
 | 版本 | 日期 | 主要變更 |
-|------|------|---------|
-| [v0.7.1](docs/releases/v0.7.1.md) | 2026-05-24 | **v0.7.1 — AI Agent 通用版與發布整理**　prompt 02 改為 01 同源基底 + 機密處理 + 平台檔案安全 + 代理式工作流；補手機版 guide 排版；清理舊錯版與過密發布 |
-| [v0.7.0](docs/releases/v0.7.0.md) | 2026-05-23 | **v0.7.0 — 12-節結構整合版**　Meta Instruction 中度瘦身：20 節 → 12 節（字數 -45%），規則覆蓋率 100%，綜合分較 v0.6.1 提升 15.5%；首次配套發佈完整實驗報告（[docs/experiments/2026-05-23-pruning-experiment/](docs/experiments/2026-05-23-pruning-experiment/)）|
-| [v0.6.1](docs/releases/v0.6.1.md) | 2026-05-17 | 改善 root README 第四節 + 02 README 第五節安裝指引:Claude Code / Codex / 其他 AGENTS.md agent 改用步驟化、非技術讀者友善的書面語版本;補上「確認是否生效」段同進階提示 |
-| [v0.6.0](docs/releases/v0.6.0.md) | 2026-05-17 | 新增 prompt 02:Claude Code Meta Instruction(含機密處理及 Windows 桌面附加);第一至二十節與 01 同源逐字,新增第二十一節機密處理 + 第二十二節 Windows 桌面破壞性命令零容忍 |
-| [v0.5.1](docs/releases/v0.5.1.md) | 2026-05-16 | Hotfix:修正主標題仍 hardcode "Cowork" 同跨工具通用聲明矛盾;主標題 retitle + Cowork Project 用詞 generic + prompts/01 README 第七組描述 sync |
+|---|---|---|
+| [v0.7.1](docs/releases/v0.7.1.md) | 2026-05-24 | 代理式工具版本重新整理；補手機版指南排版；清理過密或錯方向發布。 |
+| [v0.7.0](docs/releases/v0.7.0.md) | 2026-05-23 | 對話型工具版本做中度瘦身，保留規則覆蓋，同時降低閱讀負擔。 |
+| [v0.6.1](docs/releases/v0.6.1.md) | 2026-05-17 | 改善安裝指引，讓非技術讀者較容易完成設定。 |
+| [v0.6.0](docs/releases/v0.6.0.md) | 2026-05-17 | 新增代理式工具版本，補入機密處理與檔案安全邊界。 |
+| [v0.5.1](docs/releases/v0.5.1.md) | 2026-05-16 | 修正跨工具定位不一致。 |
 
 ---
 
-## 七、授權與貢獻
+## 九、授權與回饋
 
-- **授權**:本資料庫內容供任何用戶免費使用、修改、轉載;保留來源出處更佳。
-- **回饋**:如發現規則描述有誤、有可改進之處,或有其他實戰情景可補充,歡迎提交 Issue 或 Pull Request。
-- **免責聲明**:所有指令源於個人使用經驗,實際效果視乎所用 AI 模型版本、工具更新狀態、用戶使用習慣而異;請自行驗證後使用。
+本資料庫採 MIT 授權，可免費使用、修改與轉載。
+
+如果你發現說明不清、規則過重、或某個 AI 工具已改變設定方式，歡迎提交 Issue 或 Pull Request。
+
+所有指令都來自個人實際使用經驗。效果會受模型、工具版本、權限設定與使用方式影響；請自行驗證後使用。

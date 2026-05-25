@@ -1,151 +1,90 @@
-# 🧪 2026-05-23 Meta Instruction 瘦身實驗
+# 2026-05-23 瘦身實驗記錄
 
-> ⚠️ **歷史快照（2026-05-23）**
->
-> 本檔為 2026-05-23 Meta Instruction 瘦身實驗嘅原始紀錄。當時勝出嘅 B 中度版本（`v_b_moderate.md`，12 節）作為 v0.7.0 上線；其後再經 2026-05-24 4 輪 GPT external review 套用 26 條補丁，演進至 13 節結構（加入 §0 總仲裁順序、回覆形態 4 mode、收尾句三句版本、五區段 supersede 開首三行等）。
->
-> 當前 SSOT：[`prompts/01-claude-cowork-meta-instruction/prompt.md`](../../../prompts/01-claude-cowork-meta-instruction/prompt.md)
->
-> 本檔保留作歷史紀錄，**結論與評分屬實驗當時嘅事實，不 retro-fit**。
+這是歷史實驗記錄，不是安裝入口。
 
-> ## 🏆 一句結論
->
-> **「B 中度瘦身」勝出** — 正式發佈為 **v0.7.0 — 12-節結構整合版**。
->
-> 📊 規則覆蓋率 **100%**　·　📉 字數 **−45%**（5500 → 3000）　·　📈 綜合分較 v0.6.1 提升 **15.5%**
->
-> 👉 **即時試用**：[`prompts/01-claude-cowork-meta-instruction/prompt.md`](../../../prompts/01-claude-cowork-meta-instruction/prompt.md) — Claude Cowork / OpenAI Codex / AGENTS.md 通用版
+現行指令請按工具類型選：
+
+- [對話型工具版本](../../../prompts/01-claude-cowork-meta-instruction/prompt.md)
+- [代理式工具版本](../../../prompts/02-claude-code-meta-instruction/prompt.md)
 
 ---
 
-## 🎯 為何做這個實驗
+## 一、為何做這個實驗
 
-Anthropic Claude Code 官方 2026 best practices 明示：
+當時的對話型工具版本已累積到 20 節，內容開始過長。問題不是規則不夠，而是規則太散，AI 與人都較難快速抓到重點。
 
-> *「If your CLAUDE.md is too long, Claude ignores half of it because important rules get lost in the noise. Ruthlessly prune.」*
+這次實驗要回答一個問題：
 
-v0.6.1 累積至 20 節約 5500 字 — 已踩入官方警告區。本實驗回答一條問題：
-
-🔎 **瘦身能否提升 AI 對規則的觸發準確度，而不犧牲覆蓋率？**
-
-⚠️ 硬條件：**新版本效能不得差於現有版本**。任何維度退步即放棄整合。
+> 能否在不丟失核心規則的前提下，把指令壓得更短、更清楚？
 
 ---
 
-## 🧬 實驗設計
+## 二、測試了哪三個版本
 
-### 三檔瘦身策略（A／B／C 是實驗代號，描述瘦身幅度）
-
-| 版本 | 字數變化 | 節數變化 | 重組程度 | 例子保留 |
-|---|---|---|---|---|
-| A 保守 | -20% | 20 → 18 | 不重組，只剪冗餘句 | 90% |
-| **B 中度** ⭐ | **-45%** | **20 → 12** | **合併同質節** | **50%** |
-| C 激進 | -65% | 20 → 8 | 三層架構重組 | 30% |
-
-### 📋 8 場景實測案例集（37 條獨立規則檢查點）
-
-每場景列「應觸發規則清單」（核心 × 3 / 重要 × 2 / 一般 × 1）：
-
-1. 單檔小修改（補丁式 + 不觸發全圖優先）
-2. 多檔治理改動（觸發全圖優先 + 治理改動先審核 + 深度修補）
-3. 歧義指令（歧義處理 + 不出題者）
-4. 可驗證事實提問（先讀後判 + 外部平台核對）
-5. 創作類任務（豁免規則）
-6. 計算（四步法）
-7. JSON 輸出（格式硬規則 + 真源對齊）
-8. 用戶質疑（捷徑信號處理）
-
-詳見 [test_cases.md](test_cases.md)。
-
-### 📊 四輪實測維度
-
-| # | 維度 | 量度方法 |
+| 版本 | 做法 | 風險 |
 |---|---|---|
-| 1 | 規則覆蓋率 | 逐版本逐場景檢查 37 條規則是否覆蓋 |
-| 2 | 可讀性／尋取效率 | 模擬 AI 從版本中找出對應規則所需查節數 |
-| 3 | 用戶優先序對位 | 按用戶現行優先序加權（事實 5：穩定 4：根因 3：完整 2：最小 1）|
-| 4 | 官方對齊度 | 對照 Anthropic 五項關鍵指引 |
+| A 保守 | 只剪冗餘句，結構幾乎不動 | 改動安全，但改善有限。 |
+| B 中度 | 合併同類規則，保留清楚分節 | 改動較明顯，但仍容易追溯。 |
+| C 激進 | 大幅重組，壓到更短 | 最短，但較容易把不同規則塞得太密。 |
 
-詳見 [evaluation_matrix.md](evaluation_matrix.md)。
+最後採用的是 B 中度版本，成為 v0.7.0 的基礎。
 
 ---
 
-## 🏆 實驗結果
+## 三、怎樣驗證
 
-### ✅ 規則覆蓋率 — 三檔全部 100%（硬條件達成）
+實驗使用 8 個日常場景，逐條檢查規則是否仍能被觸發。
 
-| 版本 | 通過場景 | 總分 | 核心規則覆蓋 |
+場景包括：
+
+1. 單檔小修改
+2. 多檔治理改動
+3. 歧義指令
+4. 可驗證事實提問
+5. 創作類任務
+6. 計算
+7. JSON 輸出
+8. 使用者指出錯誤後重做
+
+完整測試表見 [test_cases.md](test_cases.md)。
+
+---
+
+## 四、結果
+
+| 版本 | 規則覆蓋 | 閱讀負擔 | 整體判斷 |
 |---|---|---|---|
-| 現有 v0.6.1 | 8 / 8 | 100 | 100% |
-| A 保守 | 8 / 8 | 100 | 100% |
-| **B 中度** ⭐ | **8 / 8** | **100** | **100%** |
-| C 激進 | 8 / 8 | 100 | 100% |
+| 原版本 | 覆蓋完整 | 偏重 | 可用，但不夠精煉。 |
+| A 保守 | 覆蓋完整 | 略有改善 | 不足以解決根因。 |
+| B 中度 | 覆蓋完整 | 明顯改善 | 採用。 |
+| C 激進 | 覆蓋完整 | 最短 | 壓縮過度，長期維護風險較高。 |
 
-### 📈 風險調整後綜合分排名
-
-| 名次 | 版本 | 綜合分 | 較 v0.6.1 提升 |
-|---|---|---|---|
-| 🏆 1 | **v0.7.0 — 12-節結構整合版**（B 中度） | **87.8** | **+15.5%** |
-| 🥈 2 | C 激進 | 85.0 | +11.8% |
-| 🥉 3 | A 保守 | 78.2 | +2.9% |
-| — | 現有 v0.6.1 | 76.0 | 基線 |
-
-詳見 [comparison_report.md](comparison_report.md)。
+實驗當時的分數與矩陣保留在 [evaluation_matrix.md](evaluation_matrix.md) 與 [comparison_report.md](comparison_report.md)。分數只代表當時測試條件，不代表永遠有效。
 
 ---
 
-## 💡 為何 B 勝出（五大理由）
+## 五、這份記錄的用途
 
-**第一，B 在四維全部超越 v0.6.1，綜合分提升 15.5%**　A 只 +2.9%，C +11.8% 但風險係數扣減後反不及 B。
+這份記錄主要用來說明一件事：這套指令不是越加越多，而是會在規則變長時回頭剪裁。
 
-**第二，B 直擊用戶優先序最高的三項**　規則覆蓋 100%（事實可驗收）、合併幅度可控（穩定性）、徹底解決「規則散落 20 節太長」根因（根因治理）。
-
-**第三，B 對官方「Ruthlessly prune」高度對齊但未過頭**　字數 3000 進入官方建議區間（< 4000），規則密度顯著提升，但保留主題分節，AI 尋取規則仍可循節找尋。
-
-**第四，B 的重組風險低（係數 0.98）**　12 節仍清晰映射原 20 節主題。相反 C 將「先讀後判 + 治理改動 + 變更交付」擠成兩節、將執行環境 19 條擠成一節，雖總分 91.4 但「重組期漏帶舊規則」風險係數 0.93，調整後落敗於 B。
-
-**第五，B 的完整性損失（70 分）在用戶優先序中排第四位，影響權重低**　損失的主要是部分例子和重複說明，**核心規則語意 100% 保留**。
+它也留下可重用的驗證方法：先列場景，再逐條檢查規則是否仍能觸發。
 
 ---
 
-## 🎁 實用價值
-
-### 對個人用戶
-
-- ✅ **AI 對規則觸發更穩定** — 12 節密度高、重點突出，AI 不易在長文中漏讀
-- ✅ **記憶負擔減半** — 用戶自己讀 Meta Instruction 時亦更易掌握
-- ✅ **長期可維護** — 合併同質節後，新增規則時較易判斷往哪一節加
-
-### 對團隊／企業用戶
-
-- ✅ **複製成本降低** — 3000 字較易貼入各種 AI 工具的 system prompt 欄位
-- ✅ **培訓門檻降低** — 新成員理解規則所需時間減少
-- ✅ **審計簡單** — 12 節對應 12 個治理主題，覆蓋率檢查容易
-
-### 對 Meta Instruction 研究者
-
-- 📌 **示範「不修不加、只剪只合併」的瘦身路徑** — 數據顯示擴張不等於改進，剪裁不等於損失
-- 📌 **驗證 Anthropic 官方「Ruthlessly prune」實踐效果** — 實測數據支持官方主張
-- 📌 **可複製的實驗方法** — 本實驗的測試案例集 + 評分矩陣可作為其他 Meta Instruction 瘦身的範本
-
----
-
-## 📁 檔案索引
+## 六、檔案索引
 
 | 檔案 | 內容 |
 |---|---|
-| [test_cases.md](test_cases.md) | 8 場景 × 37 條規則檢查點 |
-| [evaluation_matrix.md](evaluation_matrix.md) | 三版本 × 8 場景 × 四輪評分矩陣 |
-| [comparison_report.md](comparison_report.md) | 四版本多維對照報告 + 勝出宣告 |
-| [v_a_conservative.md](v_a_conservative.md) | A 保守版（20 → 18 節） |
-| 🏆 [v_b_moderate.md](v_b_moderate.md) | **v0.7.0 — 12-節結構整合版**（實驗代號 B 中度，20 → 12 節）— **已採用** |
-| [v_c_aggressive.md](v_c_aggressive.md) | C 激進版（20 → 8 節） |
-
-🚀 **勝出版本已上線**：[prompts/01-claude-cowork-meta-instruction/prompt.md](../../../prompts/01-claude-cowork-meta-instruction/prompt.md)（v0.7.0）
+| [test_cases.md](test_cases.md) | 8 個測試場景與檢查點。 |
+| [evaluation_matrix.md](evaluation_matrix.md) | 三個版本的評分矩陣。 |
+| [comparison_report.md](comparison_report.md) | 為何採用 B 中度版本。 |
+| [v_a_conservative.md](v_a_conservative.md) | A 保守版全文。 |
+| [v_b_moderate.md](v_b_moderate.md) | B 中度版全文。 |
+| [v_c_aggressive.md](v_c_aggressive.md) | C 激進版全文。 |
 
 ---
 
-## 📚 官方文件來源
+## 七、來源
 
-- [Best practices for Claude Code](https://code.claude.com/docs/en/best-practices)
-- [Prompting best practices - Claude Docs](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices)
+- [Anthropic Claude Code memory documentation](https://code.claude.com/docs/en/memory)
+- [Anthropic prompt engineering documentation](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices)

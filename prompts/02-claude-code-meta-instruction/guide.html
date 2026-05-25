@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Agent Meta Instruction · 互動指南</title>
+<title>代理式工具版本 · 互動指南</title>
 <style>
   :root{
     --c-primary:#0d7377;
@@ -162,41 +162,41 @@
 <body>
 
 <header class="hero">
-  <h1>AI Agent Meta Instruction</h1>
-  <div class="tag">01 同源基底 + 機密處理 + 平台檔案安全 + 代理式工作流</div>
+  <h1>代理式工具版本</h1>
+  <div class="tag">對話型工具版本同源基底 + 機密處理 + 平台檔案安全 + 代理式工作流</div>
   <div class="links">
-    <a href="prompt.md">Prompt 原文</a>
+    <a href="prompt.md">指令原文</a>
     <a href="README.md">文字介紹</a>
-    <a href="../01-claude-cowork-meta-instruction/guide.html">01 互動指南</a>
+    <a href="../01-claude-cowork-meta-instruction/guide.html">對話型工具版本</a>
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions">GitHub</a>
   </div>
 </header>
 
 <nav class="toc">
-  <a href="#intro">緒論</a>
-  <a href="#diff">與 01 差異</a>
+  <a href="#intro">先看這裡</a>
+  <a href="#diff">版本差異</a>
   <a href="#secret">機密處理</a>
   <a href="#platform">平台安全</a>
   <a href="#workflow">代理式工作流</a>
   <a href="#choose">如何選用</a>
   <a href="#install">安裝</a>
-  <a href="#sync">維護同步</a>
+  <a href="#sync">版本關係</a>
 </nav>
 
 <main>
 
 <section id="intro">
-  <h2>緒論｜02 的定位</h2>
-  <p>02 不是另起一套規則。它以 01 的通用治理骨幹為基底，再補入適合代理式 AI 工具的三個附加節。</p>
-  <p>新版 02 以 AI 行為規格為主，不放版本故事、實驗數據、使用教學或項目特定角色規則。它適合 Claude Code、OpenAI Codex、Claude Cowork，以及其他能讀檔、改檔、執行工具或調用外部平台的 AI agent。</p>
+  <h2>先看這裡｜何時用這個版本</h2>
+  <p>只要 AI 會碰你的檔案、命令、機密、外部平台或發布流程，就用代理式工具版本。</p>
+  <p>這個版本不是叫 AI 做更多事，而是先替高風險工作設邊界：看到機密不外洩，改檔前先讀清楚，危險命令先停下，提交、推送、發布或部署必須另行取得明確授權。</p>
   <div class="callout">
-    02 = 01 通用基底 + 第十三節「機密處理」+ 第十四節「平台特定檔案系統安全」+ 第十五節「代理式工作流與上下文管理」。
+    如果你只是寫作、問答、整理資料，通常用對話型工具版本已足夠。若你不確定工具會不會碰檔案，保守做法是用代理式工具版本。
   </div>
 </section>
 
 <section id="diff">
-  <h2>與 01 的差異｜一張圖看清</h2>
-  <svg class="diff-svg" viewBox="0 0 780 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="02 在 01 同源基底上新增三個附加節">
+  <h2>與對話型工具版本的差異｜一張圖看清</h2>
+  <svg class="diff-svg" viewBox="0 0 780 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="代理式工具版本在對話型工具版本同源基底上新增三個附加節">
     <defs>
       <linearGradient id="gradShared" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="#e6f7f5"/>
@@ -208,24 +208,24 @@
       </linearGradient>
     </defs>
     <rect x="50" y="40" width="300" height="270" rx="8" fill="url(#gradShared)" stroke="#0d7377" stroke-width="2"/>
-    <text x="200" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#0d7377">01 通用治理基底</text>
+    <text x="200" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#0d7377">對話型工具版本基底</text>
     <text x="200" y="105" text-anchor="middle" font-size="13" fill="#1a1a1a">個人偏好 + 第零節至第十二節</text>
     <text x="200" y="132" text-anchor="middle" font-size="13" fill="#1a1a1a">語言與語體 / 合作模式</text>
     <text x="200" y="154" text-anchor="middle" font-size="13" fill="#1a1a1a">回覆骨架 / 全圖優先</text>
     <text x="200" y="176" text-anchor="middle" font-size="13" fill="#1a1a1a">先讀後判 / 治理改動先審核</text>
     <text x="200" y="198" text-anchor="middle" font-size="13" fill="#1a1a1a">補丁式交付 / 防漂移</text>
     <text x="200" y="220" text-anchor="middle" font-size="13" fill="#1a1a1a">計算與格式 / 執行環境補充</text>
-    <text x="200" y="258" text-anchor="middle" font-size="12" font-style="italic" fill="#0d7377">02 同源保留，不重新發明</text>
+    <text x="200" y="258" text-anchor="middle" font-size="12" font-style="italic" fill="#0d7377">代理式工具版本同源保留</text>
 
     <rect x="430" y="40" width="300" height="270" rx="8" fill="url(#gradNew)" stroke="#f0b27a" stroke-width="2"/>
-    <text x="580" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#9a5e1a">02 新增附加節</text>
-    <text x="580" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">第十三節｜機密處理</text>
+    <text x="580" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#9a5e1a">代理式工具版本新增</text>
+    <text x="580" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">機密處理</text>
     <text x="580" y="134" text-anchor="middle" font-size="12" fill="#5b6470">不複述、不寫入、不擴散</text>
     <line x1="455" y1="154" x2="705" y2="154" stroke="#f0b27a" stroke-dasharray="4 4"/>
-    <text x="580" y="182" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">第十四節｜平台檔案安全</text>
+    <text x="580" y="182" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">平台檔案安全</text>
     <text x="580" y="204" text-anchor="middle" font-size="12" fill="#5b6470">Windows + macOS / Linux 安全邊界</text>
     <line x1="455" y1="224" x2="705" y2="224" stroke="#f0b27a" stroke-dasharray="4 4"/>
-    <text x="580" y="252" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">第十五節｜代理式工作流</text>
+    <text x="580" y="252" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">代理式工作流</text>
     <text x="580" y="274" text-anchor="middle" font-size="12" fill="#5b6470">上下文 / 驗收 / 授權 / 失敗防護</text>
     <path d="M350 175 L430 175" stroke="#0d7377" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
     <defs>
@@ -238,19 +238,19 @@
 
   <table>
     <thead>
-      <tr><th>範圍</th><th>02 內容</th><th>適用環境</th></tr>
+      <tr><th>多出的保護</th><th>實際意思</th><th>適用情境</th></tr>
     </thead>
     <tbody>
-      <tr><td>個人偏好 + 第零至十二節</td><td>與 01 同源基底</td><td>跨工具通用</td></tr>
-      <tr><td>第十三節</td><td>機密處理</td><td>能讀取檔案或處理機密內容的 AI agent</td></tr>
-      <tr><td>第十四節</td><td>平台特定檔案系統安全</td><td>Windows、macOS、Linux 或可操作本機檔案系統的環境</td></tr>
-      <tr><td>第十五節</td><td>代理式工作流與上下文管理</td><td>Claude Code、Codex、Cowork 及其他具備工具能力的代理式 AI 環境</td></tr>
+      <tr><td>通用工作方式</td><td>保留對話型工具版本的核實、計劃、交付與語氣規則</td><td>所有工具</td></tr>
+      <tr><td>機密處理</td><td>看到金鑰、憑證或設定檔時，不複述、不寫入、不擴散</td><td>能讀取檔案或處理機密內容的 AI 工具</td></tr>
+      <tr><td>檔案安全</td><td>避免危險刪除、錯路徑、系統目錄、提權繞過與未確認目標</td><td>Windows、macOS、Linux 或可操作本機檔案系統的環境</td></tr>
+      <tr><td>代理式工作流</td><td>長任務先定驗收；失敗時回到根因；發布類操作另行授權</td><td>Claude Code、Codex、Cowork 及其他具備工具能力的 AI 環境</td></tr>
     </tbody>
   </table>
 </section>
 
 <section id="secret">
-  <h2>第十三節｜機密處理</h2>
+  <h2>機密處理</h2>
   <p>AI 讀取項目內的 <code>.env</code>、credentials、token、金鑰或憑證後，可能在回覆、摘要、提交訊息、日誌、測試輸出、新建檔案或外部請求中複述機密值。這類外洩通常會留下長期痕跡。</p>
   <ul>
     <li>需要指出機密位置時，以 <code>&lt;REDACTED&gt;</code>、檔案行號或欄位名代替。</li>
@@ -267,11 +267,11 @@
 </section>
 
 <section id="platform">
-  <h2>第十四節｜平台特定檔案系統安全</h2>
+  <h2>平台檔案安全</h2>
   <p><strong>範圍</strong>：本節在 Windows、macOS、Linux 或可操作本機檔案系統的環境生效。它優先於通用檔案操作規則中較寬鬆的表述。</p>
   <p>不同作業系統的高風險命令不同，但核心邊界相同：不碰磁碟根、系統目錄、家目錄批量清理、提權繞過、未解析路徑或可能跨出目標資料夾的破壞性操作。</p>
   <h3>Windows</h3>
-  <p>Windows 路徑、引號、環境變數與外部殼層組合錯誤時，可能令刪除操作落到磁碟根、系統目錄或未預期父層。02 對此採硬性封鎖。</p>
+  <p>Windows 路徑、引號、環境變數與外部殼層組合錯誤時，可能令刪除操作落到磁碟根、系統目錄或未預期父層。代理式工具版本對此採硬性封鎖。</p>
   <pre><code>cmd /c rmdir
 cmd /c rd
 cmd /c rmdir /s
@@ -299,11 +299,11 @@ chown -R</code></pre>
 </section>
 
 <section id="workflow">
-  <h2>第十五節｜代理式工作流與上下文管理</h2>
-  <p><strong>範圍</strong>：本節適用於 Claude Code、Codex、Cowork 及其他可讀檔、改檔、執行工具或調用外部平台的 AI agent。純對話環境亦須套用其中的一般行為原則；只有依賴特定工具能力的步驟，才按環境能力調整。</p>
+  <h2>代理式工作流與上下文管理</h2>
+  <p><strong>範圍</strong>：本節適用於 Claude Code、Codex、Cowork 及其他可讀檔、改檔、執行工具或調用外部平台的 AI 工具。純對話環境亦須套用其中的一般行為原則；只有依賴特定工具能力的步驟，才按環境能力調整。</p>
   <table>
     <thead>
-      <tr><th>面向</th><th>行為規格</th></tr>
+      <tr><th>面向</th><th>AI 應該怎樣做</th></tr>
     </thead>
     <tbody>
       <tr><td>上下文管理</td><td>上下文混入無關任務、失敗嘗試或過量檔案內容時，先輸出可續接摘要，再建議切換乾淨上下文；切換前不得擴大修改。</td></tr>
@@ -317,18 +317,18 @@ chown -R</code></pre>
 </section>
 
 <section id="choose">
-  <h2>如何選用｜01 vs 02</h2>
+  <h2>如何選用｜對話型工具版本與代理式工具版本</h2>
   <table>
     <thead>
       <tr><th>場景</th><th>建議</th></tr>
     </thead>
     <tbody>
-      <tr><td>純對話、寫作、一般問答、Claude Cowork 輕量使用</td><td>01</td></tr>
-      <tr><td>需要 AI 讀檔、改檔、跨檔修補、執行工具或處理驗收</td><td>02</td></tr>
-      <tr><td>會接觸機密檔案或憑證</td><td>02</td></tr>
-      <tr><td>Windows、macOS、Linux 或可操作本機檔案系統</td><td>02</td></tr>
-      <tr><td>需要 Codex / Claude Code / Cowork 等代理式工具做工程任務</td><td>02</td></tr>
-      <tr><td>只想保留最短通用治理規則</td><td>01</td></tr>
+      <tr><td>純對話、寫作、一般問答、Claude Cowork 輕量使用</td><td>對話型工具版本</td></tr>
+      <tr><td>需要 AI 讀檔、改檔、跨檔修補、執行工具或處理驗收</td><td>代理式工具版本</td></tr>
+      <tr><td>會接觸機密檔案或憑證</td><td>代理式工具版本</td></tr>
+      <tr><td>Windows、macOS、Linux 或可操作本機檔案系統</td><td>代理式工具版本</td></tr>
+      <tr><td>需要 Codex / Claude Code / Cowork 等代理式工具做工程任務</td><td>代理式工具版本</td></tr>
+      <tr><td>只想保留較輕的通用治理規則</td><td>對話型工具版本</td></tr>
     </tbody>
   </table>
 </section>
@@ -338,7 +338,7 @@ chown -R</code></pre>
   <h3>Claude Code</h3>
   <p>複製 <a href="prompt.md">prompt.md</a> 全文，貼至全域 <code>~/.claude/CLAUDE.md</code>（Windows 為 <code>C:\Users\&lt;你&gt;\.claude\CLAUDE.md</code>），或貼至項目根目錄 <code>CLAUDE.md</code>。</p>
 
-  <h3>OpenAI Codex / AGENTS.md 標準 agent</h3>
+  <h3>OpenAI Codex / AGENTS.md 標準工具</h3>
   <p>複製全文貼至全域 <code>~/.codex/AGENTS.md</code>（Windows 為 <code>C:\Users\&lt;你&gt;\.codex\AGENTS.md</code>），或貼至項目根目錄 <code>AGENTS.md</code>。</p>
 
   <h3>Claude Cowork / 其他工具</h3>
@@ -346,9 +346,9 @@ chown -R</code></pre>
 </section>
 
 <section id="sync">
-  <h2>維護與同步</h2>
-  <p>02 的通用基底應跟隨 <a href="../01-claude-cowork-meta-instruction/prompt.md">01 prompt.md</a>。如 01 更新，02 的同源段落要同步，避免跨檔漂移。</p>
-  <p>第十三、十四、十五節為 02 附加節，獨立維護。新增內容必須保持 AI 行為規格形態；不加入版本歷史、研究數據、宣傳說明、使用教學或單一項目專屬規則。</p>
+  <h2>與對話型工具版本的關係</h2>
+  <p>代理式工具版本保留對話型工具版本的基本工作方式，再加上更嚴格的檔案、機密與發布邊界。</p>
+  <p>簡單判斷：只聊天，用對話型工具版本；會碰檔案、命令、機密或發布流程，用代理式工具版本。</p>
 </section>
 
 </main>

@@ -179,6 +179,7 @@
   <a href="#platform">平台安全</a>
   <a href="#workflow">代理式工作流</a>
   <a href="#choose">如何選用</a>
+  <a href="#handoff">跨工作階段接力</a>
   <a href="#install">安裝</a>
   <a href="#sync">版本關係</a>
 </nav>
@@ -331,6 +332,13 @@ chown -R</code></pre>
       <tr><td>只想保留較輕的通用治理規則</td><td>對話型工具版本</td></tr>
     </tbody>
   </table>
+</section>
+
+<section id="handoff">
+  <h2>跨工作階段接力｜配合 Agent Handoff Kit</h2>
+  <p>代理式工具版本管 AI 讀檔、改檔、執行命令、處理機密與發布邊界時應怎樣做；但長任務還有另一個問題：新工作階段怎樣知道上一輪做到哪裡。</p>
+  <p><a href="https://adamchanadam.github.io/agent-handoff-kit/agent-handoff-kit-intro.html" target="_blank" rel="noopener">Agent Handoff Kit</a> 正好補這一層。它把當前狀態、下一步、風險、檔案角色與交接提示保存下來，讓下一個 AI 工具或下一個對話可以接回任務主線。</p>
+  <p>簡單說，代理式工具版本管「AI 執行時的邊界」；Agent Handoff Kit 管「跨工作階段的記憶與交接」。兩者配合，較適合開發協作、長期文件維護、跨工具接力與需要多輪驗收的任務。</p>
 </section>
 
 <section id="install">

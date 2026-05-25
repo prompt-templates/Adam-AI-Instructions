@@ -672,6 +672,7 @@
   <a href="#g5">5. 修改與交付</a>
   <a href="#g6">6. 計算規範</a>
   <a href="#g7">7. 執行環境補充</a>
+  <a href="#handoff">跨對話接力</a>
   <a href="#install">安裝</a>
   <a href="#faq">常見問題</a>
 </nav>
@@ -1518,6 +1519,19 @@
 
   <div class="callout">
     <strong>跨平台說明</strong>：本指令點名禁止高風險刪除、覆寫、提權繞過與外部殼層包裝。路徑處理要使用工具或語言提供的安全路徑方法，不用原始字串拼接。
+  </div>
+</section>
+
+
+<!-- ============== Handoff ============== -->
+<section id="handoff">
+  <h2>跨對話接力</h2>
+  <p class="lede">對話型工具版本管 AI 在單次對話內怎樣回答、核實、修補與交付；若任務會跨幾天或幾個新對話，就需要另一層交接機制。</p>
+
+  <div class="callout">
+    <strong>可配合 Agent Handoff Kit 使用</strong>：它負責保存當前狀態、下一步、風險、檔案角色與下次開工提示。這樣新工作階段不需要重新猜測前文，也較不容易失去任務主線。
+    <br><br>
+    簡單說，本指令管「AI 這一輪怎樣做事」；<a href="https://adamchanadam.github.io/agent-handoff-kit/agent-handoff-kit-intro.html" target="_blank" rel="noopener">Agent Handoff Kit</a> 管「這一輪做完後怎樣交接」。長期寫作、資料整理、文件維護或跨工具協作時，兩者可一起使用。
   </div>
 </section>
 

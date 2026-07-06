@@ -6,6 +6,21 @@
 
 ---
 
+## [0.7.2] - 2026-07-06
+
+### 修正
+
+- `README.md`：選版入口改為按工具名稱判斷，直接列出 ChatGPT、Claude、Claude Cowork、OpenAI Codex、Claude Code、Antigravity CLI、Cursor 對應版本與資料夾。
+- `prompts/01-claude-cowork-meta-instruction/prompt.md`：修正執行面補充，移除不存在的安全分類引用，並限制只有涉及檔案、程序、本機路徑、外部工具或可持久化操作時才啟動執行面判斷。
+- `prompts/01-claude-cowork-meta-instruction/prompt.md` 與 `prompts/02-claude-code-meta-instruction/prompt.md`：更新標題與代理式範圍句，避免對話型工具版本與代理式工具版本互相混用。
+- `prompts/01-claude-cowork-meta-instruction/README.md`、`prompts/02-claude-code-meta-instruction/README.md`、兩份 `guide.html`：同步工具名稱導引，讓非技術讀者可直接按工具選版本。
+
+### 發布整理
+
+- `docs/releases/v0.7.2.md`：新增使用者面向發布說明。
+
+---
+
 ## [0.7.1] - 2026-05-24
 
 ### 發布整理

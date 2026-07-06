@@ -188,10 +188,10 @@
 
 <section id="intro">
   <h2>先看這裡｜何時用這個版本</h2>
-  <p>只要 AI 會碰你的檔案、命令、機密、外部平台或發布流程，就用代理式工具版本。</p>
+  <p>如果你使用 OpenAI Codex、Claude Code、Antigravity CLI、Cursor，就用代理式工具版本。工具不在這些名稱裡，但會碰你的檔案、命令、機密、外部平台或發布流程，也用這個版本。</p>
   <p>這個版本不是叫 AI 做更多事，而是先替高風險工作設邊界：看到機密不外洩，改檔前先讀清楚，危險命令先停下，提交、推送、發布或部署必須另行取得明確授權。</p>
   <div class="callout">
-    如果你只是寫作、問答、整理資料，通常用對話型工具版本已足夠。若你不確定工具會不會碰檔案，保守做法是用代理式工具版本。
+    如果你使用 ChatGPT、Claude 或 Claude Cowork 做寫作、問答、整理資料，通常用對話型工具版本已足夠。
   </div>
 </section>
 
@@ -245,7 +245,7 @@
       <tr><td>通用工作方式</td><td>保留對話型工具版本的核實、計劃、交付與語氣規則</td><td>所有工具</td></tr>
       <tr><td>機密處理</td><td>看到金鑰、憑證或設定檔時，不複述、不寫入、不擴散</td><td>能讀取檔案或處理機密內容的 AI 工具</td></tr>
       <tr><td>檔案安全</td><td>避免危險刪除、錯路徑、系統目錄、提權繞過與未確認目標</td><td>Windows、macOS、Linux 或可操作本機檔案系統的環境</td></tr>
-      <tr><td>代理式工作流</td><td>長任務先定驗收；失敗時回到根因；發布類操作另行授權</td><td>Claude Code、Codex、Cowork 及其他具備工具能力的 AI 環境</td></tr>
+      <tr><td>代理式工作流</td><td>長任務先定驗收；失敗時回到根因；發布類操作另行授權</td><td>OpenAI Codex、Claude Code、Antigravity CLI、Cursor 及其他代理式 AI 工具</td></tr>
     </tbody>
   </table>
 </section>
@@ -301,7 +301,7 @@ chown -R</code></pre>
 
 <section id="workflow">
   <h2>代理式工作流與上下文管理</h2>
-  <p><strong>範圍</strong>：本節適用於 Claude Code、Codex、Cowork 及其他可讀檔、改檔、執行工具或調用外部平台的 AI 工具。純對話環境亦須套用其中的一般行為原則；只有依賴特定工具能力的步驟，才按環境能力調整。</p>
+  <p><strong>範圍</strong>：本節適用於 OpenAI Codex、Claude Code、Antigravity CLI、Cursor 及其他可讀檔、改檔、執行工具或調用外部平台的 AI 工具。純對話環境亦須套用其中的一般行為原則；只有依賴特定工具操作的步驟，才按實際環境調整。</p>
   <table>
     <thead>
       <tr><th>面向</th><th>AI 應該怎樣做</th></tr>
@@ -324,11 +324,12 @@ chown -R</code></pre>
       <tr><th>場景</th><th>建議</th></tr>
     </thead>
     <tbody>
-      <tr><td>純對話、寫作、一般問答、Claude Cowork 輕量使用</td><td>對話型工具版本</td></tr>
+      <tr><td>使用 ChatGPT、Claude、Claude Cowork 做寫作、問答、整理資料、一般協作</td><td>對話型工具版本</td></tr>
+      <tr><td>使用 OpenAI Codex、Claude Code、Antigravity CLI、Cursor</td><td>代理式工具版本</td></tr>
       <tr><td>需要 AI 讀檔、改檔、跨檔修補、執行工具或處理驗收</td><td>代理式工具版本</td></tr>
       <tr><td>會接觸機密檔案或憑證</td><td>代理式工具版本</td></tr>
       <tr><td>Windows、macOS、Linux 或可操作本機檔案系統</td><td>代理式工具版本</td></tr>
-      <tr><td>需要 Codex / Claude Code / Cowork 等代理式工具做工程任務</td><td>代理式工具版本</td></tr>
+      <tr><td>工具不在上表，但可能接觸檔案、命令、機密或發布流程</td><td>代理式工具版本</td></tr>
       <tr><td>只想保留較輕的通用治理規則</td><td>對話型工具版本</td></tr>
     </tbody>
   </table>
@@ -346,7 +347,7 @@ chown -R</code></pre>
   <h3>Claude Code</h3>
   <p>複製 <a href="prompt.md">prompt.md</a> 全文，貼至全域 <code>~/.claude/CLAUDE.md</code>（Windows 為 <code>C:\Users\&lt;你&gt;\.claude\CLAUDE.md</code>），或貼至項目根目錄 <code>CLAUDE.md</code>。</p>
 
-  <h3>OpenAI Codex / AGENTS.md 標準工具</h3>
+  <h3>OpenAI Codex / Antigravity CLI / Cursor / AGENTS.md 標準工具</h3>
   <p>複製全文貼至全域 <code>~/.codex/AGENTS.md</code>（Windows 為 <code>C:\Users\&lt;你&gt;\.codex\AGENTS.md</code>），或貼至項目根目錄 <code>AGENTS.md</code>。</p>
 
   <h3>Claude Cowork / 其他工具</h3>

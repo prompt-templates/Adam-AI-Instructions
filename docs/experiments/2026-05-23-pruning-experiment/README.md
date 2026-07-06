@@ -2,7 +2,7 @@
 
 這是歷史實驗記錄，不是安裝入口。
 
-現行指令請按工具類型選：
+現行指令請先按工具名稱選：
 
 - [對話型工具版本](../../../prompts/01-claude-cowork-meta-instruction/prompt.md)
 - [代理式工具版本](../../../prompts/02-claude-code-meta-instruction/prompt.md)

@@ -1,10 +1,10 @@
 # 對話型工具版本
 
-這份指令適合主要在對話視窗使用 AI 的人：寫作、資料整理、事實核對、方案比較與多步驟協作。
+這份指令適合 ChatGPT、Claude、Claude Cowork 使用：寫作、資料整理、事實核對、方案比較與多步驟協作。
 
 它的重點不是叫 AI 多輸出，而是叫 AI 在回答前先判斷：現在應該給結論、先核實、先列計劃，還是只問少量關鍵問題。
 
-如果你主要在 Claude Cowork、Claude、ChatGPT 或一般對話工具中使用 AI，先用這個版本已足夠。
+如果你使用 ChatGPT、Claude 或 Claude Cowork，先用這個版本。
 
 ---
 
@@ -16,7 +16,7 @@
 - 你希望 AI 修改文字時講清楚改了哪裡。
 - 你重視事實核對，不想把未核實內容當成答案。
 
-如果 AI 會讀檔、改檔、執行命令、接觸機密資料或發布內容，請改用 [代理式工具版本](../02-claude-code-meta-instruction/)。
+如果你使用 OpenAI Codex、Claude Code、Antigravity CLI、Cursor，請改用 [代理式工具版本](../02-claude-code-meta-instruction/)。
 
 ---
 
@@ -69,7 +69,7 @@
 - Claude Cowork：設定中的全域指令欄位。
 - Claude / ChatGPT：自訂指令或個人化設定。
 
-如果你使用的是會讀檔、改檔或執行命令的工具，例如 Claude Code、Codex、Cursor 或 Antigravity，請改用代理式工具版本。
+如果你使用 OpenAI Codex、Claude Code、Antigravity CLI、Cursor，請改用代理式工具版本。
 
 ---
 
@@ -105,7 +105,7 @@
 
 ### 何時應改用代理式工具版本？
 
-只要 AI 會碰你的檔案、命令、發布流程或機密資料，就用代理式工具版本。
+使用 OpenAI Codex、Claude Code、Antigravity CLI、Cursor 時，用代理式工具版本。其他未列出的工具，若會碰你的檔案、命令、發布流程或機密資料，也用代理式工具版本。
 
 ---
 

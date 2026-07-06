@@ -1,10 +1,10 @@
 # 代理式工具版本
 
-這份指令適合會讀檔、改檔、執行命令、處理機密、操作外部平台或發布內容的 AI 工具。
+這份指令適合 OpenAI Codex、Claude Code、Antigravity CLI、Cursor 使用。
 
 它以 [對話型工具版本](../01-claude-cowork-meta-instruction/) 為基底，再補三件事：機密處理、檔案安全、代理式工作流。
 
-如果你使用 Claude Code、OpenAI Codex、Cursor、Antigravity，或任何會接觸本機文件與工具的代理式 AI 工具，建議使用這個版本。Claude Cowork 若只用作對話，可用對話型工具版本；若會讀寫檔案或處理項目，則用這個版本。
+如果你使用 OpenAI Codex、Claude Code、Antigravity CLI、Cursor，建議使用這個版本。這些工具常會讀檔、改檔、執行命令、處理機密或操作外部平台，需要更完整的安全邊界。
 
 ---
 
@@ -54,9 +54,9 @@
 - Claude Code：`CLAUDE.md`
 - OpenAI Codex：`AGENTS.md`
 - 其他採用 `AGENTS.md` 的工具：項目根目錄的 `AGENTS.md`
-- Claude Cowork 或其他代理式工具：全域指令或項目指令欄位
+- Antigravity CLI、Cursor 或其他代理式工具：依工具提供的全域指令或項目指令欄位設定
 
-如果你不確定工具是否會碰檔案，保守做法是使用這個版本。
+如果工具名稱不在上面，但會讀檔、改檔、執行命令或處理機密，保守做法是使用這個版本。
 
 ---
 
@@ -86,11 +86,12 @@
 
 | 你要做的事 | 建議 |
 |---|---|
-| 寫作、問答、整理資料、一般協作 | 對話型工具版本 |
+| 使用 ChatGPT、Claude、Claude Cowork 做寫作、問答、整理資料、一般協作 | 對話型工具版本 |
+| 使用 OpenAI Codex、Claude Code、Antigravity CLI、Cursor | 代理式工具版本 |
 | 讀檔、改檔、跨檔修補、執行命令 | 代理式工具版本 |
 | 接觸機密檔案或憑證 | 代理式工具版本 |
 | 發布、部署、提交、推送、打標籤 | 代理式工具版本 |
-| 不確定工具會不會碰檔案 | 代理式工具版本 |
+| 工具不在上表，但可能接觸檔案、命令、機密或發布流程 | 代理式工具版本 |
 
 ---
 

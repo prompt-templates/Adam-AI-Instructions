@@ -6,24 +6,26 @@
 
 適合商務、研究、事實分析、文件整理、流程維護與開發協作。只要 AI 的輸出會影響真正工作結果，就需要這類邊界。
 
-如果你不是開發人員，也可以使用。你只需要按工具類型選一份指令，複製，貼到所用 AI 工具的自訂指令位置。
+如果你不是開發人員，也可以使用。你只需要按工具名稱選一份指令，複製，貼到所用 AI 工具的自訂指令位置。
 
 ---
 
-## 一、先按工具類型選
+## 一、先按工具名稱選
 
-| 你使用的工具 | 建議使用 | 原因 |
-|---|---|---|
-| ChatGPT、Claude、Claude Cowork 等主要靠對話工作的工具 | 對話型工具版本 | 工具主要輸出文字，重點是核實、判斷、語氣、計劃與交付方式。 |
-| Codex、Claude Code、Antigravity、Cursor 等會讀檔、改檔或執行命令的工具 | 代理式工具版本 | 工具能碰到檔案、命令、機密與發布流程，需要更完整的操作邊界。 |
-| 不確定工具是否會碰檔案或命令 | 代理式工具版本 | 邊界較完整；沒有檔案能力的工具會自然忽略不適用部分。 |
+如果你使用的工具在下表出現，先按工具名稱選。若工具不在表內：只聊天、寫作、整理資料，用 01；會碰檔案、命令、機密或發布流程，用 02。
 
-兩份指令的工作哲學相同。差別不在目標功能，而在工具能力：工具只能對話時，用較輕的版本；工具能讀檔、改檔、執行命令時，用邊界更完整的版本。
+| 你使用的工具 | 建議使用 | 對應資料夾 | 原因 |
+|---|---|---|---|
+| ChatGPT、Claude、Claude Cowork | 對話型工具版本 | `01-claude-cowork-meta-instruction` | 適合日常問答、寫作、整理資料、方案比較與多步驟協作。 |
+| OpenAI Codex、Claude Code、Antigravity CLI、Cursor | 代理式工具版本 | `02-claude-code-meta-instruction` | 適合會讀取檔案、修改檔案、執行命令、處理機密或發布內容的 AI 工具。 |
+| 其他未列出的 AI 工具 | 按實際用途選 | 只聊天用 01；會碰檔案或命令用 02 | 只用來對話、寫作或整理資料，選 01；會碰檔案、命令、機密或發布流程，選 02。 |
+
+兩份指令的工作哲學相同。你可以先照表選；工具不在表內時，再用最後一列判斷。
 
 直接使用：
 
-- [對話型工具版本](prompts/01-claude-cowork-meta-instruction/prompt.md)
-- [代理式工具版本](prompts/02-claude-code-meta-instruction/prompt.md)
+- [對話型工具版本（01；ChatGPT / Claude / Claude Cowork）](prompts/01-claude-cowork-meta-instruction/prompt.md)
+- [代理式工具版本（02；OpenAI Codex / Claude Code / Antigravity CLI / Cursor 等代理式工具）](prompts/02-claude-code-meta-instruction/prompt.md)
 
 建議先看互動指南：
 
@@ -79,7 +81,7 @@ AI 很容易出現幾類問題：
 
 ## 四、如何使用
 
-1. 在上方按工具類型選「對話型工具版本」或「代理式工具版本」。
+1. 在上方按工具名稱選「對話型工具版本」或「代理式工具版本」。
 2. 打開對應的指令原文 `prompt.md`。
 3. 複製全文。
 4. 貼到所用 AI 工具的自訂指令、項目指令或全域指令位置。
@@ -133,18 +135,18 @@ AI 很容易出現幾類問題：
 
 ## 六、指令索引
 
-| 名稱 | 適合誰 | 互動指南 | 文字說明 | 指令原文 |
-|---|---|---|---|---|
-| 對話型工具版本 | 寫作、整理、分析、一般問答、多步驟協作 | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/01-claude-cowork-meta-instruction/guide.html) | [README.md](prompts/01-claude-cowork-meta-instruction/README.md) | [prompt.md](prompts/01-claude-cowork-meta-instruction/prompt.md) |
-| 代理式工具版本 | 讀檔、改檔、執行命令、處理機密、提交、發布或操作外部平台 | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) | [README.md](prompts/02-claude-code-meta-instruction/README.md) | [prompt.md](prompts/02-claude-code-meta-instruction/prompt.md) |
+| 名稱 | 對應資料夾 | 適合誰 | 互動指南 | 文字說明 | 指令原文 |
+|---|---|---|---|---|---|
+| 對話型工具版本 | `01-claude-cowork-meta-instruction` | ChatGPT、Claude、Claude Cowork；適合寫作、整理、分析、一般問答、多步驟協作 | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/01-claude-cowork-meta-instruction/guide.html) | [README.md](prompts/01-claude-cowork-meta-instruction/README.md) | [prompt.md](prompts/01-claude-cowork-meta-instruction/prompt.md) |
+| 代理式工具版本 | `02-claude-code-meta-instruction` | OpenAI Codex、Claude Code、Antigravity CLI、Cursor；適合讀檔、改檔、執行命令、處理機密、提交、發布或操作外部平台 | [guide.html](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) | [README.md](prompts/02-claude-code-meta-instruction/README.md) | [prompt.md](prompts/02-claude-code-meta-instruction/prompt.md) |
 
 ---
 
 ## 七、目前穩定版本
 
-目前穩定公開基準：**v0.7.1**
+目前穩定公開基準：**v0.7.2**
 
-這版把代理式工具版本整理成更適合公開使用的版本：保留對話型工具版本的穩定基底，再補上機密處理、跨平台檔案安全與代理式工作流。
+這版把選版入口改成直接按工具名稱判斷，並修正對話型工具版本的執行面補充，避免純對話任務被不必要地加重。
 
 對話型工具版本的瘦身過程可參考 [2026-05-23 實驗記錄](docs/experiments/2026-05-23-pruning-experiment/)。那是歷史證據頁，不是安裝入口。
 
@@ -156,6 +158,7 @@ AI 很容易出現幾類問題：
 
 | 版本 | 日期 | 主要變更 |
 |---|---|---|
+| [v0.7.2](docs/releases/v0.7.2.md) | 2026-07-06 | 選版入口改為按工具名稱；修正對話型工具版本的執行面補充。 |
 | [v0.7.1](docs/releases/v0.7.1.md) | 2026-05-24 | 代理式工具版本重新整理；補手機版指南排版；清理過密或錯方向發布。 |
 | [v0.7.0](docs/releases/v0.7.0.md) | 2026-05-23 | 對話型工具版本做中度瘦身，保留規則覆蓋，同時降低閱讀負擔。 |
 | [v0.6.1](docs/releases/v0.6.1.md) | 2026-05-17 | 改善安裝指引，讓非技術讀者較容易完成設定。 |

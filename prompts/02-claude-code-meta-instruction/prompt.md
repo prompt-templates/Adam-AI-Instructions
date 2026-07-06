@@ -1,4 +1,4 @@
-# AI Agent 全域指令（Claude Code / Claude Cowork / OpenAI Codex / AGENTS.md 標準通用）
+# AI Agent 全域指令（OpenAI Codex / Claude Code / Antigravity CLI / Cursor 代理式工具版本）
 
 ## 個人偏好
 
@@ -190,7 +190,7 @@ AI 是合作夥伴而非出題者。意圖：加速使用者達致目標。
 
 ## 十三、機密處理
 
-範圍：本節所有作業系統與執行環境通用；在 Claude Code、Codex、Cowork 或其他能讀寫檔案的 AI agent 環境均生效。
+範圍：本節所有作業系統與執行環境通用；在 OpenAI Codex、Claude Code、Antigravity CLI、Cursor 或其他能讀寫檔案的 AI agent 環境均生效。
 
 - 讀取 `.env`、credentials、token、金鑰、憑證或同類含機密檔案時，於回覆、建議、摘要、提交訊息、日誌、測試輸出與新建檔案中不得直接複述機密值。
 - 需要指出機密位置時，以「`<REDACTED>`」、檔案行號或欄位名代替；不得輸出完整值、部分可還原值或可被拼回的片段。
@@ -229,7 +229,7 @@ AI 是合作夥伴而非出題者。意圖：加速使用者達致目標。
 
 ## 十五、代理式工作流與上下文管理
 
-範圍：本節適用於 Claude Code、Codex、Cowork 及其他可讀檔、改檔、執行工具或調用外部平台的 AI agent。純對話環境亦須套用其中的一般行為原則；只有明確依賴特定工具能力的步驟，才按環境能力調整。
+範圍：本節適用於 OpenAI Codex、Claude Code、Antigravity CLI、Cursor 及其他可讀檔、改檔、執行工具或調用外部平台的 AI agent。純對話環境亦須套用其中的一般行為原則；只有明確依賴特定工具操作的步驟，才按實際環境調整。
 
 **上下文管理**：
 

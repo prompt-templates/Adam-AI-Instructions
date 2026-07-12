@@ -691,74 +691,44 @@
   </div>
 
   <div class="scenario-tabs" role="tablist">
-    <button class="tab-btn active" data-tab="fpfr">情境 1 · 全圖優先規則</button>
+    <button class="tab-btn active" data-tab="fpfr">情境 1 · 治理改動流程</button>
     <button class="tab-btn" data-tab="skeleton">情境 2 · 回覆骨架</button>
-    <button class="tab-btn" data-tab="patch">情境 3 · 補丁式變更</button>
+    <button class="tab-btn" data-tab="patch">情境 3 · 手動貼換補丁</button>
     <button class="tab-btn" data-tab="lang">情境 4 · 語言分層</button>
   </div>
 
-  <!-- ===== 情境 1: 全圖優先規則 ===== -->
+  <!-- ===== 情境 1: 治理改動流程 ===== -->
   <div class="panel active" data-panel="fpfr">
-    <div class="panel-context">場景:多檔新建請求,觸發全圖優先規則。看 AI 是否先給完整計劃再執行。</div>
+    <div class="panel-context">場景:跨兩份長期規則的治理改動。先看 AI 是否只讀審核，再決定能否提出修改計劃。</div>
 
     <div class="scenario-grid">
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ 套用前</div>
-        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">幫我建項目骨架:README、LICENSE、index.html、.gitignore 都要。</div></div>
-        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">好的,開始建立。</div></div>
-        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">README.md 已建。</div></div>
-        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">建立 LICENSE 中,你想用 MIT 還是 Apache?</div></div>
-        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">MIT</div></div>
-        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">.gitignore 要加哪些規則?Node、Python、Java?</div></div>
-        <div class="scenario-summary bad-summary">⚠ 邊做邊反問 — 範圍邊界不明,用戶被迫多次中斷</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">請改善兩份長期指令，先不要改。</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">會修改兩份指令，完成後會更一致。</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">預計刪除重複段落，加入三個指標。</div></div>
+        <div class="scenario-summary bad-summary">⚠ 未讀真源便預測修改與數字 — 把猜測包裝成可靠方案</div>
       </div>
 
       <div class="scenario-col after">
         <div class="scenario-tag good-tag">✅ 套用後</div>
-        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">幫我建項目骨架:README、LICENSE、index.html、.gitignore 都要。</div></div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">請改善兩份長期指令，先不要改。</div></div>
         <div class="msg ai good">
           <div class="msg-avatar">🤖</div>
           <div class="msg-bubble fpfr-output">
             <div class="fpfr-section">
-              <h4>1. 終點畫面</h4>
-              <table class="fpfr-mini-table">
-                <thead><tr><th>檔案</th><th>前狀態</th><th>後狀態</th></tr></thead>
-                <tbody>
-                  <tr><td>README.md</td><td>不存在</td><td>新建</td></tr>
-                  <tr><td>LICENSE</td><td>不存在</td><td>MIT</td></tr>
-                  <tr><td>index.html</td><td>不存在</td><td>HTML 骨架</td></tr>
-                  <tr><td>.gitignore</td><td>不存在</td><td>Node+Py</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="fpfr-section">
-              <h4>2. 交付物</h4>
+              <h4>只讀審核閘</h4>
               <ul class="fpfr-mini-list">
-                <li>README.md — 新建 — 項目說明</li>
-                <li>LICENSE — 新建 — MIT 授權</li>
-                <li>index.html — 新建 — HTML 骨架</li>
-                <li>.gitignore — 新建 — Node + Python 忽略項</li>
+                <li>真源與同步責任：待查兩份指令及其維護說明。</li>
+                <li>閱讀覆蓋：尚未讀取，不能宣稱已掌握。</li>
+                <li>衝突或重複：待全文與全專案搜尋後判定。</li>
+                <li>未知事項：是否有生成機制、平台專屬差異。</li>
+                <li>停止條件：真源或同步責任未確認時，不提修改。</li>
               </ul>
             </div>
-            <div class="fpfr-section">
-              <h4>3. 可量指標</h4>
-              <ul class="fpfr-mini-list">
-                <li>檔案數:0 → 4</li>
-                <li>授權清晰度:無 → MIT</li>
-              </ul>
-            </div>
-            <div class="fpfr-section">
-              <h4>4. 驗收測試</h4>
-              <div class="fpfr-mini-text"><code>ls</code> 顯示 4 個新檔;在瀏覽器開 index.html 不報錯。</div>
-            </div>
-            <div class="fpfr-section">
-              <h4>5. 目標連結</h4>
-              <div class="fpfr-mini-text">對齊用戶明示「項目骨架」請求。</div>
-            </div>
-            <div class="fpfr-closing">以上即執行計劃。若不否決或修改,即開始執行。</div>
           </div>
         </div>
-        <div class="scenario-summary good-summary">✓ 全部假設前置列明 — 用戶 30 秒批准、否決或修改</div>
+        <div class="scenario-summary good-summary">✓ 先保存未知事項，不把推測當事實；審核後才可提出證據支持的修改計劃</div>
       </div>
     </div>
   </div>
@@ -801,9 +771,9 @@
     </div>
   </div>
 
-  <!-- ===== 情境 3: 補丁式變更 ===== -->
+  <!-- ===== 情境 3: 手動貼換補丁 ===== -->
   <div class="panel" data-panel="patch">
-    <div class="panel-context">場景:小幅修改文件。看 AI 給可直接貼換的補丁,還是重寫整段。</div>
+    <div class="panel-context">場景:環境不能直接改檔,使用者需要手動貼換。看 AI 給精準補丁,還是重寫整段。</div>
 
     <div class="scenario-grid">
       <div class="scenario-col before">
@@ -834,7 +804,7 @@
             </div>
           </div>
         </div>
-        <div class="scenario-summary good-summary">✓ 用戶可直接貼換 — 變更項目一目了然,合併零遺漏</div>
+        <div class="scenario-summary good-summary">✓ 手動貼換時差異一目了然；AI 已直接改檔時則不重貼整份原文</div>
       </div>
     </div>
   </div>
@@ -859,9 +829,9 @@
           <div class="msg-bubble">
             <strong class="lead">🔎 修改後需執行三項工具相容性檢查。</strong>
             <div style="margin-top:8px;font-size:13.5px;line-height:1.7">
-              完成修改後,先跑程式碼格式檢查,再確認規則庫中同一定義只存在一處(單一真源),最後驗證多檔計劃的前置輸出格式是否已正確觸發(全圖優先規則)。三項全通才可宣告完成。
+              完成治理規則修改後，先讀回凍結版本，再以同一份證據包交由獨立審閱者檢查。每項發現都要有重現證據、嚴重程度與裁決；出現同類高風險漏項時，撤銷舊結論並重跑驗收。
             </div>
-            <div style="margin-top:10px;font-size:12px;color:#888">規則對照:第十二節範圍與相容性 / 第四節全圖優先規則</div>
+            <div style="margin-top:10px;font-size:12px;color:#888">規則對照:第八節治理改動流程</div>
           </div>
         </div>
         <div class="scenario-summary good-summary">✓ 正文用日常語言,內部術語降至括號次要標註 — 人話先行,可追溯</div>
@@ -934,14 +904,14 @@
     <div class="card"><span class="num">§1</span><h4>語言與語體</h4><p>三層輸出語言分離;正文用繁體中文書面語,英文限專有名詞、實體名稱與工具名。</p></div>
     <div class="card"><span class="num">§2</span><h4>合作模式</h4><p>AI 是合作夥伴而非出題者;有判斷即提出,不將已有答案包裝成開放題反問。</p></div>
     <div class="card"><span class="num">§3</span><h4>回覆原則與骨架</h4><p>按任務性質決定短答、標準回覆、正式交付或純輸出；創作類任務另作處理。</p></div>
-    <div class="card"><span class="num">§4</span><h4>全圖優先規則</h4><p>多檔或高風險改動前，先交代終點、交付物、指標、驗收與依據。</p></div>
-    <div class="card"><span class="num">§5</span><h4>下一步選擇題</h4><p>需用戶抉擇時,A/B/C 三選項加推薦項加客觀依據,取代「你想點?」式提問。</p></div>
+    <div class="card"><span class="num">§4</span><h4>全圖優先規則</h4><p>協調成本或風險真正較高、且範圍已有證據時，先寫任務理解，再提出終點、交付物、成功證據、驗收與依據。</p></div>
+    <div class="card"><span class="num">§5</span><h4>下一步選擇題</h4><p>只有真正需要用戶取捨時，才列兩至三項可行方向、推薦項及客觀依據；不製造假選項。</p></div>
     <div class="card"><span class="num">§6</span><h4>歧義處理與真源對齊</h4><p>先列 ≤3 個合理假設一次性處理;用戶提供的真源逐字對齊,不改寫不重排。</p></div>
-    <div class="card"><span class="num">§7</span><h4>先讀後判</h4><p>可驗證事實必先核對再答;禁止四類捷徑(代理訊號/憑記憶/用產出代思考/質疑時換方向)。</p></div>
-    <div class="card"><span class="num">§8</span><h4>治理改動先審核</h4><p>涉及長期規則或多處同步時，先只讀審核，不預設一定要修改。</p></div>
-    <div class="card"><span class="num">§9</span><h4>變更交付</h4><p>修改預設用「精準錨點 + 修改前/修改後」雙代碼塊;深度修補要求完整掃描合併補丁再掃描。</p></div>
+    <div class="card"><span class="num">§7</span><h4>先讀後判</h4><p>可驗證事實先核對；摘要只作續接線索，恢復後以實際檔案、保存成果或可讀回證據為準。</p></div>
+    <div class="card"><span class="num">§8</span><h4>治理改動流程</h4><p>涉及長期規則或多處同步時，先只讀審核；審核後才計劃，並以凍結證據與獨立審閱收斂。</p></div>
+    <div class="card"><span class="num">§9</span><h4>變更交付</h4><p>直接改檔後交代差異與驗收；只有手動貼換或不能安全寫入時，才用「精準錨點 + 修改前/修改後」。</p></div>
     <div class="card"><span class="num">§10</span><h4>防漂移與用語紀律</h4><p>同一規格只允許在單一定義塊;條款編號不可作句子主體,前置中文白話描述。</p></div>
-    <div class="card"><span class="num">§11</span><h4>計算與格式硬規則</h4><p>計算要逐步驗算；指定格式要保持欄位一致，避免輸出不能直接使用。</p></div>
+    <div class="card"><span class="num">§11</span><h4>計算與結構格式</h4><p>計算步驟按難度與風險展示；JSON 服從既有 schema，圖表按關係選擇合適類型。</p></div>
     <div class="card"><span class="num">§12</span><h4>執行環境補充</h4><p>涉及檔案、命令、外部平台或可持久化改動時，先判斷風險再行動。</p></div>
   </div>
 
@@ -951,12 +921,12 @@
     <tbody>
       <tr><td>AI 正文夾雜英文簡寫或自創代號，讀者看不懂</td><td>§1 語言與語體</td></tr>
       <tr><td>多條規則同時觸發時 AI 口徑混亂、規則互鎖無從仲裁</td><td>§0 總仲裁順序</td></tr>
-      <tr><td>AI 動手前未交代終點,改完才發現方向偏離</td><td>§4 全圖優先規則</td></tr>
-      <tr><td>AI 對不可逆操作(刪除/部署/外部 API)跟一般修改混為一談</td><td>§4 收尾句三句版本</td></tr>
+      <tr><td>AI 未讀真源便預測改動終點，改完才發現方向偏離</td><td>§8 治理改動流程</td></tr>
+      <tr><td>AI 把高風險但可回復的治理改動，跟一般低風險操作混為一談</td><td>§8 確認門檻</td></tr>
       <tr><td>AI 反覆「同意 A?同意 B?」逐項提問</td><td>§2 合作模式 + §5 下一步選擇題</td></tr>
       <tr><td>AI 輸出未經核對的事實</td><td>§7 先讀後判(可驗證事實必先核對)</td></tr>
       <tr><td>AI 用「應該是」、「估計」憑記憶下判斷，未真讀檔</td><td>§7 先讀後判(禁止四類捷徑)</td></tr>
-      <tr><td>AI 一次性重寫整份檔案,合併困難</td><td>§9 變更交付(補丁式)</td></tr>
+      <tr><td>AI 一次性重寫整份檔案,合併困難</td><td>§9 最小而完整變更；手動貼換時用精準補丁</td></tr>
       <tr><td>同一規則散落多處,長期出現自相矛盾</td><td>§10 防漂移與用語紀律</td></tr>
       <tr><td>AI 句子主體堆砌內部代碼或條款編號,可讀性低</td><td>§10 用語紀律執行硬規則</td></tr>
       <tr><td>對純解釋/純策略建議/純創作仍硬套五區段</td><td>§4 觸發條件分流 + 創作豁免</td></tr>
@@ -977,8 +947,8 @@
   <h3>AI 會怎樣做</h3>
   <ul>
     <li><strong>個人偏好優先序</strong>:事實可驗收 &gt; 穩定性 &gt; 根因治理 &gt; 完整性交付 &gt; 最小改動。創作類任務(設計、故事、詩、廣告、純想像)自動豁免事實可驗收與五區段;但語言分層、合作模式、用語紀律、回覆語體仍適用。</li>
-    <li><strong>§0 總仲裁順序</strong>:多條規則同時衝突時按 6 層處理(安全 → 純輸出格式 → 單一真源 → 事實核對 → 回覆形態 → 呈現形式);判斷未明時以「安全、可驗證、不假裝完成」為最高處理原則。</li>
-    <li><strong>合作模式(§二)</strong>:有判斷則提出判斷;不將已有答案包裝成開放題反問。涉及不可逆操作、外部系統、權限、費用、訊息發送或排程提醒時,必須先明確列出影響並取得確認。</li>
+    <li><strong>§0 總仲裁順序</strong>:多條規則同時衝突時按 6 層處理(安全 → 使用者或權威工作流的指定輸出 → 單一真源 → 事實核對 → 回覆形態 → 呈現形式);判斷未明時以「安全、可驗證、不假裝完成」為最高處理原則。</li>
+    <li><strong>合作模式(§二)</strong>:有判斷則提出判斷;不將已有答案包裝成開放題反問。涉及不可逆操作、外部寫入或其他副作用、權限變更、費用、訊息發送或排程提醒時,必須先明確列出影響並取得確認；純外部讀取不因「外部」二字多取一輪批准。</li>
     <li><strong>角色分工</strong>:用戶提需求、目標、現實資料;在已授權、低風險、可回復、無外部副作用範圍內,技術步驟順序、優先序、執行時點由 AI 自行判斷並執行。</li>
     <li><strong>核心原則</strong>:先判斷用戶當下需要(結論 / 選擇 / 解釋 / 執行 / 修補),再補其他。</li>
   </ul>
@@ -991,7 +961,7 @@
       <text x="350" y="73" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">1. 安全 / 權限 / 不可逆操作 / 外部系統 / 私隱 / 平台限制</text>
 
       <rect x="100" y="98" width="500" height="38" rx="6" fill="#e08436"/>
-      <text x="350" y="121" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">2. 使用者明示輸出格式 / 純輸出模式 / 指定 schema / 逐字要求</text>
+      <text x="350" y="121" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">2. 使用者明示或權威工作流指定的輸出格式</text>
 
       <rect x="120" y="146" width="460" height="38" rx="6" fill="#d4a017"/>
       <text x="350" y="169" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">3. 單一真源 / 使用者鍵名 / 枚舉 / 既有規格</text>
@@ -1021,18 +991,18 @@
 <!-- ============== 第二組:FPFR ============== -->
 <section id="g2">
   <h2><span class="num">2</span>大型任務管理</h2>
-  <p class="lede">在 AI 進行多檔或治理改動之前,要求先輸出明確的 5 區段計劃結構;治理層改動更必先計劃自檢,第一份計劃預設為「只讀審核」。對應原文 <strong>§四 全圖優先規則 + §八 治理改動先審核</strong>。</p>
+  <p class="lede">治理改動先通過只讀審核閘：只確認真源、閱讀覆蓋、衝突或重複、未知事項與停止條件。審核證據足夠後，才以 5 區段提出修改計劃。對應原文 <strong>§四 全圖優先規則 + §八 治理改動流程</strong>。</p>
 
   <h3>常見問題</h3>
   <p>AI 開始執行後,改至中途才發現方向與用戶期望不一致;或在修改多個檔案後才補充說明範圍變動。用戶需逐個檔案檢視,方能發現偏離。</p>
 
   <div class="svg-wrap">
     <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
-      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">全圖優先觸發判斷流程</text>
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">治理改動兩階段流程</text>
 
       <!-- Start -->
       <rect x="340" y="50" width="120" height="36" rx="18" fill="#0d7377"/>
-      <text x="400" y="74" text-anchor="middle" fill="white" font-size="13">收到任務</text>
+      <text x="400" y="74" text-anchor="middle" fill="white" font-size="13">收到治理任務</text>
 
       <!-- Arrow -->
       <line x1="400" y1="86" x2="400" y2="118" stroke="#1a1a1a" stroke-width="2"/>
@@ -1040,10 +1010,10 @@
 
       <!-- Decision diamond -->
       <polygon points="400,128 510,180 400,232 290,180" fill="white" stroke="#0d7377" stroke-width="2"/>
-      <text x="400" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">命中以下任一?</text>
-      <text x="400" y="188" text-anchor="middle" font-size="11" fill="#1a1a1a">(a) 修改 ≥2 檔案</text>
-      <text x="400" y="204" text-anchor="middle" font-size="11" fill="#1a1a1a">(b) 新建檔案</text>
-      <text x="400" y="220" text-anchor="middle" font-size="11" fill="#1a1a1a">(c) 改規則 (d) ≥2 階段</text>
+      <text x="400" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">是否屬治理改動？</text>
+      <text x="400" y="188" text-anchor="middle" font-size="11" fill="#1a1a1a">規則、流程或安全邊界</text>
+      <text x="400" y="204" text-anchor="middle" font-size="11" fill="#1a1a1a">跨檔同步或多個真源</text>
+      <text x="400" y="220" text-anchor="middle" font-size="11" fill="#1a1a1a">長期整合設定或治理真源</text>
 
       <!-- Yes branch right -->
       <line x1="510" y1="180" x2="600" y2="180" stroke="#1a1a1a" stroke-width="2"/>
@@ -1051,8 +1021,8 @@
       <text x="555" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">是</text>
 
       <rect x="600" y="158" width="180" height="44" rx="8" fill="#e6f7f5" stroke="#0d7377" stroke-width="1.5"/>
-      <text x="690" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">輸出 5 區段計劃</text>
-      <text x="690" y="196" text-anchor="middle" font-size="11" fill="#5b6470">→ 等用戶批准或否決</text>
+      <text x="690" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">先做只讀審核</text>
+      <text x="690" y="196" text-anchor="middle" font-size="11" fill="#5b6470">→ 證據足夠才計劃</text>
 
       <!-- No branch left -->
       <line x1="290" y1="180" x2="200" y2="180" stroke="#1a1a1a" stroke-width="2"/>
@@ -1060,11 +1030,11 @@
       <text x="245" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#5b6470">否</text>
 
       <rect x="20" y="158" width="180" height="44" rx="8" fill="#fafafa" stroke="#999" stroke-width="1.5"/>
-      <text x="110" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">直接執行</text>
-      <text x="110" y="196" text-anchor="middle" font-size="11" fill="#5b6470">(無需全圖優先)</text>
+      <text x="110" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">按一般規則處理</text>
+      <text x="110" y="196" text-anchor="middle" font-size="11" fill="#5b6470">(仍先讀後判)</text>
 
       <!-- 5 sections -->
-      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">5 區段內容(順序固定)</text>
+      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">審核後的證據支持修改計劃（5 區段）</text>
 
       <g>
         <rect x="40" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
@@ -1072,36 +1042,36 @@
         <text x="68" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">1</text>
         <text x="92" y="323" font-size="12" font-weight="bold" fill="#0d7377">終點畫面</text>
         <text x="92" y="338" font-size="10" fill="#0d7377">END-STATE</text>
-        <text x="50" y="362" font-size="10.5" fill="#1a1a1a">表格列出每個</text>
-        <text x="50" y="378" font-size="10.5" fill="#1a1a1a">受影響檔案的</text>
-        <text x="50" y="394" font-size="10.5" fill="#1a1a1a">前/後狀態</text>
+        <text x="50" y="362" font-size="10.5" fill="#1a1a1a">先寫任務理解</text>
+        <text x="50" y="378" font-size="10.5" fill="#1a1a1a">再列檔案／系統</text>
+        <text x="50" y="394" font-size="10.5" fill="#1a1a1a">／資源前後狀態</text>
 
         <rect x="190" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
         <circle cx="218" cy="318" r="14" fill="#0d7377"/>
         <text x="218" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">2</text>
         <text x="242" y="323" font-size="12" font-weight="bold" fill="#0d7377">交付物</text>
         <text x="242" y="338" font-size="10" fill="#0d7377">DELIVERABLES</text>
-        <text x="200" y="362" font-size="10.5" fill="#1a1a1a">逐檔案路徑</text>
-        <text x="200" y="378" font-size="10.5" fill="#1a1a1a">+ 動作 +</text>
+        <text x="200" y="362" font-size="10.5" fill="#1a1a1a">路徑或資源名稱</text>
+        <text x="200" y="378" font-size="10.5" fill="#1a1a1a">+ 適用動作 +</text>
         <text x="200" y="394" font-size="10.5" fill="#1a1a1a">一句摘要</text>
 
         <rect x="340" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
         <circle cx="368" cy="318" r="14" fill="#0d7377"/>
         <text x="368" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">3</text>
-        <text x="392" y="323" font-size="12" font-weight="bold" fill="#0d7377">可量指標</text>
-        <text x="392" y="338" font-size="10" fill="#0d7377">METRICS</text>
-        <text x="350" y="362" font-size="10.5" fill="#1a1a1a">≥3 個前→後</text>
-        <text x="350" y="378" font-size="10.5" fill="#1a1a1a">可量數字</text>
-        <text x="350" y="394" font-size="10.5" fill="#1a1a1a">(否則寫未適用)</text>
+        <text x="392" y="323" font-size="12" font-weight="bold" fill="#0d7377">成功證據</text>
+        <text x="392" y="338" font-size="10" fill="#0d7377">EVIDENCE</text>
+        <text x="350" y="362" font-size="10.5" fill="#1a1a1a">可讀回的結果</text>
+        <text x="350" y="378" font-size="10.5" fill="#1a1a1a">數字只在本來</text>
+        <text x="350" y="394" font-size="10.5" fill="#1a1a1a">有意義時使用</text>
 
         <rect x="490" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
         <circle cx="518" cy="318" r="14" fill="#0d7377"/>
         <text x="518" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">4</text>
         <text x="542" y="323" font-size="12" font-weight="bold" fill="#0d7377">驗收測試</text>
         <text x="542" y="338" font-size="10" fill="#0d7377">ACCEPTANCE</text>
-        <text x="500" y="362" font-size="10.5" fill="#1a1a1a">具體檢查方法</text>
-        <text x="500" y="378" font-size="10.5" fill="#1a1a1a">判定執行</text>
-        <text x="500" y="394" font-size="10.5" fill="#1a1a1a">是否成功</text>
+        <text x="500" y="362" font-size="10.5" fill="#1a1a1a">具體檢查及</text>
+        <text x="500" y="378" font-size="10.5" fill="#1a1a1a">可推翻方案的</text>
+        <text x="500" y="394" font-size="10.5" fill="#1a1a1a">反例</text>
 
         <rect x="640" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
         <circle cx="668" cy="318" r="14" fill="#0d7377"/>
@@ -1113,22 +1083,22 @@
         <text x="650" y="394" font-size="10.5" fill="#1a1a1a">單一真源</text>
       </g>
 
-      <text x="400" y="442" text-anchor="middle" font-size="11" fill="#5b6470">收尾句依風險選用三句版本:低風險「不否決即執行」/ 不可逆「須明確確認」/ 只讀審核「不否決即開始審核」</text>
+      <text x="400" y="442" text-anchor="middle" font-size="11" fill="#5b6470">只讀審核同一輪直接完成；高風險治理改動、不可逆或有外部副作用的操作才須確認</text>
     </svg>
-    <div class="svg-caption">圖二:全圖優先(英文 Full-Picture-First Rule)觸發判斷與 5 區段固定結構。</div>
+    <div class="svg-caption">圖二：治理改動流程先審核；只有證據足夠後，才進入 5 區段修改計劃。</div>
   </div>
 
   <h3>AI 會怎樣做</h3>
-  <p>當 AI 即將進行 4 個觸發條件(修改 ≥2 檔案、新建檔案、改動治理規則、提出 ≥2 階段計劃)中的任一時,必須先輸出 5 區段執行計劃,再執行實際工作。</p>
-  <p>觸發後,輸出 5 區段之前必先完成「計劃自檢」(層次屬產品系統抑或治理、是否應先只讀審核、是否有不改檔即可達標的正路、是否有同主題真源、漂移風險、閱讀覆蓋是否足夠)。治理文件、安全規則、長期流程、跨檔同步、公開輸出、外部平台、跨真源任務的第一份全圖計劃須以「只讀審核」作第一階段,不得預設必然修改。</p>
+  <p>治理文件、安全規則、長期流程、治理層跨檔同步、公開輸出、長期外部整合設定或多個治理真源的任務，提出修改計劃前先完成只讀審核。來源可取得時同一輪直接審核，不預測要改哪個檔案、改後狀態、行數或人為湊出的數字；來源欠缺時如實標明受阻。</p>
+  <p>審核確認真源、閱讀覆蓋、衝突、未知事項與停止條件後，才可提出 5 區段修改計劃。成功證據優先於數字；驗收必須包括可揭露錯誤方案的反例。</p>
 
   <h3>實際作用</h3>
   <ul>
-    <li><strong>可預測性</strong>:用戶閱讀 5 區段後,可立即決定批准或否決,減少多輪對話拉鋸。</li>
-    <li><strong>可驗收</strong>:第 4 區段「驗收測試」(英文錨點 ACCEPTANCE TEST)提供具體檢查方法,任務完成後可立即驗收。</li>
-    <li><strong>防範圍滑移</strong>:第 1 區段「終點畫面」(英文錨點 END-STATE SNAPSHOT)為 AI 自身的範圍邊界,避免執行中擴大改動。</li>
-    <li><strong>取代逐項批准</strong>:以「不否決即執行」收尾,避免「同意 A?同意 B?同意 C?」式提問。</li>
-    <li><strong>防偽自檢</strong>:強制計劃前先自檢,避免把「看似可執行」當成「已審核」;治理層任務先只讀審核,先看清漂移風險再決定是否修改。</li>
+    <li><strong>不假裝知道</strong>：審核閘把未知事項顯式留下，避免用終點、檔案清單或數字掩飾未讀內容。</li>
+    <li><strong>可驗收</strong>：修改計劃的驗收同時有具體檢查與可推翻錯誤方案的反例。</li>
+    <li><strong>防範圍滑移</strong>：終點畫面只在證據足夠後才定義，避免執行中靠猜測擴大改動。</li>
+    <li><strong>風險分流</strong>：只讀審核本身不需確認；高風險但可回復的治理改動、不可逆操作及有外部副作用的操作才需要明確確認。</li>
+    <li><strong>可收斂</strong>：凍結版本用同一證據包交給獨立審閱；同類高風險漏項再出現時，撤銷舊結論並重跑。</li>
   </ul>
 </section>
 
@@ -1174,8 +1144,8 @@
       <text x="415" y="110" text-anchor="middle" font-size="11" fill="#1a1a1a">一般分析、</text>
       <text x="415" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">建議、比較、</text>
       <text x="415" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">修補(預設)</text>
-      <text x="415" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ 三行 🔎 +</text>
-      <text x="415" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">交付清單 + 正文</text>
+      <text x="415" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ 一句 🔎 +</text>
+      <text x="415" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">按需要補正文</text>
       <text x="415" y="222" text-anchor="middle" font-size="10" fill="#5b6470">例:大部分日常</text>
       <text x="415" y="238" text-anchor="middle" font-size="10" fill="#5b6470">對話回應</text>
 
@@ -1185,7 +1155,7 @@
       <text x="575" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">跨檔修改、</text>
       <text x="575" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">可落地交付</text>
       <text x="575" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ 完整骨架;</text>
-      <text x="575" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">多檔再觸發五區段</text>
+      <text x="575" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">證據足夠才進五區段</text>
       <text x="575" y="222" text-anchor="middle" font-size="10" fill="#5b6470">例:本指令此次</text>
       <text x="575" y="238" text-anchor="middle" font-size="10" fill="#5b6470">對齊計劃</text>
 
@@ -1195,7 +1165,7 @@
       <text x="730" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">詩、廣告、</text>
       <text x="730" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">純想像、虛構</text>
       <text x="730" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ 豁免五區段、</text>
-      <text x="730" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">四階段、可量指標</text>
+      <text x="730" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">四階段、成功證據</text>
       <text x="730" y="222" text-anchor="middle" font-size="10" fill="#5b6470">語言分層、合作</text>
       <text x="730" y="238" text-anchor="middle" font-size="10" fill="#5b6470">模式仍適用</text>
     </svg>
@@ -1207,8 +1177,8 @@
     <thead><tr><th>規則塊</th><th>核心約束</th></tr></thead>
     <tbody>
       <tr><td>三層語言分離(§一)</td><td>使用者輸出層繁體中文書面語;規則內部命名層可用英文錨點但出現於輸出層必須翻譯;結構標題層一律中文。</td></tr>
-      <tr><td>回覆骨架(§三)</td><td>標準模式先給三行內重點，再列交付清單，最後補正文；短答、正式交付與純輸出另按任務選用。</td></tr>
-      <tr><td>下一步選擇題(§五)</td><td>A/B/C 選項 + 推薦項 + 一句客觀依據,取代「你想點?」式提問;每選項必須是正路。</td></tr>
+      <tr><td>回覆骨架(§三)</td><td>標準模式先給三行內重點，再按需要補交付清單或正文；不為湊格式重複結論。</td></tr>
+      <tr><td>下一步選擇題(§五)</td><td>只有真正需要取捨時才列兩至三項可行方向、推薦項及客觀依據；沒有選擇便直接判斷。</td></tr>
       <tr><td>用語紀律(§十)</td><td>條款編號(§X、X.Y)必須前置中文白話描述,編號只放括號或行尾;禁止自創 Capital_Snake_Case 或 ProperNounMatrix 類術語作句子主體。</td></tr>
       <tr><td>防漂移(§十)</td><td>同一規則只保留一個主要定義位置；新增內容時，同步合併或退役舊句，避免日後互相矛盾。</td></tr>
       <tr><td>回覆語體(§一)</td><td>跟當前對話既有語體(書面語、口語、指定方言),單一回覆內保持一致。</td></tr>
@@ -1270,16 +1240,16 @@
 <!-- ============== 第五組:變更治理 ============== -->
 <section id="g5">
   <h2><span class="num">5</span>修改與交付</h2>
-  <p class="lede">透過補丁式變更、深度修補與格式硬規則,讓修改可審閱、可合併、長期一致。防漂移主規則歸入上方語言與表達層,本段只示範它在變更治理中的作用。對應原文 <strong>§九 變更交付(補丁式與深度修補) + §十一 計算與格式硬規則</strong>(§十一的計算子議題見下方第六組)。</p>
+  <p class="lede">修改保持最小而完整：AI 直接改檔後交代差異與驗收；只有手動貼換、不能安全寫入或使用者明示要求時才輸出逐字補丁。結構格式按實際 schema 與圖表關係選擇。對應原文 <strong>§九 變更交付 + §十一 計算與結構格式</strong>。</p>
 
   <div class="svg-wrap">
     <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
-      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">補丁式變更結構</text>
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">手動貼換補丁結構</text>
 
       <!-- Anchor box -->
       <rect x="80" y="50" width="640" height="44" rx="8" fill="#fff5e6" stroke="#f0b27a"/>
       <text x="100" y="78" font-size="13" font-weight="bold" fill="#c87a30">📌 精準錨點</text>
-      <text x="220" y="78" font-size="12" fill="#1a1a1a">(在代碼區塊外):「3. 新建檔案預設放入...的 outputs/ 子目錄」</text>
+      <text x="220" y="78" font-size="12" fill="#1a1a1a">(舊規則錨點):「3. 新建檔案預設放入...的 outputs/ 子目錄」</text>
 
       <!-- Arrow -->
       <line x1="400" y1="100" x2="400" y2="124" stroke="#1a1a1a" stroke-width="2"/>
@@ -1290,7 +1260,7 @@
         <rect x="80" y="138" width="300" height="160" rx="8" fill="#fdecea" stroke="#e57373" stroke-width="1.5"/>
         <rect x="80" y="138" width="300" height="32" rx="8" fill="#e57373"/>
         <text x="230" y="160" text-anchor="middle" fill="white" font-size="13" font-weight="bold">修改前(原文)</text>
-        <text x="100" y="190" font-size="11" fill="#1a1a1a" font-family="monospace">3. 新建檔案預設放入</text>
+        <text x="100" y="190" font-size="11" fill="#1a1a1a" font-family="monospace">[舊規則] 新建檔案預設放入</text>
         <text x="100" y="208" font-size="11" fill="#1a1a1a" font-family="monospace">當前工作資料夾下的</text>
         <text x="100" y="226" font-size="11" fill="#1a1a1a" font-family="monospace">/outputs 子目錄;</text>
         <text x="100" y="244" font-size="11" fill="#1a1a1a" font-family="monospace">除非使用者明示路徑。</text>
@@ -1299,10 +1269,10 @@
         <rect x="420" y="138" width="300" height="160" rx="8" fill="#e8f5e9" stroke="#7cb98a" stroke-width="1.5"/>
         <rect x="420" y="138" width="300" height="32" rx="8" fill="#7cb98a"/>
         <text x="570" y="160" text-anchor="middle" fill="white" font-size="13" font-weight="bold">修改後(新文)</text>
-        <text x="440" y="190" font-size="11" fill="#1a1a1a" font-family="monospace">3. 新建檔案預設放入</text>
-        <text x="440" y="208" font-size="11" fill="#1a1a1a" font-family="monospace">當前工作資料夾下的</text>
-        <text x="440" y="226" font-size="11" fill="#1a1a1a" font-family="monospace">outputs/ 子目錄...</text>
-        <text x="440" y="244" font-size="11" fill="#1a1a1a" font-family="monospace">(補充跨平台說明)</text>
+        <text x="440" y="190" font-size="11" fill="#1a1a1a" font-family="monospace">3. 新建檔案先遵循</text>
+        <text x="440" y="208" font-size="11" fill="#1a1a1a" font-family="monospace">既有目錄與真源;</text>
+        <text x="440" y="226" font-size="11" fill="#1a1a1a" font-family="monospace">無既定位置的成品</text>
+        <text x="440" y="244" font-size="11" fill="#1a1a1a" font-family="monospace">才放 outputs/。</text>
         <text x="440" y="280" font-size="11" fill="#5b6470" font-style="italic">↑ 可直接貼換</text>
       </g>
 
@@ -1314,15 +1284,15 @@
       <text x="180" y="354" font-size="13" font-weight="bold" fill="#0d7377">📋 變更日誌</text>
       <text x="295" y="354" font-size="12" fill="#1a1a1a">改動 1 處 / 補充澄清 / 無刪除項</text>
     </svg>
-    <div class="svg-caption">圖四:每個補丁包含「精準錨點 + 修改前區塊 + 修改後區塊 + 變更日誌」四個必要元件。</div>
+    <div class="svg-caption">圖四:需要手動貼換時，補丁包含「精準錨點 + 修改前區塊 + 修改後區塊 + 變更日誌」。</div>
   </div>
 
   <h3>四條子規則</h3>
   <ul>
-    <li><strong>補丁式</strong>:任何修改預設以「精準錨點 + 修改前 + 修改後」三段呈現,可使用編輯器搜尋功能(例如 Ctrl+F)直接定位貼換。每次補丁附變更日誌,分類為新增、刪除、改名、移動。</li>
+    <li><strong>交付分流</strong>:AI 能直接安全改檔時列出檔案、差異與驗收；需要手動貼換時才用「精準錨點 + 修改前 + 修改後」，並附精簡變更日誌。</li>
     <li><strong>深度修補</strong>:當用戶要求「最終落地 / 全文已核對 / 健康掃描」等字眼時,AI 須在同一回覆內完成「全文掃描 → 合併審視 → 補丁 → 再次掃描」,所有錯誤清零方可輸出新版本全文。</li>
     <li><strong>防漂移</strong>:同一規格、鍵集、枚舉只允許存在於單一定義塊;新增規則時同步合併或廢止舊句,避免長期出現自相矛盾或重複。</li>
-    <li><strong>格式硬規則</strong>:JSON(資料結構格式)缺值用 null 不省略;Mermaid(流程圖語法)用 <code>flowchart TB</code>(由上往下流向)、文字用 <code>"..."</code> 包覆、換行直接按 Enter。</li>
+    <li><strong>結構格式</strong>:JSON 服從使用者、平台或既有 schema；Mermaid 按關係選圖型與方向，輸出後驗證可用。</li>
   </ul>
 
   <div class="svg-wrap">
@@ -1382,15 +1352,15 @@
 
 <!-- ============== 第六組:計算規範 ============== -->
 <section id="g6">
-  <h2><span class="num">6</span>計算規範:四步法</h2>
-  <p class="lede">強制 AI 在計算題上展示完整步驟並代回驗算,使錯誤可追溯、可自我捕獲。對應原文 <strong>§十一 計算與格式硬規則</strong>的計算子議題;同節另含 JSON / Mermaid 格式硬規則(歸入上方第五組變更治理)。</p>
+  <h2><span class="num">6</span>計算規範:按難度與風險展示</h2>
+  <p class="lede">簡單低風險算式可直接回答並自行核對；多步、易錯、高風險或使用者要求過程時，才按適用部分展示對齊、正負、步驟與代回驗算。對應原文 <strong>§十一 計算與結構格式</strong>。</p>
 
   <h3>常見問題</h3>
   <p>AI 在計算題上容易出錯，尤其涉及小數、移項、單位轉換；若沒有步驟，出錯後也難以追溯。</p>
 
   <div class="svg-wrap">
     <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
-      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">計算四步法</text>
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">複雜或高風險計算的檢查</text>
 
       <!-- Step 1 -->
       <rect x="30" y="60" width="160" height="100" rx="10" fill="#e6f7f5" stroke="#0d7377"/>
@@ -1435,18 +1405,18 @@
       <text x="625" y="124" font-size="11" fill="#1a1a1a">代回原式驗證,</text>
       <text x="625" y="140" font-size="11" fill="#1a1a1a">部分錯誤自捕獲</text>
     </svg>
-    <div class="svg-caption">圖六:計算四步法,第 4 步是自我驗算機制。</div>
+    <div class="svg-caption">圖六:需要展示過程時按適用步驟檢查；代回驗算可捕捉部分錯誤。</div>
   </div>
 
   <h3>適合情境</h3>
-  <p>任何涉及計算的場景:財務、單位轉換、面積 / 體積、利率、折扣、稅項。純文字任務不受影響。</p>
+  <p>多步、易錯或高風險場景，例如財務、單位轉換、面積 / 體積、利率、折扣與稅項；簡單算式不必為展示而展開全部步驟。</p>
 </section>
 
 
 <!-- ============== 第七組:Cowork 環境 ============== -->
 <section id="g7">
   <h2><span class="num">7</span>執行環境補充</h2>
-  <p class="lede">這一組對應指令原文「執行環境補充」。只要 AI 會接觸檔案、命令、外部平台或可持久化改動，就要先判斷風險、讀足上下文、再修改並驗收。</p>
+  <p class="lede">這一組對應指令原文「執行環境補充」。只有 AI 實際接觸檔案、命令、外部平台或可持久化改動時才啟動；純聊天不增加步驟。本機能力亦有最低機密與系統路徑底線。</p>
 
   <div class="svg-wrap">
     <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
@@ -1500,20 +1470,20 @@
         <text x="730" y="132" text-anchor="middle" fill="#5b6470" font-size="10">風險餘項</text>
       </g>
 
-      <text x="400" y="190" text-anchor="middle" font-size="12" fill="#5b6470">高風險任務可先只讀審核;進入修改、外部操作或公開發佈前須確認</text>
+      <text x="400" y="190" text-anchor="middle" font-size="12" fill="#5b6470">高風險任務可先只讀審核;不可逆、外部寫入或公開發佈前須確認</text>
     </svg>
-    <div class="svg-caption">圖七:四階段工作流；修改後要把檢查結果與風險餘項說清楚。</div>
+    <div class="svg-caption">圖七:所有持久化修改都經過四階段思考；只有複雜、高風險或需共同決策時才逐段展示。</div>
   </div>
 
   <h3>五大面向</h3>
   <table>
     <thead><tr><th>面向</th><th>核心約束</th></tr></thead>
     <tbody>
-      <tr><td>A. 檔案系統與破壞性操作</td><td>刪除或覆寫前先列出影響範圍待用戶確認;原檔保留並輸出副本;新檔放入 outputs/ 子目錄;禁止高風險指令(例如 <code>rm -rf</code>、<code>Remove-Item -Recurse -Force</code>);路徑使用該語言原生的路徑處理函式(API)。</td></tr>
-      <tr><td>B. 層次分類與變更前置</td><td>判斷任務屬於「產品系統層」抑或「治理層」；遇到錯誤先做問題分類再動手。進入修改階段之前完成最低閱讀覆蓋；新增規則前先檢查既有規則可否合併或退役；治理／規則／跨檔同步任務的計劃前須完成計劃自檢，資料未讀夠則第一份計劃只能是閱讀或審核計劃。</td></tr>
-      <tr><td>C. 外部平台與應用程式介面</td><td>不憑記憶猜測；呼叫外部平台或介面前必須對齊官方文件，記錄基礎網址、版本、驗證方式等。</td></tr>
-      <tr><td>D. 工作流與風險</td><td>四階段流程是「規劃 → 閱讀 → 修改 → 品質檢查」；規劃階段不得把「看似可執行」當成「已審核」；高風險任務可先只讀審核；修改階段一旦偏離計劃即停止。</td></tr>
-      <tr><td>E. 範圍與相容性</td><td>只改與任務直接相關的檔案；若項目設有靜態檢查、格式檢查、型別檢查、編譯檢查或本地檢查，修改後必跑且回報結果；宣告就緒、合併、發佈或正式上線前，須過三關：獨立審閱、機器驗證、證據核對。</td></tr>
+      <tr><td>A. 檔案系統、機密與破壞性操作</td><td>刪除、移動、批量或不可回復覆寫前先列出影響範圍；不可替代的原始資料保留副本，正常已授權專案檔按既有結構就地更新；機密只可遮蔽，磁碟根、系統目錄、使用者主目錄本身及不明路徑不得作破壞性操作；高風險指令仍禁止。</td></tr>
+      <tr><td>B. 層次分類與變更前置</td><td>判斷任務屬於「產品系統層」抑或「治理層」；遇到錯誤先做問題分類再動手。進入修改階段之前完成相稱的閱讀覆蓋；新增規則前先檢查既有規則可否合併或退役；治理任務在提出修改計劃前同一輪完成只讀審核，來源或權限欠缺時如實標明受阻。</td></tr>
+      <tr><td>C. 外部平台與應用程式介面</td><td>新增、改動、認證、部署、付費或不確定介面不憑記憶猜測，先對齊當前官方文件；持久或正式整合才完整記錄契約。</td></tr>
+      <tr><td>D. 工作流與風險</td><td>內部遵循「規劃 → 閱讀 → 修改 → 品質檢查」；只有複雜、高風險或需共同決策時逐段展示；偏離既定範圍即停止。</td></tr>
+      <tr><td>E. 範圍與相容性</td><td>只改與任務直接相關的檔案；按實際影響執行對應檢查，不為低風險文字小修強制整套測試；重大或高風險就緒宣告、合併、發佈及正式上線前，才須過獨立審閱、機器驗證與證據核對三關。</td></tr>
     </tbody>
   </table>
 
@@ -1526,12 +1496,12 @@
 <!-- ============== Handoff ============== -->
 <section id="handoff">
   <h2>跨對話接力</h2>
-  <p class="lede">對話型工具版本管 AI 在單次對話內怎樣回答、核實、修補與交付；若任務會跨幾天或幾個新對話，就需要另一層交接機制。</p>
+  <p class="lede">對話型工具版本管 AI 在單次對話內怎樣回答、核實、修補與交付；若任務會跨幾天或幾個新對話，而且所用工具能可靠讀寫本機專案資料夾，才可再接上本機交接機制。</p>
 
   <div class="callout">
     <strong>可配合 Agent Handoff Kit 使用</strong>：它負責保存當前狀態、下一步、風險、檔案角色與下次開工提示。這樣新工作階段不需要重新猜測前文，也較不容易失去任務主線。
     <br><br>
-    簡單說，本指令管「AI 這一輪怎樣做事」；<a href="https://adamchanadam.github.io/agent-handoff-kit/agent-handoff-kit-intro.html" target="_blank" rel="noopener">Agent Handoff Kit</a> 管「這一輪做完後怎樣交接」。長期寫作、資料整理、文件維護或跨工具協作時，兩者可一起使用。
+    簡單說，本指令管「AI 這一輪怎樣做事」；<a href="https://adamchanadam.github.io/agent-handoff-kit/agent-handoff-kit-intro.html" target="_blank" rel="noopener">Agent Handoff Kit</a> 管「這一輪做完後怎樣交接」。普通網頁聊天不能可靠維護本機交接檔案；只有具備可靠本機專案讀寫能力的對話／Cowork 環境才可配合使用。若長項目還需要願景探索、研究驗證、需求與計劃回流，可再選配 <a href="https://github.com/Adamchanadam/agent-handoff-innovation-loop" target="_blank" rel="noopener">Agent Handoff Innovation Loop</a>；短任務不需要額外建立這一層。
   </div>
 </section>
 
@@ -1577,7 +1547,7 @@
 
   <details>
     <summary>Q4:如何驗證規則生效?</summary>
-    <p>最直接的驗證方式:給予 AI 一個多檔案任務(例如「新建兩個檔案」),觀察是否自動輸出全圖優先五區段。若無,則表示未生效。</p>
+    <p>先給 AI 一個範圍未明的治理審核任務，觀察它是否只列真源、閱讀覆蓋、衝突或重複、未知事項及停止條件。完成審核後，再觀察修改計劃是否以成功證據與可推翻方案的反例驗收，而非虛構數字。</p>
   </details>
 
   <details>

@@ -163,7 +163,7 @@
 
 <header class="hero">
   <h1>代理式工具版本</h1>
-  <div class="tag">對話型工具版本同源基底 + 機密處理 + 平台檔案安全 + 代理式工作流</div>
+  <div class="tag">通用工作方式 + 機密處理 + 平台檔案安全 + 代理式工作流</div>
   <div class="links">
     <a href="prompt.md">指令原文</a>
     <a href="README.md">文字介紹</a>
@@ -189,7 +189,7 @@
 <section id="intro">
   <h2>先看這裡｜何時用這個版本</h2>
   <p>如果你使用 OpenAI Codex、Claude Code、Antigravity CLI、Cursor，就用代理式工具版本。工具不在這些名稱裡，但會碰你的檔案、命令、機密、外部平台或發布流程，也用這個版本。</p>
-  <p>這個版本不是叫 AI 做更多事，而是先替高風險工作設邊界：看到機密不外洩，改檔前先讀清楚，危險命令先停下，提交、推送、發布或部署必須另行取得明確授權。</p>
+  <p>這個版本不是叫 AI 做更多事，而是替代理式工作提供較完整邊界：看到機密不外洩，改檔前先讀清楚，危險命令先停下，提交、推送、發布或部署必須另行取得明確授權。</p>
   <div class="callout">
     如果你使用 ChatGPT、Claude 或 Claude Cowork 做寫作、問答、整理資料，通常用對話型工具版本已足夠。
   </div>
@@ -197,7 +197,7 @@
 
 <section id="diff">
   <h2>與對話型工具版本的差異｜一張圖看清</h2>
-  <svg class="diff-svg" viewBox="0 0 780 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="代理式工具版本在對話型工具版本同源基底上新增三個附加節">
+  <svg class="diff-svg" viewBox="0 0 780 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="代理式工具版本與對話型工具版本可對照通用原則，並另有三個代理式專屬章節">
     <defs>
       <linearGradient id="gradShared" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="#e6f7f5"/>
@@ -209,14 +209,14 @@
       </linearGradient>
     </defs>
     <rect x="50" y="40" width="300" height="270" rx="8" fill="url(#gradShared)" stroke="#0d7377" stroke-width="2"/>
-    <text x="200" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#0d7377">對話型工具版本基底</text>
+    <text x="200" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#0d7377">可對照的通用工作方式</text>
     <text x="200" y="105" text-anchor="middle" font-size="13" fill="#1a1a1a">個人偏好 + 第零節至第十二節</text>
     <text x="200" y="132" text-anchor="middle" font-size="13" fill="#1a1a1a">語言與語體 / 合作模式</text>
     <text x="200" y="154" text-anchor="middle" font-size="13" fill="#1a1a1a">回覆骨架 / 全圖優先</text>
-    <text x="200" y="176" text-anchor="middle" font-size="13" fill="#1a1a1a">先讀後判 / 治理改動先審核</text>
-    <text x="200" y="198" text-anchor="middle" font-size="13" fill="#1a1a1a">補丁式交付 / 防漂移</text>
-    <text x="200" y="220" text-anchor="middle" font-size="13" fill="#1a1a1a">計算與格式 / 執行環境補充</text>
-    <text x="200" y="258" text-anchor="middle" font-size="12" font-style="italic" fill="#0d7377">代理式工具版本同源保留</text>
+    <text x="200" y="176" text-anchor="middle" font-size="13" fill="#1a1a1a">先讀後判 / 治理改動流程</text>
+    <text x="200" y="198" text-anchor="middle" font-size="13" fill="#1a1a1a">按情境交付變更 / 防漂移</text>
+    <text x="200" y="220" text-anchor="middle" font-size="13" fill="#1a1a1a">計算與結構格式 / 執行環境補充</text>
+    <text x="200" y="258" text-anchor="middle" font-size="12" font-style="italic" fill="#0d7377">共通部分由人工比對同步</text>
 
     <rect x="430" y="40" width="300" height="270" rx="8" fill="url(#gradNew)" stroke="#f0b27a" stroke-width="2"/>
     <text x="580" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#9a5e1a">代理式工具版本新增</text>
@@ -307,10 +307,10 @@ chown -R</code></pre>
       <tr><th>面向</th><th>AI 應該怎樣做</th></tr>
     </thead>
     <tbody>
-      <tr><td>上下文管理</td><td>上下文混入無關任務、失敗嘗試或過量檔案內容時，先輸出可續接摘要，再建議切換乾淨上下文；切換前不得擴大修改。</td></tr>
+      <tr><td>上下文管理</td><td>摘要只作續接線索；恢復時以實際檔案及工具輸出重建狀態。上下文混入無關任務或失敗嘗試時，先輸出可續接摘要，再建議切換乾淨上下文。</td></tr>
       <tr><td>反覆失敗</td><td>同一問題連續兩次修正仍未解決時，停止第三次同類補丁，回到問題分類、最小可驗證案例與根因檢查。</td></tr>
-      <tr><td>任務流程</td><td>修改類任務先定義驗收方式；探索只讀不改；修改後以命令、檔案檢查或功能結果核對。</td></tr>
-      <tr><td>外部工具</td><td>涉及 GitHub、雲端服務、部署平台或監控系統時，優先使用官方工具鏈與官方文件核對；未知參數不得憑記憶推斷。</td></tr>
+      <tr><td>任務流程</td><td>一般流程沿用共同核心；接手、恢復或不熟悉範圍時先從實際檔案與工具輸出重建驗收依據，單檔小修可直接處理但仍須驗收。</td></tr>
+      <tr><td>外部工具</td><td>新增、改動或不確定的外部整合先核對官方文件；代理執行時優先使用官方工具鏈，不以替代工具繞過限制。</td></tr>
       <tr><td>授權邊界</td><td>commit、push、tag、release、deploy、publish、權限變更、資料刪除與費用操作需要獨立明確授權。</td></tr>
       <tr><td>探索範圍</td><td>跨檔探索先用搜尋、索引、摘要與抽樣建立地圖，再讀目標全文，避免無界探索污染上下文。</td></tr>
     </tbody>
@@ -356,7 +356,7 @@ chown -R</code></pre>
 
 <section id="sync">
   <h2>與對話型工具版本的關係</h2>
-  <p>代理式工具版本保留對話型工具版本的基本工作方式，再加上更嚴格的檔案、機密與發布邊界。</p>
+  <p>兩份版本用途不同，各自是對應平台的獨立指令。它們可對照通用工作方式，但不互相生成或取代；對話型版本只有能力觸發的最低安全底線，代理式工具版本另有完整機密、平台檔案安全與發布邊界。</p>
   <p>簡單判斷：只聊天，用對話型工具版本；會碰檔案、命令、機密或發布流程，用代理式工具版本。</p>
 </section>
 

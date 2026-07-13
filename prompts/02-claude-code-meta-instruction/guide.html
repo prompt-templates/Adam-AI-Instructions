@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>代理式工具版本 · 互動指南</title>
+<title>專案式 AI Agent 全域指令 · 互動指南</title>
 <style>
   :root{
     --c-primary:#0d7377;
@@ -33,25 +33,29 @@
   }
   a{color:var(--c-primary);text-decoration:none}
   a:hover{text-decoration:underline}
+
+  /* Header */
   header.hero{
     background:linear-gradient(135deg,var(--c-primary) 0%,var(--c-primary-2) 100%);
     color:white;
     padding:64px 24px 56px;
     text-align:center;
   }
-  header.hero h1{margin:0 0 8px;font-size:30px;letter-spacing:0}
-  header.hero .tag{font-size:14px;opacity:0.9;margin-bottom:20px}
+  header.hero h1{margin:0 0 8px;font-size:32px;letter-spacing:-0.5px}
+  header.hero .tag{font-size:14px;opacity:0.85;margin-bottom:20px}
   header.hero .links a{
     color:white;
     background:rgba(255,255,255,0.18);
     padding:8px 18px;
     border-radius:24px;
-    margin:0 6px 8px;
+    margin:0 6px;
     display:inline-block;
     font-size:14px;
     transition:background 0.2s;
   }
   header.hero .links a:hover{background:rgba(255,255,255,0.3);text-decoration:none}
+
+  /* Top nav */
   nav.toc{
     position:sticky;
     top:0;
@@ -73,299 +77,1326 @@
     border-radius:6px;
   }
   nav.toc a:hover{background:var(--c-light);color:var(--c-primary);text-decoration:none}
+
+  /* Main */
   main{max-width:920px;margin:0 auto;padding:32px 24px 80px}
   section{
     background:var(--c-card);
     border:1px solid var(--c-border);
-    border-radius:8px;
+    border-radius:12px;
     padding:32px;
     margin-bottom:24px;
+    scroll-margin-top:80px;
   }
   section h2{
-    margin:0 0 16px;
+    margin:0 0 8px;
+    font-size:24px;
     color:var(--c-primary);
-    font-size:22px;
     border-bottom:2px solid var(--c-light);
-    padding-bottom:10px;
+    padding-bottom:12px;
   }
-  section h3{margin:24px 0 12px;font-size:18px}
-  section p{margin:0 0 14px;color:#222}
-  section ul,section ol{margin:0 0 14px 22px;padding:0}
-  section li{margin-bottom:6px}
-  .callout{
-    border-left:4px solid var(--c-primary);
-    background:var(--c-light);
-    padding:14px 18px;
-    border-radius:6px;
+  section h2 .num{
+    display:inline-block;
+    background:var(--c-primary);
+    color:white;
+    width:30px;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    border-radius:50%;
+    font-size:14px;
+    margin-right:10px;
+    vertical-align:middle;
+  }
+  section h3{margin-top:28px;margin-bottom:8px;font-size:17px;color:var(--c-text)}
+  section p{margin:10px 0;color:var(--c-text)}
+  section .lede{
+    font-size:17px;
+    color:var(--c-muted);
+    border-left:3px solid var(--c-primary);
+    padding-left:14px;
+    margin:14px 0 22px;
+  }
+
+  /* Tables */
+  table{
+    width:100%;
+    border-collapse:collapse;
     margin:16px 0;
-  }
-  .callout.warn{border-left-color:var(--c-warn-border);background:var(--c-warn-bg)}
-  .callout.good{border-left-color:var(--c-good-border);background:var(--c-good-bg)}
-  .callout.bad{border-left-color:var(--c-bad-border);background:var(--c-bad-bg)}
-  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px}
-  th,td{border:1px solid var(--c-border);padding:10px 12px;text-align:left;vertical-align:top}
-  th{background:var(--c-light);color:var(--c-primary);font-weight:600}
-  code,kbd,pre{
-    font-family:"SF Mono","Consolas","Cascadia Code","Microsoft YaHei Mono",monospace;
     font-size:14px;
   }
-  code{background:#f1f3f5;padding:2px 6px;border-radius:4px;color:#c0392b}
-  pre{background:#2d3436;color:#dfe6e9;padding:16px 20px;border-radius:8px;overflow-x:auto;line-height:1.55}
-  pre code{background:transparent;color:inherit;padding:0}
-  .diff-svg{display:block;margin:18px auto;max-width:100%;height:auto}
+  th,td{
+    padding:10px 12px;
+    border-bottom:1px solid var(--c-border);
+    text-align:left;
+    vertical-align:top;
+  }
+  th{background:var(--c-light);color:var(--c-primary);font-weight:600}
+
+  /* Cards (overview grid) */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:14px;
+    margin:18px 0;
+  }
+  .card{
+    background:var(--c-light);
+    border:1px solid var(--c-border);
+    border-radius:10px;
+    padding:16px;
+  }
+  .card .num{
+    display:inline-block;
+    background:var(--c-primary);
+    color:white;
+    padding:2px 10px;
+    border-radius:12px;
+    font-size:12px;
+    margin-bottom:8px;
+  }
+  .card h4{margin:4px 0 6px;font-size:15px;color:var(--c-text)}
+  .card p{margin:0;font-size:13px;color:var(--c-muted)}
+
+  /* SVG container */
+  .svg-wrap{
+    background:#fbfdfd;
+    border:1px solid var(--c-border);
+    border-radius:10px;
+    padding:18px;
+    margin:18px 0;
+    overflow-x:auto;
+  }
+  .svg-wrap svg{display:block;max-width:100%;height:auto;margin:0 auto}
+  .svg-caption{
+    text-align:center;
+    color:var(--c-muted);
+    font-size:13px;
+    margin-top:8px;
+  }
+
+  /* Comparison boxes */
+  .compare{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin:14px 0;
+  }
+  .compare .col{
+    border-radius:8px;
+    padding:14px 16px;
+    font-size:14px;
+  }
+  .compare .bad{background:var(--c-bad-bg);border:1px solid var(--c-bad-border)}
+  .compare .good{background:var(--c-good-bg);border:1px solid var(--c-good-border)}
+  .compare h5{margin:0 0 6px;font-size:14px}
+  .compare .bad h5{color:#c62828}
+  .compare .good h5{color:#2e7d32}
+
+  /* Code blocks */
+  code{
+    background:#f1f3f5;
+    padding:2px 6px;
+    border-radius:4px;
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-size:0.9em;
+  }
+  pre{
+    background:#1e2329;
+    color:#e8eaed;
+    padding:14px 16px;
+    border-radius:8px;
+    overflow-x:auto;
+    font-size:13px;
+    line-height:1.55;
+  }
+  pre code{background:transparent;padding:0;color:inherit}
+
+  /* Callout */
+  .callout{
+    background:var(--c-warn-bg);
+    border-left:4px solid var(--c-warn-border);
+    padding:12px 16px;
+    border-radius:6px;
+    margin:14px 0;
+    font-size:14px;
+  }
+  .callout strong{color:#c87a30}
+
+  /* FAQ */
+  details{
+    background:var(--c-card);
+    border:1px solid var(--c-border);
+    border-radius:8px;
+    padding:12px 16px;
+    margin-bottom:8px;
+  }
+  details summary{
+    font-weight:600;
+    cursor:pointer;
+    color:var(--c-primary);
+  }
+  details[open] summary{margin-bottom:8px}
+
+  /* Footer */
   footer{
     text-align:center;
     padding:32px 16px 48px;
     color:var(--c-muted);
     font-size:13px;
+    border-top:1px solid var(--c-border);
+    background:white;
   }
-  footer a{color:var(--c-primary)}
-  @media (max-width: 520px){
-    header.hero{padding:56px 18px 48px;overflow:hidden}
-    header.hero h1{
-      max-width:320px;
-      margin-left:auto;
-      margin-right:auto;
-      font-size:24px;
-      line-height:1.2;
-      overflow-wrap:anywhere;
-    }
-    header.hero .tag{
-      max-width:320px;
-      margin-left:auto;
-      margin-right:auto;
-      line-height:1.6;
-      overflow-wrap:anywhere;
-    }
-    header.hero .links{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      gap:8px;
-      max-width:320px;
-      margin:0 auto;
-    }
-    header.hero .links a{margin:0;flex:0 0 auto}
-    nav.toc{text-align:left}
-    main{width:100%;max-width:100%;padding:24px 14px 64px;overflow:hidden}
-    section{width:100%;max-width:100%;padding:24px 18px;overflow:hidden}
-    section h2{font-size:20px}
-    section p,
-    section li,
-    .callout{
-      overflow-wrap:anywhere;
-      word-break:break-all;
-    }
+  footer a{margin:0 10px}
+
+  /* Hero: 情境對照 */
+  section.scenario-hero{
+    background:linear-gradient(135deg,#f8fbfb 0%,var(--c-light) 100%);
+    border:1px solid var(--c-primary);
+    padding:36px 28px 28px;
+  }
+  .scenario-title{text-align:center;margin-bottom:24px}
+  .scenario-title h2{
+    font-size:24px;
+    color:var(--c-primary);
+    border:none;
+    margin:0 0 6px;
+    padding:0;
+  }
+  .scenario-title p{
+    color:var(--c-muted);
+    font-size:14px;
+    margin:0;
+  }
+  .scenario-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  .scenario-col{
+    background:white;
+    border-radius:12px;
+    padding:22px 18px 18px;
+    border:2px solid;
+    position:relative;
+  }
+  .scenario-col.before{border-color:#e57373}
+  .scenario-col.after{border-color:#4caf50}
+  .scenario-tag{
+    position:absolute;
+    top:-12px;
+    left:18px;
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+    color:white;
+  }
+  .bad-tag{background:#e57373}
+  .good-tag{background:#4caf50}
+  .msg{
+    display:flex;
+    gap:8px;
+    margin:10px 0;
+    align-items:flex-end;
+  }
+  .msg.user{flex-direction:row-reverse}
+  .msg-avatar{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f0f3f5;
+    font-size:14px;
+    flex-shrink:0;
+  }
+  .msg.user .msg-avatar{background:#e3f2fd}
+  .msg-bubble{
+    padding:10px 13px;
+    border-radius:14px;
+    max-width:86%;
+    font-size:13.5px;
+    line-height:1.6;
+  }
+  .msg.user .msg-bubble{
+    background:#e3f2fd;
+    color:#1a1a1a;
+    border-bottom-right-radius:4px;
+  }
+  .msg.ai.bad .msg-bubble{
+    background:#ffebee;
+    color:#1a1a1a;
+    border-bottom-left-radius:4px;
+  }
+  .msg.ai.good .msg-bubble{
+    background:#e8f5e9;
+    color:#1a1a1a;
+    border-bottom-left-radius:4px;
+  }
+  .msg-bubble ul{margin:6px 0 4px;padding-left:20px}
+  .msg-bubble li{margin:2px 0;font-size:13px}
+  .msg-bubble em{
+    display:block;
+    margin-top:8px;
+    color:#5b6470;
+    font-size:12px;
+    font-style:italic;
+  }
+  .scenario-summary{
+    margin-top:14px;
+    padding:9px 13px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:500;
+    text-align:center;
+  }
+  .bad-summary{background:#fdecea;color:#c62828}
+  .good-summary{background:#e8f5e9;color:#2e7d32}
+  .scenario-cta{
+    text-align:center;
+    margin-top:22px;
+    padding:12px;
+    font-size:14px;
+    color:var(--c-muted);
+    line-height:1.7;
+  }
+  .scenario-cta strong{color:var(--c-primary)}
+  /* Tab switcher */
+  .scenario-tabs{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+    margin:0 0 14px;
+    flex-wrap:wrap;
+  }
+  .tab-btn{
+    background:white;
+    border:1px solid var(--c-border);
+    padding:9px 18px;
+    border-radius:22px;
+    font-size:13.5px;
+    cursor:pointer;
+    transition:all 0.2s;
+    font-family:inherit;
+    color:var(--c-text);
+  }
+  .tab-btn:hover{
+    border-color:var(--c-primary);
+    color:var(--c-primary);
+  }
+  .tab-btn.active{
+    background:var(--c-primary);
+    border-color:var(--c-primary);
+    color:white;
+  }
+  .panel{display:none}
+  .panel.active{display:block}
+  .panel-context{
+    text-align:center;
+    color:var(--c-muted);
+    font-size:13px;
+    margin:0 0 14px;
+    font-style:italic;
+  }
+
+  /* Bubble extensions for FPFR / Skeleton / Patch displays */
+  .msg-bubble strong.lead{
+    display:block;
+    font-size:14px;
+    color:var(--c-primary);
+    margin-bottom:6px;
+  }
+  .msg-bubble code.code-line{
+    background:#1e2329;
+    color:#a5d6a7;
+    padding:6px 10px;
+    border-radius:5px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:12px;
+    margin:4px 0;
+    display:block;
+  }
+  .msg-bubble .body-note{
+    display:block;
+    margin-top:8px;
+    padding-top:6px;
+    border-top:1px dashed #d8dfe2;
+    color:#5b6470;
+    font-size:11.5px;
+    font-style:normal;
+  }
+  /* FPFR 5-section realistic output */
+  .msg-bubble.fpfr-output{padding:12px 14px}
+  .msg-bubble .fpfr-section{margin:6px 0 4px}
+  .msg-bubble .fpfr-section h4{
+    font-size:12px;
+    color:var(--c-primary);
+    margin:6px 0 4px;
+    font-weight:700;
+    letter-spacing:0.2px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;
+  }
+  .msg-bubble .fpfr-mini-table{
+    border-collapse:collapse;
+    font-size:11px;
+    width:100%;
+    margin:3px 0;
+  }
+  .msg-bubble .fpfr-mini-table th,
+  .msg-bubble .fpfr-mini-table td{
+    border-bottom:1px solid #d8e6e3;
+    padding:3px 6px;
+    text-align:left;
+  }
+  .msg-bubble .fpfr-mini-table th{
+    background:rgba(13,115,119,0.08);
+    color:var(--c-primary);
+    font-weight:600;
+  }
+  .msg-bubble .fpfr-mini-list{
+    margin:3px 0;
+    padding-left:18px;
+    font-size:11.5px;
+    line-height:1.55;
+  }
+  .msg-bubble .fpfr-mini-list li{margin:2px 0}
+  .msg-bubble .fpfr-mini-text{
+    font-size:11.5px;
+    color:#1a1a1a;
+    line-height:1.55;
+    margin:3px 0;
+  }
+  .msg-bubble .fpfr-closing{
+    display:block;
+    margin-top:10px;
+    padding:6px 10px;
+    background:rgba(13,115,119,0.08);
+    border-left:3px solid var(--c-primary);
+    font-size:11.5px;
+    color:var(--c-primary);
+    font-weight:500;
+    border-radius:0 4px 4px 0;
+  }
+
+  /* 下一步揀一條 (next-step menu inside bubble) */
+  .msg-bubble .next-step{
+    margin-top:10px;
+    padding-top:8px;
+    border-top:1px dashed #d8dfe2;
+  }
+  .msg-bubble .next-step-title{
+    font-weight:600;
+    font-size:12.5px;
+    color:var(--c-text);
+    margin-bottom:5px;
+  }
+  .msg-bubble .next-step-options{
+    list-style:none;
+    padding:0;
+    margin:4px 0;
+    font-size:11.5px;
+    line-height:1.55;
+  }
+  .msg-bubble .next-step-options li{
+    margin:5px 0;
+    padding-left:2px;
+  }
+  .msg-bubble .next-step-options .opt-letter{
+    font-weight:700;
+    color:var(--c-primary);
+    font-style:italic;
+    margin-right:3px;
+  }
+  .msg-bubble .next-step-recommend{
+    margin-top:7px;
+    padding:5px 9px;
+    background:#fff5e6;
+    border-left:3px solid #f0b27a;
+    font-size:11.5px;
+    color:#a06425;
+    border-radius:0 4px 4px 0;
+  }
+  .msg-bubble .anchor-line{
+    font-size:11.5px;
+    color:#5b6470;
+    font-style:italic;
+    margin-bottom:5px;
+    display:block;
+  }
+  .msg-bubble .patch-row{
+    margin:4px 0;
+    padding:6px 9px;
+    border-radius:5px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:12px;
+    line-height:1.55;
+  }
+  .msg-bubble .patch-row.before{
+    background:#fdecea;
+    border-left:3px solid #e57373;
+  }
+  .msg-bubble .patch-row.after{
+    background:#e8f5e9;
+    border-left:3px solid #4caf50;
+  }
+  .msg-bubble .patch-row b{
+    display:block;
+    margin-bottom:3px;
+    font-family:inherit;
+    font-size:11px;
+  }
+  .msg-bubble .patch-row.before b{color:#c62828}
+  .msg-bubble .patch-row.after b{color:#2e7d32}
+  .msg-bubble .changelog-line{
+    margin-top:6px;
+    padding:5px 9px;
+    background:#e6f7f5;
+    border-radius:5px;
+    color:var(--c-primary);
+    font-size:11.5px;
+  }
+
+  @media (max-width:720px){
+    .scenario-grid{grid-template-columns:1fr}
+    section.scenario-hero{padding:24px 16px}
+    .scenario-title h2{font-size:20px}
+    .tab-btn{padding:7px 14px;font-size:12.5px}
+    .msg-bubble .fpfr-mini-table,.msg-bubble .fpfr-mini-list{font-size:11px}
+    .msg-bubble .next-step-options{font-size:11px}
+  }
+
+  /* Author card */
+  .author-card{
+    background:linear-gradient(135deg,#ffffff 0%,var(--c-light) 100%);
+    border:1px solid var(--c-primary);
+    border-radius:10px;
+    padding:18px 22px;
+    margin:18px 0 24px;
+  }
+  .author-card h3{
+    margin:0 0 10px;
+    font-size:15px;
+    color:var(--c-primary);
+  }
+  .author-card p{
+    margin:0 0 14px;
+    font-size:14.5px;
+    color:var(--c-text);
+    line-height:1.75;
+  }
+  /* Facebook link preview card */
+  .fb-card{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:16px 20px;
+    border:1px solid #d8dde2;
+    border-radius:12px;
+    background:white;
+    transition:all 0.2s;
+    margin-top:10px;
+    width:100%;
+    box-sizing:border-box;
+  }
+  .fb-card:hover{
+    border-color:#1877f2;
+    box-shadow:0 4px 12px rgba(24,119,242,0.12);
+    text-decoration:none;
+  }
+  .fb-card .fb-icon{
+    width:72px;
+    height:72px;
+    background:#1877f2;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    overflow:hidden;
+  }
+  .fb-card .fb-icon svg{width:38px;height:38px;fill:white}
+  .fb-card .fb-text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    min-width:0;
+    line-height:1.5;
+    flex:1;
+  }
+  .fb-card .fb-name{
+    color:var(--c-text);
+    font-weight:600;
+    font-size:16px;
+  }
+  .fb-card .fb-url{
+    color:var(--c-muted);
+    font-size:13px;
+    margin-top:3px;
+  }
+  .fb-card .fb-desc{
+    color:#1877f2;
+    font-size:13px;
+    margin-top:4px;
+  }
+
+  @media (max-width:640px){
+    header.hero{padding:40px 16px}
+    header.hero h1{font-size:24px}
+    main{padding:16px}
+    section{padding:20px}
+    .compare{grid-template-columns:1fr}
   }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <h1>代理式工具版本</h1>
-  <div class="tag">通用工作方式 + 機密處理 + 平台檔案安全 + 代理式工作流</div>
+  <h1>專案式 AI Agent 全域指令</h1>
+  <div class="tag">給專案／工作區 Agent 的唯一現行指令</div>
+  <p style="max-width:720px;margin:0 auto 20px;font-size:16px;line-height:1.75">
+    給會在你授權的專案或工作資料夾內讀檔、改檔、跑指令、整理交付物的 AI。它不是叫 AI 變慢，而是讓它知道何時可直接做、何時要先查清楚、何時必須停下來讓你決定。
+  </p>
   <div class="links">
-    <a href="prompt.md">指令原文</a>
-    <a href="README.md">文字介紹</a>
-    <a href="../01-claude-cowork-meta-instruction/guide.html">對話型工具版本</a>
-    <a href="https://github.com/prompt-templates/Adam-AI-Instructions">GitHub</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.md" target="_blank" rel="noopener">📄 繁中指令</a>
+    <a href="README.md">📖 使用說明</a>
+    <a href="guide.en.html">EN guide</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.en.md" target="_blank" rel="noopener">English prompt</a>
+    <a href="../../README.md">🏠 主索引</a>
   </div>
 </header>
 
 <nav class="toc">
-  <a href="#intro">先看這裡</a>
-  <a href="#diff">版本差異</a>
-  <a href="#secret">機密處理</a>
-  <a href="#platform">平台安全</a>
-  <a href="#workflow">代理式工作流</a>
-  <a href="#choose">如何選用</a>
-  <a href="#handoff">跨工作階段接力</a>
-  <a href="#install">安裝</a>
-  <a href="#sync">版本關係</a>
+  <a href="#scenario">對照</a>
+  <a href="#overview">導讀</a>
+  <a href="#g1">1. 做事方式</a>
+  <a href="#g2">2. 計劃資格</a>
+  <a href="#g3">3. 回覆與語言</a>
+  <a href="#g4">4. 事實與真源</a>
+  <a href="#g5">5. 修改與交付</a>
+  <a href="#g6">6. 計算與結構</a>
+  <a href="#g7">7. Agent 工作區</a>
+  <a href="#handoff">配合工具</a>
+  <a href="#install">設定</a>
+  <a href="#faq">常見問題</a>
 </nav>
+
+<div style="max-width:920px;margin:0 auto;padding:14px 20px;background:#e6f7f5;border-left:4px solid #0d7377;border-radius:6px;font-size:14px;line-height:1.65;color:#1a1a1a;">
+  <strong>先確認工具類型</strong>　這份指令只給可在你授權的工作區中行動的 Agentic AI 工具，例如 Claude Code、OpenAI Codex、Cursor、Antigravity 與同類工具。它<strong>不支援一般網頁版 ChatGPT 或 Claude 對話</strong>。
+</div>
 
 <main>
 
-<section id="intro">
-  <h2>先看這裡｜何時用這個版本</h2>
-  <p>如果你使用 OpenAI Codex、Claude Code、Antigravity CLI、Cursor，就用代理式工具版本。工具不在這些名稱裡，但會碰你的檔案、命令、機密、外部平台或發布流程，也用這個版本。</p>
-  <p>這個版本不是叫 AI 做更多事，而是替代理式工作提供較完整邊界：看到機密不外洩，改檔前先讀清楚，危險命令先停下，提交、推送、發布或部署必須另行取得明確授權。</p>
+<!-- ============== 情境對照(Hero)============== -->
+<section id="scenario" class="scenario-hero">
+  <div class="scenario-title">
+    <h2>四條關鍵規則 · 兩種 AI 體驗</h2>
+    <p>點擊標籤切換。每個對照都直接來自下方規則地圖：看見的不是「更多流程」，而是不同思維如何改變你的使用體驗。</p>
+  </div>
+
+  <div class="scenario-tabs" role="tablist" aria-label="關鍵規則情境">
+    <button class="tab-btn active" data-tab="read-first">情境 1 · 選擇、歧義與真源</button>
+    <button class="tab-btn" data-tab="research">情境 2 · 先讀後判</button>
+    <button class="tab-btn" data-tab="plan-gate">情境 3 · 全圖計劃資格</button>
+    <button class="tab-btn" data-tab="delivery">情境 4 · 機密安全</button>
+  </div>
+
+  <div class="panel active" data-panel="read-first">
+    <div class="panel-context">對應「選擇、歧義與真源」：真源已核實，而且兩條路都能達標時，才把真正的取捨清楚交給你。</div>
+    <div class="scenario-grid">
+      <div class="scenario-col before">
+        <div class="scenario-tag bad-tag">❌ 沒有這份指令</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">已確認合作方可接受每日批次或即時更新。應沿用現有匯出流程，還是新建 API？</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">先選 API 吧。你逐項確認資料欄位、路徑、格式和每個技術步驟，我再開始。</div></div>
+        <div class="scenario-summary bad-summary">⚠ 沒有比較兩條正路的影響；把不需要的技術判斷全推回給你</div>
+      </div>
+      <div class="scenario-col after">
+        <div class="scenario-tag good-tag">✅ 套用這份指令</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">已確認合作方可接受每日批次或即時更新。應沿用現有匯出流程，還是新建 API？</div></div>
+        <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble">
+          <strong class="lead">🔎 兩條路都可達標；差別是即時性、改動量和後續維護。</strong><br><br>
+          <span>🚀 <em>下一步揀一條</em><br><em>A.</em> 沿用現有每日匯出 — 改動較少，但資料不是即時。<br><em>B.</em> 新建同步 API — 可即時更新，但要新增整合與維護。<br>💡 推薦：A — 合作方接受每日批次，以較少改動已可達標。</span>
+        </div></div>
+        <div class="scenario-summary good-summary">✓ 只在真正需要取捨時請你選；兩條路都可行，推薦和影響說清楚</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" data-panel="research">
+    <div class="panel-context">對應「先讀後判」：先建立足夠覆蓋，分清已核實、未核實與推論。</div>
+    <div class="scenario-grid">
+      <div class="scenario-col before">
+        <div class="scenario-tag bad-tag">❌ 沒有這份指令</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">這份月報的總數和上月不同，找原因。</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">應該是快取或公式錯了。我會直接改公式。</div></div>
+        <div class="scenario-summary bad-summary">⚠ 把猜測當原因；沒有先讀報表定義、資料來源、日期或篩選條件</div>
+      </div>
+      <div class="scenario-col after">
+        <div class="scenario-tag good-tag">✅ 套用這份指令</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">這份月報的總數和上月不同，找原因。</div></div>
+        <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble">
+          <strong class="lead">🔎 現在不能判斷原因。我先讀報表定義、資料來源、日期與篩選條件。</strong>
+          我會把已核實的差異、根據證據的推論和仍待查的內容分開列出；未讀到可靠來源前，不改公式，也不把估算寫成結論。
+        </div></div>
+        <div class="scenario-summary good-summary">✓ 不用接受一個看似合理的猜測；你看得見已核實內容和下一步要查甚麼</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" data-panel="plan-gate">
+    <div class="panel-context">對應「全圖計劃資格」：先看清完整終態與可推翻的證據，再判斷方案能否執行。</div>
+    <div class="scenario-grid">
+      <div class="scenario-col before">
+        <div class="scenario-tag bad-tag">❌ 沒有這份指令</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">幫我改升級流程，不能弄壞舊資料。</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">以下是執行計劃：更新版本、搬移資料、跑測試，完成。</div></div>
+        <div class="scenario-summary bad-summary">⚠ 沒有失敗後狀態、恢復入口、衝突處理或獨立反證，卻過早稱為可執行</div>
+      </div>
+      <div class="scenario-col after">
+        <div class="scenario-tag good-tag">✅ 套用這份指令</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">幫我改升級流程，不能弄壞舊資料。</div></div>
+        <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble fpfr-output">
+          <strong class="lead">這不是一張好看的待辦清單，而是一份有資格狀態的全圖方案。</strong>
+          <ul class="fpfr-mini-list">
+            <li><strong>終點畫面</strong> — 🔎 任務理解：更新升級流程，舊資料不可受損；<br><em>待反證</em>。列出不可破壞條件、排除範圍與已知／未核實狀態。</li>
+            <li><strong>交付物</strong> — 列出受影響的升級程式、資料格式與說明；未知絕對路徑不虛構。</li>
+            <li><strong>成功證據</strong> — 舊資料可讀回；中斷後狀態可判定，並有恢復入口和權威讀回。</li>
+            <li><strong>驗收測試</strong> — 正常升級外，加入中斷、衝突、版本倒置與局部全綠但資料仍受損的反例。</li>
+            <li><strong>目標連結</strong> — 每項外部平台行為連官方來源；專案內改動連現行正式依據。</li>
+          </ul>
+          <span class="fpfr-closing">未完成適用反證前，這仍是待反證計劃，不開始修改。</span>
+        </div></div>
+        <div class="scenario-summary good-summary">✓ 先看完整終態、證據與反例；通過反證才可升為「可執行」</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" data-panel="delivery">
+    <div class="panel-context">對應「機密與平台檔案安全」：機密不可擴散；準備工作和真正公開動作必須分開。</div>
+    <div class="scenario-grid">
+      <div class="scenario-col before">
+        <div class="scenario-tag bad-tag">❌ 沒有這份指令</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">修好設定後推送並發佈新版。</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">我把 <code>.env</code> 一起放進提交，然後推送並建立公開版本。</div></div>
+        <div class="scenario-summary bad-summary">⚠ 讓機密進入持久紀錄；把內容修改的同意誤當成推送和公開發佈的授權</div>
+      </div>
+      <div class="scenario-col after">
+        <div class="scenario-tag good-tag">✅ 套用這份指令</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">修好設定後推送並發佈新版。</div></div>
+        <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble">
+          <strong class="lead">🔎 <code>.env</code> 含機密，不能出現在輸出、日誌或提交。</strong>
+          我會修正可安全修改的設定並讀回核對；推送和建立公開版本屬獨立外部動作，會先列明目標與影響，等你作出明確授權。
+        </div></div>
+        <div class="scenario-summary good-summary">✓ 機密不外流；內容修好不等於已獲授權推送或公開發佈</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scenario-cta">
+    這份指令的核心不是令每件事變成審計。<strong>小事用最小足夠證據完成；一旦出錯會有較大影響的工作，先把錯誤攔在行動之前。</strong>
+  </div>
+</section>
+
+<!-- ============== 導讀 ============== -->
+<section id="overview">
+  <h2>導讀</h2>
+
+  <div class="author-card">
+    <h3>這頁怎樣看</h3>
+    <p>這套指令來自長期實際使用 AI 時反覆遇到的問題：AI 未核實就下結論、未讀清楚就改、改完又難以驗收。本頁不要求你先讀完整指令原文，而是先用對話示例和圖解說明它會怎樣改變 AI 的工作方式。如有疑問或想交流 AI 使用心得，歡迎透過 Facebook 聯絡。</p>
+    <a class="fb-card" href="https://www.facebook.com/chan.adam" target="_blank" rel="noopener">
+      <div class="fb-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </div>
+      <div class="fb-text">
+        <div class="fb-name">Adam Chan</div>
+        <div class="fb-url">facebook.com/chan.adam</div>
+        <div class="fb-desc">Facebook 個人檔案 →</div>
+      </div>
+    </a>
+  </div>
+
+  <p class="lede">不必先讀完指令的每一行。先看上方四個情境，接著按你的工作類型跳到對應部分；需要安裝時才到「設定」段落。</p>
+
+  <h3>規則地圖</h3>
+  <div class="grid">
+    <div class="card"><span class="num">0</span><h4>仲裁順序</h4><p>規則互相衝突時，安全、權限與不可逆後果永遠優先。</p></div>
+    <div class="card"><span class="num">1</span><h4>語言與回覆</h4><p>先講重點；短事短答；繁中版本以繁中回覆，英文版本以英文回覆。</p></div>
+    <div class="card"><span class="num">2</span><h4>力度與收斂</h4><p>風險越低，步驟越輕；驗收足夠便停止，不追逐無關問題。</p></div>
+    <div class="card"><span class="num">3</span><h4>選擇與真源</h4><p>只有真的需要你取捨時才列選項；既有名稱、鍵名與格式不自行改寫。</p></div>
+    <div class="card"><span class="num">4</span><h4>全圖計劃資格</h4><p>一旦出錯會有較大影響的計劃，先看完整範圍、證據與反例，不能靠排版假裝安全。</p></div>
+    <div class="card"><span class="num">5</span><h4>先讀後判</h4><p>日期、版本、平台行為與待改內容先核對；不知道便說不知道。</p></div>
+    <div class="card"><span class="num">6</span><h4>長期規則改動</h4><p>長期規則或多處內容要同步時，先只讀確認範圍，再談修改。</p></div>
+    <div class="card"><span class="num">7</span><h4>改動可核對</h4><p>需要手動貼換時，清楚給出錨點、修改前、修改後與核對方法。</p></div>
+    <div class="card"><span class="num">8</span><h4>計算與結構</h4><p>複雜或高風險才展開步驟；JSON 與圖表跟現有格式走。</p></div>
+    <div class="card"><span class="num">9</span><h4>工作區與範圍</h4><p>先讀相關檔案；新檔沿用既有位置；有副作用才另取授權。</p></div>
+    <div class="card"><span class="num">10</span><h4>機密與檔案安全</h4><p>不洩漏機密、不繞過權限、不用危險刪除與覆寫方式處理問題。</p></div>
+    <div class="card"><span class="num">11</span><h4>Agent 工作流</h4><p>長任務可續接；連續失敗時回到根因；發布與費用永遠另取明確授權。</p></div>
+  </div>
+
+  <h3>它要處理的常見問題</h3>
+  <table>
+    <thead><tr><th>常見問題</th><th>這份指令的做法</th></tr></thead>
+    <tbody>
+      <tr><td>AI 一開始便改檔，後來才發現讀錯範圍</td><td>先讀專案指引、待改位置與直接上下文；影響未明才擴大搜尋。</td></tr>
+      <tr><td>簡單任務被加上過長流程，反而拖慢工作</td><td>以後果、未知與可回復性決定力度；小而清楚的工作不用全圖計劃。</td></tr>
+      <tr><td>漂亮的計劃看似完整，實際沒有恢復或失敗模型</td><td>一旦出錯會有較大影響的計劃，必須標為待反證、可執行或受阻，並經適用的獨立反證。</td></tr>
+      <tr><td>研究答案把摘要、記憶和推論混在一起</td><td>分開來源、日期、事實、推論與未核實內容。</td></tr>
+      <tr><td>AI 自行建立固定資料夾或平行結構</td><td>先沿用現有目錄、真源與平台交付位置；仍不能確認就交付可手動保存的內容。</td></tr>
+      <tr><td>「內容改好」被誤當成已同意推送、上傳或發佈</td><td>外部寫入、公開、權限、費用與資料刪除均需獨立明確授權。</td></tr>
+      <tr><td>驗收愈做愈多，卻沒有新增證據</td><td>每個額外檢查都要對應尚未解除的風險；受影響情境通過便停止。</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============== 第一組：做事方式 ============== -->
+<section id="g1">
+  <h2><span class="num">1</span>基本工作方式</h2>
+  <p class="lede">這份指令不是要求 AI 永遠慢下來，而是要它先判斷後果與可回復性，再選擇剛剛好的做法。</p>
+
+  <h3>常見問題</h3>
+  <p>有些 agent 一聽到任務便開始做，另一些則每一步都等人批准。兩者都會把真正需要人判斷的地方弄模糊：前者容易越界，後者把可安全完成的工作推回給你。</p>
+
+  <h3>AI 會怎樣做</h3>
+  <ul>
+    <li><strong>先分後果</strong>：已授權、低風險、可回復且沒有外部副作用的工作，直接處理；涉及價值取捨、公開、費用、權限、刪除或不可逆動作，才停下來說明。</li>
+    <li><strong>按實際風險配力度</strong>：能用相關閱讀、一次修改和一項對應核對完成的事，不另加不必要的計劃、額外文件或反覆檢查。</li>
+    <li><strong>只納入必要的新發現</strong>：若它會阻止本次驗收、由本次改動造成，或會令交付互相矛盾，便直接處理；其餘記為相鄰問題，不暗中擴張。</li>
+    <li><strong>知道何時收工</strong>：驗收通過、範圍內阻擋清零、必要同步完成後停止；不靠增加輪次製造表面信心。</li>
+  </ul>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
+      <text x="350" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">仲裁順序：先守安全，再處理其餘要求</text>
+
+      <rect x="80" y="50" width="540" height="38" rx="6" fill="#d63d4f" opacity="0.9"/>
+      <text x="350" y="73" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">1. 安全 / 權限 / 不可逆或外部操作 / 私隱 / 平台限制</text>
+
+      <rect x="100" y="98" width="500" height="38" rx="6" fill="#e08436"/>
+      <text x="350" y="121" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">2. 使用者明示或權威工作流指定的輸出格式</text>
+
+      <rect x="120" y="146" width="460" height="38" rx="6" fill="#d4a017"/>
+      <text x="350" y="169" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">3. 單一真源 / 使用者鍵名 / 枚舉 / 既有規格</text>
+
+      <rect x="140" y="194" width="420" height="38" rx="6" fill="#5da32e"/>
+      <text x="350" y="217" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">4. 事實核對 / 檔案閱讀覆蓋 / 未核實標示</text>
+
+      <rect x="160" y="242" width="380" height="38" rx="6" fill="#0d7377"/>
+      <text x="350" y="265" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">5. 回覆形態（純輸出 / 短答 / 標準 / 正式交付 / 創作）</text>
+
+      <rect x="180" y="290" width="340" height="38" rx="6" fill="#5b6470"/>
+      <text x="350" y="313" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">6. 回覆骨架 / 功能性 emoji / 語氣 / 排版</text>
+
+      <text x="350" y="350" text-anchor="middle" font-size="11" fill="#5b6470">仍未能判斷:以「安全、可驗證、不假裝完成」為最高處理原則</text>
+    </svg>
+    <div class="svg-caption">圖一:§0 總仲裁順序的 6 層階梯;上位規則優先於下位。</div>
+  </div>
+
+  <h3>實際作用</h3>
+  <p>這份仲裁順序讓你不用每次重新教 AI：「安全比格式重要」、「真源比漂亮改寫重要」。同時它也明確保護效率：沒有未解風險的簡單工作，不會被硬塞進大型工作流。</p>
+
+  <h3>適合情境</h3>
+  <p>所有在工作區中做事的 agent 場景都適用：改程式、研究、整理文件、寫 README、準備發佈或維護長期規則。創作仍可自由發揮；安全、私隱與你指定的格式則一直保留。</p>
+</section>
+
+<!-- ============== 第二組：計劃資格 ============== -->
+<section id="g2">
+  <h2><span class="num">2</span>全圖計劃資格：先看清全圖，才判斷可否執行</h2>
+  <p class="lede">五區段不是為了把計劃寫得更長，而是讓你在動手前看見範圍、交付、證據、反例與依據。只有一旦出錯會有較大影響的工作，才需要加上計劃資格與適用反證。</p>
+
+  <h3>先看計劃狀態</h3>
+  <table>
+    <thead><tr><th>狀態</th><th>代表甚麼</th><th>下一步</th></tr></thead>
+    <tbody>
+      <tr><td><strong>待反證</strong></td><td>方案已有輪廓，但仍可能漏掉重要風險。</td><td>由另一位未參與方案的人，從原始需求找能推翻它的情況。</td></tr>
+      <tr><td><strong>可執行</strong></td><td>已有足夠證據、不能失守的底線與驗收方式，沒有未解決的重要問題。</td><td>仍要按後果取得適當授權；可執行不等於已獲授權。</td></tr>
+      <tr><td><strong>受阻</strong></td><td>仍缺核心來源、能力或安全條件。</td><td>清楚列出缺甚麼；不以猜測或漂亮計劃代替資料。</td></tr>
+    </tbody>
+  </table>
+
+  <h3>甚麼時候才需要這一層</h3>
+  <p>不是檔案一多便自動加重。單檔低風險修改、位置清楚的新檔、獨立簡單多檔、純查閱和已批准計劃都不觸發。真正要加強的是：結果很難回復、失敗會污染資料或版本、或多個表面必須同時守住同一承諾的工作。</p>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">全圖計劃資格</text>
+
+      <!-- Start -->
+      <rect x="340" y="50" width="120" height="36" rx="18" fill="#0d7377"/>
+      <text x="400" y="74" text-anchor="middle" fill="white" font-size="13">收到需要完整規劃的任務</text>
+
+      <!-- Arrow -->
+      <line x1="400" y1="86" x2="400" y2="118" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="395,116 400,124 405,116" fill="#1a1a1a"/>
+
+      <!-- Decision diamond -->
+      <polygon points="400,128 510,180 400,232 290,180" fill="white" stroke="#0d7377" stroke-width="2"/>
+      <text x="400" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">是否一旦出錯會有較大影響？</text>
+      <text x="400" y="188" text-anchor="middle" font-size="11" fill="#1a1a1a">安全、資料或長期規則</text>
+      <text x="400" y="204" text-anchor="middle" font-size="11" fill="#1a1a1a">多處內容必須保持一致</text>
+      <text x="400" y="220" text-anchor="middle" font-size="11" fill="#1a1a1a">升級、遷移、外部副作用</text>
+
+      <!-- Yes branch right -->
+      <line x1="510" y1="180" x2="600" y2="180" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="598,176 605,180 598,184" fill="#1a1a1a"/>
+      <text x="555" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">是</text>
+
+      <rect x="600" y="158" width="180" height="44" rx="8" fill="#e6f7f5" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="690" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">先讀正式依據與風險</text>
+      <text x="690" y="196" text-anchor="middle" font-size="11" fill="#5b6470">→ 證據足夠才形成計劃</text>
+
+      <!-- No branch left -->
+      <line x1="290" y1="180" x2="200" y2="180" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="202,176 195,180 202,184" fill="#1a1a1a"/>
+      <text x="245" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#5b6470">否</text>
+
+      <rect x="20" y="158" width="180" height="44" rx="8" fill="#fafafa" stroke="#999" stroke-width="1.5"/>
+      <text x="110" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">按一般規則處理</text>
+      <text x="110" y="196" text-anchor="middle" font-size="11" fill="#5b6470">(仍先讀後判)</text>
+
+      <!-- 5 sections -->
+      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">通過獨立檢查後的五區段計劃</text>
+
+      <g>
+        <rect x="40" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="68" cy="318" r="14" fill="#0d7377"/>
+        <text x="68" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">1</text>
+        <text x="92" y="323" font-size="12" font-weight="bold" fill="#0d7377">終點畫面</text>
+        <text x="92" y="338" font-size="10" fill="#0d7377">目標與範圍</text>
+        <text x="50" y="362" font-size="10.5" fill="#1a1a1a">先寫任務理解</text>
+        <text x="50" y="378" font-size="10.5" fill="#1a1a1a">再列檔案／系統</text>
+        <text x="50" y="394" font-size="10.5" fill="#1a1a1a">／資源前後狀態</text>
+
+        <rect x="190" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="218" cy="318" r="14" fill="#0d7377"/>
+        <text x="218" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">2</text>
+        <text x="242" y="323" font-size="12" font-weight="bold" fill="#0d7377">交付物</text>
+        <text x="242" y="338" font-size="10" fill="#0d7377">要交付甚麼</text>
+        <text x="200" y="362" font-size="10.5" fill="#1a1a1a">路徑或資源名稱</text>
+        <text x="200" y="378" font-size="10.5" fill="#1a1a1a">+ 適用動作 +</text>
+        <text x="200" y="394" font-size="10.5" fill="#1a1a1a">一句摘要</text>
+
+        <rect x="340" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="368" cy="318" r="14" fill="#0d7377"/>
+        <text x="368" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">3</text>
+        <text x="392" y="323" font-size="12" font-weight="bold" fill="#0d7377">成功證據</text>
+        <text x="392" y="338" font-size="10" fill="#0d7377">怎樣核對</text>
+        <text x="350" y="362" font-size="10.5" fill="#1a1a1a">可讀回的結果</text>
+        <text x="350" y="378" font-size="10.5" fill="#1a1a1a">數字只在本來</text>
+        <text x="350" y="394" font-size="10.5" fill="#1a1a1a">有意義時使用</text>
+
+        <rect x="490" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="518" cy="318" r="14" fill="#0d7377"/>
+        <text x="518" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">4</text>
+        <text x="542" y="323" font-size="12" font-weight="bold" fill="#0d7377">驗收測試</text>
+        <text x="542" y="338" font-size="10" fill="#0d7377">怎樣驗收</text>
+        <text x="500" y="362" font-size="10.5" fill="#1a1a1a">具體檢查及</text>
+        <text x="500" y="378" font-size="10.5" fill="#1a1a1a">可推翻方案的</text>
+        <text x="500" y="394" font-size="10.5" fill="#1a1a1a">反例</text>
+
+        <rect x="640" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="668" cy="318" r="14" fill="#0d7377"/>
+        <text x="668" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">5</text>
+        <text x="692" y="323" font-size="12" font-weight="bold" fill="#0d7377">目標連結</text>
+        <text x="692" y="338" font-size="10" fill="#0d7377">依據在哪裡</text>
+        <text x="650" y="362" font-size="10.5" fill="#1a1a1a">連結至</text>
+        <text x="650" y="378" font-size="10.5" fill="#1a1a1a">權威來源或</text>
+        <text x="650" y="394" font-size="10.5" fill="#1a1a1a">單一真源</text>
+      </g>
+
+      <text x="400" y="442" text-anchor="middle" font-size="11" fill="#5b6470">低風險可回復工作不多加一輪；影響較大的計劃先反證，再按影響取得確認</text>
+    </svg>
+    <div class="svg-caption">圖二：先看清來源與範圍；證據足夠後，才寫五區段計劃。</div>
+  </div>
+
+  <h3>AI 會怎樣做</h3>
+  <p>它會先列出不能失守的底線，例如「驗收失敗不可標成成功」、「未能辨識的內容不可猜測覆寫」、「中斷後狀態必須可判定」。一旦出錯會有較大影響時，另一位未參與方案的人會從原始需求找出中斷、衝突、並行、版本倒退、越界與假綠等反例；安全、權限、資料完整性或核心驗收的問題，不能改名為「接受風險」。</p>
+
+  <h3>五區段如何幫到你</h3>
+  <p><strong>終點畫面</strong>寫清楚範圍、狀態與不能失守的條件；<strong>交付物</strong>列出真實資源和動作；<strong>成功證據</strong>包含失敗後狀態與恢復入口；<strong>驗收測試</strong>有能推翻方案的反例；<strong>目標連結</strong>把改動連回正式依據。缺其中任何一項，AI 就不能假裝已完成。</p>
+</section>
+
+<!-- ============== 第三組：回覆與語言 ============== -->
+<section id="g3">
+  <h2><span class="num">3</span>回覆要直接，但不能假裝知道</h2>
+  <p class="lede">這份指令要求 AI 先講結論，再補真正需要的背景、做法和下一步。它亦把「短答」和「正式交付」分開：不是每件工作都值得一篇報告。</p>
+
+  <h3>只有真的要你選，才列選項</h3>
+  <p>AI 不會把每個技術細節變成問題丟回給你。只有兩條以上做法都可靠、而且會實質改變結果時，才列出可行選項、各自影響和客觀推薦；沒有真正取捨便直接判斷。</p>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 820 290" xmlns="http://www.w3.org/2000/svg">
+      <text x="410" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">不同工作用不同回覆力度；創作不硬套工程流程</text>
+
+      <rect x="20" y="60" width="150" height="200" rx="8" fill="#fff0e0" stroke="#e08436" stroke-width="2"/>
+      <text x="95" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#e08436">純輸出模式</text>
+      <text x="95" y="110" text-anchor="middle" font-size="11" fill="#1a1a1a">使用者明示</text>
+      <text x="95" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">「只輸出 /</text>
+      <text x="95" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">純輸出模式」</text>
+      <text x="95" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ 只輸出指定</text>
+      <text x="95" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">結構,無前言</text>
+      <text x="95" y="222" text-anchor="middle" font-size="10" fill="#5b6470">例:純 JSON、</text>
+      <text x="95" y="238" text-anchor="middle" font-size="10" fill="#5b6470">純表格、純清單</text>
+
+      <rect x="180" y="60" width="150" height="200" rx="8" fill="#e6f7f5" stroke="#0d7377" stroke-width="2"/>
+      <text x="255" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">短答模式</text>
+      <text x="255" y="110" text-anchor="middle" font-size="11" fill="#1a1a1a">任務簡單、</text>
+      <text x="255" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">風險低、答案</text>
+      <text x="255" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">可直接交付</text>
+      <text x="255" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ 直接答</text>
+      <text x="255" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">不強制完整骨架</text>
+      <text x="255" y="222" text-anchor="middle" font-size="10" fill="#5b6470">例:單句答案、</text>
+      <text x="255" y="238" text-anchor="middle" font-size="10" fill="#5b6470">查詢回應</text>
+
+      <rect x="340" y="60" width="150" height="200" rx="8" fill="#e8edf4" stroke="#3b5998" stroke-width="2"/>
+      <text x="415" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#3b5998">標準模式</text>
+      <text x="415" y="110" text-anchor="middle" font-size="11" fill="#1a1a1a">一般分析、</text>
+      <text x="415" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">建議、比較、</text>
+      <text x="415" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">修補(預設)</text>
+      <text x="415" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ 一句 🔎 +</text>
+      <text x="415" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">按需要補正文</text>
+      <text x="415" y="222" text-anchor="middle" font-size="10" fill="#5b6470">例:大部分日常</text>
+      <text x="415" y="238" text-anchor="middle" font-size="10" fill="#5b6470">對話回應</text>
+
+      <rect x="500" y="60" width="150" height="200" rx="8" fill="#f4e6f4" stroke="#8b4d8b" stroke-width="2"/>
+      <text x="575" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#8b4d8b">正式交付</text>
+      <text x="575" y="110" text-anchor="middle" font-size="11" fill="#1a1a1a">重要規格、</text>
+      <text x="575" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">跨檔修改、</text>
+      <text x="575" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">可落地交付</text>
+      <text x="575" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ 完整骨架;</text>
+      <text x="575" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">證據足夠才進五區段</text>
+      <text x="575" y="222" text-anchor="middle" font-size="10" fill="#5b6470">例:本指令此次</text>
+      <text x="575" y="238" text-anchor="middle" font-size="10" fill="#5b6470">對齊計劃</text>
+
+      <rect x="660" y="60" width="140" height="200" rx="8" fill="#fff8e0" stroke="#c4a000" stroke-width="2" stroke-dasharray="6 3"/>
+      <text x="730" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#c4a000">創作工作</text>
+      <text x="730" y="110" text-anchor="middle" font-size="11" fill="#1a1a1a">設計、故事、</text>
+      <text x="730" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">詩、廣告、</text>
+      <text x="730" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">純想像、虛構</text>
+      <text x="730" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ 豁免五區段、</text>
+      <text x="730" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">四階段、成功證據</text>
+      <text x="730" y="222" text-anchor="middle" font-size="10" fill="#5b6470">語言分層、合作</text>
+      <text x="730" y="238" text-anchor="middle" font-size="10" fill="#5b6470">模式仍適用</text>
+    </svg>
+    <div class="svg-caption">圖三:按任務性質選用回覆方式；創作任務不硬套工作流程。</div>
+  </div>
+
+  <h3>AI 會怎樣做</h3>
+  <table>
+    <thead><tr><th>情況</th><th>合適的回覆</th></tr></thead>
+    <tbody>
+      <tr><td>簡單、低風險、答案明確</td><td>直接完成；不為了格式重複結論。</td></tr>
+      <tr><td>一般分析、比較、修補</td><td>三行內先用「🔎」講重點，再給必要原因、做法與下一步。</td></tr>
+      <tr><td>真的存在兩個以上的價值取捨</td><td>列可靠選項、影響和有根據的推薦；沒有選擇便直接判斷。</td></tr>
+      <tr><td>使用者明示只要指定格式</td><td>只輸出指定結構，不附加前言、總結或追問。</td></tr>
+      <tr><td>創作、構思或純想像</td><td>不硬套五區段、工程流程或計算步驟；安全、私隱與指定格式仍然適用。</td></tr>
+    </tbody>
+  </table>
+
+  <h3>實際作用</h3>
+  <p>你會更快看見結論，也能追溯 AI 為何這樣判斷。若使用者給了現成的鍵名、標題、枚舉或 schema，這份指令會要求原樣對齊，而不是為了「改善措辭」而破壞下游相容性。</p>
+</section>
+
+<!-- ============== 第四組：事實與真源 ============== -->
+<section id="g4">
+  <h2><span class="num">4</span>先讀後判，未知要留在未知</h2>
+  <p class="lede">這份指令不容許用版本日期、搜尋命中、摘要或記憶代替實際內容。這不是要求每次讀完整個世界，而是先建立足夠覆蓋，再清楚標示還未覆蓋的部分。</p>
+
+  <h3>三條核心規則</h3>
+  <table>
+    <thead><tr><th>規則</th><th>AI 要做甚麼</th><th>你得到甚麼</th></tr></thead>
+    <tbody>
+      <tr><td>可核實的外部事實</td><td>日期、版本、價格、法規、人物、公司、平台行為先核對；核對不到就標未核實。</td><td>不會把變動中的資料包裝成肯定答案。</td></tr>
+      <tr><td>待改內容與真源</td><td>讀直接上下文；大型範圍先用索引和搜尋建地圖，說明未覆蓋部分。</td><td>AI 知道它改的是哪一個真實位置，不把摘要當原文。</td></tr>
+      <tr><td>交接與先前結論</td><td>摘要只作線索；宣稱完成或繼續改前，以權威來源、實際檔案或工具輸出讀回。</td><td>換了對話、換了 agent 也不會把舊說法當成事實。</td></tr>
+    </tbody>
+  </table>
+
   <div class="callout">
-    如果你使用 ChatGPT、Claude 或 Claude Cowork 做寫作、問答、整理資料，通常用對話型工具版本已足夠。
+    <strong>「未核實」不是失敗</strong>：它代表目前沒有足夠證據下結論。真正的風險是把未核實內容寫成已確認，或用「未適用」掩飾沒有查到資料。
   </div>
 </section>
 
-<section id="diff">
-  <h2>與對話型工具版本的差異｜一張圖看清</h2>
-  <svg class="diff-svg" viewBox="0 0 780 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="代理式工具版本與對話型工具版本可對照通用原則，並另有三個代理式專屬章節">
-    <defs>
-      <linearGradient id="gradShared" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#e6f7f5"/>
-        <stop offset="100%" stop-color="#b6e3de"/>
-      </linearGradient>
-      <linearGradient id="gradNew" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#fff5e6"/>
-        <stop offset="100%" stop-color="#fcd9a3"/>
-      </linearGradient>
-    </defs>
-    <rect x="50" y="40" width="300" height="270" rx="8" fill="url(#gradShared)" stroke="#0d7377" stroke-width="2"/>
-    <text x="200" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#0d7377">可對照的通用工作方式</text>
-    <text x="200" y="105" text-anchor="middle" font-size="13" fill="#1a1a1a">個人偏好 + 第零節至第十二節</text>
-    <text x="200" y="132" text-anchor="middle" font-size="13" fill="#1a1a1a">語言與語體 / 合作模式</text>
-    <text x="200" y="154" text-anchor="middle" font-size="13" fill="#1a1a1a">回覆骨架 / 全圖優先</text>
-    <text x="200" y="176" text-anchor="middle" font-size="13" fill="#1a1a1a">先讀後判 / 治理改動流程</text>
-    <text x="200" y="198" text-anchor="middle" font-size="13" fill="#1a1a1a">按情境交付變更 / 防漂移</text>
-    <text x="200" y="220" text-anchor="middle" font-size="13" fill="#1a1a1a">計算與結構格式 / 執行環境補充</text>
-    <text x="200" y="258" text-anchor="middle" font-size="12" font-style="italic" fill="#0d7377">共通部分由人工比對同步</text>
+<!-- ============== 第五組：修改與交付 ============== -->
+<section id="g5">
+  <h2><span class="num">5</span>改動前後，讓你一眼核對</h2>
+  <p class="lede">需要你自己貼換時，AI 不應只說「已改好」。它要給你找得到的錨點、清楚分開的修改前／後內容，以及一個核對方法。</p>
 
-    <rect x="430" y="40" width="300" height="270" rx="8" fill="url(#gradNew)" stroke="#f0b27a" stroke-width="2"/>
-    <text x="580" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#9a5e1a">代理式工具版本新增</text>
-    <text x="580" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">機密處理</text>
-    <text x="580" y="134" text-anchor="middle" font-size="12" fill="#5b6470">不複述、不寫入、不擴散</text>
-    <line x1="455" y1="154" x2="705" y2="154" stroke="#f0b27a" stroke-dasharray="4 4"/>
-    <text x="580" y="182" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">平台檔案安全</text>
-    <text x="580" y="204" text-anchor="middle" font-size="12" fill="#5b6470">Windows + macOS / Linux 安全邊界</text>
-    <line x1="455" y1="224" x2="705" y2="224" stroke="#f0b27a" stroke-dasharray="4 4"/>
-    <text x="580" y="252" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a1a">代理式工作流</text>
-    <text x="580" y="274" text-anchor="middle" font-size="12" fill="#5b6470">上下文 / 驗收 / 授權 / 失敗防護</text>
-    <path d="M350 175 L430 175" stroke="#0d7377" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-    <defs>
-      <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-        <polygon points="0 0, 10 5, 0 10" fill="#0d7377"/>
-      </marker>
-    </defs>
-    <text x="390" y="166" text-anchor="middle" font-size="11" fill="#0d7377">+ 補強</text>
-  </svg>
+  <h3>需要手動貼換時</h3>
+  <p>AI 先說明你應找到哪一句或哪一段，再把修改前和修改後分開列出。你看完便知道改了甚麼、應貼到哪裡，以及如何讀回核對。</p>
 
+  <div class="svg-wrap">
+    <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">需要手動貼換時，怎樣一眼核對</text>
+
+      <!-- Anchor box -->
+      <rect x="80" y="50" width="640" height="44" rx="8" fill="#fff5e6" stroke="#f0b27a"/>
+      <text x="100" y="78" font-size="13" font-weight="bold" fill="#c87a30">📌 精準錨點</text>
+      <text x="220" y="78" font-size="12" fill="#1a1a1a">（舊句錨點）：未確認位置就自行建立固定資料夾</text>
+
+      <!-- Arrow -->
+      <line x1="400" y1="100" x2="400" y2="124" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="395,122 400,130 405,122" fill="#1a1a1a"/>
+
+      <!-- 修改前 / 修改後 side by side -->
+      <g>
+        <rect x="80" y="138" width="300" height="160" rx="8" fill="#fdecea" stroke="#e57373" stroke-width="1.5"/>
+        <rect x="80" y="138" width="300" height="32" rx="8" fill="#e57373"/>
+        <text x="230" y="160" text-anchor="middle" fill="white" font-size="13" font-weight="bold">修改前(原文)</text>
+        <text x="100" y="190" font-size="11" fill="#1a1a1a" font-family="monospace">[舊假設] 未確認位置就建立</text>
+        <text x="100" y="208" font-size="11" fill="#1a1a1a" font-family="monospace">平行資料夾，然後交付。</text>
+        <text x="100" y="226" font-size="11" fill="#1a1a1a" font-family="monospace"></text>
+        <text x="100" y="244" font-size="11" fill="#1a1a1a" font-family="monospace"></text>
+        <text x="100" y="280" font-size="11" fill="#5b6470" font-style="italic">↑ 可 Ctrl+F 搜尋</text>
+
+        <rect x="420" y="138" width="300" height="160" rx="8" fill="#e8f5e9" stroke="#7cb98a" stroke-width="1.5"/>
+        <rect x="420" y="138" width="300" height="32" rx="8" fill="#7cb98a"/>
+        <text x="570" y="160" text-anchor="middle" fill="white" font-size="13" font-weight="bold">修改後(新文)</text>
+        <text x="440" y="190" font-size="11" fill="#1a1a1a" font-family="monospace">新建檔案先遵循現有目錄、</text>
+        <text x="440" y="208" font-size="11" fill="#1a1a1a" font-family="monospace">真源與平台交付位置；</text>
+        <text x="440" y="226" font-size="11" fill="#1a1a1a" font-family="monospace">三者均未指定時先確認</text>
+        <text x="440" y="244" font-size="11" fill="#1a1a1a" font-family="monospace">可安全寫入的工作區與交付方式。</text>
+        <text x="440" y="280" font-size="11" fill="#5b6470" font-style="italic">↑ 可直接貼換</text>
+      </g>
+
+      <!-- Arrow down to changelog -->
+      <line x1="400" y1="298" x2="400" y2="318" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="395,316 400,324 405,316" fill="#1a1a1a"/>
+
+      <rect x="160" y="328" width="480" height="40" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+      <text x="180" y="354" font-size="13" font-weight="bold" fill="#0d7377">✅ 核對方法</text>
+      <text x="295" y="354" font-size="12" fill="#1a1a1a">貼換後搜尋新句，或讀回對應頁面／檔案</text>
+    </svg>
+    <div class="svg-caption">圖四：手動貼換只要四件事：錨點、修改前、修改後、核對方法。</div>
+  </div>
+
+  <h3>不是每次都要貼整份內容</h3>
+  <ul>
+    <li><strong>AI 可以安全直接改檔</strong>：列出改了哪個檔案、關鍵差異和驗收結果，不重貼全文。</li>
+    <li><strong>你要自己貼換</strong>：用上圖的錨點、修改前／後和核對方法。</li>
+    <li><strong>涉及刪除、移動、批量覆寫或不可回復動作</strong>：先把目標和影響說清楚，取得確認才動手。</li>
+  </ul>
+
+  <div class="callout"><strong>同一條規則只找一個現行位置。</strong> AI 新增或改規則前，先看能否合併舊句，而不是在不同文件各寫一份。這樣你日後不會找到互相矛盾的「最新版本」。</div>
+</section>
+
+<!-- ============== 第六組：計算與結構 ============== -->
+<section id="g6">
+  <h2><span class="num">6</span>需要時展示步驟，不需要時直接答</h2>
+  <p class="lede">計算、JSON 和圖表都有共同原則：跟隨既有結構、選擇能驗證的做法、不要為了顯得仔細而加上無用步驟。</p>
+
+  <h3>計算的尺度</h3>
+  <p>簡單計算直接回答並自行核對。多步、容易出錯、高風險或你明確要求過程時，才展示完整步驟與驗算。這讓財務、單位轉換、折扣、稅項或資料計算可以追溯，也不會令每一條簡單答案都變長。</p>
+
+  <h3>結構輸出</h3>
   <table>
-    <thead>
-      <tr><th>多出的保護</th><th>實際意思</th><th>適用情境</th></tr>
-    </thead>
+    <thead><tr><th>交付物</th><th>這份指令的要求</th></tr></thead>
     <tbody>
-      <tr><td>通用工作方式</td><td>保留對話型工具版本的核實、計劃、交付與語氣規則</td><td>所有工具</td></tr>
-      <tr><td>機密處理</td><td>看到金鑰、憑證或設定檔時，不複述、不寫入、不擴散</td><td>能讀取檔案或處理機密內容的 AI 工具</td></tr>
-      <tr><td>檔案安全</td><td>避免危險刪除、錯路徑、系統目錄、提權繞過與未確認目標</td><td>Windows、macOS、Linux 或可操作本機檔案系統的環境</td></tr>
-      <tr><td>代理式工作流</td><td>長任務先定驗收；失敗時回到根因；發布類操作另行授權</td><td>OpenAI Codex、Claude Code、Antigravity CLI、Cursor 及其他代理式 AI 工具</td></tr>
+      <tr><td>JSON</td><td>服從既有 schema；可省略且無資料的欄位省略，只有 schema 要求才用 <code>null</code>；輸出後驗證可解析。</td></tr>
+      <tr><td>Mermaid</td><td>互動用 <code>sequenceDiagram</code>；流程或分支才用 <code>flowchart</code>；有歧義的文字加引號並檢查語法。</td></tr>
+      <tr><td>清單、表格、報告</td><td>先給讀者需要的結論，再按用途保留必要細節；不發明新欄位或改寫既有鍵名。</td></tr>
     </tbody>
   </table>
 </section>
 
-<section id="secret">
-  <h2>機密處理</h2>
-  <p>AI 讀取項目內的 <code>.env</code>、credentials、token、金鑰或憑證後，可能在回覆、摘要、提交訊息、日誌、測試輸出、新建檔案或外部請求中複述機密值。這類外洩通常會留下長期痕跡。</p>
-  <ul>
-    <li>需要指出機密位置時，以 <code>&lt;REDACTED&gt;</code>、檔案行號或欄位名代替。</li>
-    <li>不得輸出完整值、部分可還原值或可被拼回的片段。</li>
-    <li>機密值不得寫入 commit、issue、PR、release note、debug log、終端命令參數或外部請求 URL。</li>
-    <li>發現機密已進入可持久化位置時，立即停止擴散並列出修復路徑。</li>
-  </ul>
-  <div class="callout bad">
-    反例：「我看到你的 <code>OPENAI_API_KEY=sk-proj-...</code>，我會把它寫進設定檔。」
-  </div>
-  <div class="callout good">
-    正例：「我看到 <code>OPENAI_API_KEY=&lt;REDACTED&gt;</code>（見設定檔指定行）。此處含機密，請人工檢閱。」
-  </div>
-</section>
+<!-- ============== 第七組：Agent 工作區 ============== -->
+<section id="g7">
+  <h2><span class="num">7</span>有工作區能力，便要守工作區邊界</h2>
+  <p class="lede">這份指令為會讀寫專案、執行指令和觸及外部服務的 AI 設下行動邊界。它不取代工具的沙盒、權限和確認視窗，但要求 AI 正確使用這些保護。</p>
 
-<section id="platform">
-  <h2>平台檔案安全</h2>
-  <p><strong>範圍</strong>：本節在 Windows、macOS、Linux 或可操作本機檔案系統的環境生效。它優先於通用檔案操作規則中較寬鬆的表述。</p>
-  <p>不同作業系統的高風險命令不同，但核心邊界相同：不碰磁碟根、系統目錄、家目錄批量清理、提權繞過、未解析路徑或可能跨出目標資料夾的破壞性操作。</p>
-  <h3>Windows</h3>
-  <p>Windows 路徑、引號、環境變數與外部殼層組合錯誤時，可能令刪除操作落到磁碟根、系統目錄或未預期父層。代理式工具版本對此採硬性封鎖。</p>
-  <pre><code>cmd /c rmdir
-cmd /c rd
-cmd /c rmdir /s
-cmd /c rmdir /s /q
-cmd /c rd /s /q
-cmd.exe /c rmdir</code></pre>
-  <ul>
-    <li>任何與 <code>cmd /c</code> 或 <code>cmd.exe /c</code> 組合的 <code>rmdir</code>／<code>rd</code> 變體都禁止。</li>
-    <li>可能解析到 <code>C:\</code>、<code>D:\</code> 或任何磁碟根的操作一律禁止。</li>
-    <li>路徑解析存在歧義時，不執行命令。</li>
-    <li>檔案被鎖或權限不足時，不提權、不繞過、不改用更危險命令；只輸出手動動作清單。</li>
-  </ul>
-  <h3>macOS / Linux</h3>
-  <pre><code>rm -rf
-sudo rm -rf
-find ... -delete
-chmod -R 777
-chown -R</code></pre>
-  <ul>
-    <li>不執行磁碟格式化、掛載點清理、使用者家目錄批量清理或任何可能跨出目標資料夾的破壞性命令。</li>
-    <li>不以 <code>sudo</code>、系統權限、AppleScript、Automator、<code>osascript</code>、低階系統 API 或權限繞過方式處理檔案問題。</li>
-    <li>使用萬用字元、環境變數、符號連結、相對路徑或管線組合前，必須先解析並列出實際目標。</li>
-    <li>目標不明、可能跨出工作資料夾或包含家目錄 / 系統目錄時，不執行命令。</li>
-  </ul>
-</section>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">AI 在工作區做事的基本步驟</text>
 
-<section id="workflow">
-  <h2>代理式工作流與上下文管理</h2>
-  <p><strong>範圍</strong>：本節適用於 OpenAI Codex、Claude Code、Antigravity CLI、Cursor 及其他可讀檔、改檔、執行工具或調用外部平台的 AI 工具。純對話環境亦須套用其中的一般行為原則；只有依賴特定工具操作的步驟，才按實際環境調整。</p>
+      <!-- Stage boxes -->
+      <g>
+        <rect x="40" y="70" width="130" height="80" rx="10" fill="#0d7377"/>
+        <text x="105" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">先想清目標</text>
+        <text x="105" y="118" text-anchor="middle" fill="white" font-size="10">目標 · 範圍</text>
+        <text x="105" y="132" text-anchor="middle" fill="white" font-size="10">驗收 · 風險</text>
+      </g>
+
+      <line x1="175" y1="110" x2="195" y2="110" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="193,106 200,110 193,114" fill="#1a1a1a"/>
+
+      <g>
+        <rect x="200" y="70" width="130" height="80" rx="10" fill="#14a098"/>
+        <text x="265" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">先讀相關內容</text>
+        <text x="265" y="118" text-anchor="middle" fill="white" font-size="10">看清要改甚麼</text>
+        <text x="265" y="132" text-anchor="middle" fill="white" font-size="10">及正式依據</text>
+      </g>
+
+      <line x1="335" y1="110" x2="355" y2="110" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="353,106 360,110 353,114" fill="#1a1a1a"/>
+
+      <g>
+        <rect x="360" y="70" width="130" height="80" rx="10" fill="#f0b27a"/>
+        <text x="425" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">只改需要的地方</text>
+        <text x="425" y="118" text-anchor="middle" fill="white" font-size="10">範圍不同便停下</text>
+        <text x="425" y="132" text-anchor="middle" fill="white" font-size="10">不要擅自擴張</text>
+      </g>
+
+      <line x1="495" y1="110" x2="515" y2="110" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="513,106 520,110 513,114" fill="#1a1a1a"/>
+
+      <g>
+        <rect x="520" y="70" width="130" height="80" rx="10" fill="#7cb98a"/>
+        <text x="585" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">核對結果</text>
+        <text x="585" y="118" text-anchor="middle" fill="white" font-size="10">用合適方式確認</text>
+        <text x="585" y="132" text-anchor="middle" fill="white" font-size="10">沒有把問題藏起來</text>
+      </g>
+
+      <line x1="655" y1="110" x2="675" y2="110" stroke="#1a1a1a" stroke-width="2" stroke-dasharray="4,3"/>
+      <polygon points="673,106 680,110 673,114" fill="#1a1a1a"/>
+
+      <g>
+        <rect x="680" y="70" width="100" height="80" rx="10" fill="white" stroke="#0d7377" stroke-width="2" stroke-dasharray="5,3"/>
+        <text x="730" y="98" text-anchor="middle" fill="#0d7377" font-size="13" font-weight="bold">交代結果</text>
+        <text x="730" y="118" text-anchor="middle" fill="#5b6470" font-size="10">檢查結果</text>
+        <text x="730" y="132" text-anchor="middle" fill="#5b6470" font-size="10">風險餘項</text>
+      </g>
+
+      <text x="400" y="190" text-anchor="middle" font-size="12" fill="#5b6470">影響較大的事先查清；不可逆、外部寫入或公開發佈前須確認</text>
+    </svg>
+    <div class="svg-caption">圖七：AI 會按需要想清目標、先讀、再改、最後核對；小事不必每一步都展開。</div>
+  </div>
+
+  <h3>五個最重要的界線</h3>
   <table>
-    <thead>
-      <tr><th>面向</th><th>AI 應該怎樣做</th></tr>
-    </thead>
+    <thead><tr><th>面向</th><th>這份指令的要求</th></tr></thead>
     <tbody>
-      <tr><td>上下文管理</td><td>摘要只作續接線索；恢復時以實際檔案及工具輸出重建狀態。上下文混入無關任務或失敗嘗試時，先輸出可續接摘要，再建議切換乾淨上下文。</td></tr>
-      <tr><td>反覆失敗</td><td>同一問題連續兩次修正仍未解決時，停止第三次同類補丁，回到問題分類、最小可驗證案例與根因檢查。</td></tr>
-      <tr><td>任務流程</td><td>一般流程沿用共同核心；接手、恢復或不熟悉範圍時先從實際檔案與工具輸出重建驗收依據，單檔小修可直接處理但仍須驗收。</td></tr>
-      <tr><td>外部工具</td><td>新增、改動或不確定的外部整合先核對官方文件；代理執行時優先使用官方工具鏈，不以替代工具繞過限制。</td></tr>
-      <tr><td>授權邊界</td><td>commit、push、tag、release、deploy、publish、權限變更、資料刪除與費用操作需要獨立明確授權。</td></tr>
-      <tr><td>探索範圍</td><td>跨檔探索先用搜尋、索引、摘要與抽樣建立地圖，再讀目標全文，避免無界探索污染上下文。</td></tr>
+      <tr><td>範圍與檔案</td><td>改前讀待改位置與直接上下文；只改本次相關內容；發現並行或非預期改動便停止，不還原使用者的工作。</td></tr>
+      <tr><td>安全寫入</td><td>不假定固定資料夾名稱；不以外部殼層包裝檔案修改；路徑有歧義、越出工作區、鎖定或權限不足時不繞過。</td></tr>
+      <tr><td>機密與破壞性操作</td><td>不把 token、金鑰或憑證寫進回覆、日誌或命令；不使用危險遞迴刪除、強制重設或未知批量覆寫。</td></tr>
+      <tr><td>外部工具與平台</td><td>新增整合、認證、部署、付費或易變介面先查官方資料；沒有可靠契約時不猜、不寫、不執行。</td></tr>
+      <tr><td>外部副作用</td><td>推送、發佈、部署、訊息、排程、權限、費用與資料刪除，永遠在實行前另取明確授權。</td></tr>
     </tbody>
   </table>
+
+  <div class="callout">
+    <strong>重要限制</strong>：這份指令是行為指引，不是權限系統。請仍然使用工具自己的工作區限制、版本控制和確認機制；它們是最後一道技術防線。
+  </div>
 </section>
 
-<section id="choose">
-  <h2>如何選用｜對話型工具版本與代理式工具版本</h2>
-  <table>
-    <thead>
-      <tr><th>場景</th><th>建議</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>使用 ChatGPT、Claude、Claude Cowork 做寫作、問答、整理資料、一般協作</td><td>對話型工具版本</td></tr>
-      <tr><td>使用 OpenAI Codex、Claude Code、Antigravity CLI、Cursor</td><td>代理式工具版本</td></tr>
-      <tr><td>需要 AI 讀檔、改檔、跨檔修補、執行工具或處理驗收</td><td>代理式工具版本</td></tr>
-      <tr><td>會接觸機密檔案或憑證</td><td>代理式工具版本</td></tr>
-      <tr><td>Windows、macOS、Linux 或可操作本機檔案系統</td><td>代理式工具版本</td></tr>
-      <tr><td>工具不在上表，但可能接觸檔案、命令、機密或發布流程</td><td>代理式工具版本</td></tr>
-      <tr><td>只想保留較輕的通用治理規則</td><td>對話型工具版本</td></tr>
-    </tbody>
-  </table>
-</section>
-
+<!-- ============== 配合工具 ============== -->
 <section id="handoff">
-  <h2>跨工作階段接力｜配合 Agent Handoff Kit</h2>
-  <p>代理式工具版本管 AI 讀檔、改檔、執行命令、處理機密與發布邊界時應怎樣做；但長任務還有另一個問題：新工作階段怎樣知道上一輪做到哪裡。</p>
-  <p><a href="https://adamchanadam.github.io/agent-handoff-kit/agent-handoff-kit-intro.html" target="_blank" rel="noopener">Agent Handoff Kit</a> 正好補這一層。它把當前狀態、下一步、風險、檔案角色與交接提示保存下來，讓下一個 AI 工具或下一個對話可以接回任務主線。</p>
-  <p>簡單說，代理式工具版本管「AI 執行時的邊界」；Agent Handoff Kit 管「跨工作階段的記憶與交接」。兩者配合，較適合開發協作、長期文件維護、跨工具接力與需要多輪驗收的任務。</p>
+  <h2>可配合 Agent Handoff Kit 與 Innovation Loop</h2>
+  <p class="lede">這份指令管「AI 這一輪在工作區怎樣判斷、行動與驗收」。它可以單獨使用；長期專案才按需要加上其他工具。</p>
+
+  <div class="callout">
+    <strong>Agent Handoff Kit（可選）</strong>：負責把當前狀態、下一步、風險和接手線索保存下來，讓下一個 agent 或下一次對話可從實際專案狀態繼續。這份指令不依賴它，也不把 Kit 的專案流程寫進 prompt。
+    <br><br>
+    <strong>Agent Handoff Innovation Loop（可選）</strong>：適合長期專案需要同時處理方向、研究驗證、需求與計劃回流的情況。短任務不用為了「完整」而安裝這一層。
+    <br><br>
+    簡單說：<strong>這份指令管好眼前工作；Kit 讓工作可安全跨對話接續；Innovation Loop 支援較長期的探索與驗證。</strong>
+  </div>
 </section>
 
+<!-- ============== 設定 ============== -->
 <section id="install">
-  <h2>安裝</h2>
-  <h3>Claude Code</h3>
-  <p>複製 <a href="prompt.md">prompt.md</a> 全文，貼至全域 <code>~/.claude/CLAUDE.md</code>（Windows 為 <code>C:\Users\&lt;你&gt;\.claude\CLAUDE.md</code>），或貼至項目根目錄 <code>CLAUDE.md</code>。</p>
+  <h2>設定方式</h2>
+  <p class="lede">選一個你已使用、而且能在專案或已授權資料夾內工作的工具。複製對應語言的 prompt 全文，放進該工具的專案／工作區指令位置。不要把繁中和英文兩份同時貼入同一位置。</p>
 
-  <h3>OpenAI Codex / Antigravity CLI / Cursor / AGENTS.md 標準工具</h3>
-  <p>複製全文貼至全域 <code>~/.codex/AGENTS.md</code>（Windows 為 <code>C:\Users\&lt;你&gt;\.codex\AGENTS.md</code>），或貼至項目根目錄 <code>AGENTS.md</code>。</p>
+  <h3>常用 Agentic AI 工具</h3>
+  <table>
+    <thead><tr><th>工具</th><th>最簡單的放置方式</th><th>官方說明</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Claude Code</strong></td><td>在專案根目錄的 <code>CLAUDE.md</code> 貼入所選語言版本。</td><td><a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener">Memory / CLAUDE.md</a></td></tr>
+      <tr><td><strong>OpenAI Codex</strong></td><td>在專案根目錄的 <code>AGENTS.md</code> 貼入所選語言版本。</td><td><a href="https://developers.openai.com/codex/guides/agents-md/" target="_blank" rel="noopener">AGENTS.md</a></td></tr>
+      <tr><td><strong>Cursor</strong></td><td>在專案規則或 <code>AGENTS.md</code> 使用所選語言版本。</td><td><a href="https://docs.cursor.com/context/rules-for-ai" target="_blank" rel="noopener">Rules</a></td></tr>
+      <tr><td><strong>Antigravity</strong></td><td>在工作區的常駐規則位置加入所選語言版本。</td><td><a href="https://antigravity.google/docs/rules-workflows" target="_blank" rel="noopener">Rules &amp; Workflows</a></td></tr>
+    </tbody>
+  </table>
 
-  <h3>Claude Cowork / 其他工具</h3>
-  <p>若工具支援全域指令、項目指令或 AGENTS.md 標準，將全文貼入相應位置。若工具沒有檔案或命令能力，仍會套用一般行為原則。</p>
+  <h3>貼入後怎樣確認</h3>
+  <ol>
+    <li>先給它一個低風險小任務，看看它是否先讀相關內容、只改必要位置並讀回。</li>
+    <li>再給一個資料不足的研究題，看看它會否清楚分開事實、推論與未核實內容。</li>
+    <li>最後問一個有外部副作用或一旦出錯會有較大影響的任務，看看它會否列出影響並把未反證計劃維持為待反證。</li>
+  </ol>
 </section>
 
-<section id="sync">
-  <h2>與對話型工具版本的關係</h2>
-  <p>兩份版本用途不同，各自是對應平台的獨立指令。它們可對照通用工作方式，但不互相生成或取代；對話型版本只有能力觸發的最低安全底線，代理式工具版本另有完整機密、平台檔案安全與發布邊界。</p>
-  <p>簡單判斷：只聊天，用對話型工具版本；會碰檔案、命令、機密或發布流程，用代理式工具版本。</p>
+<!-- ============== FAQ ============== -->
+<section id="faq">
+  <h2>常見問題</h2>
+
+  <details>
+    <summary>Q1：這份指令會否令 AI 變慢？</summary>
+    <p>不應如此。它明確要求工作力度跟實際後果、未知和可回復性相稱：小而清楚的工作直接完成；只有一旦出錯會有較大影響或不確定的工作才加上計劃資格與反證。</p>
+  </details>
+
+  <details>
+    <summary>Q2：它支援一般網頁版 ChatGPT 或 Claude 嗎？</summary>
+    <p>不支援。這份指令的定位是可在已授權工作區內行動的 agent 工具；一般網頁聊天沒有可靠的專案讀寫與執行邊界，不能誠實地宣稱相同使用效果。</p>
+  </details>
+
+  <details>
+    <summary>Q3：可否只用部分規則？</summary>
+    <p>不建議自行抽走規則。它們互相配合；若工具確實放不下全文，先保留完整版本試用，再根據你遇到的具體問題調整。</p>
+  </details>
+
+  <details>
+    <summary>Q4：怎樣知道計劃是否只是「看似完整」？</summary>
+    <p>看它有沒有明示待反證／可執行／受阻；一旦出錯會有較大影響時，有沒有不能失守的條件、失敗後狀態、恢復入口、從原本資料讀回核對，以及能推翻方案的反例。沒有這些，就不應稱為可執行。</p>
+  </details>
 </section>
 
 </main>
 
 <footer>
-  本指令庫採 MIT 授權，內容供任何用戶免費使用、修改、轉載。<br>
-  反饋與貢獻：<a href="https://github.com/prompt-templates/Adam-AI-Instructions/issues">GitHub Issues</a>
+  <p>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.md" target="_blank" rel="noopener">📄 繁中指令</a>
+    <a href="README.md">📖 繁中說明</a>
+    <a href="guide.en.html">EN guide</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.en.md" target="_blank" rel="noopener">English prompt</a>
+    <a href="../../README.md">🏠 主索引</a>
+    <a href="#overview">⬆ 回頁首</a>
+  </p>
+  <p style="margin-top:14px">Adam's AI Instructions · 專案式 AI Agent 全域指令</p>
 </footer>
+
+<script>
+  // 情境對照標籤切換
+  document.querySelectorAll('.tab-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var tab = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(function(b){
+        b.classList.toggle('active', b.dataset.tab === tab);
+      });
+      document.querySelectorAll('.panel').forEach(function(p){
+        p.classList.toggle('active', p.dataset.panel === tab);
+      });
+    });
+  });
+
+  // Facebook 個人檔案預覽：取得公開相片；失敗時保留原有 Facebook 圖示。
+  (function(){
+    var iconBox = document.querySelector('.fb-card .fb-icon');
+    if (!iconBox) return;
+    var fbUrl = 'https://www.facebook.com/chan.adam';
+    var apiUrl = 'https://api.microlink.io/?url=' + encodeURIComponent(fbUrl);
+    fetch(apiUrl)
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        var imgUrl = d && d.data && (
+          (d.data.image && d.data.image.url) ||
+          (d.data.logo && d.data.logo.url)
+        );
+        if (!imgUrl) return;
+        var img = new Image();
+        img.onload = function(){
+          iconBox.innerHTML = '';
+          iconBox.style.background = 'transparent';
+          img.style.cssText = 'width:100%;height:100%;border-radius:50%;object-fit:cover;display:block';
+          img.alt = 'Adam Chan';
+          iconBox.appendChild(img);
+        };
+        img.src = imgUrl;
+      })
+      .catch(function(){ /* 保留後備圖示 */ });
+  })();
+</script>
 
 </body>
 </html>

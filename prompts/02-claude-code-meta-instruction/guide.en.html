@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project-based AI Agent Instructions · Interactive guide</title>
+<style>
+  :root{
+    --c-primary:#0d7377;
+    --c-primary-2:#14a098;
+    --c-bg:#fafafa;
+    --c-card:#ffffff;
+    --c-text:#1a1a1a;
+    --c-muted:#5b6470;
+    --c-light:#e6f7f5;
+    --c-border:#e2e6ea;
+    --c-warn-bg:#fff5e6;
+    --c-warn-border:#f0b27a;
+    --c-good-bg:#e8f5e9;
+    --c-good-border:#7cb98a;
+    --c-bad-bg:#fdecea;
+    --c-bad-border:#e57373;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft JhengHei","PingFang TC","Noto Sans TC","Hiragino Sans GB",sans-serif;
+    color:var(--c-text);
+    background:var(--c-bg);
+    line-height:1.75;
+    font-size:16px;
+  }
+  a{color:var(--c-primary);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* Header */
+  header.hero{
+    background:linear-gradient(135deg,var(--c-primary) 0%,var(--c-primary-2) 100%);
+    color:white;
+    padding:64px 24px 56px;
+    text-align:center;
+  }
+  header.hero h1{margin:0 0 8px;font-size:32px;letter-spacing:-0.5px}
+  header.hero .tag{font-size:14px;opacity:0.85;margin-bottom:20px}
+  header.hero .links a{
+    color:white;
+    background:rgba(255,255,255,0.18);
+    padding:8px 18px;
+    border-radius:24px;
+    margin:0 6px;
+    display:inline-block;
+    font-size:14px;
+    transition:background 0.2s;
+  }
+  header.hero .links a:hover{background:rgba(255,255,255,0.3);text-decoration:none}
+
+  /* Top nav */
+  nav.toc{
+    position:sticky;
+    top:0;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--c-border);
+    z-index:10;
+    padding:12px 16px;
+    overflow-x:auto;
+    white-space:nowrap;
+    text-align:center;
+  }
+  nav.toc a{
+    display:inline-block;
+    padding:6px 12px;
+    margin:0 2px;
+    font-size:13px;
+    color:var(--c-muted);
+    border-radius:6px;
+  }
+  nav.toc a:hover{background:var(--c-light);color:var(--c-primary);text-decoration:none}
+
+  /* Main */
+  main{max-width:920px;margin:0 auto;padding:32px 24px 80px}
+  section{
+    background:var(--c-card);
+    border:1px solid var(--c-border);
+    border-radius:12px;
+    padding:32px;
+    margin-bottom:24px;
+    scroll-margin-top:80px;
+  }
+  section h2{
+    margin:0 0 8px;
+    font-size:24px;
+    color:var(--c-primary);
+    border-bottom:2px solid var(--c-light);
+    padding-bottom:12px;
+  }
+  section h2 .num{
+    display:inline-block;
+    background:var(--c-primary);
+    color:white;
+    width:30px;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    border-radius:50%;
+    font-size:14px;
+    margin-right:10px;
+    vertical-align:middle;
+  }
+  section h3{margin-top:28px;margin-bottom:8px;font-size:17px;color:var(--c-text)}
+  section p{margin:10px 0;color:var(--c-text)}
+  section .lede{
+    font-size:17px;
+    color:var(--c-muted);
+    border-left:3px solid var(--c-primary);
+    padding-left:14px;
+    margin:14px 0 22px;
+  }
+
+  /* Tables */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0;
+    font-size:14px;
+  }
+  th,td{
+    padding:10px 12px;
+    border-bottom:1px solid var(--c-border);
+    text-align:left;
+    vertical-align:top;
+  }
+  th{background:var(--c-light);color:var(--c-primary);font-weight:600}
+
+  /* Cards (overview grid) */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:14px;
+    margin:18px 0;
+  }
+  .card{
+    background:var(--c-light);
+    border:1px solid var(--c-border);
+    border-radius:10px;
+    padding:16px;
+  }
+  .card .num{
+    display:inline-block;
+    background:var(--c-primary);
+    color:white;
+    padding:2px 10px;
+    border-radius:12px;
+    font-size:12px;
+    margin-bottom:8px;
+  }
+  .card h4{margin:4px 0 6px;font-size:15px;color:var(--c-text)}
+  .card p{margin:0;font-size:13px;color:var(--c-muted)}
+
+  /* SVG container */
+  .svg-wrap{
+    background:#fbfdfd;
+    border:1px solid var(--c-border);
+    border-radius:10px;
+    padding:18px;
+    margin:18px 0;
+    overflow-x:auto;
+  }
+  .svg-wrap svg{display:block;max-width:100%;height:auto;margin:0 auto}
+  .svg-caption{
+    text-align:center;
+    color:var(--c-muted);
+    font-size:13px;
+    margin-top:8px;
+  }
+
+  /* Comparison boxes */
+  .compare{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin:14px 0;
+  }
+  .compare .col{
+    border-radius:8px;
+    padding:14px 16px;
+    font-size:14px;
+  }
+  .compare .bad{background:var(--c-bad-bg);border:1px solid var(--c-bad-border)}
+  .compare .good{background:var(--c-good-bg);border:1px solid var(--c-good-border)}
+  .compare h5{margin:0 0 6px;font-size:14px}
+  .compare .bad h5{color:#c62828}
+  .compare .good h5{color:#2e7d32}
+
+  /* Code blocks */
+  code{
+    background:#f1f3f5;
+    padding:2px 6px;
+    border-radius:4px;
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-size:0.9em;
+  }
+  pre{
+    background:#1e2329;
+    color:#e8eaed;
+    padding:14px 16px;
+    border-radius:8px;
+    overflow-x:auto;
+    font-size:13px;
+    line-height:1.55;
+  }
+  pre code{background:transparent;padding:0;color:inherit}
+
+  /* Callout */
+  .callout{
+    background:var(--c-warn-bg);
+    border-left:4px solid var(--c-warn-border);
+    padding:12px 16px;
+    border-radius:6px;
+    margin:14px 0;
+    font-size:14px;
+  }
+  .callout strong{color:#c87a30}
+
+  /* FAQ */
+  details{
+    background:var(--c-card);
+    border:1px solid var(--c-border);
+    border-radius:8px;
+    padding:12px 16px;
+    margin-bottom:8px;
+  }
+  details summary{
+    font-weight:600;
+    cursor:pointer;
+    color:var(--c-primary);
+  }
+  details[open] summary{margin-bottom:8px}
+
+  /* Footer */
+  footer{
+    text-align:center;
+    padding:32px 16px 48px;
+    color:var(--c-muted);
+    font-size:13px;
+    border-top:1px solid var(--c-border);
+    background:white;
+  }
+  footer a{margin:0 10px}
+
+  /* Hero: scenario comparison */
+  section.scenario-hero{
+    background:linear-gradient(135deg,#f8fbfb 0%,var(--c-light) 100%);
+    border:1px solid var(--c-primary);
+    padding:36px 28px 28px;
+  }
+  .scenario-title{text-align:center;margin-bottom:24px}
+  .scenario-title h2{
+    font-size:24px;
+    color:var(--c-primary);
+    border:none;
+    margin:0 0 6px;
+    padding:0;
+  }
+  .scenario-title p{
+    color:var(--c-muted);
+    font-size:14px;
+    margin:0;
+  }
+  .scenario-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  .scenario-col{
+    background:white;
+    border-radius:12px;
+    padding:22px 18px 18px;
+    border:2px solid;
+    position:relative;
+  }
+  .scenario-col.before{border-color:#e57373}
+  .scenario-col.after{border-color:#4caf50}
+  .scenario-tag{
+    position:absolute;
+    top:-12px;
+    left:18px;
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+    color:white;
+  }
+  .bad-tag{background:#e57373}
+  .good-tag{background:#4caf50}
+  .msg{
+    display:flex;
+    gap:8px;
+    margin:10px 0;
+    align-items:flex-end;
+  }
+  .msg.user{flex-direction:row-reverse}
+  .msg-avatar{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f0f3f5;
+    font-size:14px;
+    flex-shrink:0;
+  }
+  .msg.user .msg-avatar{background:#e3f2fd}
+  .msg-bubble{
+    padding:10px 13px;
+    border-radius:14px;
+    max-width:86%;
+    font-size:13.5px;
+    line-height:1.6;
+  }
+  .msg.user .msg-bubble{
+    background:#e3f2fd;
+    color:#1a1a1a;
+    border-bottom-right-radius:4px;
+  }
+  .msg.ai.bad .msg-bubble{
+    background:#ffebee;
+    color:#1a1a1a;
+    border-bottom-left-radius:4px;
+  }
+  .msg.ai.good .msg-bubble{
+    background:#e8f5e9;
+    color:#1a1a1a;
+    border-bottom-left-radius:4px;
+  }
+  .msg-bubble ul{margin:6px 0 4px;padding-left:20px}
+  .msg-bubble li{margin:2px 0;font-size:13px}
+  .msg-bubble em{
+    display:block;
+    margin-top:8px;
+    color:#5b6470;
+    font-size:12px;
+    font-style:italic;
+  }
+  .scenario-summary{
+    margin-top:14px;
+    padding:9px 13px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:500;
+    text-align:center;
+  }
+  .bad-summary{background:#fdecea;color:#c62828}
+  .good-summary{background:#e8f5e9;color:#2e7d32}
+  .scenario-cta{
+    text-align:center;
+    margin-top:22px;
+    padding:12px;
+    font-size:14px;
+    color:var(--c-muted);
+    line-height:1.7;
+  }
+  .scenario-cta strong{color:var(--c-primary)}
+  /* Tab switcher */
+  .scenario-tabs{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+    margin:0 0 14px;
+    flex-wrap:wrap;
+  }
+  .tab-btn{
+    background:white;
+    border:1px solid var(--c-border);
+    padding:9px 18px;
+    border-radius:22px;
+    font-size:13.5px;
+    cursor:pointer;
+    transition:all 0.2s;
+    font-family:inherit;
+    color:var(--c-text);
+  }
+  .tab-btn:hover{
+    border-color:var(--c-primary);
+    color:var(--c-primary);
+  }
+  .tab-btn.active{
+    background:var(--c-primary);
+    border-color:var(--c-primary);
+    color:white;
+  }
+  .panel{display:none}
+  .panel.active{display:block}
+  .panel-context{
+    text-align:center;
+    color:var(--c-muted);
+    font-size:13px;
+    margin:0 0 14px;
+    font-style:italic;
+  }
+
+  /* Bubble extensions for FPFR / Skeleton / Patch displays */
+  .msg-bubble strong.lead{
+    display:block;
+    font-size:14px;
+    color:var(--c-primary);
+    margin-bottom:6px;
+  }
+  .msg-bubble code.code-line{
+    background:#1e2329;
+    color:#a5d6a7;
+    padding:6px 10px;
+    border-radius:5px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:12px;
+    margin:4px 0;
+    display:block;
+  }
+  .msg-bubble .body-note{
+    display:block;
+    margin-top:8px;
+    padding-top:6px;
+    border-top:1px dashed #d8dfe2;
+    color:#5b6470;
+    font-size:11.5px;
+    font-style:normal;
+  }
+  /* FPFR 5-section realistic output */
+  .msg-bubble.fpfr-output{padding:12px 14px}
+  .msg-bubble .fpfr-section{margin:6px 0 4px}
+  .msg-bubble .fpfr-section h4{
+    font-size:12px;
+    color:var(--c-primary);
+    margin:6px 0 4px;
+    font-weight:700;
+    letter-spacing:0.2px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;
+  }
+  .msg-bubble .fpfr-mini-table{
+    border-collapse:collapse;
+    font-size:11px;
+    width:100%;
+    margin:3px 0;
+  }
+  .msg-bubble .fpfr-mini-table th,
+  .msg-bubble .fpfr-mini-table td{
+    border-bottom:1px solid #d8e6e3;
+    padding:3px 6px;
+    text-align:left;
+  }
+  .msg-bubble .fpfr-mini-table th{
+    background:rgba(13,115,119,0.08);
+    color:var(--c-primary);
+    font-weight:600;
+  }
+  .msg-bubble .fpfr-mini-list{
+    margin:3px 0;
+    padding-left:18px;
+    font-size:11.5px;
+    line-height:1.55;
+  }
+  .msg-bubble .fpfr-mini-list li{margin:2px 0}
+  .msg-bubble .fpfr-mini-text{
+    font-size:11.5px;
+    color:#1a1a1a;
+    line-height:1.55;
+    margin:3px 0;
+  }
+  .msg-bubble .fpfr-closing{
+    display:block;
+    margin-top:10px;
+    padding:6px 10px;
+    background:rgba(13,115,119,0.08);
+    border-left:3px solid var(--c-primary);
+    font-size:11.5px;
+    color:var(--c-primary);
+    font-weight:500;
+    border-radius:0 4px 4px 0;
+  }
+
+  /* Next path menu inside bubble */
+  .msg-bubble .next-step{
+    margin-top:10px;
+    padding-top:8px;
+    border-top:1px dashed #d8dfe2;
+  }
+  .msg-bubble .next-step-title{
+    font-weight:600;
+    font-size:12.5px;
+    color:var(--c-text);
+    margin-bottom:5px;
+  }
+  .msg-bubble .next-step-options{
+    list-style:none;
+    padding:0;
+    margin:4px 0;
+    font-size:11.5px;
+    line-height:1.55;
+  }
+  .msg-bubble .next-step-options li{
+    margin:5px 0;
+    padding-left:2px;
+  }
+  .msg-bubble .next-step-options .opt-letter{
+    font-weight:700;
+    color:var(--c-primary);
+    font-style:italic;
+    margin-right:3px;
+  }
+  .msg-bubble .next-step-recommend{
+    margin-top:7px;
+    padding:5px 9px;
+    background:#fff5e6;
+    border-left:3px solid #f0b27a;
+    font-size:11.5px;
+    color:#a06425;
+    border-radius:0 4px 4px 0;
+  }
+  .msg-bubble .anchor-line{
+    font-size:11.5px;
+    color:#5b6470;
+    font-style:italic;
+    margin-bottom:5px;
+    display:block;
+  }
+  .msg-bubble .patch-row{
+    margin:4px 0;
+    padding:6px 9px;
+    border-radius:5px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:12px;
+    line-height:1.55;
+  }
+  .msg-bubble .patch-row.before{
+    background:#fdecea;
+    border-left:3px solid #e57373;
+  }
+  .msg-bubble .patch-row.after{
+    background:#e8f5e9;
+    border-left:3px solid #4caf50;
+  }
+  .msg-bubble .patch-row b{
+    display:block;
+    margin-bottom:3px;
+    font-family:inherit;
+    font-size:11px;
+  }
+  .msg-bubble .patch-row.before b{color:#c62828}
+  .msg-bubble .patch-row.after b{color:#2e7d32}
+  .msg-bubble .changelog-line{
+    margin-top:6px;
+    padding:5px 9px;
+    background:#e6f7f5;
+    border-radius:5px;
+    color:var(--c-primary);
+    font-size:11.5px;
+  }
+
+  @media (max-width:720px){
+    .scenario-grid{grid-template-columns:1fr}
+    section.scenario-hero{padding:24px 16px}
+    .scenario-title h2{font-size:20px}
+    .tab-btn{padding:7px 14px;font-size:12.5px}
+    .msg-bubble .fpfr-mini-table,.msg-bubble .fpfr-mini-list{font-size:11px}
+    .msg-bubble .next-step-options{font-size:11px}
+  }
+
+  /* Author card */
+  .author-card{
+    background:linear-gradient(135deg,#ffffff 0%,var(--c-light) 100%);
+    border:1px solid var(--c-primary);
+    border-radius:10px;
+    padding:18px 22px;
+    margin:18px 0 24px;
+  }
+  .author-card h3{
+    margin:0 0 10px;
+    font-size:15px;
+    color:var(--c-primary);
+  }
+  .author-card p{
+    margin:0 0 14px;
+    font-size:14.5px;
+    color:var(--c-text);
+    line-height:1.75;
+  }
+  /* Facebook link preview card */
+  .fb-card{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:16px 20px;
+    border:1px solid #d8dde2;
+    border-radius:12px;
+    background:white;
+    transition:all 0.2s;
+    margin-top:10px;
+    width:100%;
+    box-sizing:border-box;
+  }
+  .fb-card:hover{
+    border-color:#1877f2;
+    box-shadow:0 4px 12px rgba(24,119,242,0.12);
+    text-decoration:none;
+  }
+  .fb-card .fb-icon{
+    width:72px;
+    height:72px;
+    background:#1877f2;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    overflow:hidden;
+  }
+  .fb-card .fb-icon svg{width:38px;height:38px;fill:white}
+  .fb-card .fb-text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    min-width:0;
+    line-height:1.5;
+    flex:1;
+  }
+  .fb-card .fb-name{
+    color:var(--c-text);
+    font-weight:600;
+    font-size:16px;
+  }
+  .fb-card .fb-url{
+    color:var(--c-muted);
+    font-size:13px;
+    margin-top:3px;
+  }
+  .fb-card .fb-desc{
+    color:#1877f2;
+    font-size:13px;
+    margin-top:4px;
+  }
+
+  @media (max-width:640px){
+    header.hero{padding:40px 16px}
+    header.hero h1{font-size:24px}
+    main{padding:16px}
+    section{padding:20px}
+    .compare{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Project-based AI Agent Instructions</h1>
+  <div class="tag">The one current instruction for agents that work in a project or workspace</div>
+  <p style="max-width:720px;margin:0 auto 20px;font-size:16px;line-height:1.75">
+    For AI that can read files, make changes, run commands, and deliver work inside a project or folder you deliberately authorized. It is not here to slow an agent down. It tells the agent when it can move, when it must verify, and when the decision belongs to you.
+  </p>
+  <div class="links">
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.en.md" target="_blank" rel="noopener">📄 English prompt</a>
+    <a href="README.en.md">📖 Overview</a>
+    <a href="guide.html">Traditional Chinese guide</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.md" target="_blank" rel="noopener">Traditional Chinese prompt</a>
+    <a href="../../README.en.md">🏠 Home</a>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#scenario">Compare</a>
+  <a href="#overview">Overview</a>
+  <a href="#g1">1. How it works</a>
+  <a href="#g2">2. Plan qualification</a>
+  <a href="#g3">3. Replies &amp; language</a>
+  <a href="#g4">4. Facts &amp; sources</a>
+  <a href="#g5">5. Changes &amp; delivery</a>
+  <a href="#g6">6. Calculation &amp; structure</a>
+  <a href="#g7">7. Agent workspace</a>
+  <a href="#handoff">Companions</a>
+  <a href="#install">Set up</a>
+  <a href="#faq">FAQ</a>
+</nav>
+
+<div style="max-width:920px;margin:0 auto;padding:14px 20px;background:#e6f7f5;border-left:4px solid #0d7377;border-radius:6px;font-size:14px;line-height:1.65;color:#1a1a1a;">
+  <strong>Check the tool first.</strong> This instruction is for agentic AI that can act inside a project or workspace you authorized: Claude Code, OpenAI Codex, Cursor, Antigravity, and similar tools. It <strong>does not support ordinary web ChatGPT or Claude chat</strong>.
+</div>
+
+<main>
+
+<!-- ============== Scenario comparison (Hero) ============== -->
+<section id="scenario" class="scenario-hero">
+  <div class="scenario-title">
+    <h2>Four key rules · two AI experiences</h2>
+    <p>Switch between the tabs. Each comparison comes directly from the rule map below: see how a different way of thinking changes the experience, not just the process.</p>
+  </div>
+
+  <div class="scenario-tabs" role="tablist" aria-label="Key-rule situations">
+    <button class="tab-btn active" data-tab="read-first">Scenario 1 · Choices, ambiguity &amp; sources</button>
+    <button class="tab-btn" data-tab="research">Scenario 2 · Read before judging</button>
+    <button class="tab-btn" data-tab="plan-gate">Scenario 3 · Full picture &amp; plan qualification</button>
+    <button class="tab-btn" data-tab="delivery">Scenario 4 · Secret safety</button>
+  </div>
+
+  <div class="panel active" data-panel="read-first">
+    <div class="panel-context">From “Choices, ambiguity, and sources of truth”: when the source of truth is checked and two paths can both work, show the real trade-off clearly.</div>
+    <div class="scenario-grid">
+      <div class="scenario-col before">
+        <div class="scenario-tag bad-tag">❌ Without this instruction</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">We confirmed the partner can use either daily batches or live updates. Should we reuse the current export flow or build an API?</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">Choose an API. Confirm every field, path, format, and technical step one by one, then I’ll start.</div></div>
+        <div class="scenario-summary bad-summary">⚠ It does not compare the impact of two valid paths, then hands every technical judgement back to you</div>
+      </div>
+      <div class="scenario-col after">
+        <div class="scenario-tag good-tag">✅ With this instruction</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">We confirmed the partner can use either daily batches or live updates. Should we reuse the current export flow or build an API?</div></div>
+        <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble">
+          <strong class="lead">🔎 Both paths can work. The trade-off is freshness, change size, and ongoing maintenance.</strong><br><br>
+          <span>🚀 <em>Choose one next</em><br><em>A.</em> Reuse the existing daily export — less change, but not live data.<br><em>B.</em> Build a sync API — live updates, but a new integration to maintain.<br>💡 Recommendation: A — the partner accepts daily batches, so it meets the goal with less change.</span>
+        </div></div>
+        <div class="scenario-summary good-summary">✓ It asks only for a real choice; both paths can work, and the impact and recommendation are clear</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" data-panel="research">
+    <div class="panel-context">From “Read before judging”: establish enough coverage first, then distinguish what is verified, unverified, and inferred.</div>
+    <div class="scenario-grid">
+      <div class="scenario-col before">
+        <div class="scenario-tag bad-tag">❌ Without this instruction</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">This month’s report total differs from last month. Find the cause.</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">It is probably a cache or formula error. I’ll change the formula directly.</div></div>
+        <div class="scenario-summary bad-summary">⚠ It presents a guess as a cause without reading the report definition, source data, dates, or filters</div>
+      </div>
+      <div class="scenario-col after">
+        <div class="scenario-tag good-tag">✅ With this instruction</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">This month’s report total differs from last month. Find the cause.</div></div>
+        <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble">
+          <strong class="lead">🔎 I cannot tell the cause yet. I’ll first read the report definition, source data, dates, and filters.</strong>
+          I’ll separate verified differences, evidence-based inferences, and what still needs checking. Until a reliable source is read, I will not change a formula or present an estimate as a conclusion.
+        </div></div>
+        <div class="scenario-summary good-summary">✓ You do not have to accept a plausible-sounding guess; you can see what is verified and what comes next</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" data-panel="plan-gate">
+    <div class="panel-context">From “Full-picture planning and plan qualification”: see the complete end state and disprovable evidence first, then decide whether a plan qualifies to run.</div>
+    <div class="scenario-grid">
+      <div class="scenario-col before">
+        <div class="scenario-tag bad-tag">❌ Without this instruction</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">Change the upgrade flow, but do not damage old data.</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">Here is the execution plan: update the version, migrate the data, run tests, done.</div></div>
+        <div class="scenario-summary bad-summary">⚠ It calls itself executable without a failure state, recovery path, conflict model, or independent challenge</div>
+      </div>
+      <div class="scenario-col after">
+        <div class="scenario-tag good-tag">✅ With this instruction</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">Change the upgrade flow, but do not damage old data.</div></div>
+        <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble fpfr-output">
+          <strong class="lead">This is not a polished to-do list. It is a full-picture plan with a qualification status.</strong>
+          <ul class="fpfr-mini-list">
+            <li><strong>End-state snapshot</strong> — 🔎 Task understanding: change the upgrade flow without harming old data;<br><em>pending challenge</em>. State invariants, exclusions, and known versus unverified state.</li>
+            <li><strong>Deliverables</strong> — List affected upgrade code, data format, and documentation; do not invent an absolute path that is unknown.</li>
+            <li><strong>Success evidence</strong> — Old data can be read back; interruption leaves a knowable state, recovery entry, and authoritative read-back.</li>
+            <li><strong>Acceptance tests</strong> — Test normal upgrade plus interruption, conflict, version reversal, and a false-green case where data is still harmed.</li>
+            <li><strong>Goal links</strong> — Link external platform behavior to official sources and project changes to their current source of truth.</li>
+          </ul>
+          <span class="fpfr-closing">Until the applicable challenge is complete, this remains a pending-challenge plan and no changes begin.</span>
+        </div></div>
+        <div class="scenario-summary good-summary">✓ See the full end state, evidence, and counterexamples first; only an applicable challenge can promote it to executable</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" data-panel="delivery">
+    <div class="panel-context">From “Secrets and platform file safety”: secrets do not spread; preparation and a real public action stay separate.</div>
+    <div class="scenario-grid">
+      <div class="scenario-col before">
+        <div class="scenario-tag bad-tag">❌ Without this instruction</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">Fix the settings, then push and publish a new release.</div></div>
+        <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">I’ll put <code>.env</code> in the commit, then push it and create the public release.</div></div>
+        <div class="scenario-summary bad-summary">⚠ A secret enters a durable record, and permission to edit content is treated as permission to push and publish</div>
+      </div>
+      <div class="scenario-col after">
+        <div class="scenario-tag good-tag">✅ With this instruction</div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">Fix the settings, then push and publish a new release.</div></div>
+        <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble">
+          <strong class="lead">🔎 <code>.env</code> contains a secret. It cannot appear in output, logs, or commits.</strong>
+          I can fix settings that are safe to modify and read them back. Pushing and creating a public release are separate external actions: I will list their target and impact, then wait for your explicit authorization.
+        </div></div>
+        <div class="scenario-summary good-summary">✓ Secrets do not leak; completing content does not mean the agent is authorized to push or publish</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scenario-cta">
+    This instruction is not trying to turn every task into an audit. <strong>Small work uses the smallest sufficient evidence; work where a mistake would have a larger impact catches mistakes before action.</strong>
+  </div>
+</section>
+
+<!-- ============== Overview ============== -->
+<section id="overview">
+  <h2>Overview</h2>
+  <div class="author-card">
+    <h3>How to read this page</h3>
+    <p>This instruction grew out of problems that keep appearing in real, long-term AI use: AI reaches a conclusion before checking, changes something before reading it clearly, then leaves work that is hard to verify. You do not need to read the full instruction first. Start with the dialogue examples and diagrams to see how it changes an agent’s way of working. If you have questions or want to exchange AI-use experience, you are welcome to get in touch on Facebook.</p>
+    <a class="fb-card" href="https://www.facebook.com/chan.adam" target="_blank" rel="noopener">
+      <div class="fb-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </div>
+      <div class="fb-text">
+        <div class="fb-name">Adam Chan</div>
+        <div class="fb-url">facebook.com/chan.adam</div>
+        <div class="fb-desc">Facebook profile →</div>
+      </div>
+    </a>
+  </div>
+  <p class="lede">You do not need to read every line first. Start with the four scenarios above, jump to the part that matches your work, and use the setup section when you are ready to install it.</p>
+  <h3>Rule map</h3>
+  <div class="grid">
+    <div class="card"><span class="num">0</span><h4>Precedence</h4><p>When rules compete, safety, permissions, and irreversible consequences win.</p></div>
+    <div class="card"><span class="num">1</span><h4>Language &amp; replies</h4><p>Lead with the point. Keep simple work short. Each language version replies naturally in its own language.</p></div>
+    <div class="card"><span class="num">2</span><h4>Effort &amp; stopping</h4><p>Lower risk means lighter work. Stop once acceptance is sufficient; do not chase unrelated issues.</p></div>
+    <div class="card"><span class="num">3</span><h4>Choices &amp; sources</h4><p>Offer choices only when the user genuinely needs to choose. Do not rename existing keys, headings, or schemas.</p></div>
+    <div class="card"><span class="num">4</span><h4>Full-picture plan qualification</h4><p>For work where a mistake would have a larger impact, see the scope, evidence, and counterexamples before deciding it can run.</p></div>
+    <div class="card"><span class="num">5</span><h4>Read before judging</h4><p>Check changing facts, platform behavior, and target content. Say what remains unverified.</p></div>
+    <div class="card"><span class="num">6</span><h4>Long-lived rules</h4><p>When a rule or several linked places must stay aligned, the agent first confirms the scope before proposing a change.</p></div>
+    <div class="card"><span class="num">7</span><h4>Checkable changes</h4><p>When you need to paste a change yourself, get an anchor, before/after content, and a way to check it.</p></div>
+    <div class="card"><span class="num">8</span><h4>Calculations &amp; structure</h4><p>Show working only when it helps. Follow existing JSON and diagram formats.</p></div>
+    <div class="card"><span class="num">9</span><h4>Workspace &amp; scope</h4><p>Read related files first. Use an existing delivery location. Get separate approval for side effects.</p></div>
+    <div class="card"><span class="num">10</span><h4>Secrets &amp; file safety</h4><p>Do not expose secrets, bypass permissions, or solve a problem with dangerous deletion or overwrite commands.</p></div>
+    <div class="card"><span class="num">11</span><h4>Agent workflow</h4><p>Long work can resume cleanly. Repeated failure returns to root cause. Release and spending always need separate authorization.</p></div>
+  </div>
+  <h3>Problems it is built to prevent</h3>
+  <table>
+    <thead><tr><th>Common problem</th><th>What this instruction does</th></tr></thead>
+    <tbody>
+      <tr><td>The agent edits before it understands the scope</td><td>Read project guidance, the target, and direct context first. Search wider only when impact is unknown.</td></tr>
+      <tr><td>A simple task gains too much ceremony and becomes slow</td><td>Match effort to consequence, uncertainty, and reversibility. Small clear work does not need a full-picture plan.</td></tr>
+      <tr><td>A polished plan has no recovery or failure model</td><td>Plans for work where a mistake would have a larger impact are labelled pending challenge, executable, or blocked, then get the appropriate independent challenge.</td></tr>
+      <tr><td>Research mixes summaries, memory, and inference</td><td>Separate source, date, fact, inference, and what remains unverified.</td></tr>
+      <tr><td>The agent invents a fixed folder or parallel structure</td><td>Use the existing directory, source-of-truth location, or platform delivery location; otherwise provide manually savable content.</td></tr>
+      <tr><td>“The content is ready” becomes permission to push or publish</td><td>External writes, public release, access changes, spending, and data deletion each need their own explicit authorization.</td></tr>
+      <tr><td>Acceptance keeps growing without new evidence</td><td>Every added check must map to an unresolved risk. Stop when affected scenarios pass.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============== Group 1: How it works ============== -->
+<section id="g1">
+  <h2><span class="num">1</span>How the agent works</h2>
+  <p class="lede">This instruction does not tell an agent to slow down forever. It asks it to judge consequence and reversibility first, then choose a method that is just enough for the job.</p>
+  <h3>The common failure</h3>
+  <p>Some agents act as soon as they hear a task. Others wait for approval at every step. Both blur the one question you should care about: which decisions need you, and which authorized actions can safely be completed without burdening you?</p>
+  <h3>What the agent does</h3>
+  <ul>
+    <li><strong>Classify the consequence first.</strong> Authorized, low-risk, reversible work without side effects can proceed. Value trade-offs, public action, spending, access, deletion, and irreversible work are named before asking.</li>
+    <li><strong>Match effort to risk.</strong> If relevant reading, one change, and one focused check are enough, it does not add an unnecessary plan, extra paperwork, or repeated checks just for show.</li>
+    <li><strong>Bring in only necessary discoveries.</strong> Fix a finding if it blocks this task’s acceptance, was caused by this change, or makes the delivery inconsistent. Record other discoveries separately.</li>
+    <li><strong>Know when to stop.</strong> Stop when the result checks out, important in-scope questions are resolved, and the needed updates are aligned. More rounds do not create stronger evidence by themselves.</li>
+  </ul>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
+      <text x="350" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">Precedence: protect safety before everything else</text>
+
+      <rect x="80" y="50" width="540" height="38" rx="6" fill="#d63d4f" opacity="0.9"/>
+      <text x="350" y="73" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">1. Safety / permissions / irreversible or external actions / privacy / platform limits</text>
+
+      <rect x="100" y="98" width="500" height="38" rx="6" fill="#e08436"/>
+      <text x="350" y="121" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">2. User-required output or adopted authoritative workflow</text>
+
+      <rect x="120" y="146" width="460" height="38" rx="6" fill="#d4a017"/>
+      <text x="350" y="169" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">3. Source of truth / user keys / enums / existing specs</text>
+
+      <rect x="140" y="194" width="420" height="38" rx="6" fill="#5da32e"/>
+      <text x="350" y="217" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">4. Fact checks / reading coverage / unverified labels</text>
+
+      <rect x="160" y="242" width="380" height="38" rx="6" fill="#0d7377"/>
+      <text x="350" y="265" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">5. Reply form (output only / short / standard / formal / creative)</text>
+
+      <rect x="180" y="290" width="340" height="38" rx="6" fill="#5b6470"/>
+      <text x="350" y="313" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">6. Reply shape / labels / tone / layout</text>
+
+      <text x="350" y="350" text-anchor="middle" font-size="11" fill="#5b6470">If still uncertain: safe, verifiable, never falsely complete</text>
+    </svg>
+    <div class="svg-caption">Figure 1: Six levels of precedence. Higher-priority rules win.</div>
+  </div>
+  <h3>Why this matters</h3>
+  <p>This precedence order saves you from reteaching the agent that safety outranks formatting and that sources of truth outrank pretty rewrites. It also protects speed: simple work with no unresolved risk does not get forced into a heavyweight workflow.</p>
+  <h3>Where it helps</h3>
+  <p>Every workspace task: code changes, research, document organization, README writing, release preparation, and long-lived rules. Creative work stays flexible; safety, privacy, and required formats still remain.</p>
+</section>
+
+<!-- ============== Group 2: Plan qualification ============== -->
+<section id="g2">
+  <h2><span class="num">2</span>Full-picture plan qualification: see the whole plan before deciding it can run</h2>
+  <p class="lede">The five sections are not there to make a plan longer. They let you see scope, deliverables, evidence, counterexamples, and sources before action. Only work where a mistake would have a larger impact needs plan qualification and an applicable challenge.</p>
+  <h3>Read the plan status first</h3>
+  <table><thead><tr><th>Status</th><th>What it means</th><th>What happens next</th></tr></thead><tbody>
+    <tr><td><strong>Pending challenge</strong></td><td>The plan has an outline, but it may still miss an important risk.</td><td>Have someone who did not write the plan look for ways it could fail, starting from the original request.</td></tr>
+    <tr><td><strong>Executable</strong></td><td>There is enough evidence, a clear set of must-not-fail conditions, and a way to check the result.</td><td>Obtain the approval appropriate to the consequence. Executable is not user authorization.</td></tr>
+    <tr><td><strong>Blocked</strong></td><td>A core source, capability, or safety condition is still missing.</td><td>Name what is missing. Do not replace evidence with confident prose.</td></tr>
+  </tbody></table>
+  <h3>When this extra layer is warranted</h3>
+  <p>Not merely because there are several files. Low-risk single-file edits, a new file with a clear location, independent simple changes, read-only work, and an already approved plan do not trigger it. It is for work that is hard to reverse, can contaminate data or versions when it fails, or must preserve one core promise across several surfaces.</p>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">Plan qualification when a mistake has a larger impact</text>
+
+      <!-- Start -->
+      <rect x="340" y="50" width="120" height="36" rx="18" fill="#0d7377"/>
+      <text x="400" y="74" text-anchor="middle" fill="white" font-size="13">A task needing a full plan</text>
+
+      <!-- Arrow -->
+      <line x1="400" y1="86" x2="400" y2="118" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="395,116 400,124 405,116" fill="#1a1a1a"/>
+
+      <!-- Decision diamond -->
+      <polygon points="400,128 510,180 400,232 290,180" fill="white" stroke="#0d7377" stroke-width="2"/>
+      <text x="400" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">Would a mistake have a larger impact?</text>
+      <text x="400" y="188" text-anchor="middle" font-size="11" fill="#1a1a1a">Safety, data, or long-lived rules</text>
+      <text x="400" y="204" text-anchor="middle" font-size="11" fill="#1a1a1a">Several places must stay consistent</text>
+      <text x="400" y="220" text-anchor="middle" font-size="11" fill="#1a1a1a">Upgrade, migration, or external side effect</text>
+
+      <!-- Yes branch right -->
+      <line x1="510" y1="180" x2="600" y2="180" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="598,176 605,180 598,184" fill="#1a1a1a"/>
+      <text x="555" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">Yes</text>
+
+      <rect x="600" y="158" width="180" height="44" rx="8" fill="#e6f7f5" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="690" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">Read sources and risks</text>
+      <text x="690" y="196" text-anchor="middle" font-size="11" fill="#5b6470">→ plan only after evidence</text>
+
+      <!-- No branch left -->
+      <line x1="290" y1="180" x2="200" y2="180" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="202,176 195,180 202,184" fill="#1a1a1a"/>
+      <text x="245" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#5b6470">No</text>
+
+      <rect x="20" y="158" width="180" height="44" rx="8" fill="#fafafa" stroke="#999" stroke-width="1.5"/>
+      <text x="110" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">Use regular workflow</text>
+      <text x="110" y="196" text-anchor="middle" font-size="11" fill="#5b6470">(still read first)</text>
+
+      <!-- 5 sections -->
+      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">Five plan sections after an independent check</text>
+
+      <g>
+        <rect x="40" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="68" cy="318" r="14" fill="#0d7377"/>
+        <text x="68" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">1</text>
+        <text x="92" y="323" font-size="12" font-weight="bold" fill="#0d7377">End state</text>
+        <text x="92" y="338" font-size="10" fill="#0d7377">END-STATE</text>
+        <text x="50" y="362" font-size="10.5" fill="#1a1a1a">State the task first</text>
+        <text x="50" y="378" font-size="10.5" fill="#1a1a1a">then the evidenced</text>
+        <text x="50" y="394" font-size="10.5" fill="#1a1a1a">before/after states</text>
+
+        <rect x="190" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="218" cy="318" r="14" fill="#0d7377"/>
+        <text x="218" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">2</text>
+        <text x="242" y="323" font-size="12" font-weight="bold" fill="#0d7377">Deliverables</text>
+        <text x="242" y="338" font-size="10" fill="#0d7377">DELIVERABLES</text>
+        <text x="200" y="362" font-size="10.5" fill="#1a1a1a">Path or resource</text>
+        <text x="200" y="378" font-size="10.5" fill="#1a1a1a">+ action +</text>
+        <text x="200" y="394" font-size="10.5" fill="#1a1a1a">short summary</text>
+
+        <rect x="340" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="368" cy="318" r="14" fill="#0d7377"/>
+        <text x="368" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">3</text>
+        <text x="392" y="323" font-size="12" font-weight="bold" fill="#0d7377">Success evidence</text>
+        <text x="392" y="338" font-size="10" fill="#0d7377">EVIDENCE</text>
+        <text x="350" y="362" font-size="10.5" fill="#1a1a1a">Readable result</text>
+        <text x="350" y="378" font-size="10.5" fill="#1a1a1a">Numbers only where</text>
+        <text x="350" y="394" font-size="10.5" fill="#1a1a1a">they mean something</text>
+
+        <rect x="490" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="518" cy="318" r="14" fill="#0d7377"/>
+        <text x="518" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">4</text>
+        <text x="542" y="323" font-size="12" font-weight="bold" fill="#0d7377">Acceptance tests</text>
+        <text x="542" y="338" font-size="10" fill="#0d7377">ACCEPTANCE</text>
+        <text x="500" y="362" font-size="10.5" fill="#1a1a1a">Concrete checks and</text>
+        <text x="500" y="378" font-size="10.5" fill="#1a1a1a">a counterexample that</text>
+        <text x="500" y="394" font-size="10.5" fill="#1a1a1a">can disprove the plan</text>
+
+        <rect x="640" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+        <circle cx="668" cy="318" r="14" fill="#0d7377"/>
+        <text x="668" y="323" text-anchor="middle" fill="white" font-size="12" font-weight="bold">5</text>
+        <text x="692" y="323" font-size="12" font-weight="bold" fill="#0d7377">Goal links</text>
+        <text x="692" y="338" font-size="10" fill="#0d7377">GOAL LINK</text>
+        <text x="650" y="362" font-size="10.5" fill="#1a1a1a">Link to</text>
+        <text x="650" y="378" font-size="10.5" fill="#1a1a1a">authoritative sources or</text>
+        <text x="650" y="394" font-size="10.5" fill="#1a1a1a">the source of truth</text>
+      </g>
+
+      <text x="400" y="442" text-anchor="middle" font-size="11" fill="#5b6470">Keep low-risk reversible work light; challenge consequential plans, then obtain the right approval</text>
+    </svg>
+    <div class="svg-caption">Figure 2: First make the sources and scope clear; write the five plan sections only when the evidence is sufficient.</div>
+  </div>
+  <h3>What the agent does</h3>
+  <p>It states must-not-fail conditions such as “a failed check cannot be marked successful,” “unrecognized content cannot be guessed over,” and “the state must be knowable after interruption.” Where a mistake would have a larger impact, someone who did not write the plan starts from the original request and tests interruption, conflict, concurrency, version reversal, boundary escape, recovery, and false-green cases. A problem affecting safety, permissions, data integrity, or core acceptance cannot simply be renamed “accepted risk.”</p>
+  <h3>How the five sections help</h3>
+  <p><strong>End-state snapshot</strong> states scope, status, and what must not fail. <strong>Deliverables</strong> name real resources and actions. <strong>Success evidence</strong> includes failure state and recovery. <strong>Acceptance tests</strong> include a counterexample that can disprove the plan. <strong>Goal links</strong> connect the work to its sources. Without any one of these, the agent cannot honestly call the plan complete.</p>
+</section>
+
+<!-- ============== Group 3: Replies and language ============== -->
+<section id="g3">
+  <h2><span class="num">3</span>Be direct without pretending to know</h2>
+  <p class="lede">This instruction asks the agent to lead with the conclusion, then add only the background, method, and next step that matter. It also separates a short answer from a formal delivery: not every task deserves a report.</p>
+
+  <h3>Ask only when there is a real choice</h3>
+  <p>The agent does not hand every technical detail back to you as a question. Only when two or more reliable paths would materially change the result does it show viable options, their impact, and an objective recommendation. If there is no real trade-off, it makes the judgement.</p>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 820 290" xmlns="http://www.w3.org/2000/svg">
+      <text x="410" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">Choose a reply that fits the work; creative work stays flexible</text>
+
+      <rect x="20" y="60" width="150" height="200" rx="8" fill="#fff0e0" stroke="#e08436" stroke-width="2"/>
+      <text x="95" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#e08436">Output only</text>
+      <text x="95" y="110" text-anchor="middle" font-size="11" fill="#1a1a1a">User explicitly asks</text>
+      <text x="95" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">“Output only /</text>
+      <text x="95" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">Output only”</text>
+      <text x="95" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ return only the</text>
+      <text x="95" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">requested structure</text>
+      <text x="95" y="222" text-anchor="middle" font-size="10" fill="#5b6470">e.g. JSON or</text>
+      <text x="95" y="238" text-anchor="middle" font-size="10" fill="#5b6470">a table only</text>
+
+      <rect x="180" y="60" width="150" height="200" rx="8" fill="#e6f7f5" stroke="#0d7377" stroke-width="2"/>
+      <text x="255" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">Short answer</text>
+      <text x="255" y="110" text-anchor="middle" font-size="11" fill="#1a1a1a">Simple,</text>
+      <text x="255" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">low-risk,</text>
+      <text x="255" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">direct delivery</text>
+      <text x="255" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ answer directly</text>
+      <text x="255" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">no formal scaffold</text>
+      <text x="255" y="222" text-anchor="middle" font-size="10" fill="#5b6470">e.g. a concise</text>
+      <text x="255" y="238" text-anchor="middle" font-size="10" fill="#5b6470">answer</text>
+
+      <rect x="340" y="60" width="150" height="200" rx="8" fill="#e8edf4" stroke="#3b5998" stroke-width="2"/>
+      <text x="415" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#3b5998">Standard answer</text>
+      <text x="415" y="110" text-anchor="middle" font-size="11" fill="#1a1a1a">Everyday analysis,</text>
+      <text x="415" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">comparison,</text>
+      <text x="415" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">or repair</text>
+      <text x="415" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ one 🔎 point +</text>
+      <text x="415" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">only useful detail</text>
+      <text x="415" y="222" text-anchor="middle" font-size="10" fill="#5b6470">e.g. most</text>
+      <text x="415" y="238" text-anchor="middle" font-size="10" fill="#5b6470">day-to-day work</text>
+
+      <rect x="500" y="60" width="150" height="200" rx="8" fill="#f4e6f4" stroke="#8b4d8b" stroke-width="2"/>
+      <text x="575" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#8b4d8b">Formal delivery</text>
+      <text x="575" y="110" text-anchor="middle" font-size="11" fill="#1a1a1a">Specification,</text>
+      <text x="575" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">important rules,</text>
+      <text x="575" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">durable delivery</text>
+      <text x="575" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ formal structure;</text>
+      <text x="575" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">five sections only with evidence</text>
+      <text x="575" y="222" text-anchor="middle" font-size="10" fill="#5b6470">e.g. a multi-file</text>
+      <text x="575" y="238" text-anchor="middle" font-size="10" fill="#5b6470">change plan</text>
+
+      <rect x="660" y="60" width="140" height="200" rx="8" fill="#fff8e0" stroke="#c4a000" stroke-width="2" stroke-dasharray="6 3"/>
+      <text x="730" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#c4a000">Creative work</text>
+      <text x="730" y="110" text-anchor="middle" font-size="11" fill="#1a1a1a">Design, stories,</text>
+      <text x="730" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">poetry, ads,</text>
+      <text x="730" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">fiction, concepts</text>
+      <text x="730" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ no five-section plan,</text>
+      <text x="730" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">workflow, or success evidence</text>
+      <text x="730" y="222" text-anchor="middle" font-size="10" fill="#5b6470">Language and</text>
+      <text x="730" y="238" text-anchor="middle" font-size="10" fill="#5b6470">safety still apply</text>
+    </svg>
+    <div class="svg-caption">Figure 3: Match reply style to the work. Creative work does not inherit an engineering workflow.</div>
+  </div>
+
+  <h3>What the agent does</h3>
+  <table>
+    <thead><tr><th>Situation</th><th>Appropriate reply</th></tr></thead>
+    <tbody>
+      <tr><td>Simple, low-risk, clear answer</td><td>Complete it directly. Do not repeat the conclusion just to fill a format.</td></tr>
+      <tr><td>Everyday analysis, comparison, or repair</td><td>Lead with a plain-language 🔎 takeaway within three lines, then add only the reasons, method, and next step that help.</td></tr>
+      <tr><td>There are truly two or more value trade-offs</td><td>Offer reliable options, their impact, and an evidence-based recommendation. If there is no real choice, make the judgement.</td></tr>
+      <tr><td>The user explicitly asks for one format</td><td>Return only that structure, with no preface, summary, or follow-up question.</td></tr>
+      <tr><td>Creative work, ideation, or fiction</td><td>Do not force a five-section plan, engineering workflow, or calculation steps. Safety, privacy, and required format still apply.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Why this matters</h3>
+  <p>You see the conclusion sooner and can trace why the agent reached it. If the user supplies keys, headings, enums, or a schema, this instruction preserves them exactly instead of breaking downstream compatibility in the name of “better wording.”</p>
+</section>
+
+<!-- ============== Group 4: Facts and sources ============== -->
+<section id="g4">
+  <h2><span class="num">4</span>Read before judging; leave unknowns unknown</h2>
+  <p class="lede">This instruction does not let a timestamp, search hit, summary, or memory substitute for actual content. That does not mean reading the entire world every time. It means establishing enough coverage, then naming what remains uncovered.</p>
+
+  <h3>Three core rules</h3>
+  <table>
+    <thead><tr><th>Rule</th><th>What the agent does</th><th>What you get</th></tr></thead>
+    <tbody>
+      <tr><td>Verifiable external facts</td><td>Check dates, versions, prices, law, people, companies, and platform behavior first. Mark what cannot be verified.</td><td>Changing information is not presented as settled fact.</td></tr>
+      <tr><td>Target content and sources of truth</td><td>Read direct context. For a large scope, use search and an index to map coverage, then say what was not covered.</td><td>The agent knows the real location it is changing and does not treat a summary as the source.</td></tr>
+      <tr><td>Handoffs and earlier conclusions</td><td>Use a summary only as a lead. Before changing or claiming completion, read back authoritative sources, actual files, saved output, and tool evidence.</td><td>A new chat or agent does not mistake an old claim for fact.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>“Unverified” is not a failure.</strong> It means there is not enough evidence for a conclusion yet. The real risk is presenting unverified content as confirmed, or using “not applicable” to hide that nothing was checked.
+  </div>
+</section>
+
+<!-- ============== Group 5: Changes and delivery ============== -->
+<section id="g5">
+  <h2><span class="num">5</span>Before and after: make a change easy to check</h2>
+  <p class="lede">When you need to paste a change yourself, the agent should not merely say “done.” It gives a findable anchor, clearly separate before/after content, and one way to check the result.</p>
+
+  <h3>When you need to paste the change yourself</h3>
+  <p>The agent first tells you which sentence or section to find, then separates the before and after content. You can see what changed, where to put it, and how to read it back to check.</p>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">How to check a manual replacement at a glance</text>
+
+      <!-- Anchor box -->
+      <rect x="80" y="50" width="640" height="44" rx="8" fill="#fff5e6" stroke="#f0b27a"/>
+      <text x="100" y="78" font-size="13" font-weight="bold" fill="#c87a30">📌 Exact anchor</text>
+      <text x="220" y="78" font-size="12" fill="#1a1a1a">(old assumption): create a fixed folder when location is unknown</text>
+
+      <!-- Arrow -->
+      <line x1="400" y1="100" x2="400" y2="124" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="395,122 400,130 405,122" fill="#1a1a1a"/>
+
+      <!-- Before / after side by side -->
+      <g>
+        <rect x="80" y="138" width="300" height="160" rx="8" fill="#fdecea" stroke="#e57373" stroke-width="1.5"/>
+        <rect x="80" y="138" width="300" height="32" rx="8" fill="#e57373"/>
+        <text x="230" y="160" text-anchor="middle" fill="white" font-size="13" font-weight="bold">Before (original)</text>
+        <text x="100" y="190" font-size="11" fill="#1a1a1a" font-family="monospace">[Old assumption] Location unknown?</text>
+        <text x="100" y="208" font-size="11" fill="#1a1a1a" font-family="monospace">Create a parallel folder.</text>
+        <text x="100" y="226" font-size="11" fill="#1a1a1a" font-family="monospace"></text>
+        <text x="100" y="244" font-size="11" fill="#1a1a1a" font-family="monospace"></text>
+        <text x="100" y="280" font-size="11" fill="#5b6470" font-style="italic">↑ Find this exact text</text>
+
+        <rect x="420" y="138" width="300" height="160" rx="8" fill="#e8f5e9" stroke="#7cb98a" stroke-width="1.5"/>
+        <rect x="420" y="138" width="300" height="32" rx="8" fill="#7cb98a"/>
+        <text x="570" y="160" text-anchor="middle" fill="white" font-size="13" font-weight="bold">After (new text)</text>
+        <text x="440" y="190" font-size="11" fill="#1a1a1a" font-family="monospace">New files follow the existing</text>
+        <text x="440" y="208" font-size="11" fill="#1a1a1a" font-family="monospace">directory, source, or platform location.</text>
+        <text x="440" y="226" font-size="11" fill="#1a1a1a" font-family="monospace">If none is known, first confirm</text>
+        <text x="440" y="244" font-size="11" fill="#1a1a1a" font-family="monospace">a safe workspace and delivery method.</text>
+        <text x="440" y="280" font-size="11" fill="#5b6470" font-style="italic">↑ Safe to replace</text>
+      </g>
+
+      <!-- Arrow down to changelog -->
+      <line x1="400" y1="298" x2="400" y2="318" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="395,316 400,324 405,316" fill="#1a1a1a"/>
+
+      <rect x="160" y="328" width="480" height="40" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
+      <text x="180" y="354" font-size="13" font-weight="bold" fill="#0d7377">✅ Check</text>
+      <text x="295" y="354" font-size="12" fill="#1a1a1a">After pasting, search for the new text or read back the page or file</text>
+    </svg>
+    <div class="svg-caption">Figure 4: A manual replacement needs four things: an anchor, before, after, and a check.</div>
+  </div>
+
+  <h3>You do not need the whole source every time</h3>
+  <ul>
+    <li><strong>The agent can safely edit files.</strong> List the file, key difference, and acceptance result; do not paste the whole source again.</li>
+    <li><strong>You must paste manually.</strong> Use the anchor, before/after content, and check shown above.</li>
+    <li><strong>Deletion, move, batch overwrite, or an irreversible action.</strong> State the target and impact clearly, then get confirmation before acting.</li>
+  </ul>
+
+  <div class="callout"><strong>Keep one current place for the same rule.</strong> Before adding or changing a rule, the agent checks whether older wording can be merged instead of copied into another file. You should not later find several competing “latest versions.”</div>
+</section>
+
+<!-- ============== Group 6: Calculations and structure ============== -->
+<section id="g6">
+  <h2><span class="num">6</span>Show working when it helps; answer directly when it does not</h2>
+  <p class="lede">Calculations, JSON, and diagrams share the same principle: follow the existing structure, choose a method that can be checked, and do not add steps merely to look thorough.</p>
+
+  <h3>Scale calculation to the risk</h3>
+  <p>Check simple calculations and answer directly. Show full working and substitution checks only when the calculation is multi-step, error-prone, high-risk, or you ask for the process. That keeps financial work, unit conversion, discounts, tax, and data calculation traceable without making every easy answer long.</p>
+
+  <h3>Structured output</h3>
+  <table>
+    <thead><tr><th>Delivery</th><th>What this instruction requires</th></tr></thead>
+    <tbody>
+      <tr><td>JSON</td><td>Follow the existing schema. Omit optional fields with no data unless the schema requires <code>null</code>. Invent no fields and verify that the result parses.</td></tr>
+      <tr><td>Mermaid</td><td>Use <code>sequenceDiagram</code> for interaction and <code>flowchart</code> for process or branches. Quote ambiguous text and validate syntax.</td></tr>
+      <tr><td>Lists, tables, and reports</td><td>Put the conclusion the reader needs first, then keep only the useful detail. Do not invent fields or rename existing keys.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============== Group 7: Agent workspace ============== -->
+<section id="g7">
+  <h2><span class="num">7</span>Workspace access needs workspace boundaries</h2>
+  <p class="lede">This instruction sets action boundaries for agents that read and write projects, run commands, and touch external services. It does not replace sandboxing, permissions, or confirmation dialogs, but it tells the agent to use those protections correctly.</p>
+
+  <div class="svg-wrap">
+    <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">How an agent works inside your workspace</text>
+
+      <!-- Stage boxes -->
+      <g>
+        <rect x="40" y="70" width="130" height="80" rx="10" fill="#0d7377"/>
+        <text x="105" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Clarify the job</text>
+        <text x="105" y="118" text-anchor="middle" fill="white" font-size="10">Goal · scope</text>
+        <text x="105" y="132" text-anchor="middle" fill="white" font-size="10">acceptance · risk</text>
+      </g>
+
+      <line x1="175" y1="110" x2="195" y2="110" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="193,106 200,110 193,114" fill="#1a1a1a"/>
+
+      <g>
+        <rect x="200" y="70" width="130" height="80" rx="10" fill="#14a098"/>
+        <text x="265" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Read what matters</text>
+        <text x="265" y="118" text-anchor="middle" fill="white" font-size="10">see what will change</text>
+        <text x="265" y="132" text-anchor="middle" fill="white" font-size="10">and what is authoritative</text>
+      </g>
+
+      <line x1="335" y1="110" x2="355" y2="110" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="353,106 360,110 353,114" fill="#1a1a1a"/>
+
+      <g>
+        <rect x="360" y="70" width="130" height="80" rx="10" fill="#f0b27a"/>
+        <text x="425" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Change only what is needed</text>
+        <text x="425" y="118" text-anchor="middle" fill="white" font-size="10">stop if the scope changes</text>
+        <text x="425" y="132" text-anchor="middle" fill="white" font-size="10">do not expand on its own</text>
+      </g>
+
+      <line x1="495" y1="110" x2="515" y2="110" stroke="#1a1a1a" stroke-width="2"/>
+      <polygon points="513,106 520,110 513,114" fill="#1a1a1a"/>
+
+      <g>
+        <rect x="520" y="70" width="130" height="80" rx="10" fill="#7cb98a"/>
+        <text x="585" y="98" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Check the result</text>
+        <text x="585" y="118" text-anchor="middle" fill="white" font-size="10">use a fitting check</text>
+        <text x="585" y="132" text-anchor="middle" fill="white" font-size="10">do not hide a problem</text>
+      </g>
+
+      <line x1="655" y1="110" x2="675" y2="110" stroke="#1a1a1a" stroke-width="2" stroke-dasharray="4,3"/>
+      <polygon points="673,106 680,110 673,114" fill="#1a1a1a"/>
+
+      <g>
+        <rect x="680" y="70" width="100" height="80" rx="10" fill="white" stroke="#0d7377" stroke-width="2" stroke-dasharray="5,3"/>
+        <text x="730" y="98" text-anchor="middle" fill="#0d7377" font-size="13" font-weight="bold">tell you the result</text>
+        <text x="730" y="118" text-anchor="middle" fill="#5b6470" font-size="10">check result</text>
+        <text x="730" y="132" text-anchor="middle" fill="#5b6470" font-size="10">remaining risk</text>
+      </g>
+
+      <text x="400" y="190" text-anchor="middle" font-size="12" fill="#5b6470">For work with a larger impact, investigate first; irreversible, external, or public actions need confirmation</text>
+    </svg>
+    <div class="svg-caption">Figure 7: The agent clarifies, reads, changes, and checks as needed. Small work does not need every stage spelled out.</div>
+  </div>
+
+  <h3>Five boundaries that matter most</h3>
+  <table>
+    <thead><tr><th>Area</th><th>What this instruction requires</th></tr></thead>
+    <tbody>
+      <tr><td>Scope and files</td><td>Read the target and direct context first. Change only task-related content. Stop on concurrent or unexpected changes; never undo user work.</td></tr>
+      <tr><td>Safe writing</td><td>Do not assume a folder name or wrap file edits in an external shell. Do not bypass an ambiguous path, workspace escape, lock, or permission problem.</td></tr>
+      <tr><td>Secrets and destructive actions</td><td>Do not put tokens, keys, or certificates in replies, logs, or commands. Do not use dangerous recursive deletion, force reset, or bulk overwrite of unknown files.</td></tr>
+      <tr><td>External tools and platforms</td><td>Check official documentation before changing integrations, authentication, deployment, paid actions, or fast-changing interfaces. Do not guess a high-risk contract.</td></tr>
+      <tr><td>External side effects</td><td>Push, publish, deploy, send messages, schedule, change access, spend money, and delete data each need explicit authorization before execution.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>Important limit:</strong> This instruction is behavioral guidance, not a permission system. Keep using your tool’s workspace limits, version control, and confirmation controls. They are the technical last line of defense.
+  </div>
+</section>
+
+<!-- ============== Optional companions ============== -->
+<section id="handoff">
+  <h2>Optional: Agent Handoff Kit and Innovation Loop</h2>
+  <p class="lede">This instruction governs how an agent reasons, acts, and checks inside a workspace in this task. It works on its own. Add other tools only when a longer project actually needs them.</p>
+
+  <div class="callout">
+    <strong>Agent Handoff Kit (optional):</strong> preserves the current state, next action, risks, and handoff clues so a future agent or chat can continue from the real project state. This instruction does not depend on the Kit and does not copy its project process into the prompt.
+    <br><br>
+    <strong>Agent Handoff Innovation Loop (optional):</strong> helps a long project keep direction, research validation, requirements, and plans connected. A short task does not need this extra layer just to look complete.
+    <br><br>
+    In short: <strong>this instruction guides today’s work; the Kit carries work safely across chats; Innovation Loop supports longer exploration and validation.</strong>
+  </div>
+</section>
+
+<!-- ============== Set up ============== -->
+<section id="install">
+  <h2>Set up</h2>
+  <p class="lede">Choose a tool you already use that can act inside a project or folder you authorized. Copy the full prompt in your chosen language into that tool’s project or workspace instruction location. Do not paste both language versions into one place.</p>
+
+  <h3>Common agentic AI tools</h3>
+  <table>
+    <thead><tr><th>Tool</th><th>Simplest place to put it</th><th>Official guide</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Claude Code</strong></td><td>Put the chosen language version in a root <code>CLAUDE.md</code>.</td><td><a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener">Memory / CLAUDE.md</a></td></tr>
+      <tr><td><strong>OpenAI Codex</strong></td><td>Put the chosen language version in a root <code>AGENTS.md</code>.</td><td><a href="https://developers.openai.com/codex/guides/agents-md/" target="_blank" rel="noopener">AGENTS.md</a></td></tr>
+      <tr><td><strong>Cursor</strong></td><td>Use the chosen language version in Project Rules or <code>AGENTS.md</code>.</td><td><a href="https://docs.cursor.com/context/rules-for-ai" target="_blank" rel="noopener">Rules</a></td></tr>
+      <tr><td><strong>Antigravity</strong></td><td>Add the chosen language version to the workspace’s always-on rule location.</td><td><a href="https://antigravity.google/docs/rules-workflows" target="_blank" rel="noopener">Rules &amp; Workflows</a></td></tr>
+    </tbody>
+  </table>
+
+  <h3>How to check after pasting</h3>
+  <ol>
+    <li>Give the agent a low-risk small task. Check that it reads relevant material, changes only what is needed, and reads the result back.</li>
+    <li>Give it a research question with missing information. Check that it separates fact, inference, and what is unverified.</li>
+    <li>Give it a task with an external side effect or where a mistake would have a larger impact. Check that it states impact and keeps an unchallenged plan pending.</li>
+  </ol>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section id="faq">
+  <h2>FAQ</h2>
+  <details><summary>Q1: Will this instruction make the agent slow?</summary><p>It should not. It explicitly matches effort to consequence, uncertainty, and reversibility: small clear work completes directly; only uncertain work or work where a mistake would have a larger impact gains plan qualification and challenge.</p></details>
+  <details><summary>Q2: Does it support ordinary web ChatGPT or Claude chat?</summary><p>No. This instruction is for agents that can act in an authorized workspace. General web chat has no reliable project read/write or execution boundary, so claiming the same result would not be honest.</p></details>
+  <details><summary>Q3: Can I use only some rules?</summary><p>Do not remove rules by hand. They support each other. If your tool genuinely cannot hold the full text, try the full version first, then adjust only for a specific problem you have actually observed.</p></details>
+  <details><summary>Q4: How can I tell whether a plan is only “well formatted”?</summary><p>Look for a declared pending-challenge, executable, or blocked state. Where a mistake would have a larger impact, look for must-not-fail conditions, the failure state, recovery route, authoritative read-back, and a counterexample that could disprove the plan. Without these, it should not call itself executable.</p></details>
+</section>
+
+</main>
+
+<footer>
+  <p>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.en.md" target="_blank" rel="noopener">📄 English prompt</a>
+    <a href="README.en.md">📖 English overview</a>
+    <a href="guide.html">Traditional Chinese guide</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.md" target="_blank" rel="noopener">Traditional Chinese prompt</a>
+    <a href="../../README.en.md">🏠 Home</a>
+    <a href="#overview">⬆ Back to top</a>
+  </p>
+  <p style="margin-top:14px">Adam's AI Instructions · Project-based AI Agent Instructions</p>
+</footer>
+
+<script>
+  // Scenario tab switching
+  document.querySelectorAll('.tab-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var tab = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(function(b){
+        b.classList.toggle('active', b.dataset.tab === tab);
+      });
+      document.querySelectorAll('.panel').forEach(function(p){
+        p.classList.toggle('active', p.dataset.panel === tab);
+      });
+    });
+  });
+
+  // Facebook profile preview: load its public image; retain the Facebook icon if it is unavailable.
+  (function(){
+    var iconBox = document.querySelector('.fb-card .fb-icon');
+    if (!iconBox) return;
+    var fbUrl = 'https://www.facebook.com/chan.adam';
+    var apiUrl = 'https://api.microlink.io/?url=' + encodeURIComponent(fbUrl);
+    fetch(apiUrl)
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        var imgUrl = d && d.data && (
+          (d.data.image && d.data.image.url) ||
+          (d.data.logo && d.data.logo.url)
+        );
+        if (!imgUrl) return;
+        var img = new Image();
+        img.onload = function(){
+          iconBox.innerHTML = '';
+          iconBox.style.background = 'transparent';
+          img.style.cssText = 'width:100%;height:100%;border-radius:50%;object-fit:cover;display:block';
+          img.alt = 'Adam Chan';
+          iconBox.appendChild(img);
+        };
+        img.src = imgUrl;
+      })
+      .catch(function(){ /* Keep the fallback icon. */ });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,82 +1,60 @@
-# Adam's AI Instructions | For agents that actually do the work
+# Project-based AI Agent Instructions
 
-[繁體中文](README.md) · [English instruction](prompts/02-claude-code-meta-instruction/prompt.en.md) · [English guide](prompts/02-claude-code-meta-instruction/guide.en.html) · [Traditional Chinese instruction](prompts/02-claude-code-meta-instruction/prompt.md) · [Traditional Chinese guide](prompts/02-claude-code-meta-instruction/guide.html)
+*Adam's AI Instructions*
 
-This is not a template that tells an AI to “be obedient.”
+[繁體中文](README.md) · [English complete instruction](prompts/02-claude-code-meta-instruction/prompt.en.md) · [English guide](prompts/02-claude-code-meta-instruction/guide.en.html) · [Traditional Chinese complete instruction](prompts/02-claude-code-meta-instruction/prompt.md) · [Traditional Chinese guide](prompts/02-claude-code-meta-instruction/guide.html)
 
-It gives an AI agent that can read files, change a workspace, use tools, organize material, or prepare a release a steadier way to work: understand first, act second, move quickly when the risk is low, stop when it is not, and leave work that can be checked.
+Once an AI can enter your project or workspace—read files, edit files, use tools, or prepare something for release—the question is no longer only whether its answers sound good. You need to know what it looked at, why it took an action, and how you can check the result.
 
-You do not need to be a developer. Put it in the instructions for an agent working inside a project or folder you have deliberately authorized.
+This **complete global instruction** gives that kind of AI agent a way to work. Put it where your tool applies lasting instructions to a project or workspace. The agent first understands the task and the rules already in place, then gets on with the work. Small jobs stay simple. Work involving data, secrets, publication, or several connected changes comes with a clear account of the risk, outcome, and way to check it.
 
-> Ordinary ChatGPT and Claude web chat are outside this project’s support scope. They can help you think, but they are not treated here as reliable project agents for local files and cross-session delivery.
+It is for Claude Code, OpenAI Codex, Cursor, Antigravity, and similar AI agents that can work inside a workspace you have authorized. Ordinary web chat is outside this project's scope.
 
-## What it changes
+## What changes after you install it
 
-Without clear boundaries, an agent can sound decisive while doing the wrong thing: editing before it has read the project, turning a guess into a research conclusion, or treating “a file was written” as proof that the job is done.
+Ask an agent to update a README and it should not edit on sight. It first looks for the existing style, the relevant rules, and a result it can read back afterwards. Then it changes only what is needed.
 
-This instruction asks it to do the useful things first:
+Ask it to research, organize information, or prepare a release and it separates verified facts from open questions and from choices that really need you. Deletion, overwrite, public release, access changes, and spending still wait for your final confirmation.
 
-- read project rules, relevant files, and available checks before changing code;
-- separate sources, dates, facts, inference, and unverified material in research;
-- establish the real source of truth and delivery location before organizing knowledge, then read back after a write;
-- state the impact and request the right confirmation before deletion, overwrite, publication, access changes, money, or secrets;
-- keep small work light, but challenge a plan where a mistake would have a larger impact before calling it executable.
+This does not turn every small task into a process. A clear, reversible fix can be completed directly. Extra checking is for work where an error would be harder to undo or would affect more than one thing.
 
-## Choose your instruction language
+## Start here
 
-Choose either the English or Traditional Chinese version and paste it into the Agent tool you already use. They set the same working boundaries; the difference is the agent’s default reply language.
-
-| Tool | Where to put the instruction |
-|---|---|
-| Claude Code | Put it in `CLAUDE.md` at the project root. |
-| OpenAI Codex | Put it in `AGENTS.md` at the project root. |
-| Cursor | The simplest path is root `AGENTS.md`; Project Rules also work. |
-| Antigravity | Create an always-on Workspace Rule and paste the instruction. |
-
-## Start in three minutes
-
-1. Open the [English instruction](prompts/02-claude-code-meta-instruction/prompt.en.md) and copy it.
-2. Open the right project or workspace in your tool. Do not begin by giving an agent an unrelated personal folder.
-3. Paste the prompt where the table says, save it, and begin a fresh task.
+1. Open the right project or workspace in your AI tool. Do not begin by giving it an unrelated personal folder.
+2. Choose the language you want the agent to use, then copy one complete instruction: [English complete instruction](prompts/02-claude-code-meta-instruction/prompt.en.md) or [Traditional Chinese complete instruction](prompts/02-claude-code-meta-instruction/prompt.md). This is the full set of global working rules for your AI agent, not sample text.
+3. Paste the full text into the place where your tool keeps lasting instructions or rules for that project or workspace. Save it, then start a new task.
 4. Try one small, real job: “Read this project’s rules and test instructions, then fix one typo in the README and read it back to confirm.”
 
-Current official setup references:
+In common tools, that place is usually called:
 
-- [Claude Code: CLAUDE.md](https://code.claude.com/docs/en/memory)
-- [OpenAI Codex: AGENTS.md](https://developers.openai.com/codex/guides/agents-md/)
-- [Cursor: Rules and AGENTS.md](https://docs.cursor.com/context/rules-for-ai)
-- [Antigravity: Rules](https://antigravity.google/docs/rules-workflows)
+| Tool | Project instruction location |
+|---|---|
+| Claude Code | `CLAUDE.md` |
+| OpenAI Codex | `AGENTS.md` |
+| Cursor | `AGENTS.md` or Project Rules |
+| Antigravity | Workspace Rule |
 
-## Why it does not make work complicated
+To see how the agent responds in four common situations, open the [English guide](prompts/02-claude-code-meta-instruction/guide.en.html) or [Traditional Chinese guide](prompts/02-claude-code-meta-instruction/guide.html).
 
-This instruction does not ask an agent to stop and write a plan for everything. It first judges whether the work is clear, reversible, and likely to have a meaningful impact if something goes wrong.
+## What the instruction protects
 
-That means a clear small fix can be completed and read back directly. Work involving data, secrets, public release, or several dependent changes gets the extra checks it needs. You get fewer unnecessary back-and-forths, and clearer evidence and confirmation when they matter.
+- Before changing something, the agent reads the rules, files, and direct context that matter to the task.
+- In research, it separates sources, dates, facts, inferences, and material that is still unverified.
+- After a write, it reads the result back. If it does not know a safe delivery location, it does not invent a parallel folder structure.
+- An important plan explains how success will be proven, what remains after failure, and how recovery works.
+- When a core source or safety condition is missing, the agent explains the block plainly instead of handing you a polished plan that is not safe to use.
+
+## What it cannot decide for you
+
+The instruction does not replace your tool's permissions, sandbox, version control, or backups. Having a prompt does not mean a system is already safe.
+
+Public release, payment, pushing, deletion, access changes, and other irreversible actions still need your clear confirmation. The point is to help the agent make those decisions easier to see before you make them.
 
 ## Latest update: v0.8.2
 
 For work with a larger impact, the agent looks for ways a plan could fail before calling it ready to run. Small work stays direct. You can see the scope, risk, and how to check the result before you approve action. [Read what changed](docs/releases/v0.8.2.md)
 
-## With Agent Handoff Kit and Innovation Loop
-
-This instruction governs how the agent works in this task. [Agent Handoff Kit](https://adamchanadam.github.io/agent-handoff-kit/agent-handoff-kit-intro.html) preserves state, handoff, and closeout across work sessions. [Innovation Loop](https://github.com/Adamchanadam/agent-handoff-innovation-loop) helps a longer project move from ideas through research and validation into a plan.
-
-Use only the layer you need:
-
-| Need | Use |
-|---|---|
-| An agent that reads first, changes carefully, checks its work, and knows when to stop | Project-based AI Agent Instructions |
-| A new session or agent that can pick up where the last one stopped | Agent Handoff Kit |
-| A long project that needs exploration, validation, and planning to connect | Innovation Loop |
-
-## What this cannot do for you
-
-- It cannot override the tool’s permissions, sandbox, or company policy.
-- A prompt is not a backup, access control, or security boundary by itself.
-- It does not turn ordinary chat into a reliable project agent.
-- It never authorizes publishing, payment, pushing, deletion, or permission changes on your behalf.
-
-## More
+## More to explore
 
 - [English overview](prompts/02-claude-code-meta-instruction/README.en.md)
 - [Traditional Chinese overview](prompts/02-claude-code-meta-instruction/README.md)
@@ -84,6 +62,12 @@ Use only the layer you need:
 - [Traditional Chinese interactive guide](prompts/02-claude-code-meta-instruction/guide.html)
 - [Changelog](CHANGELOG.md)
 
+## Optional: Agent Handoff Kit and Innovation Loop
+
+These instructions work on their own. They govern how an agent judges, changes, and checks work in the current task.
+
+For work that continues across several conversations or agents, [Agent Handoff Kit](https://adamchanadam.github.io/agent-handoff-kit/agent-handoff-kit-intro.html) can preserve the current state, handoff, and closeout information. For a longer project that needs to move from ideas through research and validation into a plan, see [Innovation Loop](https://github.com/Adamchanadam/agent-handoff-innovation-loop). They are useful additions when you need them, not prerequisites for using these instructions.
+
 ## License and feedback
 
-This project is licensed under the [MIT License](LICENSE). If your experience differs from this guide, share the tool name, instruction location, and a reproducible scenario. Do not include secrets or private file content.
+This project is licensed under the [MIT License](LICENSE). If your experience differs from the guide, share the tool name, instruction location, and a reproducible scenario. Do not include secrets or private file content.

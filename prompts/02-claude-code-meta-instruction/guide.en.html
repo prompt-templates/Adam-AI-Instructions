@@ -757,17 +757,17 @@
         <div class="scenario-tag good-tag">✅ With this instruction</div>
         <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">Change the upgrade flow, but do not damage old data.</div></div>
         <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble fpfr-output">
-          <strong class="lead">This is not a polished to-do list. It is a full-picture plan with a qualification status.</strong>
+          <strong class="lead">This is not a polished to-do list. It is an executable full-picture plan that has completed its applicable challenge.</strong>
           <ul class="fpfr-mini-list">
-            <li><strong>End-state snapshot</strong> — 🔎 Task understanding: change the upgrade flow without harming old data;<br><em>pending challenge</em>. State invariants, exclusions, and known versus unverified state.</li>
+            <li><strong>End-state snapshot</strong> — 🔎 Task understanding: change the upgrade flow without harming old data;<br><em>Executable</em>. State invariants, exclusions, and known versus unverified state.</li>
             <li><strong>Deliverables</strong> — List affected upgrade code, data format, and documentation; do not invent an absolute path that is unknown.</li>
             <li><strong>Success evidence</strong> — Old data can be read back; interruption leaves a knowable state, recovery entry, and authoritative read-back.</li>
             <li><strong>Acceptance tests</strong> — Test normal upgrade plus interruption, conflict, version reversal, and a false-green case where data is still harmed.</li>
             <li><strong>Goal links</strong> — Link external platform behavior to official sources and project changes to their current source of truth.</li>
           </ul>
-          <span class="fpfr-closing">Until the applicable challenge is complete, this remains a pending-challenge plan and no changes begin.</span>
+          <span class="fpfr-closing">The applicable challenge is complete. Because this changes old data, work still waits for your explicit confirmation.</span>
         </div></div>
-        <div class="scenario-summary good-summary">✓ See the full end state, evidence, and counterexamples first; only an applicable challenge can promote it to executable</div>
+        <div class="scenario-summary good-summary">✓ You receive an executable plan only after its checks are complete; otherwise the agent explains the block directly</div>
       </div>
     </div>
   </div>
@@ -837,7 +837,7 @@
     <tbody>
       <tr><td>The agent edits before it understands the scope</td><td>Read project guidance, the target, and direct context first. Search wider only when impact is unknown.</td></tr>
       <tr><td>A simple task gains too much ceremony and becomes slow</td><td>Match effort to consequence, uncertainty, and reversibility. Small clear work does not need a full-picture plan.</td></tr>
-      <tr><td>A polished plan has no recovery or failure model</td><td>Plans for work where a mistake would have a larger impact are labelled pending challenge, executable, or blocked, then get the appropriate independent challenge.</td></tr>
+      <tr><td>A polished plan has no recovery or failure model</td><td>For work where a mistake would have a larger impact, the agent completes the applicable challenge before giving you an executable plan; if it cannot, it states the block directly.</td></tr>
       <tr><td>Research mixes summaries, memory, and inference</td><td>Separate source, date, fact, inference, and what remains unverified.</td></tr>
       <tr><td>The agent invents a fixed folder or parallel structure</td><td>Use the existing directory, source-of-truth location, or platform delivery location; otherwise provide manually savable content.</td></tr>
       <tr><td>“The content is ready” becomes permission to push or publish</td><td>External writes, public release, access changes, spending, and data deletion each need their own explicit authorization.</td></tr>
@@ -895,11 +895,10 @@
 <section id="g2">
   <h2><span class="num">2</span>Full-picture plan qualification: see the whole plan before deciding it can run</h2>
   <p class="lede">The five sections are not there to make a plan longer. They let you see scope, deliverables, evidence, counterexamples, and sources before action. Only work where a mistake would have a larger impact needs plan qualification and an applicable challenge.</p>
-  <h3>Read the plan status first</h3>
-  <table><thead><tr><th>Status</th><th>What it means</th><th>What happens next</th></tr></thead><tbody>
-    <tr><td><strong>Pending challenge</strong></td><td>The plan has an outline, but it may still miss an important risk.</td><td>Have someone who did not write the plan look for ways it could fail, starting from the original request.</td></tr>
+  <h3>What you will receive</h3>
+  <table><thead><tr><th>Result</th><th>What it means</th><th>What happens next</th></tr></thead><tbody>
     <tr><td><strong>Executable</strong></td><td>There is enough evidence, a clear set of must-not-fail conditions, and a way to check the result.</td><td>Obtain the approval appropriate to the consequence. Executable is not user authorization.</td></tr>
-    <tr><td><strong>Blocked</strong></td><td>A core source, capability, or safety condition is still missing.</td><td>Name what is missing. Do not replace evidence with confident prose.</td></tr>
+    <tr><td><strong>Blocked</strong></td><td>A core source, capability, or safety condition is still missing, so the agent does not hand you a pretend-complete plan.</td><td>It names the gap, the safe checks already completed, and the condition needed to continue.</td></tr>
   </tbody></table>
   <h3>When this extra layer is warranted</h3>
   <p>Not merely because there are several files. Low-risk single-file edits, a new file with a clear location, independent simple changes, read-only work, and an already approved plan do not trigger it. It is for work that is hard to reverse, can contaminate data or versions when it fails, or must preserve one core promise across several surfaces.</p>
@@ -995,7 +994,7 @@
     <div class="svg-caption">Figure 2: First make the sources and scope clear; write the five plan sections only when the evidence is sufficient.</div>
   </div>
   <h3>What the agent does</h3>
-  <p>It states must-not-fail conditions such as “a failed check cannot be marked successful,” “unrecognized content cannot be guessed over,” and “the state must be knowable after interruption.” Where a mistake would have a larger impact, someone who did not write the plan starts from the original request and tests interruption, conflict, concurrency, version reversal, boundary escape, recovery, and false-green cases. A problem affecting safety, permissions, data integrity, or core acceptance cannot simply be renamed “accepted risk.”</p>
+  <p>It states must-not-fail conditions such as “a failed check cannot be marked successful,” “unrecognized content cannot be guessed over,” and “the state must be knowable after interruption.” Where a mistake would have a larger impact, someone who did not write the plan starts from the original request and tests interruption, conflict, concurrency, version reversal, boundary escape, recovery, and false-green cases. Only then does the agent deliver the full plan. A problem affecting safety, permissions, data integrity, or core acceptance cannot simply be renamed “accepted risk.”</p>
   <h3>How the five sections help</h3>
   <p><strong>End-state snapshot</strong> states scope, status, and what must not fail. <strong>Deliverables</strong> name real resources and actions. <strong>Success evidence</strong> includes failure state and recovery. <strong>Acceptance tests</strong> include a counterexample that can disprove the plan. <strong>Goal links</strong> connect the work to its sources. Without any one of these, the agent cannot honestly call the plan complete.</p>
 </section>
@@ -1296,7 +1295,7 @@
   <ol>
     <li>Give the agent a low-risk small task. Check that it reads relevant material, changes only what is needed, and reads the result back.</li>
     <li>Give it a research question with missing information. Check that it separates fact, inference, and what is unverified.</li>
-    <li>Give it a task with an external side effect or where a mistake would have a larger impact. Check that it states impact and keeps an unchallenged plan pending.</li>
+    <li>Give it a task with an external side effect or where a mistake would have a larger impact. Check that it completes the applicable challenge before giving an executable plan; if a condition is missing, it should explain the block instead of giving a halfway plan.</li>
   </ol>
 </section>
 
@@ -1306,7 +1305,7 @@
   <details><summary>Q1: Will this instruction make the agent slow?</summary><p>It should not. It explicitly matches effort to consequence, uncertainty, and reversibility: small clear work completes directly; only uncertain work or work where a mistake would have a larger impact gains plan qualification and challenge.</p></details>
   <details><summary>Q2: Does it support ordinary web ChatGPT or Claude chat?</summary><p>No. This instruction is for agents that can act in an authorized workspace. General web chat has no reliable project read/write or execution boundary, so claiming the same result would not be honest.</p></details>
   <details><summary>Q3: Can I use only some rules?</summary><p>Do not remove rules by hand. They support each other. If your tool genuinely cannot hold the full text, try the full version first, then adjust only for a specific problem you have actually observed.</p></details>
-  <details><summary>Q4: How can I tell whether a plan is only “well formatted”?</summary><p>Look for a declared pending-challenge, executable, or blocked state. Where a mistake would have a larger impact, look for must-not-fail conditions, the failure state, recovery route, authoritative read-back, and a counterexample that could disprove the plan. Without these, it should not call itself executable.</p></details>
+  <details><summary>Q4: How can I tell whether a plan is only “well formatted”?</summary><p>Where a mistake would have a larger impact, look for must-not-fail conditions, the failure state, recovery route, authoritative read-back, and a counterexample that could disprove the plan. Without these, the agent should not give you an executable plan; it should explain what is blocking it instead.</p></details>
 </section>
 
 </main>

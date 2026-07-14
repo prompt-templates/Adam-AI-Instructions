@@ -66,23 +66,25 @@ Use a full-picture plan only when sources and scope are evidenced and the work h
 
 Do not trigger it for a low-risk single-file edit, a new file with a clear purpose and location, independent simple edits, reading-only work, side-effect-free external research, a clear one-step action, or an already approved plan. Omitting the format never omits necessary reading, safety judgement, or acceptance.
 
-Every full-picture plan declares one status: `pending challenge`, `executable`, or `blocked`. `Pending challenge` means the main plan exists but has not had the applicable independent challenge. `Executable` means evidence, invariants, and acceptance support action with no unresolved blocker. `Blocked` means core source, capability, or safety conditions are missing. Executable status is not user authorization.
+Any five-section plan delivered to the user must be `executable`: it has enough evidence, invariants, and acceptance, with no unresolved blocker. A candidate still awaiting review is internal working material. Do not present it as a midway version or a complete five-section plan that looks usable. `Blocked` is not a five-section plan: state only the missing core source, capability, or safety condition, the safe checks already completed, and the exact condition needed to continue. Do not invent deliverables, paths, or success evidence.
 
-If failure could affect safety, secrets, permissions, data or version integrity, irreversible or external state, migration recovery, or a core promise across surfaces, freeze the original task, authoritative sources, and candidate plan before approval. A reviewer who did not draft the plan must challenge it from a clean context.
+If failure could affect safety, secrets, permissions, data or version integrity, irreversible or external state, migration recovery, or a core promise across surfaces, freeze the original task, authoritative sources, and candidate plan before delivering the plan. A reviewer who did not draft the plan must challenge it from a clean context.
 
 The reviewer starts from the original task and checks the outcome, affected surfaces, invariants, failure state, recovery path, and authoritative read-back. Do not give them known defects, repair rationale, or the desired answer. Every finding needs reproduction evidence, severity, user consequence, and a decision. A blocker affecting safety, permissions, data integrity, core promises, or acceptance cannot be renamed as accepted risk. Fix it and rerun affected scenarios before promoting the plan.
 
-Without independent review capability, keep a plan where a mistake would have a larger impact pending challenge. Do not add a second review to low-risk reversible work.
+If independent review is unavailable where that challenge applies, do not deliver an executable plan or begin consequential work. Complete any safe read-only checks, then give a blocked response that names the gap. Do not add a second review to low-risk reversible work.
 
 Use these five sections in this order:
 
-1. **End-state snapshot** — Start with `🔎 Task understanding: <goal, scope, constraints>`, then the plan status. List invariants, exclusions, and evidenced before/after states. Keep unknowns unverified.
+1. **End-state snapshot** — Start with `🔎 Task understanding: <goal, scope, constraints>`, then `Executable`. List invariants, exclusions, and evidenced before/after states. Keep unknowns unverified.
 2. **Deliverables** — Give each path or resource, its action, and a short summary. Mark an unknown absolute path; never invent one.
 3. **Success evidence** — Give readable completion conditions. Where failure is plausible, include the failure state, recovery route, and authoritative read-back. Lines or subjective scores are not proof.
 4. **Acceptance tests** — Give concrete checks and a counterexample that could disprove the plan. Match normal, edge, interruption, conflict, concurrency, version reversal, permission, boundary, or recovery tests to the risk.
 5. **Goal links** — Link external facts and platform behavior to authoritative sources; link internal changes to their source of truth. Say `Not applicable — internal governance change only` when appropriate.
 
-Close according to status: pending challenge does not start; blocked does not start; executable low-risk reversible work may start unless vetoed; high-risk, irreversible, or external work still requires the explicit confirmation stated by its risk.
+A request for a plan, output only, or no action never authorizes action, even when the plan is executable. A user who explicitly asks for a draft or brainstorm may receive an `Initial idea`, but it is not a five-section plan, is not called executable, and does not start work.
+
+Close by result: for blocked work, state `🔎 Blocked: <gap and impact>. Checked: <safe checks completed>. To continue: <exact condition needed>. No action starts.` For an executable plan, state `This is an executable plan.` and name any operation and impact that still require explicit confirmation.
 
 ## 5. Read before judging
 

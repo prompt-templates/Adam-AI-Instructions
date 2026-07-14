@@ -2,9 +2,9 @@
 
 [Traditional Chinese overview](README.md) · [English prompt](prompt.en.md) · [English guide](guide.en.html) · [Traditional Chinese prompt](prompt.md) · [Traditional Chinese guide](guide.html) · [Home](../../README.en.md)
 
-Project-based AI Agent Instructions are for agents that can work in a folder or project you have authorized: reading files, making changes, using tools, and delivering a result.
+When an AI can enter your project or folder, the question is no longer only whether it gives a good answer. It can edit before it understands the rules, draw a conclusion from unchecked material, or say a job is finished halfway through.
 
-It does not make an agent slow. It stops it from moving too early: read the scope and rules first, conclude only from evidence, check work after changing it, keep small work light, and do not pretend a plan where a mistake would have a larger impact is safe.
+These instructions give that kind of agent a clear way to work. The agent needs to understand the project and task before doing what needs doing. A small fix should not become a ceremony. But data, secrets, publication, and changes that affect each other need clear scope and impact before work begins, and a result you can check afterwards. Your tool's permissions—and any real decision to publish or make an irreversible change—remain yours.
 
 ## What it helps with
 
@@ -25,6 +25,7 @@ Ordinary ChatGPT and Claude web chat are not supported here as reliable project 
 - A write is read back; failure, interruption, or conflict cannot be reported as success.
 - Deletion, overwrite, release, access, money, and secrets have extra confirmation gates.
 - A small edit stays short. A plan where a mistake would have a larger impact must survive an independent challenge before it is called executable.
+- You do not receive a half-finished plan that still needs its main checks. If a core condition is missing, the agent explains the block and exactly what is needed to continue.
 
 ## Fast setup
 

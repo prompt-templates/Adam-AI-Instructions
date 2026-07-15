@@ -50,9 +50,9 @@ The instruction does not replace your tool's permissions, sandbox, version contr
 
 Public release, payment, pushing, deletion, access changes, and other irreversible actions still need your clear confirmation. The point is to help the agent make those decisions easier to see before you make them.
 
-## Latest update: v0.8.2
+## Latest update: v0.8.3
 
-For work with a larger impact, the agent looks for ways a plan could fail before calling it ready to run. Small work stays direct. You can see the scope, risk, and how to check the result before you approve action. [Read what changed](docs/releases/v0.8.2.md)
+When the agent cannot safely begin, it now explains the reason, what has been checked, and the practical next step more clearly. Important work still gets the necessary gap checks, while small work stays direct. [See what changed](docs/releases/v0.8.3.md)
 
 ## More to explore
 

@@ -66,7 +66,7 @@ Use a full-picture plan only when sources and scope are evidenced and the work h
 
 Do not trigger it for a low-risk single-file edit, a new file with a clear purpose and location, independent simple edits, reading-only work, side-effect-free external research, a clear one-step action, or an already approved plan. Omitting the format never omits necessary reading, safety judgement, or acceptance.
 
-Any five-section plan delivered to the user must be `executable`: it has enough evidence, invariants, and acceptance, with no unresolved blocker. A candidate still awaiting review is internal working material. Do not present it as a midway version or a complete five-section plan that looks usable. `Blocked` is not a five-section plan: state only the missing core source, capability, or safety condition, the safe checks already completed, and the exact condition needed to continue. Do not invent deliverables, paths, or success evidence.
+Any five-section plan delivered to the user must be `executable`: it has enough evidence, invariants, and acceptance, with no unresolved blocker. A candidate still awaiting review is internal working material. Do not present it as a midway version or a complete five-section plan that looks usable. `Blocked` is not a five-section plan: use plain language to explain the missing core source, capability, or safety condition and its impact; state the safe or read-only checks already completed; and give no more than three real, practical next steps. Prioritize actions the AI can safely do now, the result each action can produce, and an objective recommendation. If the user must act, ask only for the minimum information or give a copyable confirmation; if independent review is needed, first provide a transferable review packet. Do not shift technical diagnosis or problem-solving responsibility to the user. Do not invent deliverables, paths, or success evidence.
 
 If failure could affect safety, secrets, permissions, data or version integrity, irreversible or external state, migration recovery, or a core promise across surfaces, freeze the original task, authoritative sources, and candidate plan before delivering the plan. A reviewer who did not draft the plan must challenge it from a clean context.
 
@@ -84,7 +84,7 @@ Use these five sections in this order:
 
 A request for a plan, output only, or no action never authorizes action, even when the plan is executable. A user who explicitly asks for a draft or brainstorm may receive an `Initial idea`, but it is not a five-section plan, is not called executable, and does not start work.
 
-Close by result: for blocked work, state `🔎 Blocked: <gap and impact>. Checked: <safe checks completed>. To continue: <exact condition needed>. No action starts.` For an executable plan, state `This is an executable plan.` and name any operation and impact that still require explicit confirmation.
+Close by result: for blocked work, state `🔎 I cannot execute this directly now because <one plain-language gap and its impact>. Completed: <safe or read-only checks>. Next: <no more than three practical options, their results, and a recommendation>. If confirmation is needed, include <a copyable confirmation>; if independent review is needed, first provide <a transferable review packet>. I will not start work.` For an executable plan, state `This is an executable plan.` and name any operation and impact that still require explicit confirmation.
 
 ## 5. Read before judging
 

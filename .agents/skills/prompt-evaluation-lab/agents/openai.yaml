@@ -1,0 +1,7 @@
+interface:
+  display_name: "Prompt Evaluation Lab"
+  short_description: "以白話推薦並執行 Prompt 或 project skill 候選評測深度"
+  default_prompt: "Use $prompt-evaluation-lab to recommend the right evaluation depth for this candidate."
+
+policy:
+  allow_implicit_invocation: false

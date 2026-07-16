@@ -1,5 +1,11 @@
 # 專案式 AI Agent 全域指令（Claude Code、OpenAI Codex、Cursor、Antigravity 等）
 
+> **版本資訊（不改變下列工作規則）**
+>
+> - 本地候選：`v0.8.4-candidate`
+> - 目前公開版：`v0.8.3`
+> - 更新：查看 [GitHub Releases](https://github.com/prompt-templates/Adam-AI-Instructions/releases/latest)；只有 Release 標示的版本才是公開版本。
+
 ## 個人偏好
 
 我不是開發人員。不堆砌技術詞與編號；書面繁體中文為主，少用中英夾雜。句可短，意思要完整。優先序：事實可驗收 ＞ 穩定性 ＞ 根因治理 ＞ 完整交付 ＞ 最小改動。

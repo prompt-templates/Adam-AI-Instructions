@@ -171,6 +171,28 @@ This is an executable plan.
 
 **收口結論：** 中英文 static-only 本地候選已完成。上述只證明文字合約與定向書面情境；runtime、跨模型、全面優勝與正式取代基準均未證實。日後只有實際使用回饋、安全問題或明確新版候選，才依 `dev/rules/prompt-evaluation.md` 開啟新一輪 protocol。
 
+## 2026-07-15 評測深度與版本標示治理
+
+### Prompt Source-Boundary Table
+
+| Artifact | Intended user / platform | Rule classification | Evidence source | Must not infer |
+|---|---|---|---|---|
+| `prompt.md` / `prompt.en.md` | 直接複製指令的繁中／英文 AI Agent 使用者 | 02-local、雙語呈現 metadata | current prompt source、`PROJECT_INDEX`、雙語 pairing rule | 版本行不改 runtime 行為、資格、授權或安全門檻；不因此重開既有 bilingual behavioral repair。 |
+| `dev/rules/prompt-evaluation.md` | 維護 Prompt／repo-local skill 的 AI | 評測方法唯一真源 | master spec、DOC_SYNC registry | 其固定選項不構成預設大型研究或廣泛採用證明。 |
+| `dev/PROJECT_MASTER_SPEC.md` | 產品決策者 | 產品／採用原則 | master spec 自身 | 不保存模型數、情境數、執行細節或評分機制。 |
+| `.agents/skills/prompt-evaluation-lab/` | 明確叫用 `$prompt-evaluation-lab` 的 AI | repo-local workflow | SKILL.md、`agents/openai.yaml` | 不另定方法、重複數量／門檻，或聲稱已全域安裝。 |
+| Prompt README／guide | 使用者說明表面 | checked, no change required | paired READMEs／guides | 版本標示沒有令其現有行為或導覽說法失實，故不擴大修改。 |
+
+### Static Scenario Matrix
+
+| Scenario | Precondition | Action / input | Expected | Actual | Result |
+|---|---|---|---|---|---|
+| Preset-normal | 評測規則和 skill 已讀 | 檢查 Quick、Standard、Maximum normal | 規則唯一列出三個已命名選項的規模與三組情境覆蓋；skill 只讀取並呈現這些選項。 | 三個選項和覆蓋只在 method table 定義；skill 由 method table 讀取並向使用者呈現。 | PASS |
+| Preset-boundary | Maximum normal 是最大常規選項 | 檢查時間與宣稱 | 最大 normal 的 method cap 不超過兩小時、只屬強篩選訊號；較大或三重重複研究不在預設選單，須另立範圍和明確授權。 | method table 的最大 normal 受兩小時 cap；rule 明定更大研究另立範圍和明確授權，並非預設。 | PASS |
+| Preset-failure | preflight 或執行完整性不成立 | 模擬超時、模型不可用、reroute 或 fallback | 停止並報告不完整；不得暗中減少、改線、重試或擴大範圍。 | method 明定時間、可用性或 no-reroute／no-fallback 不成立即報告 `證據不足／不完整`，禁止四類靜默變更。 | PASS（靜態） |
+| Version-pair | 公開版是 v0.8.3，下一個本地候選未發布 | 讀取兩份 prompt header | 兩語都清楚標示 v0.8.4-candidate、目前公開 v0.8.3 和查看更新的方法；metadata 不改工作規則。 | 兩份 header 的候選／公開版與 Releases URL 一致，且明示不改工作規則；英文可見 CJK 為 0。 | PASS（靜態） |
+| Frozen-regression | 2026-07-14 study 已完成 | 比對 manifest frozen hashes | 六份 frozen artifacts 不變；本輪沒有 model execution。 | 六份 manifest hashes 全數相符；本輪只執行本地 static checks 和 skill validation。 | PASS |
+
 ## 獨立審閱裁決
 
 每項發現均須有：重現證據、嚴重程度、對使用者的後果，以及「修正／接受風險／受阻」裁決。只有沒有未裁決阻擋項、沒有新增同類高風險缺口，且必要重跑完成後，才可收斂。

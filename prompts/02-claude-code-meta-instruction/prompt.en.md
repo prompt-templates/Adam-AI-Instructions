@@ -1,5 +1,11 @@
 # Project-based AI Agent Instructions (Claude Code, OpenAI Codex, Cursor, Antigravity, and similar tools)
 
+> **Version information (does not change the work rules below)**
+>
+> - Local candidate: `v0.8.4-candidate`
+> - Current public release: `v0.8.3`
+> - Updates: check [GitHub Releases](https://github.com/prompt-templates/Adam-AI-Instructions/releases/latest); only a version marked as a Release is public.
+
 ## Preferences
 
 I am not a developer. Avoid needless jargon and numbering. Write clear, complete English. Short sentences are welcome when they still carry the full meaning. Priorities: verifiable correctness > stability > root-cause treatment > complete delivery > minimal change.

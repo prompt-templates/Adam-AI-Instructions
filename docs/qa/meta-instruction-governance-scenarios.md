@@ -180,7 +180,7 @@ This is an executable plan.
 | `prompt.md` / `prompt.en.md` | 直接複製指令的繁中／英文 AI Agent 使用者 | 02-local、雙語呈現 metadata | current prompt source、`PROJECT_INDEX`、雙語 pairing rule | 版本行不改 runtime 行為、資格、授權或安全門檻；不因此重開既有 bilingual behavioral repair。 |
 | `dev/rules/prompt-evaluation.md` | 維護 Prompt／repo-local skill 的 AI | 評測方法唯一真源 | master spec、DOC_SYNC registry | 其固定選項不構成預設大型研究或廣泛採用證明。 |
 | `dev/PROJECT_MASTER_SPEC.md` | 產品決策者 | 產品／採用原則 | master spec 自身 | 不保存模型數、情境數、執行細節或評分機制。 |
-| `.agents/skills/prompt-evaluation-lab/` | 明確叫用 `$prompt-evaluation-lab` 的 AI | repo-local workflow | SKILL.md、`agents/openai.yaml` | 不另定方法、重複數量／門檻，或聲稱已全域安裝。 |
+| `.agents/skills/prompt-evaluation-lab/SKILL.md` + `.agents/skills/prompt-evaluation-lab/agents/openai.yaml` | 明確叫用 `$prompt-evaluation-lab` 的 AI | repo-local workflow | SKILL.md、`agents/openai.yaml` | 不另定方法、重複數量／門檻，或聲稱已全域安裝。 |
 | Prompt README／guide | 使用者說明表面 | checked, no change required | paired READMEs／guides | 版本標示沒有令其現有行為或導覽說法失實，故不擴大修改。 |
 
 ### Static Scenario Matrix
@@ -190,8 +190,28 @@ This is an executable plan.
 | Preset-normal | 評測規則和 skill 已讀 | 檢查 Quick、Standard、Maximum normal | 規則唯一列出三個已命名選項的規模與三組情境覆蓋；skill 只讀取並呈現這些選項。 | 三個選項和覆蓋只在 method table 定義；skill 由 method table 讀取並向使用者呈現。 | PASS |
 | Preset-boundary | Maximum normal 是最大常規選項 | 檢查時間與宣稱 | 最大 normal 的 method cap 不超過兩小時、只屬強篩選訊號；較大或三重重複研究不在預設選單，須另立範圍和明確授權。 | method table 的最大 normal 受兩小時 cap；rule 明定更大研究另立範圍和明確授權，並非預設。 | PASS |
 | Preset-failure | preflight 或執行完整性不成立 | 模擬超時、模型不可用、reroute 或 fallback | 停止並報告不完整；不得暗中減少、改線、重試或擴大範圍。 | method 明定時間、可用性或 no-reroute／no-fallback 不成立即報告 `證據不足／不完整`，禁止四類靜默變更。 | PASS（靜態） |
-| Version-pair | 公開版是 v0.8.3，下一個本地候選未發布 | 讀取兩份 prompt header | 兩語都清楚標示 v0.8.4-candidate、目前公開 v0.8.3 和查看更新的方法；metadata 不改工作規則。 | 兩份 header 的候選／公開版與 Releases URL 一致，且明示不改工作規則；英文可見 CJK 為 0。 | PASS（靜態） |
+| Version-pair | 公開版是 v0.8.3，下一個本地 release-prep 未發布 | 讀取兩份 prompt header 和 release surfaces | runtime prompt 只保留單行 `v0.9.0` 版本號；公開狀態、更新入口和發布證據留在 README / release / handoff，不佔用 prompt token。 | 兩份 prompt header 已縮為單行版本；release surfaces 仍須等 Phase 2 完成後才可作公開 v0.9.0 證據；英文可見 CJK 為 0。 | PASS（靜態） |
 | Frozen-regression | 2026-07-14 study 已完成 | 比對 manifest frozen hashes | 六份 frozen artifacts 不變；本輪沒有 model execution。 | 六份 manifest hashes 全數相符；本輪只執行本地 static checks 和 skill validation。 | PASS |
+
+## 2026-07-20 v0.9.0 release-prep Kit compatibility review
+
+### Candidate Evidence
+
+| Surface | SHA-256 | Role |
+|---|---|---|
+| `prompts/02-claude-code-meta-instruction/prompt.md` | `BC75322A6C60F530B6EEA7D1A0FD86E4EEF830A7AB43D7845F0E3D76EC050DF6` | 繁中行為基準；runtime header 只保留單行版本。 |
+| `prompts/02-claude-code-meta-instruction/prompt.en.md` | `8987E1E0C18CC68C8216A9206718DE8CBA18E45E53B66D262CFE1EEA87324D46` | 英文語意映射；runtime header 只保留單行版本，英文可見 CJK 檢查為 0。 |
+| user-supplied attachment | `91FAFB2C679ED9A5EDF0DED23EBB76E0548494DB318782DBF3836D59A642B8BC` | 初始 v0.9.0 draft；as-is 因未發布版本標示和英文未同步而不可直接發布。 |
+
+### Static Scenario Matrix
+
+| Scenario | Precondition | Action / input | Expected | Actual | Result |
+|---|---|---|---|---|---|
+| Kit-authority | Project uses Agent Handoff Kit | Read precedence section | Kit owns startup, handoff, QC, upgrade and release only within its declared responsibility; prompt must not replace Kit closeout or release authorization. | Both languages state Kit authority within declared responsibility. Independent review found no conflict with Kit core startup / handoff / QC / upgrade / release boundaries. | PASS |
+| Release-authorization | Candidate passes content review | Check release boundary lines | Content approval must not imply commit, push, tag, release, deploy or publish authorization. | Both languages preserve separate explicit authorization for commit / push / tag / release / deploy / publish; independent review confirmed the boundary, and release execution required a separate user instruction. | PASS |
+| Creative-facts | Creative task includes real-world claim | Check creative exemption and fact-checking section | Pure creative work stays light, but real people, brands, law, medical, finance, safety, public claims or real-world consequences still require checking. | Both languages contain the same exception and fact-check boundary. | PASS |
+| Side-path | User marks side conversation / read-only side path | Check agent workflow section | Agent handles only instructions after that boundary and does not silently continue or modify the mainline workspace. | Both languages contain the boundary; independent review confirmed semantic parity. | PASS |
+| Version-public-state | Local release prep exists before release execution | Read prompt headers and release surfaces | Prompt header may say `v0.9.0` as the local release-prep prompt version, while public status still depends on release surfaces and GitHub Release read-back. | Prompt headers are concise single-line versions. README / release note are release-prep surfaces until commit, push, tag and GitHub Release are executed and read back. | PASS with notes |
 
 ## 獨立審閱裁決
 

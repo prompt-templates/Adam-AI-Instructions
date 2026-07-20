@@ -50,9 +50,9 @@ The instruction does not replace your tool's permissions, sandbox, version contr
 
 Public release, payment, pushing, deletion, access changes, and other irreversible actions still need your clear confirmation. The point is to help the agent make those decisions easier to see before you make them.
 
-## Latest update: v0.8.3
+## Latest update: v0.9.0
 
-When the agent cannot safely begin, it now explains the reason, what has been checked, and the practical next step more clearly. Important work still gets the necessary gap checks, while small work stays direct. [See what changed](docs/releases/v0.8.3.md)
+When used with Agent Handoff Kit, the instruction now keeps the global prompt and handoff workflow responsibilities clearer. Creative work still stays lightweight, while real-world factual claims still need checking. [See what changed](docs/releases/v0.9.0.md)
 
 ## More to explore
 

@@ -10,6 +10,24 @@ This **complete global instruction** gives that kind of AI agent a way to work. 
 
 It is for Claude Code, OpenAI Codex, Cursor, Antigravity, and similar AI agents that can work inside a workspace you have authorized. Ordinary web chat is outside this project's scope.
 
+## From familiar principles to working rules
+
+![How 02 Prompt turns familiar AI principles into working rules](prompts/02-claude-code-meta-instruction/images/prompt-02-principles-en.png)
+
+You may already use `Follow YAGNI principles`, `Keep it simple`, `Verify before acting`, `Plan before execution`, or `Human in the loop`. They point in the right direction, but usually do not say when they apply, when they do not, or how an agent should show that it followed them.
+
+02 does not replace those principles, and it does not claim endorsement by any company or expert. It turns them into rules an agent can judge, carry out, and check:
+
+| Familiar prompt direction | What 02 makes the agent do |
+|---|---|
+| `Follow YAGNI principles` / `Keep it simple` | Match effort to consequence, uncertainty, and reversibility; make the smallest complete necessary change. |
+| `Verify before acting` | Read the source of truth first; separate facts, inferences, and what remains unverified. |
+| `Plan before execution` | Require a verifiable plan only for dependent, consequential, or hard-to-recover work. |
+| `Human in the loop` | Complete safe local work directly; require separate explicit authorization for pushing, publishing, deletion, access changes, and spending. |
+| `Manage context` | Limit search and reading to the relevant scope, keep high-signal context, and avoid loading long rules or unrelated material together. |
+
+[See the fuller mapping to 02's rules and public guidance](prompts/02-claude-code-meta-instruction/README.en.md#from-familiar-principles-to-working-rules).
+
 ## What changes after you install it
 
 Ask an agent to update a README and it should not edit on sight. It first looks for the existing style, the relevant rules, and a result it can read back afterwards. Then it changes only what is needed.

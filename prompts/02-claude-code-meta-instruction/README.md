@@ -6,6 +6,24 @@
 
 「專案式 AI Agent 全域指令」是給這類 AI 的工作守則。它會先看清楚專案和任務，再做需要做的事；小修不用兜圈，牽涉資料、機密、發佈或多處互相影響的改動，會先說清範圍和影響，完成後讓你有方法核對。工具的權限和每次真正公開或不可逆的決定，仍然在你手上。
 
+## 從熟悉原則到可執行規則
+
+![常見 AI 原則如何由 02 Prompt 變成可執行規則](images/prompt-02-principles-zh-hant.png)
+
+這份指令不提供研究、程式、法規或任何行業的內置知識。它規定 Agent 怎樣使用使用者要求、專案檔案、工具、權限和可核對來源。
+
+你可能已見過 `Follow YAGNI principles`、`Keep it simple`、`Verify before acting`、`Plan before execution` 或 `Human in the loop`。這些原則有用，但單獨使用時，往往沒有說明適用條件、停止條件或例外。02 把它們深化成下列工作規則：
+
+| 熟悉的提示方向 | 單句口號未說清的事 | 02 的落地方式 |
+|---|---|---|
+| `Follow YAGNI principles` / `Keep it simple` | 甚麼可省略，甚麼仍是本次交付必需。 | 按後果、未知與可回復性決定力度；只處理阻礙驗收、由修改造成或令交付矛盾的問題；作最小而完整的相關修改。 |
+| `Verify before acting` | 核實甚麼、來源衝突怎樣處理。 | 先讀真源與直接上下文；區分來源、日期、事實、推論及未核實內容。 |
+| `Plan before execution` | 小事會否也被迫寫長計劃；計劃怎樣才算可靠。 | 只在依賴、高影響、難恢復或外部副作用等情況使用全圖計劃；計劃須有成功證據、反例與必要的獨立反證。 |
+| `Human in the loop` | 哪些安全工作可自主做，哪些操作必須停下。 | 已授權、低風險、可回復、無外部副作用的步驟可直接執行；發布、刪除、權限、費用及其他外部動作另取明確授權。 |
+| `Manage context` | 怎樣避免長規則、搜尋結果和舊脈絡互相干擾。 | 先以搜尋、索引和抽樣建立範圍，再讀直接相關內容；長期工作分開保存交接狀態。 |
+
+這些方向與 OpenAI、Anthropic、Google 的公開建議一致：規則要直接、有結構、避免重複，並保留完成工作所需的高訊號內容。這不是任何一方對 02 的認證；02 是把公開原則與實際 Agent 工作中的失敗模式整合成一份可使用的規則。參考：[OpenAI model guidance](https://developers.openai.com/api/docs/guides/latest-model)、[Anthropic context engineering](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)、[Google prompt design strategies](https://ai.google.dev/gemini-api/docs/prompting-strategies)。
+
 ## 它會怎樣幫你
 
 | 工具 | 最簡單安裝位置 |

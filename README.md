@@ -10,6 +10,24 @@
 
 它適合 Claude Code、OpenAI Codex、Cursor、Antigravity，以及其他能在授權工作區內持續工作的 AI Agent。一般網頁版聊天工具不在本專案的使用範圍內。
 
+## 從常見原則，到可執行規則
+
+![常見 AI 原則如何由 02 Prompt 變成可執行規則](prompts/02-claude-code-meta-instruction/images/prompt-02-principles-zh-hant.png)
+
+你可能已見過 `Follow YAGNI principles`、`Keep it simple`、`Verify before acting`、`Plan before execution` 或 `Human in the loop`。它們方向正確，但通常沒有說明：何時適用、何時不能套用，以及 AI 要怎樣證明已做到。
+
+02 不是要取代這些原則，也不聲稱獲任何公司或專家背書。它把它們整理成可判斷、可執行、可驗收的工作規則：
+
+| 熟悉的提示方向 | 02 令 Agent 實際做到 |
+|---|---|
+| `Follow YAGNI principles` / `Keep it simple` | 按後果、未知與可回復性決定力度；只改最小但完整的必要範圍。 |
+| `Verify before acting` | 先讀真源，分開事實、推論與未核實內容。 |
+| `Plan before execution` | 只有互相依賴、高影響或難以恢復的工作，才要求可驗收計劃。 |
+| `Human in the loop` | 安全的本地工作可直接完成；推送、發布、刪除、權限與費用等外部動作另取明確授權。 |
+| `Manage context` | 先限制搜尋和閱讀範圍，保留高訊號內容，避免把長規則和無關資料一併塞進脈絡。 |
+
+[查看這些原則如何對照 02 的完整規則與公開來源](prompts/02-claude-code-meta-instruction/README.md#從熟悉原則到可執行規則)。
+
 ## 裝上後，你會看到甚麼不同
 
 例如你叫 AI 改一份 README，它不會一看題目就改。它會先找現有寫法、相關規則和可讀回的結果，再只改需要改的地方。

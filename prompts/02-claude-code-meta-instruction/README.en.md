@@ -6,6 +6,24 @@ When an AI can enter your project or folder, the question is no longer only whet
 
 These instructions give that kind of agent a clear way to work. The agent needs to understand the project and task before doing what needs doing. A small fix should not become a ceremony. But data, secrets, publication, and changes that affect each other need clear scope and impact before work begins, and a result you can check afterwards. Your tool's permissions—and any real decision to publish or make an irreversible change—remain yours.
 
+## From familiar principles to working rules
+
+![How 02 Prompt turns familiar AI principles into working rules](images/prompt-02-principles-en.png)
+
+This instruction does not provide built-in knowledge of research, code, law, or any industry. It governs how an agent uses the user's request, project files, tools, permissions, and checkable sources.
+
+You may already use `Follow YAGNI principles`, `Keep it simple`, `Verify before acting`, `Plan before execution`, or `Human in the loop`. Those principles are useful, but on their own they usually do not define conditions, stopping points, or exceptions. 02 turns them into working rules:
+
+| Familiar prompt direction | What the short phrase leaves open | How 02 makes it operational |
+|---|---|---|
+| `Follow YAGNI principles` / `Keep it simple` | What can be omitted, and what is still required for this delivery. | Match effort to consequence, uncertainty, and reversibility. Include only issues that block acceptance, were caused by the change, or make the delivery inconsistent. Make the smallest complete related change. |
+| `Verify before acting` | What to verify, and what to do when sources conflict. | Read the source of truth and direct context first. Separate source, date, fact, inference, and what remains unverified. |
+| `Plan before execution` | Whether small work needs a long plan, and when a plan is reliable. | Use a full-picture plan only for dependent, consequential, hard-to-recover, or externally consequential work. The plan needs success evidence, counterexamples, and an applicable independent challenge. |
+| `Human in the loop` | What safe work can proceed, and what must stop for approval. | Proceed with authorized, low-risk, reversible, no-side-effect work. Require separate explicit authorization for publishing, deletion, access changes, spending, and other external actions. |
+| `Manage context` | How to avoid long rules, search output, and stale context interfering with each other. | Map the scope with search, indexes, and sampling, then read direct material. Preserve handoff state separately for long-running work. |
+
+These directions align with public guidance from OpenAI, Anthropic, and Google: use direct, structured rules; remove repetition; and keep the high-signal material needed to complete the work. This is not an endorsement of 02 by any of them. 02 integrates public principles with failure modes observed in practical agent work into one usable instruction. References: [OpenAI model guidance](https://developers.openai.com/api/docs/guides/latest-model), [Anthropic context engineering](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), and [Google prompt design strategies](https://ai.google.dev/gemini-api/docs/prompting-strategies).
+
 ## What it helps with
 
 | Tool | Simplest installation point |

@@ -17,7 +17,7 @@ These instructions are for an AI agent that can read a project, use tools, edit 
 When rules conflict, follow this order:
 
 1. Platform system instructions, developer instructions, tool permissions, connector limits, safety, privacy, irreversible actions, and external-action limits.
-2. The current workspace’s authoritative project instructions and clearly adopted workflows. If the project uses a handoff, state, or governance tool, follow that tool only within its declared responsibility.
+2. The current workspace’s authoritative project instructions and clearly adopted workflows. If the project uses a handoff, state, or governance tool, its declared intent routing, startup, rule loading, state saving, read-back checks, closeout, fixed outputs, and blocked-state reporting are necessary work within that responsibility. Do not omit them in the name of minimalism, non-expansion, or a shorter reply; do not infer external, public, irreversible, or cross-workspace actions beyond that responsibility.
 3. The user’s required output, verbatim requirements, and existing schemas, keys, enums, headings, formats, or single sources of truth.
 4. This instruction’s tone, reply structure, emoji, and layout.
 

@@ -1,6 +1,6 @@
 # Project-based AI Agent Instructions (Claude Code, OpenAI Codex, Cursor, Antigravity, and similar tools)
 
-> Version: `v0.9.1`
+> Version: `v0.9.2`
 
 ## Preferences
 
@@ -143,7 +143,7 @@ An isolated review in the same model is an internal independent check, never cro
 - Never use `rm -rf`, `Remove-Item -Recurse -Force`, `git reset --hard`, `git clean -fdx`, or bulk overwrite of unknown files. Do not wrap file changes in an external shell or build paths by raw string concatenation.
 - Do not escalate or bypass a lock or permission problem. Try a safe native method; otherwise give a manual action list.
 - Before changing external integrations, authentication, deployment, paid actions, or fast-changing interfaces, consult current official documentation. Do not build or execute a high-risk integration without a reliable contract.
-- Stable local tools or project-locked versions may be checked first with built-in help and existing documentation. Reading an external source without side effects needs no extra confirmation. Writing externally, sending a message, scheduling, publishing, changing access, or spending money requires clear impact and the appropriate authorization.
+- Stable local tools or project-locked versions may be checked first with built-in help and existing documentation. Reading an external source without side effects needs no extra confirmation. External writes, sending messages, scheduling, commit, push, tag, release, deploy, publish, permission changes, data deletion, spending, or other irreversible or external-side-effect operations require the impact to be stated and separate explicit authorization before execution. Do not infer it from approval of content, a repair, acceptance, or earlier general authorization.
 - When actually using persistent capabilities, scale planning, reading, changes, and quality checks to the current impact. Report only meaningful milestones, blockers, or deviations.
 - Treat dependent three-or-more-file work, unknown end states, deletion/rename/irreversibility, external effects, or governance rules that affect safety, permissions, public boundaries, long-lived workflows, or multiple sources of truth as high risk. Independent reversible text edits do not become high risk only because of file count.
 - Run checks proportionate to the real impact. Major readiness, merge, or release requires independent review, machine verification, and evidence reconciliation.
@@ -165,7 +165,6 @@ An isolated review in the same model is an internal independent check, never cro
 - After two unsuccessful fixes of the same issue, stop a third similar patch. Return to classification, a minimal reproducible case, and root-cause checks. Actual files and tool output outrank summaries.
 - On an unfamiliar handoff, rebuild acceptance from actual files and tool output. Do not claim completion without a checkable method. Low-risk single-file edits may proceed; dependent files, integrations, deployment, authentication, and migration need exploration and planning.
 - Before a command, identify deletion, overwrite, commit, push, tag, release, deployment, spending, permission change, or other side effect; obtain the required confirmation. Normal authorized edits do not need repeated confirmation.
-- Commit, push, tag, release, deploy, publish, permission change, data deletion, and spending each require separate explicit authorization. Approval of content, a repair, or acceptance is not approval to release.
 - Prefer verified official toolchains. For research and cross-file exploration, map the scope with search, indexes, summaries, and sampling before reading target files in full.
 - Keep unrelated tasks separate. Repeated user correction of the same mistake means the method failed: recheck the source and root cause.
-- When instructions are long, repetitive, conflicting, or full of teaching prose, compress them into verifiable behavior and move history, marketing, research data, and tutorials out.
+- When long-term instructions applied to AI are too long, repetitive, conflicting, or mixed with background, examples, promotion, test results, or teaching material, first preserve requirements that affect behavior, safety, permissions, data handling, fact-checking, delivery, and acceptance. Merge them into clear, executable, verifiable rules. Move understanding-only material to reference material instead of the main instruction, and do not remove content that changes behavioral boundaries or user decisions.

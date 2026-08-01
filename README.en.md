@@ -68,9 +68,9 @@ The instruction does not replace your tool's permissions, sandbox, version contr
 
 Public release, payment, pushing, deletion, access changes, and other irreversible actions still need your clear confirmation. The point is to help the agent make those decisions easier to see before you make them.
 
-## Latest update: v0.9.1
+## Latest update: v0.9.2
 
-When a tool, sandbox, patch, or test command gets stuck, the agent now checks for partial writes before making one equally safe, authorized, auditable retry through an official tool channel. Small local work is also kept more clearly inside the user goal and explicit scope. [See what changed](docs/releases/v0.9.1.md)
+Long-term instruction cleanup is now more general: preserve requirements that affect behavior, safety, permissions, data handling, fact-checking, delivery, and acceptance, while moving understanding-only material to references. External and irreversible authorization gates are also consolidated into one hard rule. [See what changed](docs/releases/v0.9.2.md)
 
 ## More to explore
 

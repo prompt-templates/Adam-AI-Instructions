@@ -715,8 +715,15 @@
         <div class="scenario-tag good-tag">✅ With this instruction</div>
         <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">We confirmed the partner can use either daily batches or live updates. Should we reuse the current export flow or build an API?</div></div>
         <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble">
-          <strong class="lead">🔎 Both paths can work. The trade-off is freshness, change size, and ongoing maintenance.</strong><br><br>
-          <span>🚀 <em>Choose one next</em><br><em>A.</em> Reuse the existing daily export — less change, but not live data.<br><em>B.</em> Build a sync API — live updates, but a new integration to maintain.<br>💡 Recommendation: A — the partner accepts daily batches, so it meets the goal with less change.</span>
+          <strong class="lead">🔎 Both paths can work. The trade-off is freshness, change size, and ongoing maintenance.</strong>
+          <div class="next-step">
+            <div class="next-step-title">🚀 Choose one next</div>
+            <ul class="next-step-options">
+              <li><span class="opt-letter">A.</span> Reuse the existing daily export — less change, but not live data.</li>
+              <li><span class="opt-letter">B.</span> Build a sync API — live updates, but a new integration to maintain.</li>
+            </ul>
+            <div class="next-step-recommend">💡 Recommendation: A — the partner accepts daily batches, so it meets the goal with less change.</div>
+          </div>
         </div></div>
         <div class="scenario-summary good-summary">✓ It asks only for a real choice; both paths can work, and the impact and recommendation are clear</div>
       </div>

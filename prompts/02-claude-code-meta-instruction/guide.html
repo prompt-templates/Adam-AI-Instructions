@@ -660,10 +660,10 @@
   </p>
   <div class="links">
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.md" target="_blank" rel="noopener">📄 繁中指令</a>
-    <a href="README.md">📖 使用說明</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/tree/main/prompts/02-claude-code-meta-instruction" target="_blank" rel="noopener">📖 使用說明</a>
     <a href="guide.en.html">EN guide</a>
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.en.md" target="_blank" rel="noopener">English prompt</a>
-    <a href="../../README.md">🏠 主索引</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/" target="_blank" rel="noopener">🏠 主索引</a>
   </div>
 </header>
 
@@ -691,19 +691,19 @@
 <!-- ============== 情境對照(Hero)============== -->
 <section id="scenario" class="scenario-hero">
   <div class="scenario-title">
-    <h2>四條關鍵規則 · 兩種 AI 體驗</h2>
-    <p>點擊標籤切換。每個對照都直接來自下方規則地圖：看見的不是「更多流程」，而是不同思維如何改變你的使用體驗。</p>
+    <h2>四個常見情境 · 兩種 AI 體驗</h2>
+    <p>點擊標籤切換。每個對照都直接來自 v0.9.3 的七節規則：看見的不是「更多流程」，而是不同判斷方式如何改變你的使用體驗。</p>
   </div>
 
-  <div class="scenario-tabs" role="tablist" aria-label="關鍵規則情境">
-    <button class="tab-btn active" data-tab="read-first">情境 1 · 選擇、歧義與真源</button>
-    <button class="tab-btn" data-tab="research">情境 2 · 先讀後判</button>
-    <button class="tab-btn" data-tab="plan-gate">情境 3 · 全圖計劃資格</button>
-    <button class="tab-btn" data-tab="delivery">情境 4 · 機密安全</button>
+  <div class="scenario-tabs" role="tablist" aria-label="v0.9.3 常見情境">
+    <button class="tab-btn active" data-tab="read-first">情境 1 · 真選項與推薦</button>
+    <button class="tab-btn" data-tab="research">情境 2 · 先讀真源</button>
+    <button class="tab-btn" data-tab="plan-gate">情境 3 · 高風險計劃</button>
+    <button class="tab-btn" data-tab="delivery">情境 4 · 授權與機密</button>
   </div>
 
   <div class="panel active" data-panel="read-first">
-    <div class="panel-context">對應「選擇、歧義與真源」：真源已核實，而且兩條路都能達標時，才把真正的取捨清楚交給你。</div>
+    <div class="panel-context">對應「回覆與合作」及「仲裁與真源」：真源已核實，而且兩條路都能達標時，才把真正的取捨清楚交給你。</div>
     <div class="scenario-grid">
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ 沒有這份指令</div>
@@ -724,7 +724,7 @@
   </div>
 
   <div class="panel" data-panel="research">
-    <div class="panel-context">對應「先讀後判」：先建立足夠覆蓋，分清已核實、未核實與推論。</div>
+    <div class="panel-context">對應「仲裁與真源」：先建立足夠覆蓋，分清已核實、未核實與推論。</div>
     <div class="scenario-grid">
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ 沒有這份指令</div>
@@ -745,7 +745,7 @@
   </div>
 
   <div class="panel" data-panel="plan-gate">
-    <div class="panel-context">對應「全圖計劃資格」：先看清完整終態與可推翻的證據，再判斷方案能否執行。</div>
+    <div class="panel-context">對應「工作力度與計劃」：只有出錯後果較大的工作，才先看清終態、驗收、失敗後狀態與反例。</div>
     <div class="scenario-grid">
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ 沒有這份指令</div>
@@ -757,7 +757,7 @@
         <div class="scenario-tag good-tag">✅ 套用這份指令</div>
         <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">幫我改升級流程，不能弄壞舊資料。</div></div>
         <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble fpfr-output">
-          <strong class="lead">這不是一張好看的待辦清單，而是一份已完成適用查漏的可執行計劃。</strong>
+          <strong class="lead">這不是一張好看的待辦清單，而是一份證據足夠、可被驗收推翻的可執行計劃。</strong>
           <ul class="fpfr-mini-list">
             <li><strong>終點畫面</strong> — 🔎 任務理解：更新升級流程，舊資料不可受損；<br><em>可執行</em>。列出不可破壞條件、排除範圍與已知／未核實狀態。</li>
             <li><strong>交付物</strong> — 列出受影響的升級程式、資料格式與說明；未知絕對路徑不虛構。</li>
@@ -765,15 +765,15 @@
             <li><strong>驗收測試</strong> — 正常升級外，加入中斷、衝突、版本倒置與局部全綠但資料仍受損的反例。</li>
             <li><strong>目標連結</strong> — 每項外部平台行為連官方來源；專案內改動連現行正式依據。</li>
           </ul>
-          <span class="fpfr-closing">適用查漏已完成；但會改動舊資料，仍要等你明確確認才開始修改。</span>
+          <span class="fpfr-closing">以上是可執行計劃。因為會改動舊資料，仍須你明確確認才開始。</span>
         </div></div>
-        <div class="scenario-summary good-summary">✓ 你只會收到已完成查漏的可執行計劃；缺條件時，AI 會直接說明受阻</div>
+        <div class="scenario-summary good-summary">✓ 你只會收到證據足夠的可執行計劃；缺條件時，AI 會直接說明受阻</div>
       </div>
     </div>
   </div>
 
   <div class="panel" data-panel="delivery">
-    <div class="panel-context">對應「機密與平台檔案安全」：機密不可擴散；準備工作和真正公開動作必須分開。</div>
+    <div class="panel-context">對應「執行、安全與授權」：機密不可擴散；準備工作和真正公開動作必須分開。</div>
     <div class="scenario-grid">
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ 沒有這份指令</div>
@@ -821,18 +821,13 @@
 
   <h3>規則地圖</h3>
   <div class="grid">
-    <div class="card"><span class="num">0</span><h4>仲裁順序</h4><p>規則互相衝突時，安全、權限與不可逆後果永遠優先。</p></div>
-    <div class="card"><span class="num">1</span><h4>語言與回覆</h4><p>先講重點；短事短答；繁中版本以繁中回覆，英文版本以英文回覆。</p></div>
-    <div class="card"><span class="num">2</span><h4>力度與收斂</h4><p>風險越低，步驟越輕；驗收足夠便停止，不追逐無關問題。</p></div>
-    <div class="card"><span class="num">3</span><h4>選擇與真源</h4><p>只有真的需要你取捨時才列選項；既有名稱、鍵名與格式不自行改寫。</p></div>
-    <div class="card"><span class="num">4</span><h4>全圖計劃資格</h4><p>一旦出錯會有較大影響的計劃，先看完整範圍、證據與反例，不能靠排版假裝安全。</p></div>
-    <div class="card"><span class="num">5</span><h4>先讀後判</h4><p>日期、版本、平台行為與待改內容先核對；不知道便說不知道。</p></div>
-    <div class="card"><span class="num">6</span><h4>長期規則改動</h4><p>長期規則或多處內容要同步時，先只讀確認範圍，再談修改。</p></div>
-    <div class="card"><span class="num">7</span><h4>改動可核對</h4><p>需要手動貼換時，清楚給出錨點、修改前、修改後與核對方法。</p></div>
-    <div class="card"><span class="num">8</span><h4>計算與結構</h4><p>複雜或高風險才展開步驟；JSON 與圖表跟現有格式走。</p></div>
-    <div class="card"><span class="num">9</span><h4>工作區與範圍</h4><p>先讀相關檔案；新檔沿用既有位置；有副作用才另取授權。</p></div>
-    <div class="card"><span class="num">10</span><h4>機密與檔案安全</h4><p>不洩漏機密、不繞過權限、不用危險刪除與覆寫方式處理問題。</p></div>
-    <div class="card"><span class="num">11</span><h4>Agent 工作流</h4><p>長任務可續接；連續失敗時回到根因；發布與費用永遠另取明確授權。</p></div>
+    <div class="card"><span class="num">1</span><h4>核心取向</h4><p>事實、安全與使用者目標優先；小而清楚的工作用最小足夠改動完成。</p></div>
+    <div class="card"><span class="num">2</span><h4>仲裁與真源</h4><p>規則衝突時按層級處理；日期、版本、平台行為與待改內容先核對。</p></div>
+    <div class="card"><span class="num">3</span><h4>回覆與合作</h4><p>繁中清楚短答；只有真正需要取捨時才列選項，並保留推薦與風險提示。</p></div>
+    <div class="card"><span class="num">4</span><h4>工作力度與計劃</h4><p>按後果、未知與可回復性決定力度；高影響才用五區段與必要反證。</p></div>
+    <div class="card"><span class="num">5</span><h4>修改、治理與交付</h4><p>同一規則只在一處定義；治理改動先只讀審核，交付要可讀回驗收。</p></div>
+    <div class="card"><span class="num">6</span><h4>執行、安全與授權</h4><p>守工作區邊界、保護機密；外部寫入、發布、部署、費用與刪除另取授權。</p></div>
+    <div class="card"><span class="num">7</span><h4>驗收、格式與上下文</h4><p>檢查要對應風險；JSON、Mermaid、逐行驗與上下文續接都有可驗收標準。</p></div>
   </div>
 
   <h3>它要處理的常見問題</h3>
@@ -841,11 +836,12 @@
     <tbody>
       <tr><td>AI 一開始便改檔，後來才發現讀錯範圍</td><td>先讀專案指引、待改位置與直接上下文；影響未明才擴大搜尋。</td></tr>
       <tr><td>簡單任務被加上過長流程，反而拖慢工作</td><td>以後果、未知與可回復性決定力度；小而清楚的工作不用全圖計劃。</td></tr>
-      <tr><td>漂亮的計劃看似完整，實際沒有恢復或失敗模型</td><td>一旦出錯會有較大影響時，AI 先完成適用查漏才交付可執行計劃；做不到便直接說明受阻條件。</td></tr>
+      <tr><td>漂亮的計劃看似完整，實際沒有恢復或失敗模型</td><td>一旦出錯會有較大影響時，AI 先確認來源、範圍、失敗狀態與反例；證據不足便直接說明受阻條件。</td></tr>
       <tr><td>研究答案把摘要、記憶和推論混在一起</td><td>分開來源、日期、事實、推論與未核實內容。</td></tr>
       <tr><td>AI 自行建立固定資料夾或平行結構</td><td>先沿用現有目錄、真源與平台交付位置；仍不能確認就交付可手動保存的內容。</td></tr>
       <tr><td>「內容改好」被誤當成已同意推送、上傳或發佈</td><td>外部寫入、公開、權限、費用與資料刪除均需獨立明確授權。</td></tr>
       <tr><td>驗收愈做愈多，卻沒有新增證據</td><td>每個額外檢查都要對應尚未解除的風險；受影響情境通過便停止。</td></tr>
+      <tr><td>要求逐行驗，卻只做段落、關鍵字或抽樣檢查</td><td>逐行驗等於行語義驗收；逐行看意思、歧義、錨定、外溢、矛盾與漏配套。</td></tr>
     </tbody>
   </table>
 </section>
@@ -867,37 +863,35 @@
   </ul>
 
   <div class="svg-wrap">
-    <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 700 310" xmlns="http://www.w3.org/2000/svg">
       <text x="350" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">仲裁順序：先守安全，再處理其餘要求</text>
 
-      <rect x="80" y="50" width="540" height="38" rx="6" fill="#d63d4f" opacity="0.9"/>
-      <text x="350" y="73" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">1. 安全 / 權限 / 不可逆或外部操作 / 私隱 / 平台限制</text>
+      <rect x="50" y="50" width="600" height="44" rx="6" fill="#d63d4f" opacity="0.9"/>
+      <text x="350" y="69" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">1. 平台系統、開發者、工具權限、安全、私隱</text>
+      <text x="350" y="84" text-anchor="middle" fill="white" font-size="11">不可逆、外部操作與平台限制</text>
 
-      <rect x="100" y="98" width="500" height="38" rx="6" fill="#e08436"/>
-      <text x="350" y="121" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">2. 使用者明示或權威工作流指定的輸出格式</text>
+      <rect x="80" y="112" width="540" height="44" rx="6" fill="#e08436"/>
+      <text x="350" y="131" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">2. 工作區權威專案指令與已採用工作流</text>
+      <text x="350" y="146" text-anchor="middle" fill="white" font-size="11">交接、狀態或治理工具只在其明示責任內生效</text>
 
-      <rect x="120" y="146" width="460" height="38" rx="6" fill="#d4a017"/>
-      <text x="350" y="169" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">3. 單一真源 / 使用者鍵名 / 枚舉 / 既有規格</text>
+      <rect x="110" y="174" width="480" height="44" rx="6" fill="#d4a017"/>
+      <text x="350" y="193" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">3. 使用者輸出要求、逐字要求、schema 與單一真源</text>
+      <text x="350" y="208" text-anchor="middle" fill="white" font-size="11">既有鍵名、枚舉、標題、格式與規格不自行改寫</text>
 
-      <rect x="140" y="194" width="420" height="38" rx="6" fill="#5da32e"/>
-      <text x="350" y="217" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">4. 事實核對 / 檔案閱讀覆蓋 / 未核實標示</text>
+      <rect x="140" y="236" width="420" height="44" rx="6" fill="#0d7377"/>
+      <text x="350" y="255" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">4. 本指令的語氣、回覆骨架、emoji 與排版</text>
+      <text x="350" y="270" text-anchor="middle" fill="white" font-size="11">仍須服從上層安全、真源、格式與使用者要求</text>
 
-      <rect x="160" y="242" width="380" height="38" rx="6" fill="#0d7377"/>
-      <text x="350" y="265" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">5. 回覆形態（純輸出 / 短答 / 標準 / 正式交付 / 創作）</text>
-
-      <rect x="180" y="290" width="340" height="38" rx="6" fill="#5b6470"/>
-      <text x="350" y="313" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">6. 回覆骨架 / 功能性 emoji / 語氣 / 排版</text>
-
-      <text x="350" y="350" text-anchor="middle" font-size="11" fill="#5b6470">仍未能判斷:以「安全、可驗證、不假裝完成」為最高處理原則</text>
+      <text x="350" y="302" text-anchor="middle" font-size="11" fill="#5b6470">仍未能判斷:以「安全、可驗證、不假裝完成」為最高處理原則</text>
     </svg>
-    <div class="svg-caption">圖一:§0 總仲裁順序的 6 層階梯;上位規則優先於下位。</div>
+    <div class="svg-caption">圖一：v0.9.3 的四層仲裁順序；上位規則優先於下位。</div>
   </div>
 
   <h3>實際作用</h3>
   <p>這份仲裁順序讓你不用每次重新教 AI：「安全比格式重要」、「真源比漂亮改寫重要」。同時它也明確保護效率：沒有未解風險的簡單工作，不會被硬塞進大型工作流。</p>
 
   <h3>適合情境</h3>
-  <p>所有在工作區中做事的 agent 場景都適用：改程式、研究、整理文件、寫 README、準備發佈或維護長期規則。創作仍可自由發揮；安全、私隱與你指定的格式則一直保留。</p>
+  <p>適用於工作文件與資料整理、創作構思、程式代理、長期治理，以及高後果計劃的反證審閱。創作仍可自由發揮；安全、私隱與你指定的格式則一直保留。</p>
 </section>
 
 <!-- ============== 第二組：計劃資格 ============== -->
@@ -955,7 +949,7 @@
       <text x="110" y="196" text-anchor="middle" font-size="11" fill="#5b6470">(仍先讀後判)</text>
 
       <!-- 5 sections -->
-      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">通過獨立檢查後的五區段計劃</text>
+      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">證據足夠後的五區段計劃</text>
 
       <g>
         <rect x="40" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
@@ -1004,13 +998,13 @@
         <text x="650" y="394" font-size="10.5" fill="#1a1a1a">單一真源</text>
       </g>
 
-      <text x="400" y="442" text-anchor="middle" font-size="11" fill="#5b6470">低風險可回復工作不多加一輪；影響較大的計劃先反證，再按影響取得確認</text>
+      <text x="400" y="442" text-anchor="middle" font-size="11" fill="#5b6470">低風險可回復工作不多加一輪；高後果計劃先反證，再按影響取得確認</text>
     </svg>
     <div class="svg-caption">圖二：先看清來源與範圍；證據足夠後，才寫五區段計劃。</div>
   </div>
 
   <h3>AI 會怎樣做</h3>
-  <p>它會先列出不能失守的底線，例如「驗收失敗不可標成成功」、「未能辨識的內容不可猜測覆寫」、「中斷後狀態必須可判定」。一旦出錯會有較大影響時，另一位未參與方案的人會從原始需求找出中斷、衝突、並行、版本倒退、越界與假綠等反例；完成後才交付完整計劃。安全、權限、資料完整性或核心驗收的問題，不能改名為「接受風險」。</p>
+  <p>它會先列出不能失守的底線，例如「驗收失敗不可標成成功」、「未能辨識的內容不可猜測覆寫」、「中斷後狀態必須可判定」。若失敗會影響安全、機密、權限、資料／版本完整性、不可逆或外部狀態、遷移恢復，或跨表面核心承諾，才要求未參與撰寫者從原始需求找出中斷、衝突、並行、版本倒退、越界與假綠等反例；低風險可回復工作用相稱檢查即可。安全、權限、資料完整性或核心驗收的問題，不能改名為「接受風險」。</p>
 
   <h3>五區段如何幫到你</h3>
   <p><strong>終點畫面</strong>寫清楚範圍、狀態與不能失守的條件；<strong>交付物</strong>列出真實資源和動作；<strong>成功證據</strong>包含失敗後狀態與恢復入口；<strong>驗收測試</strong>有能推翻方案的反例；<strong>目標連結</strong>把改動連回正式依據。缺其中任何一項，AI 就不能假裝已完成。</p>
@@ -1074,9 +1068,9 @@
       <text x="730" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">詩、廣告、</text>
       <text x="730" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">純想像、虛構</text>
       <text x="730" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ 豁免五區段、</text>
-      <text x="730" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">四階段、成功證據</text>
-      <text x="730" y="222" text-anchor="middle" font-size="10" fill="#5b6470">語言分層、合作</text>
-      <text x="730" y="238" text-anchor="middle" font-size="10" fill="#5b6470">模式仍適用</text>
+      <text x="730" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">工程流程、計算步驟</text>
+      <text x="730" y="222" text-anchor="middle" font-size="10" fill="#5b6470">真實聲稱仍核對</text>
+      <text x="730" y="238" text-anchor="middle" font-size="10" fill="#5b6470">安全格式仍適用</text>
     </svg>
     <div class="svg-caption">圖三:按任務性質選用回覆方式；創作任務不硬套工作流程。</div>
   </div>
@@ -1089,7 +1083,7 @@
       <tr><td>一般分析、比較、修補</td><td>三行內先用「🔎」講重點，再給必要原因、做法與下一步。</td></tr>
       <tr><td>真的存在兩個以上的價值取捨</td><td>列可靠選項、影響和有根據的推薦；沒有選擇便直接判斷。</td></tr>
       <tr><td>使用者明示只要指定格式</td><td>只輸出指定結構，不附加前言、總結或追問。</td></tr>
-      <tr><td>創作、構思或純想像</td><td>不硬套五區段、工程流程或計算步驟；安全、私隱與指定格式仍然適用。</td></tr>
+      <tr><td>創作、構思或純想像</td><td>不硬套五區段、工程流程或計算步驟；但涉及真實人物、品牌、法規、醫療、金融、安全或公開聲稱時仍須核對。</td></tr>
     </tbody>
   </table>
 
@@ -1154,8 +1148,8 @@
         <text x="570" y="160" text-anchor="middle" fill="white" font-size="13" font-weight="bold">修改後(新文)</text>
         <text x="440" y="190" font-size="11" fill="#1a1a1a" font-family="monospace">新建檔案先遵循現有目錄、</text>
         <text x="440" y="208" font-size="11" fill="#1a1a1a" font-family="monospace">真源與平台交付位置；</text>
-        <text x="440" y="226" font-size="11" fill="#1a1a1a" font-family="monospace">三者均未指定時先確認</text>
-        <text x="440" y="244" font-size="11" fill="#1a1a1a" font-family="monospace">可安全寫入的工作區與交付方式。</text>
+        <text x="440" y="226" font-size="11" fill="#1a1a1a" font-family="monospace">仍不能確認便不自行建檔，</text>
+        <text x="440" y="244" font-size="11" fill="#1a1a1a" font-family="monospace">改交付可手動保存內容。</text>
         <text x="440" y="280" font-size="11" fill="#5b6470" font-style="italic">↑ 可直接貼換</text>
       </g>
 
@@ -1307,7 +1301,7 @@
   <ol>
     <li>先給它一個低風險小任務，看看它是否先讀相關內容、只改必要位置並讀回。</li>
     <li>再給一個資料不足的研究題，看看它會否清楚分開事實、推論與未核實內容。</li>
-    <li>最後問一個有外部副作用或一旦出錯會有較大影響的任務，看看它會否完成適用查漏後才交付可執行計劃；若條件不足，應直接說明受阻原因，而不是交出半成品。</li>
+    <li>最後問一個有外部副作用或一旦出錯會有較大影響的任務，看看它會否先確認來源、範圍、失敗狀態與反例，證據足夠才交付可執行計劃；若條件不足，應直接說明受阻原因，而不是交出半成品。</li>
   </ol>
 </section>
 
@@ -1341,10 +1335,10 @@
 <footer>
   <p>
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.md" target="_blank" rel="noopener">📄 繁中指令</a>
-    <a href="README.md">📖 繁中說明</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/tree/main/prompts/02-claude-code-meta-instruction" target="_blank" rel="noopener">📖 繁中說明</a>
     <a href="guide.en.html">EN guide</a>
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.en.md" target="_blank" rel="noopener">English prompt</a>
-    <a href="../../README.md">🏠 主索引</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/" target="_blank" rel="noopener">🏠 主索引</a>
     <a href="#overview">⬆ 回頁首</a>
   </p>
   <p style="margin-top:14px">Adam's AI Instructions · 專案式 AI Agent 全域指令</p>

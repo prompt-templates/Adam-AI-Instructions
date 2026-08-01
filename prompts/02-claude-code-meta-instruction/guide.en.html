@@ -660,10 +660,10 @@
   </p>
   <div class="links">
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.en.md" target="_blank" rel="noopener">📄 English prompt</a>
-    <a href="README.en.md">📖 Overview</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/tree/main/prompts/02-claude-code-meta-instruction" target="_blank" rel="noopener">📖 Overview</a>
     <a href="guide.html">Traditional Chinese guide</a>
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.md" target="_blank" rel="noopener">Traditional Chinese prompt</a>
-    <a href="../../README.en.md">🏠 Home</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/" target="_blank" rel="noopener">🏠 Home</a>
   </div>
 </header>
 
@@ -691,19 +691,19 @@
 <!-- ============== Scenario comparison (Hero) ============== -->
 <section id="scenario" class="scenario-hero">
   <div class="scenario-title">
-    <h2>Four key rules · two AI experiences</h2>
-    <p>Switch between the tabs. Each comparison comes directly from the rule map below: see how a different way of thinking changes the experience, not just the process.</p>
+    <h2>Four everyday situations · two AI experiences</h2>
+    <p>Switch between the tabs. Each comparison comes directly from the seven v0.9.3 sections: see how a different judgement model changes the experience, not just the process.</p>
   </div>
 
-  <div class="scenario-tabs" role="tablist" aria-label="Key-rule situations">
-    <button class="tab-btn active" data-tab="read-first">Scenario 1 · Choices, ambiguity &amp; sources</button>
-    <button class="tab-btn" data-tab="research">Scenario 2 · Read before judging</button>
-    <button class="tab-btn" data-tab="plan-gate">Scenario 3 · Full picture &amp; plan qualification</button>
-    <button class="tab-btn" data-tab="delivery">Scenario 4 · Secret safety</button>
+  <div class="scenario-tabs" role="tablist" aria-label="v0.9.3 everyday situations">
+    <button class="tab-btn active" data-tab="read-first">Scenario 1 · Real choices &amp; recommendation</button>
+    <button class="tab-btn" data-tab="research">Scenario 2 · Read the source first</button>
+    <button class="tab-btn" data-tab="plan-gate">Scenario 3 · High-impact planning</button>
+    <button class="tab-btn" data-tab="delivery">Scenario 4 · Authorization &amp; secrets</button>
   </div>
 
   <div class="panel active" data-panel="read-first">
-    <div class="panel-context">From “Choices, ambiguity, and sources of truth”: when the source of truth is checked and two paths can both work, show the real trade-off clearly.</div>
+    <div class="panel-context">From “Replies and collaboration” plus “Precedence and sources”: when the source of truth is checked and two paths can both work, show the real trade-off clearly.</div>
     <div class="scenario-grid">
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ Without this instruction</div>
@@ -724,7 +724,7 @@
   </div>
 
   <div class="panel" data-panel="research">
-    <div class="panel-context">From “Read before judging”: establish enough coverage first, then distinguish what is verified, unverified, and inferred.</div>
+    <div class="panel-context">From “Precedence and sources”: establish enough coverage first, then distinguish what is verified, unverified, and inferred.</div>
     <div class="scenario-grid">
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ Without this instruction</div>
@@ -745,7 +745,7 @@
   </div>
 
   <div class="panel" data-panel="plan-gate">
-    <div class="panel-context">From “Full-picture planning and plan qualification”: see the complete end state and disprovable evidence first, then decide whether a plan qualifies to run.</div>
+    <div class="panel-context">From “Effort and planning”: only work with larger failure consequences needs the end state, acceptance, failure state, and counterexamples before action.</div>
     <div class="scenario-grid">
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ Without this instruction</div>
@@ -757,7 +757,7 @@
         <div class="scenario-tag good-tag">✅ With this instruction</div>
         <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">Change the upgrade flow, but do not damage old data.</div></div>
         <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble fpfr-output">
-          <strong class="lead">This is not a polished to-do list. It is an executable full-picture plan that has completed its applicable challenge.</strong>
+          <strong class="lead">This is not a polished to-do list. It is an executable plan with enough evidence and disprovable checks.</strong>
           <ul class="fpfr-mini-list">
             <li><strong>End-state snapshot</strong> — 🔎 Task understanding: change the upgrade flow without harming old data;<br><em>Executable</em>. State invariants, exclusions, and known versus unverified state.</li>
             <li><strong>Deliverables</strong> — List affected upgrade code, data format, and documentation; do not invent an absolute path that is unknown.</li>
@@ -765,15 +765,15 @@
             <li><strong>Acceptance tests</strong> — Test normal upgrade plus interruption, conflict, version reversal, and a false-green case where data is still harmed.</li>
             <li><strong>Goal links</strong> — Link external platform behavior to official sources and project changes to their current source of truth.</li>
           </ul>
-          <span class="fpfr-closing">The applicable challenge is complete. Because this changes old data, work still waits for your explicit confirmation.</span>
+          <span class="fpfr-closing">This is an executable plan. Because it changes old data, work still waits for your explicit confirmation.</span>
         </div></div>
-        <div class="scenario-summary good-summary">✓ You receive an executable plan only after its checks are complete; otherwise the agent explains the block directly</div>
+        <div class="scenario-summary good-summary">✓ You receive an executable plan only when evidence is sufficient; otherwise the agent explains the block directly</div>
       </div>
     </div>
   </div>
 
   <div class="panel" data-panel="delivery">
-    <div class="panel-context">From “Secrets and platform file safety”: secrets do not spread; preparation and a real public action stay separate.</div>
+    <div class="panel-context">From “Execution, safety, and authorization”: secrets do not spread; preparation and a real public action stay separate.</div>
     <div class="scenario-grid">
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ Without this instruction</div>
@@ -818,18 +818,13 @@
   <p class="lede">You do not need to read every line first. Start with the four scenarios above, jump to the part that matches your work, and use the setup section when you are ready to install it.</p>
   <h3>Rule map</h3>
   <div class="grid">
-    <div class="card"><span class="num">0</span><h4>Precedence</h4><p>When rules compete, safety, permissions, and irreversible consequences win.</p></div>
-    <div class="card"><span class="num">1</span><h4>Language &amp; replies</h4><p>Lead with the point. Keep simple work short. Each language version replies naturally in its own language.</p></div>
-    <div class="card"><span class="num">2</span><h4>Effort &amp; stopping</h4><p>Lower risk means lighter work. Stop once acceptance is sufficient; do not chase unrelated issues.</p></div>
-    <div class="card"><span class="num">3</span><h4>Choices &amp; sources</h4><p>Offer choices only when the user genuinely needs to choose. Do not rename existing keys, headings, or schemas.</p></div>
-    <div class="card"><span class="num">4</span><h4>Full-picture plan qualification</h4><p>For work where a mistake would have a larger impact, see the scope, evidence, and counterexamples before deciding it can run.</p></div>
-    <div class="card"><span class="num">5</span><h4>Read before judging</h4><p>Check changing facts, platform behavior, and target content. Say what remains unverified.</p></div>
-    <div class="card"><span class="num">6</span><h4>Long-lived rules</h4><p>When a rule or several linked places must stay aligned, the agent first confirms the scope before proposing a change.</p></div>
-    <div class="card"><span class="num">7</span><h4>Checkable changes</h4><p>When you need to paste a change yourself, get an anchor, before/after content, and a way to check it.</p></div>
-    <div class="card"><span class="num">8</span><h4>Calculations &amp; structure</h4><p>Show working only when it helps. Follow existing JSON and diagram formats.</p></div>
-    <div class="card"><span class="num">9</span><h4>Workspace &amp; scope</h4><p>Read related files first. Use an existing delivery location. Get separate approval for side effects.</p></div>
-    <div class="card"><span class="num">10</span><h4>Secrets &amp; file safety</h4><p>Do not expose secrets, bypass permissions, or solve a problem with dangerous deletion or overwrite commands.</p></div>
-    <div class="card"><span class="num">11</span><h4>Agent workflow</h4><p>Long work can resume cleanly. Repeated failure returns to root cause. Release and spending always need separate authorization.</p></div>
+    <div class="card"><span class="num">1</span><h4>Core direction</h4><p>Facts, safety, and the user’s goal come first. Small clear work uses the smallest sufficient change.</p></div>
+    <div class="card"><span class="num">2</span><h4>Precedence and sources</h4><p>Resolve conflicts by level. Check dates, versions, platform behavior, and target content before relying on them.</p></div>
+    <div class="card"><span class="num">3</span><h4>Replies and collaboration</h4><p>Keep replies direct. Offer choices only for real trade-offs, with recommendations and risk labels preserved.</p></div>
+    <div class="card"><span class="num">4</span><h4>Effort and planning</h4><p>Scale effort to consequence, uncertainty, and reversibility. Use five sections and challenge only for higher impact.</p></div>
+    <div class="card"><span class="num">5</span><h4>Changes, governance, and delivery</h4><p>Define one rule in one place. Review governance changes before editing and make delivery readable back.</p></div>
+    <div class="card"><span class="num">6</span><h4>Execution, safety, and authorization</h4><p>Stay inside workspace boundaries, protect secrets, and get separate approval for external writes, release, deployment, spending, or deletion.</p></div>
+    <div class="card"><span class="num">7</span><h4>Acceptance, formats, and context</h4><p>Checks map to risk. JSON, Mermaid, line-semantic review, and context continuation all stay testable.</p></div>
   </div>
   <h3>Problems it is built to prevent</h3>
   <table>
@@ -837,11 +832,12 @@
     <tbody>
       <tr><td>The agent edits before it understands the scope</td><td>Read project guidance, the target, and direct context first. Search wider only when impact is unknown.</td></tr>
       <tr><td>A simple task gains too much ceremony and becomes slow</td><td>Match effort to consequence, uncertainty, and reversibility. Small clear work does not need a full-picture plan.</td></tr>
-      <tr><td>A polished plan has no recovery or failure model</td><td>For work where a mistake would have a larger impact, the agent completes the applicable challenge before giving you an executable plan; if it cannot, it states the block directly.</td></tr>
+      <tr><td>A polished plan has no recovery or failure model</td><td>For work where a mistake would have a larger impact, the agent checks sources, scope, failure state, and counterexamples first; if evidence is insufficient, it states the block directly.</td></tr>
       <tr><td>Research mixes summaries, memory, and inference</td><td>Separate source, date, fact, inference, and what remains unverified.</td></tr>
       <tr><td>The agent invents a fixed folder or parallel structure</td><td>Use the existing directory, source-of-truth location, or platform delivery location; otherwise provide manually savable content.</td></tr>
       <tr><td>“The content is ready” becomes permission to push or publish</td><td>External writes, public release, access changes, spending, and data deletion each need their own explicit authorization.</td></tr>
       <tr><td>Acceptance keeps growing without new evidence</td><td>Every added check must map to an unresolved risk. Stop when affected scenarios pass.</td></tr>
+      <tr><td>The user asks for line-by-line review, but the agent only checks sections, keywords, or samples</td><td>Line-by-line review means line-semantic acceptance: inspect each line for meaning, ambiguity, anchoring, scope leakage, contradiction, and missing counterpart.</td></tr>
     </tbody>
   </table>
 </section>
@@ -860,41 +856,39 @@
     <li><strong>Know when to stop.</strong> Stop when the result checks out, important in-scope questions are resolved, and the needed updates are aligned. More rounds do not create stronger evidence by themselves.</li>
   </ul>
   <div class="svg-wrap">
-    <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 700 310" xmlns="http://www.w3.org/2000/svg">
       <text x="350" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">Precedence: protect safety before everything else</text>
 
-      <rect x="80" y="50" width="540" height="38" rx="6" fill="#d63d4f" opacity="0.9"/>
-      <text x="350" y="73" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">1. Safety / permissions / irreversible or external actions / privacy / platform limits</text>
+      <rect x="50" y="50" width="600" height="44" rx="6" fill="#d63d4f" opacity="0.9"/>
+      <text x="350" y="69" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">1. Platform, system, developer, tool limits, safety, privacy</text>
+      <text x="350" y="84" text-anchor="middle" fill="white" font-size="11">Irreversible and external actions</text>
 
-      <rect x="100" y="98" width="500" height="38" rx="6" fill="#e08436"/>
-      <text x="350" y="121" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">2. User-required output or adopted authoritative workflow</text>
+      <rect x="80" y="112" width="540" height="44" rx="6" fill="#e08436"/>
+      <text x="350" y="131" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">2. Authoritative workspace instructions and adopted workflows</text>
+      <text x="350" y="146" text-anchor="middle" fill="white" font-size="11">Handoff, state, or governance tools only within their stated role</text>
 
-      <rect x="120" y="146" width="460" height="38" rx="6" fill="#d4a017"/>
-      <text x="350" y="169" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">3. Source of truth / user keys / enums / existing specs</text>
+      <rect x="110" y="174" width="480" height="44" rx="6" fill="#d4a017"/>
+      <text x="350" y="193" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">3. User output, verbatim requirements, schema, and source of truth</text>
+      <text x="350" y="208" text-anchor="middle" fill="white" font-size="11">Existing keys, enums, headings, formats, and specs</text>
 
-      <rect x="140" y="194" width="420" height="38" rx="6" fill="#5da32e"/>
-      <text x="350" y="217" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">4. Fact checks / reading coverage / unverified labels</text>
+      <rect x="140" y="236" width="420" height="44" rx="6" fill="#0d7377"/>
+      <text x="350" y="255" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">4. This prompt's tone, reply scaffold, emoji, and layout</text>
+      <text x="350" y="270" text-anchor="middle" fill="white" font-size="11">Still beneath safety, sources, formats, and user requirements</text>
 
-      <rect x="160" y="242" width="380" height="38" rx="6" fill="#0d7377"/>
-      <text x="350" y="265" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">5. Reply form (output only / short / standard / formal / creative)</text>
-
-      <rect x="180" y="290" width="340" height="38" rx="6" fill="#5b6470"/>
-      <text x="350" y="313" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">6. Reply shape / labels / tone / layout</text>
-
-      <text x="350" y="350" text-anchor="middle" font-size="11" fill="#5b6470">If still uncertain: safe, verifiable, never falsely complete</text>
+      <text x="350" y="302" text-anchor="middle" font-size="11" fill="#5b6470">If still uncertain: safe, verifiable, never falsely complete</text>
     </svg>
-    <div class="svg-caption">Figure 1: Six levels of precedence. Higher-priority rules win.</div>
+    <div class="svg-caption">Figure 1: The four v0.9.3 precedence layers. Higher-priority rules win.</div>
   </div>
   <h3>Why this matters</h3>
   <p>This precedence order saves you from reteaching the agent that safety outranks formatting and that sources of truth outrank pretty rewrites. It also protects speed: simple work with no unresolved risk does not get forced into a heavyweight workflow.</p>
   <h3>Where it helps</h3>
-  <p>Every workspace task: code changes, research, document organization, README writing, release preparation, and long-lived rules. Creative work stays flexible; safety, privacy, and required formats still remain.</p>
+  <p>It helps with workplace documents and analysis, creative work, coding agents, long-lived governance, and counter-review of high-consequence plans. Creative work stays flexible; safety, privacy, and required formats still remain.</p>
 </section>
 
 <!-- ============== Group 2: Plan qualification ============== -->
 <section id="g2">
   <h2><span class="num">2</span>Full-picture plan qualification: see the whole plan before deciding it can run</h2>
-  <p class="lede">The five sections are not there to make a plan longer. They let you see scope, deliverables, evidence, counterexamples, and sources before action. Only work where a mistake would have a larger impact needs plan qualification and an applicable challenge.</p>
+  <p class="lede">The five sections are not there to make a plan longer. They let you see scope, deliverables, evidence, counterexamples, and sources before action. Only work where a mistake would have a larger impact needs plan qualification; independent challenge applies only to the higher-risk failure modes named in the prompt.</p>
   <h3>What you will receive</h3>
   <table><thead><tr><th>Result</th><th>What it means</th><th>What happens next</th></tr></thead><tbody>
     <tr><td><strong>Executable</strong></td><td>There is enough evidence, a clear set of must-not-fail conditions, and a way to check the result.</td><td>Obtain the approval appropriate to the consequence. Executable is not user authorization.</td></tr>
@@ -940,7 +934,7 @@
       <text x="110" y="196" text-anchor="middle" font-size="11" fill="#5b6470">(still read first)</text>
 
       <!-- 5 sections -->
-      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">Five plan sections after an independent check</text>
+      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">Five plan sections once evidence is sufficient</text>
 
       <g>
         <rect x="40" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
@@ -989,12 +983,12 @@
         <text x="650" y="394" font-size="10.5" fill="#1a1a1a">the source of truth</text>
       </g>
 
-      <text x="400" y="442" text-anchor="middle" font-size="11" fill="#5b6470">Keep low-risk reversible work light; challenge consequential plans, then obtain the right approval</text>
+      <text x="400" y="442" text-anchor="middle" font-size="11" fill="#5b6470">Keep low-risk reversible work light; challenge high-consequence plans, then obtain the right approval</text>
     </svg>
     <div class="svg-caption">Figure 2: First make the sources and scope clear; write the five plan sections only when the evidence is sufficient.</div>
   </div>
   <h3>What the agent does</h3>
-  <p>It states must-not-fail conditions such as “a failed check cannot be marked successful,” “unrecognized content cannot be guessed over,” and “the state must be knowable after interruption.” Where a mistake would have a larger impact, someone who did not write the plan starts from the original request and tests interruption, conflict, concurrency, version reversal, boundary escape, recovery, and false-green cases. Only then does the agent deliver the full plan. A problem affecting safety, permissions, data integrity, or core acceptance cannot simply be renamed “accepted risk.”</p>
+  <p>It states must-not-fail conditions such as “a failed check cannot be marked successful,” “unrecognized content cannot be guessed over,” and “the state must be knowable after interruption.” When failure could affect safety, secrets, permissions, data or version integrity, irreversible or external state, migration recovery, or a cross-surface core promise, a reviewer who did not write the plan starts from the original request and tests interruption, conflict, concurrency, version reversal, boundary escape, recovery, and false-green cases. Low-risk reversible work uses proportionate checks. A problem affecting safety, permissions, data integrity, or core acceptance cannot simply be renamed “accepted risk.”</p>
   <h3>How the five sections help</h3>
   <p><strong>End-state snapshot</strong> states scope, status, and what must not fail. <strong>Deliverables</strong> name real resources and actions. <strong>Success evidence</strong> includes failure state and recovery. <strong>Acceptance tests</strong> include a counterexample that can disprove the plan. <strong>Goal links</strong> connect the work to its sources. Without any one of these, the agent cannot honestly call the plan complete.</p>
 </section>
@@ -1057,9 +1051,9 @@
       <text x="730" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">poetry, ads,</text>
       <text x="730" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">fiction, concepts</text>
       <text x="730" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ no five-section plan,</text>
-      <text x="730" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">workflow, or success evidence</text>
-      <text x="730" y="222" text-anchor="middle" font-size="10" fill="#5b6470">Language and</text>
-      <text x="730" y="238" text-anchor="middle" font-size="10" fill="#5b6470">safety still apply</text>
+      <text x="730" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">engineering flow, or calculations</text>
+      <text x="730" y="222" text-anchor="middle" font-size="10" fill="#5b6470">Real-world claims</text>
+      <text x="730" y="238" text-anchor="middle" font-size="10" fill="#5b6470">are still checked</text>
     </svg>
     <div class="svg-caption">Figure 3: Match reply style to the work. Creative work does not inherit an engineering workflow.</div>
   </div>
@@ -1072,7 +1066,7 @@
       <tr><td>Everyday analysis, comparison, or repair</td><td>Lead with a plain-language 🔎 takeaway within three lines, then add only the reasons, method, and next step that help.</td></tr>
       <tr><td>There are truly two or more value trade-offs</td><td>Offer reliable options, their impact, and an evidence-based recommendation. If there is no real choice, make the judgement.</td></tr>
       <tr><td>The user explicitly asks for one format</td><td>Return only that structure, with no preface, summary, or follow-up question.</td></tr>
-      <tr><td>Creative work, ideation, or fiction</td><td>Do not force a five-section plan, engineering workflow, or calculation steps. Safety, privacy, and required format still apply.</td></tr>
+      <tr><td>Creative work, ideation, or fiction</td><td>Do not force a five-section plan, engineering workflow, or calculation steps. Claims about real people, brands, law, medicine, finance, safety, or public statements are still checked.</td></tr>
     </tbody>
   </table>
 
@@ -1137,8 +1131,8 @@
         <text x="570" y="160" text-anchor="middle" fill="white" font-size="13" font-weight="bold">After (new text)</text>
         <text x="440" y="190" font-size="11" fill="#1a1a1a" font-family="monospace">New files follow the existing</text>
         <text x="440" y="208" font-size="11" fill="#1a1a1a" font-family="monospace">directory, source, or platform location.</text>
-        <text x="440" y="226" font-size="11" fill="#1a1a1a" font-family="monospace">If none is known, first confirm</text>
-        <text x="440" y="244" font-size="11" fill="#1a1a1a" font-family="monospace">a safe workspace and delivery method.</text>
+        <text x="440" y="226" font-size="11" fill="#1a1a1a" font-family="monospace">If still unknown, do not create a file;</text>
+        <text x="440" y="244" font-size="11" fill="#1a1a1a" font-family="monospace">provide manually savable content.</text>
         <text x="440" y="280" font-size="11" fill="#5b6470" font-style="italic">↑ Safe to replace</text>
       </g>
 
@@ -1290,7 +1284,7 @@
   <ol>
     <li>Give the agent a low-risk small task. Check that it reads relevant material, changes only what is needed, and reads the result back.</li>
     <li>Give it a research question with missing information. Check that it separates fact, inference, and what is unverified.</li>
-    <li>Give it a task with an external side effect or where a mistake would have a larger impact. Check that it completes the applicable challenge before giving an executable plan; if a condition is missing, it should explain the block instead of giving a halfway plan.</li>
+    <li>Give it a task with an external side effect or where a mistake would have a larger impact. Check that it confirms sources, scope, failure state, and counterexamples before giving an executable plan; if a condition is missing, it should explain the block instead of giving a halfway plan.</li>
   </ol>
 </section>
 
@@ -1308,10 +1302,10 @@
 <footer>
   <p>
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.en.md" target="_blank" rel="noopener">📄 English prompt</a>
-    <a href="README.en.md">📖 English overview</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/tree/main/prompts/02-claude-code-meta-instruction" target="_blank" rel="noopener">📖 English overview</a>
     <a href="guide.html">Traditional Chinese guide</a>
     <a href="https://github.com/prompt-templates/Adam-AI-Instructions/blob/main/prompts/02-claude-code-meta-instruction/prompt.md" target="_blank" rel="noopener">Traditional Chinese prompt</a>
-    <a href="../../README.en.md">🏠 Home</a>
+    <a href="https://github.com/prompt-templates/Adam-AI-Instructions/" target="_blank" rel="noopener">🏠 Home</a>
     <a href="#overview">⬆ Back to top</a>
   </p>
   <p style="margin-top:14px">Adam's AI Instructions · Project-based AI Agent Instructions</p>

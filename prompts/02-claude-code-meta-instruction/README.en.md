@@ -16,7 +16,7 @@ You may already use `Follow YAGNI principles`, `Keep it simple`, `Verify before 
 
 | Familiar prompt direction | What the short phrase leaves open | How these instructions make it operational |
 |---|---|---|
-| `Follow YAGNI principles` / `Keep it simple` | What can be omitted, and what is still required for this delivery. | Match effort to consequence, uncertainty, and reversibility. Include only issues that block acceptance, were caused by the change, or make the delivery inconsistent. Make the smallest complete related change. |
+| `Follow YAGNI principles` / `Keep it simple` | What can be omitted, and what is still required for this delivery. | Within the user goal and explicit scope, match effort to consequence, uncertainty, and reversibility. Include only issues that block acceptance, were caused by the change, or make the delivery inconsistent. Make the smallest sufficient related change, without letting persistence, sync, or governance expand the task automatically. |
 | `Verify before acting` | What to verify, and what to do when sources conflict. | Read the source of truth and direct context first. Separate source, date, fact, inference, and what remains unverified. |
 | `Plan before execution` | Whether small work needs a long plan, and when a plan is reliable. | Use a full-picture plan only for dependent, consequential, hard-to-recover, or externally consequential work. The plan needs success evidence, counterexamples, and an applicable independent challenge. |
 | `Human in the loop` | What safe work can proceed, and what must stop for approval. | Proceed with authorized, low-risk, reversible, no-side-effect work. Require separate explicit authorization for publishing, deletion, access changes, spending, and other external actions. |
@@ -41,6 +41,7 @@ Ordinary ChatGPT and Claude web chat are not supported here as reliable project 
 - Research separates source, date, fact, inference, and unknowns.
 - A new file follows an existing project or platform location instead of inventing a folder.
 - A write is read back; failure, interruption, or conflict cannot be reported as success.
+- If a tool, sandbox, patch, test, or read command gets stuck, the agent first checks for partial writes; only an equally safe, authorized, auditable official channel may be retried once.
 - Deletion, overwrite, release, access, money, and secrets have extra confirmation gates.
 - A small edit stays short. A plan where a mistake would have a larger impact must survive an independent challenge before it is called executable.
 - You do not receive a half-finished plan that still needs its main checks. If a core condition is missing, the agent explains the block and exactly what is needed to continue.

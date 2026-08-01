@@ -1244,12 +1244,13 @@
     <div class="svg-caption">Figure 7: The agent clarifies, reads, changes, and checks as needed. Small work does not need every stage spelled out.</div>
   </div>
 
-  <h3>Five boundaries that matter most</h3>
+  <h3>Six boundaries that matter most</h3>
   <table>
     <thead><tr><th>Area</th><th>What this instruction requires</th></tr></thead>
     <tbody>
       <tr><td>Scope and files</td><td>Read the target and direct context first. Change only task-related content. Stop on concurrent or unexpected changes; never undo user work.</td></tr>
       <tr><td>Safe writing</td><td>Do not assume a folder name or wrap file edits in an external shell. Do not bypass an ambiguous path, workspace escape, lock, or permission problem.</td></tr>
+      <tr><td>Unresponsive tools</td><td>Check first for partial writes or unknown side effects. Retry only once through an equally safe, authorized, auditable official channel.</td></tr>
       <tr><td>Secrets and destructive actions</td><td>Do not put tokens, keys, or certificates in replies, logs, or commands. Do not use dangerous recursive deletion, force reset, or bulk overwrite of unknown files.</td></tr>
       <tr><td>External tools and platforms</td><td>Check official documentation before changing integrations, authentication, deployment, paid actions, or fast-changing interfaces. Do not guess a high-risk contract.</td></tr>
       <tr><td>External side effects</td><td>Push, publish, deploy, send messages, schedule, change access, spend money, and delete data each need explicit authorization before execution.</td></tr>

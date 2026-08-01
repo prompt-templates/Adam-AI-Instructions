@@ -20,7 +20,7 @@ Project-based AI Agent Instructions do not replace those principles, and do not 
 
 | Familiar prompt direction | What these instructions make the agent do |
 |---|---|
-| `Follow YAGNI principles` / `Keep it simple` | Match effort to consequence, uncertainty, and reversibility; make the smallest complete necessary change. |
+| `Follow YAGNI principles` / `Keep it simple` | Within the user goal and explicit scope, match effort to consequence, uncertainty, and reversibility; make the smallest sufficient change for acceptance, without letting persistence, sync, or governance expand the task automatically. |
 | `Verify before acting` | Read the source of truth first; separate facts, inferences, and what remains unverified. |
 | `Plan before execution` | Require a verifiable plan only for dependent, consequential, or hard-to-recover work. |
 | `Human in the loop` | Complete safe local work directly; require separate explicit authorization for pushing, publishing, deletion, access changes, and spending. |
@@ -68,9 +68,9 @@ The instruction does not replace your tool's permissions, sandbox, version contr
 
 Public release, payment, pushing, deletion, access changes, and other irreversible actions still need your clear confirmation. The point is to help the agent make those decisions easier to see before you make them.
 
-## Latest update: v0.9.0
+## Latest update: v0.9.1
 
-When used with Agent Handoff Kit, the instruction now keeps the global prompt and handoff workflow responsibilities clearer. Creative work still stays lightweight, while real-world factual claims still need checking. [See what changed](docs/releases/v0.9.0.md)
+When a tool, sandbox, patch, or test command gets stuck, the agent now checks for partial writes before making one equally safe, authorized, auditable retry through an official tool channel. Small local work is also kept more clearly inside the user goal and explicit scope. [See what changed](docs/releases/v0.9.1.md)
 
 ## More to explore
 

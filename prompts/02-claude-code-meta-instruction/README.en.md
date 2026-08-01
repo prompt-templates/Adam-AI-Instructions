@@ -1,6 +1,6 @@
 # 📖 How to use it
 
-[Traditional Chinese overview](README.md) · [English prompt](prompt.en.md) · [English guide](guide.en.html) · [Traditional Chinese prompt](prompt.md) · [Traditional Chinese guide](guide.html) · [Home](../../README.en.md)
+[Traditional Chinese overview](README.md) · [English prompt](prompt.en.md) · [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html) · [Traditional Chinese prompt](prompt.md) · [Traditional Chinese guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) · [Home](../../README.en.md)
 
 When an AI can enter your project or folder, the question is no longer only whether it gives a good answer. It can edit before it understands the rules, draw a conclusion from unchecked material, or say a job is finished halfway through.
 
@@ -26,14 +26,15 @@ These directions align with public guidance from OpenAI, Anthropic, and Google: 
 
 ## What it helps with
 
-| Tool | Simplest installation point |
-|---|---|
-| Claude Code | Root `CLAUDE.md` |
-| OpenAI Codex | Root `AGENTS.md` |
-| Cursor | Root `AGENTS.md` |
-| Antigravity | Always-on Workspace Rule |
+The reason for v0.9.3 is to make 02 a single core meta instruction: keep safety, authorization, sources of truth, acceptance, and high-risk counter-review, while reducing repeated workflow language and tool-specific assumptions.
 
-Ordinary ChatGPT and Claude web chat are not supported here as reliable project agents.
+- **Workplace**: for documents, fact checks, summaries, and local work updates, small tasks stay direct while external or irreversible actions still require explicit authorization.
+- **Creative**: writing, editing, naming, and visual direction are judged by the brief, tone, format, and constraints instead of engineering workflow; real-world claims still get checked.
+- **Coding agent**: the agent reads the target and direct context, makes the smallest sufficient change, and handles stuck tools by checking for partial writes before one equally safe retry.
+- **Governance**: rule repairs start by identifying sources of truth and responsibility. Low-risk local repairs stay light; high-risk governance gets a full-picture plan and independent challenge.
+- **Counter-review**: when a plan may affect safety, permissions, data integrity, public boundaries, or cross-surface promises, the agent looks for disconfirming cases before treating the plan as ready.
+
+This repo provides the complete meta instruction only. Tool-specific config files, imports, and installation locations should follow that tool's documentation or your Agent Handoff Kit setup. Ordinary ChatGPT and Claude web chat are not supported here as reliable project agents.
 
 ## What changes after installation
 
@@ -50,10 +51,10 @@ Ordinary ChatGPT and Claude web chat are not supported here as reliable project 
 
 1. Copy [prompt.en.md](prompt.en.md).
 2. Open the correct project or workspace.
-3. Paste it at the location in the table, save it, then start a fresh task.
+3. Paste it where your tool keeps long-term project instructions or rules, save it, then start a fresh task.
 4. Try one small real task: ask the agent to read project rules, correct one small mistake, and read it back.
 
-Use the current official instructions for UI details: [Claude Code](https://code.claude.com/docs/en/memory), [Codex](https://developers.openai.com/codex/guides/agents-md/), [Cursor](https://docs.cursor.com/context/rules-for-ai), and [Antigravity](https://antigravity.google/docs/rules-workflows).
+Use the current official instructions or your Agent Handoff Kit setup for tool UI names and long-term instruction locations.
 
 ## It does not make every task complicated
 

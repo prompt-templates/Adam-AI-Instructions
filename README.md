@@ -2,7 +2,7 @@
 
 *Adam's AI Instructions*
 
-[English](README.en.md) · [繁中完整全域指令](prompts/02-claude-code-meta-instruction/prompt.md) · [中文使用指南](prompts/02-claude-code-meta-instruction/guide.html) · [English complete instruction](prompts/02-claude-code-meta-instruction/prompt.en.md) · [English guide](prompts/02-claude-code-meta-instruction/guide.en.html)
+[English](README.en.md) · [繁中完整全域指令](prompts/02-claude-code-meta-instruction/prompt.md) · [中文使用指南](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) · [English complete instruction](prompts/02-claude-code-meta-instruction/prompt.en.md) · [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html)
 
 當 AI 可以進入你的專案或工作區，讀檔、改檔、執行工具，甚至準備發佈內容，問題不再只是它答得好不好。你需要知道它看過甚麼、為何這樣做，以及完成後怎樣核對。
 
@@ -43,16 +43,17 @@
 3. 把全文放進該工具為這個專案或工作區長期套用的指令／規則位置，儲存後開一個新任務。
 4. 先用一件小而真實的工作試它，例如：「先讀這個專案的規則與測試方式，再修正 README 的一處錯字並讀回核對。」
 
-常見工具裡，這個位置通常叫做：
+這份 repo 只提供完整 meta instruction；各工具的設定檔、匯入方式和安裝位置，請依該工具或你的 Agent Handoff Kit 設定處理。
 
-| 工具 | 專案長期指令的位置 |
-|---|---|
-| Claude Code | `CLAUDE.md` |
-| OpenAI Codex | `AGENTS.md` |
-| Cursor | `AGENTS.md` 或 Project Rules |
-| Antigravity | Workspace Rule |
+如果你想先看 AI 在常見情境下會怎樣回應，可直接看[中文使用指南](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html)或 [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html)。
 
-如果你想先看 AI 在四個常見情境下會怎樣回應，可直接看[中文使用指南](prompts/02-claude-code-meta-instruction/guide.html)或 [English guide](prompts/02-claude-code-meta-instruction/guide.en.html)。
+## v0.9.3 更適合的任務
+
+- **Workplace**：整理文件、查證資料、準備摘要或更新本地工作內容時，小事可直接完成，外部或不可逆動作才要求明確授權。
+- **Creative**：創作、改稿、命名和視覺方向按題意、語氣、格式和禁忌驗收，不硬套工程流程；涉及真實聲稱仍會核對。
+- **Coding agent**：讀待改位置與直接上下文，做最小足夠修改，工具卡住時先確認沒有半寫入，再用同等安全通道重試一次。
+- **Governance**：規則修補先分清真源和責任範圍，低風險局部修補不啟動完整治理流程，高風險才做全圖計劃和獨立反證。
+- **反證審閱**：對可能影響安全、權限、資料完整性、公開邊界或跨表面承諾的方案，先找能推翻方案的反例，不把未查漏計劃包裝成完成品。
 
 ## 這份指令守住甚麼
 
@@ -68,16 +69,16 @@
 
 公開發佈、付款、推送、刪除、權限變更和其他不可逆操作，仍要由你清楚確認。它的作用是讓 AI 在你作決定前，把事情看得更清楚。
 
-## 最新更新：v0.9.2
+## 最新更新：v0.9.3
 
-長期指令整理規則更通用：保留會影響 AI 行為、安全、權限、資料處理、事實核對、交付與驗收的要求，把只供理解的內容移到參考資料；外部與不可逆操作的授權門檻也集中成一條硬規則。[了解這版改動](docs/releases/v0.9.2.md)
+Prompt 02 壓縮成更清楚的單一跨平台 meta instruction：保留安全、授權、真源、相稱計劃與驗收邊界，同時減少重複流程和特定工具假設，讓一般工作與創作任務更不容易被過度工程化。[了解這版改動](docs/releases/v0.9.3.md)
 
 ## 更多資料
 
 - [繁中使用說明](prompts/02-claude-code-meta-instruction/README.md)
 - [English overview](prompts/02-claude-code-meta-instruction/README.en.md)
-- [中文互動指南](prompts/02-claude-code-meta-instruction/guide.html)
-- [English interactive guide](prompts/02-claude-code-meta-instruction/guide.en.html)
+- [中文互動指南](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html)
+- [English interactive guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html)
 - [更新紀錄](CHANGELOG.md)
 
 ## 延伸閱讀：Agent Handoff Kit 與 Innovation Loop

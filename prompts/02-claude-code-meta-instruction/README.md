@@ -1,6 +1,6 @@
 # 📖 使用說明
 
-[English overview](README.en.md) · [繁中指令](prompt.md) · [中文指南](guide.html) · [English prompt](prompt.en.md) · [English guide](guide.en.html) · [主 README](../../README.md)
+[English overview](README.en.md) · [繁中指令](prompt.md) · [中文指南](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) · [English prompt](prompt.en.md) · [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html) · [主 README](../../README.md)
 
 當 AI 可以進入你的專案或資料夾，問題不再只是它答得好不好。它可能未看清規則便改檔，未核實資料便下結論，或者做了一半便說任務完成。
 
@@ -26,14 +26,15 @@
 
 ## 它會怎樣幫你
 
-| 工具 | 最簡單安裝位置 |
-|---|---|
-| Claude Code | 專案根目錄 `CLAUDE.md` |
-| OpenAI Codex | 專案根目錄 `AGENTS.md` |
-| Cursor | 專案根目錄 `AGENTS.md` |
-| Antigravity | Always-on Workspace Rule |
+v0.9.3 的修改原因，是把 02 收斂成一份單一核心 meta instruction：保留安全、授權、真源、驗收和高風險反證，同時減少重複流程和特定工具假設。
 
-不支援把一般網頁版 ChatGPT 或 Claude 對話當作可靠的專案代理工具。
+- **Workplace**：整理文件、查證資料、準備摘要或更新本地工作內容時，小事可直接完成，外部或不可逆動作才要求明確授權。
+- **Creative**：創作、改稿、命名和視覺方向按題意、語氣、格式和禁忌驗收，不硬套工程流程；涉及真實聲稱仍會核對。
+- **Coding agent**：讀待改位置與直接上下文，做最小足夠修改，工具卡住時先確認沒有半寫入，再用同等安全通道重試一次。
+- **Governance**：規則修補先分清真源和責任範圍，低風險局部修補不啟動完整治理流程，高風險才做全圖計劃和獨立反證。
+- **反證審閱**：對可能影響安全、權限、資料完整性、公開邊界或跨表面承諾的方案，先找能推翻方案的反例，不把未查漏計劃包裝成完成品。
+
+這份 repo 只提供完整 meta instruction；各工具的設定檔、匯入方式和安裝位置，請依該工具或你的 Agent Handoff Kit 設定處理。不支援把一般網頁版 ChatGPT 或 Claude 對話當作可靠的專案代理工具。
 
 ## 貼入後，你會看到甚麼不同
 
@@ -50,10 +51,10 @@
 
 1. 複製 [prompt.md](prompt.md) 全文。
 2. 先進入正確的專案／工作區。
-3. 貼到上表對應的位置，儲存後重新開任務。
+3. 貼到你的工具用來長期套用專案指令或規則的位置，儲存後重新開任務。
 4. 先用一個小工作確認：要求 AI 讀專案規則，再修正一處小錯並讀回核對。
 
-各工具的畫面與名稱會更新，請以官方當前文件為準：[Claude Code](https://code.claude.com/docs/en/memory)、[Codex](https://developers.openai.com/codex/guides/agents-md/)、[Cursor](https://docs.cursor.com/context/rules-for-ai)、[Antigravity](https://antigravity.google/docs/rules-workflows)。
+各工具的畫面、名稱和長期指令位置會更新，請以該工具的官方當前文件或你的 Agent Handoff Kit 設定為準。
 
 ## 不會令每件事變複雜
 

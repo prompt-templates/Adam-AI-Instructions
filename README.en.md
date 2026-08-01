@@ -2,7 +2,7 @@
 
 *Adam's AI Instructions*
 
-[繁體中文](README.md) · [English complete instruction](prompts/02-claude-code-meta-instruction/prompt.en.md) · [English guide](prompts/02-claude-code-meta-instruction/guide.en.html) · [Traditional Chinese complete instruction](prompts/02-claude-code-meta-instruction/prompt.md) · [Traditional Chinese guide](prompts/02-claude-code-meta-instruction/guide.html)
+[繁體中文](README.md) · [English complete instruction](prompts/02-claude-code-meta-instruction/prompt.en.md) · [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html) · [Traditional Chinese complete instruction](prompts/02-claude-code-meta-instruction/prompt.md) · [Traditional Chinese guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html)
 
 Once an AI can enter your project or workspace—read files, edit files, use tools, or prepare something for release—the question is no longer only whether its answers sound good. You need to know what it looked at, why it took an action, and how you can check the result.
 
@@ -43,16 +43,17 @@ This does not turn every small task into a process. A clear, reversible fix can 
 3. Paste the full text into the place where your tool keeps lasting instructions or rules for that project or workspace. Save it, then start a new task.
 4. Try one small, real job: “Read this project’s rules and test instructions, then fix one typo in the README and read it back to confirm.”
 
-In common tools, that place is usually called:
+This repo provides the complete meta instruction only. Tool-specific config files, imports, and installation locations should follow that tool's documentation or your Agent Handoff Kit setup.
 
-| Tool | Project instruction location |
-|---|---|
-| Claude Code | `CLAUDE.md` |
-| OpenAI Codex | `AGENTS.md` |
-| Cursor | `AGENTS.md` or Project Rules |
-| Antigravity | Workspace Rule |
+To see how the agent responds in common situations, open the [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html) or [Traditional Chinese guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html).
 
-To see how the agent responds in four common situations, open the [English guide](prompts/02-claude-code-meta-instruction/guide.en.html) or [Traditional Chinese guide](prompts/02-claude-code-meta-instruction/guide.html).
+## What v0.9.3 supports better
+
+- **Workplace**: for documents, fact checks, summaries, and local work updates, small tasks stay direct while external or irreversible actions still require explicit authorization.
+- **Creative**: writing, editing, naming, and visual direction are judged by the brief, tone, format, and constraints instead of engineering workflow; real-world claims still get checked.
+- **Coding agent**: the agent reads the target and direct context, makes the smallest sufficient change, and handles stuck tools by checking for partial writes before one equally safe retry.
+- **Governance**: rule repairs start by identifying sources of truth and responsibility. Low-risk local repairs stay light; high-risk governance gets a full-picture plan and independent challenge.
+- **Counter-review**: when a plan may affect safety, permissions, data integrity, public boundaries, or cross-surface promises, the agent looks for disconfirming cases before treating the plan as ready.
 
 ## What the instruction protects
 
@@ -68,16 +69,16 @@ The instruction does not replace your tool's permissions, sandbox, version contr
 
 Public release, payment, pushing, deletion, access changes, and other irreversible actions still need your clear confirmation. The point is to help the agent make those decisions easier to see before you make them.
 
-## Latest update: v0.9.2
+## Latest update: v0.9.3
 
-Long-term instruction cleanup is now more general: preserve requirements that affect behavior, safety, permissions, data handling, fact-checking, delivery, and acceptance, while moving understanding-only material to references. External and irreversible authorization gates are also consolidated into one hard rule. [See what changed](docs/releases/v0.9.2.md)
+Prompt 02 is now a clearer single cross-platform meta instruction: it keeps safety, authorization, source-of-truth, proportionate planning, and acceptance boundaries while reducing repeated workflow language and tool-specific assumptions, so ordinary work and creative tasks are less likely to become over-engineered. [See what changed](docs/releases/v0.9.3.md)
 
 ## More to explore
 
 - [English overview](prompts/02-claude-code-meta-instruction/README.en.md)
 - [Traditional Chinese overview](prompts/02-claude-code-meta-instruction/README.md)
-- [English interactive guide](prompts/02-claude-code-meta-instruction/guide.en.html)
-- [Traditional Chinese interactive guide](prompts/02-claude-code-meta-instruction/guide.html)
+- [English interactive guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html)
+- [Traditional Chinese interactive guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html)
 - [Changelog](CHANGELOG.md)
 
 ## Optional: Agent Handoff Kit and Innovation Loop

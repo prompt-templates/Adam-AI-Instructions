@@ -71,7 +71,7 @@ Public release, payment, pushing, deletion, access changes, and other irreversib
 
 ## Latest update: v0.9.3
 
-Prompt 02 is now a clearer single cross-platform meta instruction: it keeps safety, authorization, source-of-truth, proportionate planning, and acceptance boundaries while reducing repeated workflow language and tool-specific assumptions, so ordinary work and creative tasks are less likely to become over-engineered. [See what changed](docs/releases/v0.9.3.md)
+Project-based AI Agent Instructions are now a clearer single cross-platform meta instruction: they keep safety, authorization, source-of-truth, proportionate planning, and acceptance boundaries while reducing repeated workflow language and tool-specific assumptions, so ordinary work and creative tasks are less likely to become over-engineered. [See what changed](docs/releases/v0.9.3.md)
 
 ## More to explore
 

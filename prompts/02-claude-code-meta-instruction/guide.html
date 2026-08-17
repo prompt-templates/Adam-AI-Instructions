@@ -671,7 +671,7 @@
   <a href="#scenario">對照</a>
   <a href="#overview">導讀</a>
   <a href="#g1">1. 做事方式</a>
-  <a href="#g2">2. 計劃資格</a>
+  <a href="#g2">2. 對焦與計劃</a>
   <a href="#g3">3. 回覆與語言</a>
   <a href="#g4">4. 事實與真源</a>
   <a href="#g5">5. 修改與交付</a>
@@ -692,10 +692,10 @@
 <section id="scenario" class="scenario-hero">
   <div class="scenario-title">
     <h2>四個常見情境 · 兩種 AI 體驗</h2>
-    <p>點擊標籤切換。每個對照都直接來自 v0.9.3 的七節規則：看見的不是「更多流程」，而是不同判斷方式如何改變你的使用體驗。</p>
+    <p>點擊標籤切換。每個對照都直接來自 v1.0.0 的七節規則：看見的不是「更多流程」，而是不同判斷方式如何改變你的使用體驗。</p>
   </div>
 
-  <div class="scenario-tabs" role="tablist" aria-label="v0.9.3 常見情境">
+  <div class="scenario-tabs" role="tablist" aria-label="v1.0.0 常見情境">
     <button class="tab-btn active" data-tab="read-first">情境 1 · 真選項與推薦</button>
     <button class="tab-btn" data-tab="research">情境 2 · 先讀真源</button>
     <button class="tab-btn" data-tab="plan-gate">情境 3 · 高風險計劃</button>
@@ -764,7 +764,7 @@
         <div class="scenario-tag good-tag">✅ 套用這份指令</div>
         <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">幫我改升級流程，不能弄壞舊資料。</div></div>
         <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble fpfr-output">
-          <strong class="lead">這不是一張好看的待辦清單，而是一份證據足夠、可被驗收推翻的可執行計劃。</strong>
+          <strong class="lead">🎯 層級對焦：對準 — 本輪要產出可驗收的升級方案，不是只跑通一組技術步驟。</strong>
           <ul class="fpfr-mini-list">
             <li><strong>終點畫面</strong> — 🔎 任務理解：更新升級流程，舊資料不可受損；<br><em>可執行</em>。列出不可破壞條件、排除範圍與已知／未核實狀態。</li>
             <li><strong>交付物</strong> — 列出受影響的升級程式、資料格式與說明；未知絕對路徑不虛構。</li>
@@ -831,7 +831,7 @@
     <div class="card"><span class="num">1</span><h4>核心取向</h4><p>事實、安全與使用者目標優先；小而清楚的工作用最小足夠改動完成。</p></div>
     <div class="card"><span class="num">2</span><h4>仲裁與真源</h4><p>規則衝突時按層級處理；日期、版本、平台行為與待改內容先核對。</p></div>
     <div class="card"><span class="num">3</span><h4>回覆與合作</h4><p>繁中清楚短答；只有真正需要取捨時才列選項，並保留推薦與風險提示。</p></div>
-    <div class="card"><span class="num">4</span><h4>工作力度與計劃</h4><p>按後果、未知與可回復性決定力度；高影響才用五區段與必要反證。</p></div>
+    <div class="card"><span class="num">4</span><h4>工作力度與計劃</h4><p>按後果、未知與可回復性決定力度；長任務先對焦，高影響才用五區段與必要反證。</p></div>
     <div class="card"><span class="num">5</span><h4>修改、治理與交付</h4><p>同一規則只在一處定義；治理改動先只讀審核，交付要可讀回驗收。</p></div>
     <div class="card"><span class="num">6</span><h4>執行、安全與授權</h4><p>守工作區邊界、保護機密；外部寫入、發布、部署、費用與刪除另取授權。</p></div>
     <div class="card"><span class="num">7</span><h4>驗收、格式與上下文</h4><p>檢查要對應風險；JSON、Mermaid、逐行驗與上下文續接都有可驗收標準。</p></div>
@@ -843,7 +843,7 @@
     <tbody>
       <tr><td>AI 一開始便改檔，後來才發現讀錯範圍</td><td>先讀專案指引、待改位置與直接上下文；影響未明才擴大搜尋。</td></tr>
       <tr><td>簡單任務被加上過長流程，反而拖慢工作</td><td>以後果、未知與可回復性決定力度；小而清楚的工作不用全圖計劃。</td></tr>
-      <tr><td>漂亮的計劃看似完整，實際沒有恢復或失敗模型</td><td>一旦出錯會有較大影響時，AI 先確認來源、範圍、失敗狀態與反例；證據不足便直接說明受阻條件。</td></tr>
+      <tr><td>漂亮的計劃看似完整，實際沒有推近真正目標</td><td>長任務先做層級對焦；一旦出錯會有較大影響時，再確認來源、範圍、失敗狀態與反例。</td></tr>
       <tr><td>研究答案把摘要、記憶和推論混在一起</td><td>分開來源、日期、事實、推論與未核實內容。</td></tr>
       <tr><td>AI 自行建立固定資料夾或平行結構</td><td>先沿用現有目錄、真源與平台交付位置；仍不能確認就交付可手動保存的內容。</td></tr>
       <tr><td>「內容改好」被誤當成已同意推送、上傳或發佈</td><td>外部寫入、公開、權限、費用與資料刪除均需獨立明確授權。</td></tr>
@@ -891,7 +891,7 @@
 
       <text x="350" y="302" text-anchor="middle" font-size="11" fill="#5b6470">仍未能判斷:以「安全、可驗證、不假裝完成」為最高處理原則</text>
     </svg>
-    <div class="svg-caption">圖一：v0.9.3 的四層仲裁順序；上位規則優先於下位。</div>
+    <div class="svg-caption">圖一：v1.0.0 的四層仲裁順序；上位規則優先於下位。</div>
   </div>
 
   <h3>實際作用</h3>
@@ -901,15 +901,17 @@
   <p>適用於工作文件與資料整理、創作構思、程式代理、長期治理，以及高後果計劃的反證審閱。創作仍可自由發揮；安全、私隱與你指定的格式則一直保留。</p>
 </section>
 
-<!-- ============== 第二組：計劃資格 ============== -->
+<!-- ============== 第二組：層級對焦與計劃資格 ============== -->
 <section id="g2">
-  <h2><span class="num">2</span>全圖計劃資格：先看清全圖，才判斷可否執行</h2>
-  <p class="lede">五區段不是為了把計劃寫得更長，而是讓你在動手前看見範圍、交付、證據、反例與依據。只有一旦出錯會有較大影響的工作，才需要加上計劃資格與適用反證。</p>
+  <h2><span class="num">2</span>層級對焦與全圖計劃資格：先對準，才判斷可否執行</h2>
+  <p class="lede">五區段不是為了把計劃寫得更長。v1.0.0 會先用 🎯 層級對焦分清最終成果、本輪產出、真源和停止條件；只有對準且一旦出錯會有較大影響的工作，才需要全圖計劃與適用反證。</p>
 
   <h3>你會收到哪一種結果</h3>
   <table>
     <thead><tr><th>結果</th><th>代表甚麼</th><th>下一步</th></tr></thead>
     <tbody>
+      <tr><td><strong>🎯 對準</strong></td><td>本輪產出、工作層級、真源、成功證據和停止條件互相一致。</td><td>才可進入計劃或執行。</td></tr>
+      <tr><td><strong>失焦</strong></td><td>目標、層級、產出或證據未對齊，技術步驟通過也不算真正進步。</td><td>先收窄目標、層級或證據。</td></tr>
       <tr><td><strong>可執行</strong></td><td>已有足夠證據、不能失守的底線與驗收方式，沒有未解決的重要問題。</td><td>仍要按後果取得適當授權；可執行不等於已獲授權。</td></tr>
       <tr><td><strong>受阻</strong></td><td>仍缺核心來源、能力或安全條件，因此不會交出一份假完整計劃。</td><td>AI 會列出缺口、已完成的安全核實及繼續所需條件。</td></tr>
     </tbody>
@@ -920,11 +922,11 @@
 
   <div class="svg-wrap">
     <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
-      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">全圖計劃資格</text>
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">層級對焦 → 全圖計劃資格</text>
 
       <!-- Start -->
       <rect x="340" y="50" width="120" height="36" rx="18" fill="#0d7377"/>
-      <text x="400" y="74" text-anchor="middle" fill="white" font-size="13">收到需要完整規劃的任務</text>
+      <text x="400" y="74" text-anchor="middle" fill="white" font-size="13">收到可能需要完整規劃的任務</text>
 
       <!-- Arrow -->
       <line x1="400" y1="86" x2="400" y2="118" stroke="#1a1a1a" stroke-width="2"/>
@@ -932,10 +934,10 @@
 
       <!-- Decision diamond -->
       <polygon points="400,128 510,180 400,232 290,180" fill="white" stroke="#0d7377" stroke-width="2"/>
-      <text x="400" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">是否一旦出錯會有較大影響？</text>
-      <text x="400" y="188" text-anchor="middle" font-size="11" fill="#1a1a1a">安全、資料或長期規則</text>
-      <text x="400" y="204" text-anchor="middle" font-size="11" fill="#1a1a1a">多處內容必須保持一致</text>
-      <text x="400" y="220" text-anchor="middle" font-size="11" fill="#1a1a1a">升級、遷移、外部副作用</text>
+      <text x="400" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">層級與證據是否對準？</text>
+      <text x="400" y="188" text-anchor="middle" font-size="11" fill="#1a1a1a">最終成果、本輪產出</text>
+      <text x="400" y="204" text-anchor="middle" font-size="11" fill="#1a1a1a">真源、成功證據</text>
+      <text x="400" y="220" text-anchor="middle" font-size="11" fill="#1a1a1a">反例與停止條件</text>
 
       <!-- Yes branch right -->
       <line x1="510" y1="180" x2="600" y2="180" stroke="#1a1a1a" stroke-width="2"/>
@@ -943,20 +945,20 @@
       <text x="555" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">是</text>
 
       <rect x="600" y="158" width="180" height="44" rx="8" fill="#e6f7f5" stroke="#0d7377" stroke-width="1.5"/>
-      <text x="690" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">先讀正式依據與風險</text>
-      <text x="690" y="196" text-anchor="middle" font-size="11" fill="#5b6470">→ 證據足夠才形成計劃</text>
+      <text x="690" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">再讀正式依據與風險</text>
+      <text x="690" y="196" text-anchor="middle" font-size="11" fill="#5b6470">→ 對準且證據足夠才計劃</text>
 
       <!-- No branch left -->
       <line x1="290" y1="180" x2="200" y2="180" stroke="#1a1a1a" stroke-width="2"/>
       <polygon points="202,176 195,180 202,184" fill="#1a1a1a"/>
-      <text x="245" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#5b6470">否</text>
+      <text x="245" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#5b6470">失焦</text>
 
       <rect x="20" y="158" width="180" height="44" rx="8" fill="#fafafa" stroke="#999" stroke-width="1.5"/>
-      <text x="110" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">按一般規則處理</text>
-      <text x="110" y="196" text-anchor="middle" font-size="11" fill="#5b6470">(仍先讀後判)</text>
+      <text x="110" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">先收窄目標或證據</text>
+      <text x="110" y="196" text-anchor="middle" font-size="11" fill="#5b6470">(不交假完整計劃)</text>
 
       <!-- 5 sections -->
-      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">證據足夠後的五區段計劃</text>
+      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">對準且證據足夠後的五區段計劃</text>
 
       <g>
         <rect x="40" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
@@ -1007,7 +1009,7 @@
 
       <text x="400" y="442" text-anchor="middle" font-size="11" fill="#5b6470">低風險可回復工作不多加一輪；高後果計劃先反證，再按影響取得確認</text>
     </svg>
-    <div class="svg-caption">圖二：先看清來源與範圍；證據足夠後，才寫五區段計劃。</div>
+    <div class="svg-caption">圖二：先對準目標、層級與證據；證據足夠後，才寫五區段計劃。</div>
   </div>
 
   <h3>AI 會怎樣做</h3>

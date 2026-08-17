@@ -671,7 +671,7 @@
   <a href="#scenario">Compare</a>
   <a href="#overview">Overview</a>
   <a href="#g1">1. How it works</a>
-  <a href="#g2">2. Plan qualification</a>
+  <a href="#g2">2. Focus &amp; planning</a>
   <a href="#g3">3. Replies &amp; language</a>
   <a href="#g4">4. Facts &amp; sources</a>
   <a href="#g5">5. Changes &amp; delivery</a>
@@ -692,10 +692,10 @@
 <section id="scenario" class="scenario-hero">
   <div class="scenario-title">
     <h2>Four everyday situations · two AI experiences</h2>
-    <p>Switch between the tabs. Each comparison comes directly from the seven v0.9.3 sections: see how a different judgement model changes the experience, not just the process.</p>
+    <p>Switch between the tabs. Each comparison comes directly from the seven v1.0.0 sections: see how a different judgement model changes the experience, not just the process.</p>
   </div>
 
-  <div class="scenario-tabs" role="tablist" aria-label="v0.9.3 everyday situations">
+  <div class="scenario-tabs" role="tablist" aria-label="v1.0.0 everyday situations">
     <button class="tab-btn active" data-tab="read-first">Scenario 1 · Real choices &amp; recommendation</button>
     <button class="tab-btn" data-tab="research">Scenario 2 · Read the source first</button>
     <button class="tab-btn" data-tab="plan-gate">Scenario 3 · High-impact planning</button>
@@ -764,7 +764,7 @@
         <div class="scenario-tag good-tag">✅ With this instruction</div>
         <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">Change the upgrade flow, but do not damage old data.</div></div>
         <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble fpfr-output">
-          <strong class="lead">This is not a polished to-do list. It is an executable plan with enough evidence and disprovable checks.</strong>
+          <strong class="lead">🎯 Level focus: aligned — this turn needs an upgrade plan that can be checked, not just a set of technical steps that pass.</strong>
           <ul class="fpfr-mini-list">
             <li><strong>End-state snapshot</strong> — 🔎 Task understanding: change the upgrade flow without harming old data;<br><em>Executable</em>. State invariants, exclusions, and known versus unverified state.</li>
             <li><strong>Deliverables</strong> — List affected upgrade code, data format, and documentation; do not invent an absolute path that is unknown.</li>
@@ -828,7 +828,7 @@
     <div class="card"><span class="num">1</span><h4>Core direction</h4><p>Facts, safety, and the user’s goal come first. Small clear work uses the smallest sufficient change.</p></div>
     <div class="card"><span class="num">2</span><h4>Precedence and sources</h4><p>Resolve conflicts by level. Check dates, versions, platform behavior, and target content before relying on them.</p></div>
     <div class="card"><span class="num">3</span><h4>Replies and collaboration</h4><p>Keep replies direct. Offer choices only for real trade-offs, with recommendations and risk labels preserved.</p></div>
-    <div class="card"><span class="num">4</span><h4>Effort and planning</h4><p>Scale effort to consequence, uncertainty, and reversibility. Use five sections and challenge only for higher impact.</p></div>
+    <div class="card"><span class="num">4</span><h4>Effort and planning</h4><p>Scale effort to consequence, uncertainty, and reversibility. Focus long work first; use five sections and challenge only for higher impact.</p></div>
     <div class="card"><span class="num">5</span><h4>Changes, governance, and delivery</h4><p>Define one rule in one place. Review governance changes before editing and make delivery readable back.</p></div>
     <div class="card"><span class="num">6</span><h4>Execution, safety, and authorization</h4><p>Stay inside workspace boundaries, protect secrets, and get separate approval for external writes, release, deployment, spending, or deletion.</p></div>
     <div class="card"><span class="num">7</span><h4>Acceptance, formats, and context</h4><p>Checks map to risk. JSON, Mermaid, line-semantic review, and context continuation all stay testable.</p></div>
@@ -839,7 +839,7 @@
     <tbody>
       <tr><td>The agent edits before it understands the scope</td><td>Read project guidance, the target, and direct context first. Search wider only when impact is unknown.</td></tr>
       <tr><td>A simple task gains too much ceremony and becomes slow</td><td>Match effort to consequence, uncertainty, and reversibility. Small clear work does not need a full-picture plan.</td></tr>
-      <tr><td>A polished plan has no recovery or failure model</td><td>For work where a mistake would have a larger impact, the agent checks sources, scope, failure state, and counterexamples first; if evidence is insufficient, it states the block directly.</td></tr>
+      <tr><td>A polished plan does not move the real goal forward</td><td>Long work gets a level-focus check first. When a mistake would have a larger impact, the agent then checks sources, scope, failure state, and counterexamples.</td></tr>
       <tr><td>Research mixes summaries, memory, and inference</td><td>Separate source, date, fact, inference, and what remains unverified.</td></tr>
       <tr><td>The agent invents a fixed folder or parallel structure</td><td>Use the existing directory, source-of-truth location, or platform delivery location; otherwise provide manually savable content.</td></tr>
       <tr><td>“The content is ready” becomes permission to push or publish</td><td>External writes, public release, access changes, spending, and data deletion each need their own explicit authorization.</td></tr>
@@ -884,7 +884,7 @@
 
       <text x="350" y="302" text-anchor="middle" font-size="11" fill="#5b6470">If still uncertain: safe, verifiable, never falsely complete</text>
     </svg>
-    <div class="svg-caption">Figure 1: The four v0.9.3 precedence layers. Higher-priority rules win.</div>
+    <div class="svg-caption">Figure 1: The four v1.0.0 precedence layers. Higher-priority rules win.</div>
   </div>
   <h3>Why this matters</h3>
   <p>This precedence order saves you from reteaching the agent that safety outranks formatting and that sources of truth outrank pretty rewrites. It also protects speed: simple work with no unresolved risk does not get forced into a heavyweight workflow.</p>
@@ -892,12 +892,14 @@
   <p>It helps with workplace documents and analysis, creative work, coding agents, long-lived governance, and counter-review of high-consequence plans. Creative work stays flexible; safety, privacy, and required formats still remain.</p>
 </section>
 
-<!-- ============== Group 2: Plan qualification ============== -->
+<!-- ============== Group 2: Level focus and plan qualification ============== -->
 <section id="g2">
-  <h2><span class="num">2</span>Full-picture plan qualification: see the whole plan before deciding it can run</h2>
-  <p class="lede">The five sections are not there to make a plan longer. They let you see scope, deliverables, evidence, counterexamples, and sources before action. Only work where a mistake would have a larger impact needs plan qualification; independent challenge applies only to the higher-risk failure modes named in the prompt.</p>
+  <h2><span class="num">2</span>Level focus and full-picture planning: align first, then decide whether it can run</h2>
+  <p class="lede">The five sections are not there to make a plan longer. In v1.0.0, 🎯 level focus first separates the final outcome, this turn's output, sources, and stop condition. Only aligned work where a mistake would have a larger impact needs a full-picture plan and the applicable challenge.</p>
   <h3>What you will receive</h3>
   <table><thead><tr><th>Result</th><th>What it means</th><th>What happens next</th></tr></thead><tbody>
+    <tr><td><strong>🎯 Aligned</strong></td><td>This turn's output, work level, sources, success evidence, and stop condition fit together.</td><td>Only then may the agent plan or execute.</td></tr>
+    <tr><td><strong>Misaligned</strong></td><td>The goal, level, output, or evidence does not fit; technical steps passing would not count as real progress.</td><td>Narrow the goal, level, or evidence first.</td></tr>
     <tr><td><strong>Executable</strong></td><td>There is enough evidence, a clear set of must-not-fail conditions, and a way to check the result.</td><td>Obtain the approval appropriate to the consequence. Executable is not user authorization.</td></tr>
     <tr><td><strong>Blocked</strong></td><td>A core source, capability, or safety condition is still missing, so the agent does not hand you a pretend-complete plan.</td><td>It names the gap, the safe checks already completed, and the condition needed to continue.</td></tr>
   </tbody></table>
@@ -905,11 +907,11 @@
   <p>Not merely because there are several files. Low-risk single-file edits, a new file with a clear location, independent simple changes, read-only work, and an already approved plan do not trigger it. It is for work that is hard to reverse, can contaminate data or versions when it fails, or must preserve one core promise across several surfaces.</p>
   <div class="svg-wrap">
     <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
-      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">Plan qualification when a mistake has a larger impact</text>
+      <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">Level focus → full-picture plan qualification</text>
 
       <!-- Start -->
       <rect x="340" y="50" width="120" height="36" rx="18" fill="#0d7377"/>
-      <text x="400" y="74" text-anchor="middle" fill="white" font-size="13">A task needing a full plan</text>
+      <text x="400" y="74" text-anchor="middle" fill="white" font-size="13">A task that may need a full plan</text>
 
       <!-- Arrow -->
       <line x1="400" y1="86" x2="400" y2="118" stroke="#1a1a1a" stroke-width="2"/>
@@ -917,10 +919,10 @@
 
       <!-- Decision diamond -->
       <polygon points="400,128 510,180 400,232 290,180" fill="white" stroke="#0d7377" stroke-width="2"/>
-      <text x="400" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">Would a mistake have a larger impact?</text>
-      <text x="400" y="188" text-anchor="middle" font-size="11" fill="#1a1a1a">Safety, data, or long-lived rules</text>
-      <text x="400" y="204" text-anchor="middle" font-size="11" fill="#1a1a1a">Several places must stay consistent</text>
-      <text x="400" y="220" text-anchor="middle" font-size="11" fill="#1a1a1a">Upgrade, migration, or external side effect</text>
+      <text x="400" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">Are level and evidence aligned?</text>
+      <text x="400" y="188" text-anchor="middle" font-size="11" fill="#1a1a1a">Final outcome and this turn's output</text>
+      <text x="400" y="204" text-anchor="middle" font-size="11" fill="#1a1a1a">Sources and success evidence</text>
+      <text x="400" y="220" text-anchor="middle" font-size="11" fill="#1a1a1a">Counterexample and stop condition</text>
 
       <!-- Yes branch right -->
       <line x1="510" y1="180" x2="600" y2="180" stroke="#1a1a1a" stroke-width="2"/>
@@ -929,19 +931,19 @@
 
       <rect x="600" y="158" width="180" height="44" rx="8" fill="#e6f7f5" stroke="#0d7377" stroke-width="1.5"/>
       <text x="690" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">Read sources and risks</text>
-      <text x="690" y="196" text-anchor="middle" font-size="11" fill="#5b6470">→ plan only after evidence</text>
+      <text x="690" y="196" text-anchor="middle" font-size="11" fill="#5b6470">→ plan only when aligned</text>
 
       <!-- No branch left -->
       <line x1="290" y1="180" x2="200" y2="180" stroke="#1a1a1a" stroke-width="2"/>
       <polygon points="202,176 195,180 202,184" fill="#1a1a1a"/>
-      <text x="245" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#5b6470">No</text>
+      <text x="245" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#5b6470">Misaligned</text>
 
       <rect x="20" y="158" width="180" height="44" rx="8" fill="#fafafa" stroke="#999" stroke-width="1.5"/>
-      <text x="110" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">Use regular workflow</text>
-      <text x="110" y="196" text-anchor="middle" font-size="11" fill="#5b6470">(still read first)</text>
+      <text x="110" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">Narrow the goal or evidence</text>
+      <text x="110" y="196" text-anchor="middle" font-size="11" fill="#5b6470">(no pretend-complete plan)</text>
 
       <!-- 5 sections -->
-      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">Five plan sections once evidence is sufficient</text>
+      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">Five plan sections once aligned and evidenced</text>
 
       <g>
         <rect x="40" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
@@ -992,7 +994,7 @@
 
       <text x="400" y="442" text-anchor="middle" font-size="11" fill="#5b6470">Keep low-risk reversible work light; challenge high-consequence plans, then obtain the right approval</text>
     </svg>
-    <div class="svg-caption">Figure 2: First make the sources and scope clear; write the five plan sections only when the evidence is sufficient.</div>
+    <div class="svg-caption">Figure 2: First align the goal, level, and evidence; write the five plan sections only when evidence is sufficient.</div>
   </div>
   <h3>What the agent does</h3>
   <p>It states must-not-fail conditions such as “a failed check cannot be marked successful,” “unrecognized content cannot be guessed over,” and “the state must be knowable after interruption.” When failure could affect safety, secrets, permissions, data or version integrity, irreversible or external state, migration recovery, or a cross-surface core promise, a reviewer who did not write the plan starts from the original request and tests interruption, conflict, concurrency, version reversal, boundary escape, recovery, and false-green cases. Low-risk reversible work uses proportionate checks. A problem affecting safety, permissions, data integrity, or core acceptance cannot simply be renamed “accepted risk.”</p>

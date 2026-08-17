@@ -47,17 +47,18 @@ This repo provides the complete meta instruction only. Tool-specific config file
 
 To see how the agent responds in common situations, open the [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html) or [Traditional Chinese guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html).
 
-## What v0.9.3 supports better
+## What v1.0.0 supports better
 
-- **Workplace**: for documents, fact checks, summaries, and local work updates, small tasks stay direct while external or irreversible actions still require explicit authorization.
+- **Workplace**: for documents, fact checks, summaries, and local work updates, small tasks stay direct; long work first separates this turn's real output from the final outcome, while external or irreversible actions still require explicit authorization.
 - **Creative**: writing, editing, naming, and visual direction are judged by the brief, tone, format, and constraints instead of engineering workflow; real-world claims still get checked.
 - **Coding agent**: the agent reads the target and direct context, makes the smallest sufficient change, and handles stuck tools by checking for partial writes before one equally safe retry.
-- **Governance**: rule repairs start by identifying sources of truth and responsibility. Low-risk local repairs stay light; high-risk governance gets a full-picture plan and independent challenge.
+- **Governance**: rule repairs start by identifying sources of truth and responsibility. High-risk or multi-stage work passes a level-focus gate before a full-picture plan and independent challenge.
 - **Counter-review**: when a plan may affect safety, permissions, data integrity, public boundaries, or cross-surface promises, the agent looks for disconfirming cases before treating the plan as ready.
 
 ## What the instruction protects
 
 - Before changing something, the agent reads the rules, files, and direct context that matter to the task.
+- Long or multi-stage work first separates the final outcome, this turn's output, sources of truth, and stop condition before deciding whether a full-picture plan is needed.
 - In research, it separates sources, dates, facts, inferences, and material that is still unverified.
 - After a write, it reads the result back. If it does not know a safe delivery location, it does not invent a parallel folder structure.
 - An important plan explains how success will be proven, what remains after failure, and how recovery works.
@@ -69,9 +70,9 @@ The instruction does not replace your tool's permissions, sandbox, version contr
 
 Public release, payment, pushing, deletion, access changes, and other irreversible actions still need your clear confirmation. The point is to help the agent make those decisions easier to see before you make them.
 
-## Latest update: v0.9.3
+## Latest update: v1.0.0
 
-Project-based AI Agent Instructions are now a clearer single cross-platform meta instruction: they keep safety, authorization, source-of-truth, proportionate planning, and acceptance boundaries while reducing repeated workflow language and tool-specific assumptions, so ordinary work and creative tasks are less likely to become over-engineered. [See what changed](docs/releases/v0.9.3.md)
+Project-based AI Agent Instructions now add a level-focus gate before full-picture planning: long work first separates the final outcome, this turn's output, work level, sources of truth, and stop condition, reducing cases where a technical pass still misses the user goal. A closing `🚀 Next step` now appears only when there is a concrete next action. [See what changed](docs/releases/v1.0.0.md)
 
 ## More to explore
 

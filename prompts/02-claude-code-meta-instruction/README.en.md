@@ -17,7 +17,7 @@ You may already use `Follow YAGNI principles`, `Keep it simple`, `Verify before 
 | Familiar prompt direction | What the short phrase leaves open | How these instructions make it operational |
 |---|---|---|
 | `Follow YAGNI principles` / `Keep it simple` | What can be omitted, and what is still required for this delivery. | Within the user goal and explicit scope, match effort to consequence, uncertainty, and reversibility. Include only issues that block acceptance, were caused by the change, or make the delivery inconsistent. Make the smallest sufficient related change, without letting persistence, sync, or governance expand the task automatically. |
-| `Verify before acting` | What to verify, and what to do when sources conflict. | Read the source of truth and direct context first. Separate source, date, fact, inference, and what remains unverified. |
+| `Verify before acting` | What to verify, and what to do when sources conflict. | Check source coverage for complex work. Separate source, date, fact, inference, and what remains unverified. |
 | `Plan before execution` | Whether small work needs a long plan, and when a plan is reliable. | Run a level-focus gate for long work. Use a full-picture plan only when it is aligned and the work is dependent, consequential, hard to recover, or externally consequential. |
 | `Human in the loop` | What safe work can proceed, and what must stop for approval. | Proceed with authorized, low-risk, reversible, no-side-effect work. Require separate explicit authorization for publishing, deletion, access changes, spending, and other external actions. |
 | `Manage context` | How to avoid long rules, search output, and stale context interfering with each other. | Map the scope with search, indexes, and sampling, then read direct material. Preserve handoff state separately for long-running work. |
@@ -26,12 +26,12 @@ These directions align with public guidance from OpenAI, Anthropic, and Google: 
 
 ## What it helps with
 
-The reason for v1.0.0 is to add a level-focus gate before full-picture planning: keep safety, authorization, sources of truth, acceptance, and high-risk counter-review while reducing cases where technical progress misses the real user goal.
+The reason for v1.0.1 is to add source coverage inside the level-focus gate: keep safety, authorization, sources of truth, acceptance, and high-risk counter-review while reducing cases where the agent sets a baseline before reading enough core sources.
 
 - **Workplace**: for documents, fact checks, summaries, and local work updates, small tasks stay direct; long work first separates this turn's real output from the final outcome.
 - **Creative**: writing, editing, naming, and visual direction are judged by the brief, tone, format, and constraints instead of engineering workflow; real-world claims still get checked.
 - **Coding agent**: the agent reads the target and direct context, makes the smallest sufficient change, and handles stuck tools by checking for partial writes before one equally safe retry.
-- **Governance**: rule repairs start by identifying sources of truth and responsibility. High-risk or multi-stage work passes a level-focus gate before a full-picture plan and independent challenge.
+- **Governance**: rule repairs start by identifying sources of truth and responsibility. High-risk or multi-stage work passes level-focus and source-coverage checks before a full-picture plan and independent challenge.
 - **Counter-review**: when a plan may affect safety, permissions, data integrity, public boundaries, or cross-surface promises, the agent looks for disconfirming cases before treating the plan as ready.
 
 This repo provides the complete meta instruction only. Tool-specific config files, imports, and installation locations should follow that tool's documentation or your Agent Handoff Kit setup. Ordinary ChatGPT and Claude web chat are not supported here as reliable project agents.
@@ -42,7 +42,7 @@ This repo provides the complete meta instruction only. Tool-specific config file
 - Research separates source, date, fact, inference, and unknowns.
 - A new file follows an existing project or platform location instead of inventing a folder.
 - A write is read back; failure, interruption, or conflict cannot be reported as success.
-- Long or multi-stage work shows 🎯 level focus first, so passing technical steps is not mistaken for real progress.
+- Long or multi-stage work shows 🎯 level focus first; work that needs a baseline or direction decision checks core source coverage first.
 - If a tool, sandbox, patch, test, or read command gets stuck, the agent first checks for partial writes; only an equally safe, authorized, auditable official channel may be retried once.
 - Deletion, overwrite, release, access, money, and secrets have extra confirmation gates.
 - A small edit stays short. A plan where a mistake would have a larger impact must survive an independent challenge before it is called executable.

@@ -48,7 +48,7 @@ If uncertainty remains, prefer safety, verifiability, and never pretending work 
 >
 > 💡 Recommendation: <A/B/C> — <one objective reason>
 
-- Use a closing `🚀 Next step` only when a concrete, low-friction, goal-relevant action remains. Give 1-3 specific actions. Omit it when the work is naturally complete, the user asked for a short or output-only answer, or the only available advice would be generic.
+- After ordinary analysis, comparison, judgement, repair, or execution reporting, use a closing `🚀 Next step` with 1-3 specific actions when a concrete, low-friction, goal-relevant action remains. Omit it when the work is naturally complete, the user asked for a short answer, output-only answer, or fixed-format output, or the only available advice would be generic.
 - Unless the outcome would change completely, state up to three reasonable assumptions and proceed. Ask at most three questions only when critical information is missing. After the user has chosen a direction, proceed without repeated confirmation except for safety, high-risk governance, irreversible actions, money, public release, or external side effects.
 
 ## 4. Effort and planning

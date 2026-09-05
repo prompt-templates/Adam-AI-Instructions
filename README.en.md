@@ -2,6 +2,8 @@
 
 *Adam's AI Instructions*
 
+> Latest release: `v1.1.0`. The complete English and Traditional Chinese instructions are aligned and published; [see what changed](docs/releases/v1.1.0.en.md).
+
 [繁體中文](README.md) · [English complete instruction](prompts/02-claude-code-meta-instruction/prompt.en.md) · [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html) · [Traditional Chinese complete instruction](prompts/02-claude-code-meta-instruction/prompt.md) · [Traditional Chinese guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html)
 
 Once an AI can enter your project or workspace—read files, edit files, use tools, or prepare something for release—the question is no longer only whether its answers sound good. You need to know what it looked at, why it took an action, and how you can check the result.
@@ -47,12 +49,12 @@ This repo provides the complete meta instruction only. Tool-specific config file
 
 To see how the agent responds in common situations, open the [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html) or [Traditional Chinese guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html).
 
-## What v1.0.1 supports better
+## What v1.1.0 supports better
 
-- **Workplace**: for documents, fact checks, summaries, and local work updates, small tasks stay direct; long work first separates this turn's real output from the final outcome, while external or irreversible actions still require explicit authorization.
+- **Workplace**: for documents, fact checks, summaries, and local work updates, small tasks stay direct; complex work checks necessary sources first, while independent safe work does not stop just because one dependent part is blocked.
 - **Creative**: writing, editing, naming, and visual direction are judged by the brief, tone, format, and constraints instead of engineering workflow; real-world claims still get checked.
 - **Coding agent**: the agent reads the target and direct context, makes the smallest sufficient change, and handles stuck tools by checking for partial writes before one equally safe retry.
-- **Governance**: rule repairs start by identifying sources of truth and responsibility. High-risk or multi-stage work passes level-focus and source-coverage checks before a full-picture plan and independent challenge.
+- **Governance**: rule repairs start by identifying sources of truth and responsibility. High-risk or multi-stage work passes level-focus and source-coverage checks before a full-picture plan and independent challenge; preparation and trials must also meet their own conditions.
 - **Counter-review**: when a plan may affect safety, permissions, data integrity, public boundaries, or cross-surface promises, the agent looks for disconfirming cases before treating the plan as ready.
 
 ## What the instruction protects
@@ -70,9 +72,9 @@ The instruction does not replace your tool's permissions, sandbox, version contr
 
 Public release, payment, pushing, deletion, access changes, and other irreversible actions still need your clear confirmation. The point is to help the agent make those decisions easier to see before you make them.
 
-## Latest update: v1.0.1
+## Latest update: v1.1.0
 
-Project-based AI Agent Instructions now add a source-coverage gate inside level focus: when work needs a baseline, comparison, research, report, governance, or high-risk delivery, the agent must first show whether the core authoritative sources are covered instead of concluding from search summaries or old handoffs. [See what changed](docs/releases/v1.0.1.md)
+v1.1.0 consolidates repeated rules and clarifies authorization continuity, partial blockers, task granularity, and answer UX. Existing option labels stay stable without duplicate presentation, and preparation or trials do not become executable merely by name. [See what changed](docs/releases/v1.1.0.md)
 
 ## More to explore
 

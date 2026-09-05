@@ -1,5 +1,13 @@
 # 📖 How to use it
 
+## v1.1.0 version
+
+`prompt.md` and `prompt.en.md` are the published v1.1.0 complete instructions. They replace v1.0.1 as the latest public baseline. See the [v1.1.0 release record](https://github.com/prompt-templates/Adam-AI-Instructions/releases/tag/v1.1.0); the [v1.0.1 release record](https://github.com/prompt-templates/Adam-AI-Instructions/releases/tag/v1.0.1) remains available for the previous version.
+
+v1.1.0 consolidates repeated rules, and both complete language versions are shorter than the pre-work baseline. It retains seven chapters, safety/authorization boundaries, and layered answers, while making four behaviors explicit: continue authorized safe work; block only work dependent on missing sources; preserve option labels without repeating trade-offs; and verify the execution conditions of preparation or trials themselves. Use the [Chinese text](prompt.md) or [English text](prompt.en.md) as one complete instruction, without assembling extra clauses. The interactive guides now use the v1.1.0 version scope.
+
+## Overview
+
 [Traditional Chinese overview](README.md) · [English prompt](prompt.en.md) · [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html) · [Traditional Chinese prompt](prompt.md) · [Traditional Chinese guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) · [Home](../../README.en.md)
 
 When an AI can enter your project or folder, the question is no longer only whether it gives a good answer. It can edit before it understands the rules, draw a conclusion from unchecked material, or say a job is finished halfway through.
@@ -26,7 +34,7 @@ These directions align with public guidance from OpenAI, Anthropic, and Google: 
 
 ## What it helps with
 
-The reason for v1.0.1 is to add source coverage inside the level-focus gate: keep safety, authorization, sources of truth, acceptance, and high-risk counter-review while reducing cases where the agent sets a baseline before reading enough core sources.
+v1.1.0 separates source coverage, focus, authorization, execution, and acceptance responsibilities, consolidating repeated rules in their owning chapters. Complex work first establishes its target and necessary sources; independent safe work continues, while simple work avoids unnecessary ceremony.
 
 - **Workplace**: for documents, fact checks, summaries, and local work updates, small tasks stay direct; long work first separates this turn's real output from the final outcome.
 - **Creative**: writing, editing, naming, and visual direction are judged by the brief, tone, format, and constraints instead of engineering workflow; real-world claims still get checked.
@@ -42,11 +50,11 @@ This repo provides the complete meta instruction only. Tool-specific config file
 - Research separates source, date, fact, inference, and unknowns.
 - A new file follows an existing project or platform location instead of inventing a folder.
 - A write is read back; failure, interruption, or conflict cannot be reported as success.
-- Long or multi-stage work shows 🎯 level focus first; work that needs a baseline or direction decision checks core source coverage first.
+- Complex work first anchors the task and checks necessary sources; show 🎯 level focus and diagrams only when ambiguity, risk, or a request warrants them.
 - If a tool, sandbox, patch, test, or read command gets stuck, the agent first checks for partial writes; only an equally safe, authorized, auditable official channel may be retried once.
 - Deletion, overwrite, release, access, money, and secrets have extra confirmation gates.
 - A small edit stays short. A plan where a mistake would have a larger impact must survive an independent challenge before it is called executable.
-- You do not receive a half-finished plan that still needs its main checks. If a core condition is missing, the agent explains the block and exactly what is needed to continue.
+- You do not receive a half-finished plan that still needs its main checks. If a core condition is missing, the agent explains the affected part and continuation conditions while proceeding with independent safe work.
 
 ## Fast setup
 

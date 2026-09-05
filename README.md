@@ -2,6 +2,8 @@
 
 *Adam's AI Instructions*
 
+> 最新發布：`v1.1.0`。中英文完整指令已同步發布；[查看這版改動](docs/releases/v1.1.0.md)。
+
 [English](README.en.md) · [繁中完整全域指令](prompts/02-claude-code-meta-instruction/prompt.md) · [中文使用指南](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html) · [English complete instruction](prompts/02-claude-code-meta-instruction/prompt.en.md) · [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html)
 
 當 AI 可以進入你的專案或工作區，讀檔、改檔、執行工具，甚至準備發佈內容，問題不再只是它答得好不好。你需要知道它看過甚麼、為何這樣做，以及完成後怎樣核對。
@@ -47,12 +49,12 @@
 
 如果你想先看 AI 在常見情境下會怎樣回應，可直接看[中文使用指南](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html)或 [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html)。
 
-## v1.0.1 更適合的任務
+## v1.1.0 更適合的任務
 
-- **Workplace**：整理文件、查證資料、準備摘要或更新本地工作內容時，小事可直接完成；長任務先分清本輪真正產出，外部或不可逆動作才要求明確授權。
+- **Workplace**：整理文件、查證資料、準備摘要或更新本地工作內容時，小事可直接完成；複雜工作先確認必要來源，獨立安全工作不會因局部缺口無故停下。
 - **Creative**：創作、改稿、命名和視覺方向按題意、語氣、格式和禁忌驗收，不硬套工程流程；涉及真實聲稱仍會核對。
 - **Coding agent**：讀待改位置與直接上下文，做最小足夠修改，工具卡住時先確認沒有半寫入，再用同等安全通道重試一次。
-- **Governance**：規則修補先分清真源和責任範圍；高風險或多階段工作先做層級對焦與真源覆蓋檢查，對準後才進入全圖計劃和獨立反證。
+- **Governance**：規則修補先分清真源和責任範圍；高風險或多階段工作先做層級對焦與真源覆蓋檢查，對準後才進入全圖計劃和獨立反證；準備或試行也要核實自身條件。
 - **反證審閱**：對可能影響安全、權限、資料完整性、公開邊界或跨表面承諾的方案，先找能推翻方案的反例，不把未查漏計劃包裝成完成品。
 
 ## 這份指令守住甚麼
@@ -70,9 +72,9 @@
 
 公開發佈、付款、推送、刪除、權限變更和其他不可逆操作，仍要由你清楚確認。它的作用是讓 AI 在你作決定前，把事情看得更清楚。
 
-## 最新更新：v1.0.1
+## 最新更新：v1.1.0
 
-專案式 AI Agent 全域指令在層級對焦中加入真源覆蓋閘：需要定基線、比較、研究、報告、治理或高風險交付時，AI 要先說清核心權威來源是否已讀齊，避免用搜尋摘要或舊交接過早下結論。[了解這版改動](docs/releases/v1.0.1.md)
+v1.1.0 合併重複規則，讓授權延續、局部受阻、任務粒度及答案格式更清楚；選項保留原有標識並避免重複呈現，準備或試行不會因名稱而自動取得可執行資格。[了解這版改動](docs/releases/v1.1.0.md)
 
 ## 更多資料
 

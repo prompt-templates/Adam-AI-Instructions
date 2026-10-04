@@ -2,7 +2,7 @@
 
 *Adam's AI Instructions*
 
-> Latest release: `v1.1.0`. The complete English and Traditional Chinese instructions are aligned and published; [see what changed](docs/releases/v1.1.0.en.md).
+> Latest release: `v1.2.0`. The complete English and Traditional Chinese instructions are aligned and published; [see what changed](docs/releases/v1.2.0.en.md).
 
 [繁體中文](README.md) · [English complete instruction](prompts/02-claude-code-meta-instruction/prompt.en.md) · [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html) · [Traditional Chinese complete instruction](prompts/02-claude-code-meta-instruction/prompt.md) · [Traditional Chinese guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html)
 
@@ -25,7 +25,7 @@ Project-based AI Agent Instructions do not replace those principles, and do not 
 | `Follow YAGNI principles` / `Keep it simple` | Within the user goal and explicit scope, match effort to consequence, uncertainty, and reversibility; make the smallest sufficient change for acceptance, without letting persistence, sync, or governance expand the task automatically. |
 | `Verify before acting` | Check core source coverage before complex work; separate facts, inferences, and what remains unverified. |
 | `Plan before execution` | Require a verifiable plan only for dependent, consequential, or hard-to-recover work. |
-| `Human in the loop` | Complete safe local work directly; require separate explicit authorization for pushing, publishing, deletion, access changes, and spending. |
+| `Human in the loop` | Complete safe local work directly; require appropriate explicit authorization for pushing, publishing, access changes, and spending. Valid authorization is not asked for again; qualifying task-created temporary artifacts may be cleaned up directly. |
 | `Manage context` | Limit search and reading to the relevant scope, keep high-signal context, and avoid loading long rules or unrelated material together. |
 
 [See the fuller mapping to these instructions and public guidance](prompts/02-claude-code-meta-instruction/README.en.md#from-familiar-principles-to-working-rules).
@@ -34,7 +34,7 @@ Project-based AI Agent Instructions do not replace those principles, and do not 
 
 Ask an agent to update a README and it should not edit on sight. It first looks for the existing style, the relevant rules, and a result it can read back afterwards. Then it changes only what is needed.
 
-Ask it to research, organize information, or prepare a release and it separates verified facts from open questions and from choices that really need you. Deletion, overwrite, public release, access changes, and spending still wait for your final confirmation.
+Ask it to research, organize information, or prepare a release and it separates verified facts from open questions and from choices that really need you. Material trade-offs and new authorization for public release, access changes, or spending still need you. Already authorized work does not need repeated confirmation.
 
 This does not turn every small task into a process. A clear, reversible fix can be completed directly. Extra checking is for work where an error would be harder to undo or would affect more than one thing.
 
@@ -49,18 +49,18 @@ This repo provides the complete meta instruction only. Tool-specific config file
 
 To see how the agent responds in common situations, open the [English guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.en.html) or [Traditional Chinese guide](https://prompt-templates.github.io/Adam-AI-Instructions/prompts/02-claude-code-meta-instruction/guide.html).
 
-## What v1.1.0 supports better
+## What v1.2.0 supports better
 
 - **Workplace**: for documents, fact checks, summaries, and local work updates, small tasks stay direct; complex work checks necessary sources first, while independent safe work does not stop just because one dependent part is blocked.
 - **Creative**: writing, editing, naming, and visual direction are judged by the brief, tone, format, and constraints instead of engineering workflow; real-world claims still get checked.
-- **Coding agent**: the agent reads the target and direct context, makes the smallest sufficient change, and handles stuck tools by checking for partial writes before one equally safe retry.
-- **Governance**: rule repairs start by identifying sources of truth and responsibility. High-risk or multi-stage work passes level-focus and source-coverage checks before a full-picture plan and independent challenge; preparation and trials must also meet their own conditions.
+- **Coding agent**: the agent reads the target and direct context, makes the smallest sufficient change, and handles stuck tools by checking for partial writes before choosing an authorized, safe recovery method.
+- **Governance**: rule repairs identify sources and responsibilities and reuse established plans. Major impact or complex dependencies warrant a full-picture plan; necessary review follows the current operation or claim's risk.
 - **Counter-review**: when a plan may affect safety, permissions, data integrity, public boundaries, or cross-surface promises, the agent looks for disconfirming cases before treating the plan as ready.
 
 ## What the instruction protects
 
 - Before changing something, the agent reads the rules, files, and direct context that matter to the task.
-- Long or multi-stage work first separates the final outcome, this turn's output, core source coverage, and stop condition before deciding whether a full-picture plan is needed.
+- Complex work establishes goals, scope, invariants, and completion criteria. It reuses existing plans and updates only differences that affect action.
 - In research, it separates sources, dates, facts, inferences, and material that is still unverified.
 - After a write, it reads the result back. If it does not know a safe delivery location, it does not invent a parallel folder structure.
 - An important plan explains how success will be proven, what remains after failure, and how recovery works.
@@ -70,11 +70,11 @@ To see how the agent responds in common situations, open the [English guide](htt
 
 The instruction does not replace your tool's permissions, sandbox, version control, or backups. Having a prompt does not mean a system is already safe.
 
-Public release, payment, pushing, deletion, access changes, and other irreversible actions still need your clear confirmation. The point is to help the agent make those decisions easier to see before you make them.
+Public release, payment, pushing, access changes, and other irreversible actions still need your explicit authorization. Valid authorization continues without repeated confirmation. The complete instruction defines deletion requirements and its narrow temporary-artifact exception. The point is to help the agent make those decisions easier to see before you make them.
 
-## Latest update: v1.1.0
+## Latest update: v1.2.0
 
-v1.1.0 consolidates repeated rules and clarifies authorization continuity, partial blockers, task granularity, and answer UX. Existing option labels stay stable without duplicate presentation, and preparation or trials do not become executable merely by name. [See what changed](docs/releases/v1.1.0.md)
+v1.2.0 explicitly names KISS, YAGNI, and fulfilling the user's requested outcome with the least rework. The AI owns technical choices, recovery, and delivery; valid authorization continues, and sandbox or tool limits prompt safe, permitted remedies before asking the user to intervene. [See what changed](docs/releases/v1.2.0.en.md)
 
 ## More to explore
 

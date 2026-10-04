@@ -688,16 +688,16 @@
 
 <main>
 
-<div class="callout"><strong>Version scope:</strong> This page describes published v1.1.0. It preserves the safeguards while clarifying continuation, option identity, and executability; see the <a href="README.en.md#v110-version">v1.1.0 version overview</a> for the complete source.</div>
+<div class="callout"><strong>Version scope:</strong> This page describes published v1.2.0. It explicitly names KISS and YAGNI, gives the AI responsibility for recovery and delivery, and scales checks to actual risk; see the <a href="README.en.md#v120-version">v1.2.0 version overview</a> for the complete source.</div>
 
 <!-- ============== Scenario comparison (Hero) ============== -->
 <section id="scenario" class="scenario-hero">
   <div class="scenario-title">
     <h2>Four everyday situations · two AI experiences</h2>
-    <p>Switch between the tabs. Each comparison comes directly from the seven v1.1.0 sections: see how a different judgement model changes the experience, not just the process.</p>
+    <p>Switch between the tabs. Each comparison comes directly from the seven v1.2.0 sections: see how a different judgement model changes the experience, not just the process.</p>
   </div>
 
-  <div class="scenario-tabs" role="tablist" aria-label="v1.1.0 everyday situations">
+  <div class="scenario-tabs" role="tablist" aria-label="v1.2.0 everyday situations">
     <button class="tab-btn active" data-tab="read-first">Scenario 1 · Real choices &amp; recommendation</button>
     <button class="tab-btn" data-tab="research">Scenario 2 · Read the source first</button>
     <button class="tab-btn" data-tab="plan-gate">Scenario 3 · High-impact planning</button>
@@ -768,15 +768,15 @@
         <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble fpfr-output">
           <strong class="lead">🎯 Level focus: aligned — this turn needs an upgrade plan that can be checked, not just a set of technical steps that pass.</strong>
           <ul class="fpfr-mini-list">
-            <li><strong>End-state snapshot</strong> — 🔎 Task understanding: change the upgrade flow without harming old data;<br><em>Executable</em>. State invariants, exclusions, and known versus unverified state.</li>
+            <li><strong>End-state snapshot</strong> — 🔎 Task understanding: change the upgrade flow without harming old data;<br><em>Executable (assuming necessary sources, recovery checks, and independent review have passed)</em>. State invariants, exclusions, and known versus unverified state.</li>
             <li><strong>Deliverables</strong> — List affected upgrade code, data format, and documentation; do not invent an absolute path that is unknown.</li>
             <li><strong>Success evidence</strong> — Old data can be read back; interruption leaves a knowable state, recovery entry, and authoritative read-back.</li>
             <li><strong>Acceptance tests</strong> — Test normal upgrade plus interruption, conflict, version reversal, and a false-green case where data is still harmed.</li>
             <li><strong>Goal links</strong> — Link external platform behavior to official sources and project changes to their current source of truth.</li>
           </ul>
-          <span class="fpfr-closing">This is an executable plan. Because it changes old data, work still waits for your explicit confirmation.</span>
+          <span class="fpfr-closing">Call it executable only after necessary checks pass. Changes to old data still need appropriate explicit authorization; continue without asking again when it is already granted.</span>
         </div></div>
-        <div class="scenario-summary good-summary">✓ You receive an executable plan only when evidence is sufficient; otherwise the agent explains the block directly</div>
+        <div class="scenario-summary good-summary">✓ Drafts and safe preparation can continue; necessary checks come before high-risk execution</div>
       </div>
     </div>
   </div>
@@ -786,13 +786,13 @@
     <div class="scenario-grid">
       <div class="scenario-col before">
         <div class="scenario-tag bad-tag">❌ Without this instruction</div>
-        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">Fix the settings, then push and publish a new release.</div></div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">Fix the settings.</div></div>
         <div class="msg ai bad"><div class="msg-avatar">🤖</div><div class="msg-bubble">I’ll put <code>.env</code> in the commit, then push it and create the public release.</div></div>
         <div class="scenario-summary bad-summary">⚠ A secret enters a durable record, and permission to edit content is treated as permission to push and publish</div>
       </div>
       <div class="scenario-col after">
         <div class="scenario-tag good-tag">✅ With this instruction</div>
-        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">Fix the settings, then push and publish a new release.</div></div>
+        <div class="msg user"><div class="msg-avatar">👤</div><div class="msg-bubble">Fix the settings.</div></div>
         <div class="msg ai good"><div class="msg-avatar">🤖</div><div class="msg-bubble">
           <strong class="lead">🔎 <code>.env</code> contains a secret. It cannot appear in output, logs, or commits.</strong>
           I can fix settings that are safe to modify and read them back. Pushing and creating a public release are separate external actions: I will list their target and impact, then wait for your explicit authorization.
@@ -827,8 +827,8 @@
   <p class="lede">You do not need to read every line first. Start with the four scenarios above, jump to the part that matches your work, and use the setup section when you are ready to install it.</p>
   <h3>Rule map</h3>
   <div class="grid">
-    <div class="card"><span class="num">1</span><h4>Core direction</h4><p>Facts, safety, and the user’s goal come first. Small clear work uses the smallest sufficient change.</p></div>
-    <div class="card"><span class="num">2</span><h4>Precedence and sources</h4><p>Resolve conflicts by level. Check dates, versions, platform behavior, and target content before relying on them.</p></div>
+    <div class="card"><span class="num">1</span><h4>Core direction</h4><p>KISS and YAGNI. Fulfill the request with the least rework; the AI owns research, recovery, acceptance, and delivery.</p></div>
+    <div class="card"><span class="num">2</span><h4>Precedence and sources</h4><p>Resolve conflicts by level. Check decision-relevant information and platform behavior. Read known sources directly.</p></div>
     <div class="card"><span class="num">3</span><h4>Replies and collaboration</h4><p>Keep replies direct. Offer choices only for real trade-offs, with recommendations and risk labels preserved.</p></div>
     <div class="card"><span class="num">4</span><h4>Effort and planning</h4><p>Scale effort to consequence, uncertainty, and reversibility. Focus long work first; use five sections and challenge only for higher impact.</p></div>
     <div class="card"><span class="num">5</span><h4>Changes, governance, and delivery</h4><p>Define one rule in one place. Review governance changes before editing and make delivery readable back.</p></div>
@@ -842,9 +842,9 @@
       <tr><td>The agent edits before it understands the scope</td><td>Read project guidance, the target, and direct context first. Search wider only when impact is unknown.</td></tr>
       <tr><td>A simple task gains too much ceremony and becomes slow</td><td>Match effort to consequence, uncertainty, and reversibility. Small clear work does not need a full-picture plan.</td></tr>
       <tr><td>A polished plan does not move the real goal forward</td><td>Long work gets a level-focus check first. When the work needs a baseline or direction decision, the agent then checks core source coverage, scope, failure state, and counterexamples.</td></tr>
-      <tr><td>The agent reads search summaries or an old handoff and sets a baseline too early</td><td>Search, summaries, headers, indexes, and old handoffs may locate sources of truth. If core sources are unread or conflicting, the agent must read more, narrow scope, or ask you to decide.</td></tr>
+      <tr><td>The agent reads search summaries or an old handoff and sets a baseline too early</td><td>Search, summaries, headers, indexes, and old handoffs may locate sources of truth. If necessary sources are unread or conflicting, the AI reads more, investigates, or narrows the claim. Only a choice you alone can resolve comes back to you.</td></tr>
       <tr><td>Research mixes summaries, memory, and inference</td><td>Separate source, date, fact, inference, and what remains unverified.</td></tr>
-      <tr><td>The agent invents a fixed folder or parallel structure</td><td>Use the existing directory, source-of-truth location, or platform delivery location; otherwise provide manually savable content.</td></tr>
+      <tr><td>The agent invents a fixed folder or parallel structure</td><td>The AI checks existing directories, sources, and delivery conventions; ask only if still uncertain, without inventing parallel structures.</td></tr>
       <tr><td>“The content is ready” becomes permission to push or publish</td><td>External writes, public release, access changes, spending, and data deletion each need their own explicit authorization.</td></tr>
       <tr><td>Acceptance keeps growing without new evidence</td><td>Every added check must map to an unresolved risk. Stop when affected scenarios pass.</td></tr>
       <tr><td>The user asks for line-by-line review, but the agent only checks sections, keywords, or samples</td><td>Line-by-line review means line-semantic acceptance: inspect each line for meaning, ambiguity, anchoring, scope leakage, contradiction, and missing counterpart.</td></tr>
@@ -874,12 +874,12 @@
       <text x="350" y="84" text-anchor="middle" fill="white" font-size="11">Irreversible and external actions</text>
 
       <rect x="80" y="112" width="540" height="44" rx="6" fill="#e08436"/>
-      <text x="350" y="131" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">2. Authoritative workspace instructions and adopted workflows</text>
-      <text x="350" y="146" text-anchor="middle" fill="white" font-size="11">Handoff, state, or governance tools only within their stated role</text>
+      <text x="350" y="131" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">2. Current explicit goals, scope, constraints, and output</text>
+      <text x="350" y="146" text-anchor="middle" fill="white" font-size="11">Later same-level instructions replace only conflicts</text>
 
       <rect x="110" y="174" width="480" height="44" rx="6" fill="#d4a017"/>
-      <text x="350" y="193" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">3. User output, verbatim requirements, schema, and source of truth</text>
-      <text x="350" y="208" text-anchor="middle" fill="white" font-size="11">Existing keys, enums, headings, formats, and specs</text>
+      <text x="350" y="193" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">3. Adopted project instructions, workflows, and sources</text>
+      <text x="350" y="208" text-anchor="middle" fill="white" font-size="11">Follow responsibilities not superseded from above</text>
 
       <rect x="140" y="236" width="420" height="44" rx="6" fill="#0d7377"/>
       <text x="350" y="255" text-anchor="middle" fill="white" font-size="12.5" font-weight="bold">4. This prompt's tone, reply scaffold, emoji, and layout</text>
@@ -887,7 +887,7 @@
 
       <text x="350" y="302" text-anchor="middle" font-size="11" fill="#5b6470">If still uncertain: safe, verifiable, never falsely complete</text>
     </svg>
-    <div class="svg-caption">Figure 1: The three v1.1.0 precedence layers. Higher-priority rules win.</div>
+    <div class="svg-caption">Figure 1: The v1.2.0 precedence order. Higher-priority rules win.</div>
   </div>
   <h3>Why this matters</h3>
   <p>This precedence order saves you from reteaching the agent that safety outranks formatting and that sources of truth outrank pretty rewrites. It also protects speed: simple work with no unresolved risk does not get forced into a heavyweight workflow.</p>
@@ -898,10 +898,10 @@
 <!-- ============== Group 2: Level focus and plan qualification ============== -->
 <section id="g2">
   <h2><span class="num">2</span>Level focus and full-picture planning: align first, then decide whether it can run</h2>
-  <p class="lede">The five sections are not there to make a plan longer. In v1.1.0, 🎯 level focus first separates the final outcome, this turn's output, core source coverage, and stop condition. Only aligned work where a mistake would have a larger impact needs a full-picture plan and the applicable challenge.</p>
+  <p class="lede">The five sections are not there to make a plan longer. In v1.2.0, internally check goals, scope, invariants, and completion criteria, reusing existing plans. Use five sections when major impact or complex dependencies need advance alignment, or you explicitly ask.</p>
   <h3>What you will receive</h3>
   <table><thead><tr><th>Result</th><th>What it means</th><th>What happens next</th></tr></thead><tbody>
-    <tr><td><strong>🎯 Aligned</strong></td><td>This turn's output, work level, sources, success evidence, and stop condition fit together.</td><td>Only then may the agent plan or execute.</td></tr>
+    <tr><td><strong>🎯 Aligned</strong></td><td>This turn's output, work level, sources, success evidence, and stop condition fit together.</td><td>Plan as needed or continue authorized safe work.</td></tr>
     <tr><td><strong>Misaligned</strong></td><td>The goal, level, output, or evidence does not fit; technical steps passing would not count as real progress.</td><td>Narrow the goal, level, or evidence first.</td></tr>
     <tr><td><strong>Executable</strong></td><td>There is enough evidence, a clear set of must-not-fail conditions, and a way to check the result.</td><td>Obtain the approval appropriate to the consequence. Executable is not user authorization.</td></tr>
     <tr><td><strong>Blocked</strong></td><td>A core source, capability, or safety condition is still missing, so the agent does not hand you a pretend-complete plan.</td><td>It names the gap, the safe checks already completed, and the condition needed to continue.</td></tr>
@@ -914,7 +914,7 @@
 
       <!-- Start -->
       <rect x="340" y="50" width="120" height="36" rx="18" fill="#0d7377"/>
-      <text x="400" y="74" text-anchor="middle" fill="white" font-size="13">A task that may need a full plan</text>
+      <text x="400" y="74" text-anchor="middle" fill="white" font-size="13">Plan needed?</text>
 
       <!-- Arrow -->
       <line x1="400" y1="86" x2="400" y2="118" stroke="#1a1a1a" stroke-width="2"/>
@@ -933,8 +933,8 @@
       <text x="555" y="173" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">Yes</text>
 
       <rect x="600" y="158" width="180" height="44" rx="8" fill="#e6f7f5" stroke="#0d7377" stroke-width="1.5"/>
-      <text x="690" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">Read sources and risks</text>
-      <text x="690" y="196" text-anchor="middle" font-size="11" fill="#5b6470">→ plan only when aligned</text>
+      <text x="690" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d7377">Reuse sources; check gaps</text>
+      <text x="690" y="196" text-anchor="middle" font-size="11" fill="#5b6470">→ plan and continue as needed</text>
 
       <!-- No branch left -->
       <line x1="290" y1="180" x2="200" y2="180" stroke="#1a1a1a" stroke-width="2"/>
@@ -946,7 +946,7 @@
       <text x="110" y="196" text-anchor="middle" font-size="11" fill="#5b6470">(no pretend-complete plan)</text>
 
       <!-- 5 sections -->
-      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">Five plan sections once aligned and evidenced</text>
+      <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d7377">Draft five sections when advance alignment is needed</text>
 
       <g>
         <rect x="40" y="296" width="138" height="120" rx="8" fill="#e6f7f5" stroke="#0d7377"/>
@@ -997,12 +997,12 @@
 
       <text x="400" y="442" text-anchor="middle" font-size="11" fill="#5b6470">Keep low-risk reversible work light; challenge high-consequence plans, then obtain the right approval</text>
     </svg>
-    <div class="svg-caption">Figure 2: First align the goal, level, and evidence; write the five plan sections only when evidence is sufficient.</div>
+    <div class="svg-caption">Figure 2: Align the goal and draft as needed; complete necessary checks before high-risk execution or an executability claim.</div>
   </div>
   <h3>What the agent does</h3>
   <p>It states must-not-fail conditions such as “a failed check cannot be marked successful,” “unrecognized content cannot be guessed over,” and “the state must be knowable after interruption.” When failure could affect safety, secrets, permissions, data or version integrity, irreversible or external state, migration recovery, or a cross-surface core promise, a reviewer who did not write the plan starts from the original request and tests interruption, conflict, concurrency, version reversal, boundary escape, recovery, and false-green cases. Low-risk reversible work uses proportionate checks. A problem affecting safety, permissions, data integrity, or core acceptance cannot simply be renamed “accepted risk.”</p>
   <h3>How the five sections help</h3>
-  <p><strong>End-state snapshot</strong> states scope, status, and what must not fail. <strong>Deliverables</strong> name real resources and actions. <strong>Success evidence</strong> includes failure state and recovery. <strong>Acceptance tests</strong> include a counterexample that can disprove the plan. <strong>Goal links</strong> connect the work to its sources. Without any one of these, the agent cannot honestly call the plan complete.</p>
+  <p><strong>End-state snapshot</strong> states scope, status, and what must not fail. <strong>Deliverables</strong> name real resources and actions. <strong>Success evidence</strong> includes failure state and recovery. <strong>Acceptance tests</strong> include a counterexample that can disprove the plan. <strong>Goal links</strong> connect the work to its sources. When this plan is needed, supply applicable content. Drafts can be prepared first; necessary checks must pass before high-risk execution or an executability claim.</p>
 </section>
 
 <!-- ============== Group 3: Replies and language ============== -->
@@ -1053,7 +1053,7 @@
       <text x="575" y="126" text-anchor="middle" font-size="11" fill="#1a1a1a">important rules,</text>
       <text x="575" y="142" text-anchor="middle" font-size="11" fill="#1a1a1a">durable delivery</text>
       <text x="575" y="170" text-anchor="middle" font-size="11" fill="#1a1a1a">→ formal structure;</text>
-      <text x="575" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">five sections only with evidence</text>
+      <text x="575" y="186" text-anchor="middle" font-size="11" fill="#1a1a1a">five sections when alignment is needed</text>
       <text x="575" y="222" text-anchor="middle" font-size="10" fill="#5b6470">e.g. a multi-file</text>
       <text x="575" y="238" text-anchor="middle" font-size="10" fill="#5b6470">change plan</text>
 
@@ -1143,8 +1143,8 @@
         <text x="570" y="160" text-anchor="middle" fill="white" font-size="13" font-weight="bold">After (new text)</text>
         <text x="440" y="190" font-size="11" fill="#1a1a1a" font-family="monospace">New files follow the existing</text>
         <text x="440" y="208" font-size="11" fill="#1a1a1a" font-family="monospace">directory, source, or platform location.</text>
-        <text x="440" y="226" font-size="11" fill="#1a1a1a" font-family="monospace">If still unknown, do not create a file;</text>
-        <text x="440" y="244" font-size="11" fill="#1a1a1a" font-family="monospace">provide manually savable content.</text>
+        <text x="440" y="226" font-size="11" fill="#1a1a1a" font-family="monospace">If still unknown, ask what is necessary;</text>
+        <text x="440" y="244" font-size="11" fill="#1a1a1a" font-family="monospace">the AI handles other operations.</text>
         <text x="440" y="280" font-size="11" fill="#5b6470" font-style="italic">↑ Safe to replace</text>
       </g>
 
@@ -1163,7 +1163,7 @@
   <ul>
     <li><strong>The agent can safely edit files.</strong> List the file, key difference, and acceptance result; do not paste the whole source again.</li>
     <li><strong>You must paste manually.</strong> Use the anchor, before/after content, and check shown above.</li>
-    <li><strong>Deletion, move, batch overwrite, or an irreversible action.</strong> State the target and impact clearly, then get confirmation before acting.</li>
+    <li><strong>Deletion, move, batch overwrite, or an irreversible action.</strong> State the target and impact and obtain appropriate authorization. Do not ask again for valid permission; qualifying task-created temporary artifacts follow the complete instruction's exception.</li>
   </ul>
 
   <div class="callout"><strong>Keep one current place for the same rule.</strong> Before adding or changing a rule, the agent checks whether older wording can be merged instead of copied into another file. You should not later find several competing “latest versions.”</div>
@@ -1181,8 +1181,8 @@
   <table>
     <thead><tr><th>Delivery</th><th>What this instruction requires</th></tr></thead>
     <tbody>
-      <tr><td>JSON</td><td>Follow the existing schema. Omit optional fields with no data unless the schema requires <code>null</code>. Invent no fields and verify that the result parses.</td></tr>
-      <tr><td>Mermaid</td><td>Use <code>sequenceDiagram</code> for interaction and <code>flowchart</code> for process or branches. Quote ambiguous text and validate syntax.</td></tr>
+      <tr><td>JSON</td><td>Follow the existing schema. Omit optional fields with no data; use <code>null</code> only when the format permits it and the meaning fits. Invent no data and verify that the result parses.</td></tr>
+      <tr><td>Mermaid</td><td>Choose by relationship, for example <code>sequenceDiagram</code> for interaction and <code>flowchart</code> for processes or branches. Quote ambiguous text and validate syntax.</td></tr>
       <tr><td>Lists, tables, and reports</td><td>Put the conclusion the reader needs first, then keep only the useful detail. Do not invent fields or rename existing keys.</td></tr>
     </tbody>
   </table>
@@ -1254,12 +1254,12 @@
   <table>
     <thead><tr><th>Area</th><th>What this instruction requires</th></tr></thead>
     <tbody>
-      <tr><td>Scope and files</td><td>Read the target and direct context first. Change only task-related content. Stop on concurrent or unexpected changes; never undo user work.</td></tr>
-      <tr><td>Safe writing</td><td>Do not assume a folder name or wrap file edits in an external shell. Do not bypass an ambiguous path, workspace escape, lock, or permission problem.</td></tr>
-      <tr><td>Unresponsive tools</td><td>Check first for partial writes or unknown side effects. Retry only once through an equally safe, authorized, auditable official channel.</td></tr>
+      <tr><td>Scope and files</td><td>Read the target and direct context first. Change only task-related content. Check overlap and impact on concurrent or unexpected changes; pause only affected work and never undo user work.</td></tr>
+      <tr><td>Safe writing</td><td>Verify the workspace and resolved paths; use the same project files. Necessary execution outside the sandbox uses platform-permitted channels and formal approval if needed, without asking again for valid authorization.</td></tr>
+      <tr><td>Unresponsive tools</td><td>Diagnose and read back for partial writes or unknown side effects, then use an authorized, safe, evidence-based remedy. Avoid similar blind attempts.</td></tr>
       <tr><td>Secrets and destructive actions</td><td>Do not put tokens, keys, or certificates in replies, logs, or commands. Do not use dangerous recursive deletion, force reset, or bulk overwrite of unknown files.</td></tr>
       <tr><td>External tools and platforms</td><td>Check official documentation before changing integrations, authentication, deployment, paid actions, or fast-changing interfaces. Do not guess a high-risk contract.</td></tr>
-      <tr><td>External side effects</td><td>Push, publish, deploy, send messages, schedule, change access, spend money, and delete data each need explicit authorization before execution.</td></tr>
+      <tr><td>External side effects</td><td>Push, publish, deploy, messages, scheduling, access, and spending need appropriate explicit authorization. Valid authorization continues; the complete instruction defines the narrow task-created temporary-artifact cleanup exception.</td></tr>
     </tbody>
   </table>
 
@@ -1303,7 +1303,7 @@
 <!-- ============== FAQ ============== -->
 <section id="faq">
   <h2>FAQ</h2>
-  <details><summary>Q1: Will this instruction make the agent slow?</summary><p>It should not. It explicitly matches effort to consequence, uncertainty, and reversibility: small clear work completes directly; only uncertain work or work where a mistake would have a larger impact gains plan qualification and challenge.</p></details>
+  <details><summary>Q1: Will this instruction make the agent slow?</summary><p>It should not. It explicitly matches effort to consequence, uncertainty, and reversibility: small clear work completes directly; reuse valid plans and evidence, without automatic ceremony for file count or steps. Checks follow the current operation or claim's actual risk.</p></details>
   <details><summary>Q2: Does it support ordinary web ChatGPT or Claude chat?</summary><p>No. This instruction is for agents that can act in an authorized workspace. General web chat has no reliable project read/write or execution boundary, so claiming the same result would not be honest.</p></details>
   <details><summary>Q3: Can I use only some rules?</summary><p>Do not remove rules by hand. They support each other. If your tool genuinely cannot hold the full text, try the full version first, then adjust only for a specific problem you have actually observed.</p></details>
   <details><summary>Q4: How can I tell whether a plan is only “well formatted”?</summary><p>Where a mistake would have a larger impact, look for must-not-fail conditions, the failure state, recovery route, authoritative read-back, and a counterexample that could disprove the plan. Without these, the agent should not give you an executable plan; it should explain what is blocking it instead.</p></details>

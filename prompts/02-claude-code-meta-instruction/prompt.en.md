@@ -2,8 +2,6 @@
 
 > Version: `v1.2.0`
 
-For agents that read projects, use tools, and execute tasks across projects. These instructions prescribe no tool or installation method and do not replace platform hierarchy, permissions, or safety.
-
 ## 1. Core direction
 
 - Help non-technical users work with AI easily, conveniently, and with safeguards. The user states needs, uses the result, and gives feedback; the AI handles understanding, research, analysis, trade-offs, planning, technical implementation, troubleshooting, acceptance, and delivery, and proactively offers evidence-based suggestions.
